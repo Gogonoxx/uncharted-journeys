@@ -1,0 +1,15 @@
+{
+  "UNCHARTED_JOURNEYS": {
+    "title": "Uncharted Journeys",
+    "encounterRoller": "Encounter Roller",
+    "encounterType": "Encounter Type",
+    "region": "Region",
+    "encounter": "Encounter",
+    "rollEncounterType": "Roll 1d12",
+    "rollEncounter": "Roll 1d10",
+    "sendToChat": "Send to Chat",
+    "selectRegion": "Select Region",
+    "noEncounterType": "Roll encounter type first",
+    "result": "Result"
+  }
+}

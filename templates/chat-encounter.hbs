@@ -1,0 +1,27 @@
+<div class="uncharted-journeys-chat">
+  <header class="encounter-chat-header">
+    <div class="header-badge">
+      <i class="fas fa-route"></i>
+      <span>Journey Encounter</span>
+    </div>
+  </header>
+
+  <div class="encounter-chat-meta">
+    <span class="meta-item region">
+      <i class="fas fa-map-marked-alt"></i> {{region}}
+    </span>
+    <span class="meta-item type">
+      <i class="fas fa-dice-d20"></i> {{encounterType}}
+    </span>
+    <span class="meta-item roll">
+      <i class="fas fa-dice"></i> Roll: {{roll}}
+    </span>
+  </div>
+
+  <div class="encounter-chat-content">
+    <h4 class="encounter-chat-title">{{encounter.title}}</h4>
+    <div class="encounter-chat-description">
+      <p>{{encounter.description}}</p>
+    </div>
+  </div>
+</div>

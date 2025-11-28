@@ -1,0 +1,79 @@
+<div class="encounter-roller-content">
+  {{!-- Region Selection --}}
+  <section class="region-section">
+    <h3><i class="fas fa-map-marked-alt"></i> Region</h3>
+    <div class="form-group">
+      <select name="region" class="region-select">
+        {{#each regions}}
+          <option value="{{this}}" {{#if (eq this ../state.currentRegion)}}selected{{/if}}>
+            {{this}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  </section>
+
+  {{!-- Encounter Type Section --}}
+  <section class="encounter-type-section">
+    <h3><i class="fas fa-dice-d20"></i> Encounter Type</h3>
+    <div class="roll-row">
+      <button type="button" data-action="rollEncounterType" class="roll-button">
+        <i class="fas fa-dice"></i> Roll 1d12
+      </button>
+      {{#if state.encounterTypeRoll}}
+        <span class="roll-result">
+          <strong>{{state.encounterTypeRoll}}</strong>
+        </span>
+      {{/if}}
+    </div>
+    {{#if state.currentEncounterType}}
+      <div class="encounter-type-result">
+        <span class="type-badge">{{state.currentEncounterType}}</span>
+      </div>
+    {{/if}}
+  </section>
+
+  {{!-- Encounter Roll Section --}}
+  <section class="encounter-section">
+    <h3><i class="fas fa-scroll"></i> Encounter</h3>
+    <div class="roll-row">
+      <button type="button" data-action="rollEncounter" class="roll-button" {{#unless hasEncounterType}}disabled{{/unless}}>
+        <i class="fas fa-dice"></i> Roll 1d10
+      </button>
+      {{#if state.encounterRoll}}
+        <span class="roll-result">
+          <strong>{{state.encounterRoll}}</strong>
+        </span>
+      {{/if}}
+    </div>
+
+    {{#if hasEncounter}}
+      <div class="encounter-result">
+        <div class="encounter-header">
+          <h4 class="encounter-title">{{state.currentEncounter.title}}</h4>
+        </div>
+        <div class="encounter-description">
+          <p>{{state.currentEncounter.description}}</p>
+        </div>
+        <div class="encounter-actions">
+          <button type="button" data-action="sendToChat" class="send-button">
+            <i class="fas fa-comment"></i> Send to Chat
+          </button>
+        </div>
+      </div>
+    {{else}}
+      {{#unless hasEncounterType}}
+        <p class="hint">Roll an encounter type first</p>
+      {{else}}
+        <p class="hint">Roll to get an encounter</p>
+      {{/unless}}
+    {{/if}}
+  </section>
+
+  {{!-- Actions Footer --}}
+  <footer class="roller-footer">
+    <button type="button" data-action="clearResults" class="clear-button">
+      <i class="fas fa-eraser"></i> Clear Results
+    </button>
+  </footer>
+</div>

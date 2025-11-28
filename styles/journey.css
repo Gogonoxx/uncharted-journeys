@@ -1,0 +1,260 @@
+/**
+ * Uncharted Journeys - Styles
+ */
+
+/* ===================================
+   Application Window Styles
+   =================================== */
+
+.uncharted-journeys.encounter-roller {
+  --uj-primary: #8b4513;
+  --uj-secondary: #d2691e;
+  --uj-accent: #daa520;
+  --uj-bg: #f5f0e6;
+  --uj-border: #a0522d;
+  --uj-text: #3d2914;
+  --uj-hint: #777;
+}
+
+.uncharted-journeys .encounter-roller-content {
+  padding: 0.5rem;
+  background: var(--uj-bg);
+}
+
+.uncharted-journeys section {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--uj-border);
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.uncharted-journeys section h3 {
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--uj-primary);
+  color: var(--uj-primary);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.uncharted-journeys section h3 i {
+  color: var(--uj-secondary);
+}
+
+/* Region Select */
+.uncharted-journeys .region-select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  background: white;
+}
+
+/* Roll Row */
+.uncharted-journeys .roll-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.uncharted-journeys .roll-button {
+  flex: 0 0 auto;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  background: linear-gradient(to bottom, var(--uj-secondary), var(--uj-primary));
+  color: white;
+  border: 1px solid var(--uj-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.uncharted-journeys .roll-button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, var(--uj-accent), var(--uj-secondary));
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.uncharted-journeys .roll-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.uncharted-journeys .roll-result {
+  font-size: 1.5rem;
+  color: var(--uj-primary);
+  font-weight: bold;
+}
+
+/* Encounter Type Badge */
+.uncharted-journeys .type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--uj-accent);
+  color: var(--uj-text);
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Encounter Result */
+.uncharted-journeys .encounter-result {
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.uncharted-journeys .encounter-header {
+  margin-bottom: 0.5rem;
+}
+
+.uncharted-journeys .encounter-title {
+  margin: 0;
+  color: var(--uj-primary);
+  font-size: 1.1rem;
+}
+
+.uncharted-journeys .encounter-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--uj-text);
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.uncharted-journeys .encounter-description p {
+  margin: 0;
+}
+
+.uncharted-journeys .encounter-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.uncharted-journeys .send-button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.uncharted-journeys .send-button:hover {
+  background: var(--uj-secondary);
+}
+
+/* Hints */
+.uncharted-journeys .hint {
+  color: var(--uj-hint);
+  font-style: italic;
+  margin: 0.5rem 0 0 0;
+  font-size: 0.85rem;
+}
+
+/* Footer */
+.uncharted-journeys .roller-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--uj-border);
+}
+
+.uncharted-journeys .clear-button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  background: #888;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.uncharted-journeys .clear-button:hover {
+  background: #666;
+}
+
+/* ===================================
+   Chat Message Styles
+   =================================== */
+
+.uncharted-journeys-chat {
+  background: linear-gradient(to bottom, #f9f5eb, #f0e8d8);
+  border: 2px solid var(--uj-primary, #8b4513);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.uncharted-journeys-chat .encounter-chat-header {
+  background: linear-gradient(to right, #8b4513, #a0522d);
+  padding: 0.4rem 0.6rem;
+  color: white;
+}
+
+.uncharted-journeys-chat .header-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.uncharted-journeys-chat .encounter-chat-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.uncharted-journeys-chat .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.uncharted-journeys-chat .meta-item i {
+  color: #8b4513;
+}
+
+.uncharted-journeys-chat .encounter-chat-content {
+  padding: 0.6rem;
+}
+
+.uncharted-journeys-chat .encounter-chat-title {
+  margin: 0 0 0.4rem 0;
+  color: #8b4513;
+  font-size: 1rem;
+}
+
+.uncharted-journeys-chat .encounter-chat-description {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.uncharted-journeys-chat .encounter-chat-description p {
+  margin: 0;
+}
