@@ -71,7 +71,7 @@ export class ExhaustionManager {
    */
   static async setExhaustionLevel(actor, level) {
     const currentLevel = this.getExhaustionLevel(actor);
-    level = Math.clamp(level, 0, 6);
+    level = Math.max(0, Math.min(6, level));
 
     if (level === currentLevel) return;
 
