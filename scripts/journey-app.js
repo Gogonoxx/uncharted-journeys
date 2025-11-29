@@ -31,8 +31,8 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       resizable: true
     },
     position: {
-      width: 600,
-      height: 700
+      width: 620,
+      height: 750
     },
     form: {
       submitOnChange: false,
@@ -232,12 +232,53 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   // ============================================
+  // HELPER METHODS
+  // ============================================
+
+  /**
+   * Save current form values to session before re-rendering
+   * This prevents loss of unsaved form data on re-render
+   */
+  async _saveFormValues() {
+    const form = this.element;
+    if (!form) return;
+
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    // Get form data
+    const origin = form.querySelector('[name="origin"]')?.value;
+    const destination = form.querySelector('[name="destination"]')?.value;
+    const defaultRegion = form.querySelector('[name="defaultRegion"]')?.value;
+
+    // Update session with form values
+    let changed = false;
+    if (origin !== undefined && origin !== session.origin) {
+      session.origin = origin;
+      changed = true;
+    }
+    if (destination !== undefined && destination !== session.destination) {
+      session.destination = destination;
+      changed = true;
+    }
+    if (defaultRegion !== undefined && defaultRegion !== session.defaultRegion) {
+      session.defaultRegion = defaultRegion;
+      changed = true;
+    }
+
+    if (changed) {
+      await JourneySessionManager.save(session);
+    }
+  }
+
+  // ============================================
   // NAVIGATION ACTIONS
   // ============================================
 
-  static #onChangeTab(event, target) {
+  static async #onChangeTab(event, target) {
     const tab = target.dataset.tab;
     if (tab) {
+      await this._saveFormValues();
       this.tabGroups.primary = tab;
       this.render();
     }
@@ -248,12 +289,14 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   // ============================================
 
   static async #onSetDistance(event, target) {
+    await this._saveFormValues();
     const distance = target.dataset.distance;
     await JourneySessionManager.updateField('distance', distance);
     this.render();
   }
 
   static async #onAdjustWeather(event, target) {
+    await this._saveFormValues();
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
     const newValue = Math.max(1, Math.min(10, session.weather + delta));
@@ -262,6 +305,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   static async #onAdjustTerrain(event, target) {
+    await this._saveFormValues();
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
     const newValue = Math.max(1, Math.min(10, session.terrain + delta));
@@ -270,6 +314,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   static async #onAdjustNemesis(event, target) {
+    await this._saveFormValues();
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
     const newValue = Math.max(0, Math.min(10, session.nemesis + delta));
@@ -278,6 +323,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   static async #onToggleNemesis(event, target) {
+    await this._saveFormValues();
     const session = this.session;
     await JourneySessionManager.updateField('nemesisActive', !session.nemesisActive);
     this.render();

@@ -286,16 +286,16 @@
    =================================== */
 
 .uncharted-journeys.journey-manager {
-  --uj-primary: #8b4513;
-  --uj-secondary: #d2691e;
-  --uj-accent: #daa520;
+  --uj-primary: #6b3410;
+  --uj-secondary: #a04a10;
+  --uj-accent: #b8860b;
   --uj-bg: #f5f0e6;
-  --uj-border: #a0522d;
-  --uj-text: #2d1f10;
-  --uj-hint: #555;
-  --uj-success: #228b22;
-  --uj-failure: #b22222;
-  --uj-warning: #cc8400;
+  --uj-border: #8b4513;
+  --uj-text: #1a1008;
+  --uj-hint: #444;
+  --uj-success: #1a6b1a;
+  --uj-failure: #8b1a1a;
+  --uj-warning: #996600;
 }
 
 /* Tab Navigation */
@@ -350,13 +350,22 @@
 .journey-stage {
   padding: 1rem;
   background: var(--uj-bg);
-  min-height: 500px;
   display: none; /* Hidden by default */
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
 }
 
 /* Show only the active tab's content */
 .journey-stage.active {
   display: block;
+}
+
+/* Ensure good text color throughout */
+.journey-stage,
+.journey-stage p,
+.journey-stage span,
+.journey-stage label {
+  color: var(--uj-text);
 }
 
 .stage-header {
