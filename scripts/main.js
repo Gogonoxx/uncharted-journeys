@@ -236,8 +236,12 @@ Hooks.on('uncharted-journeys.journeyUpdated', (value) => {
  * Handle chat message button clicks for preparation and exhaustion results
  */
 Hooks.on('renderChatMessage', (message, html) => {
+  // In Foundry v13, html might be a jQuery object or HTMLElement
+  const element = html instanceof HTMLElement ? html : html[0] ?? html;
+  if (!element?.querySelectorAll) return;
+
   // Handle preparation result buttons
-  html.querySelectorAll('[data-action="setPreparationResult"]').forEach(btn => {
+  element.querySelectorAll('[data-action="setPreparationResult"]').forEach(btn => {
     btn.addEventListener('click', async (event) => {
       const role = event.currentTarget.dataset.role;
       const result = event.currentTarget.dataset.result;
@@ -260,7 +264,7 @@ Hooks.on('renderChatMessage', (message, html) => {
   });
 
   // Handle exhaustion result buttons
-  html.querySelectorAll('[data-action="applyExhaustionResult"]').forEach(btn => {
+  element.querySelectorAll('[data-action="applyExhaustionResult"]').forEach(btn => {
     btn.addEventListener('click', async (event) => {
       const actorId = event.currentTarget.dataset.actorId;
       const result = event.currentTarget.dataset.result;
