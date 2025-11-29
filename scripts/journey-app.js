@@ -256,7 +256,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   static async #onAdjustWeather(event, target) {
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
-    const newValue = Math.clamped(session.weather + delta, 1, 10);
+    const newValue = Math.clamp(session.weather + delta, 1, 10);
     await JourneySessionManager.updateField('weather', newValue);
     this.render();
   }
@@ -264,7 +264,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   static async #onAdjustTerrain(event, target) {
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
-    const newValue = Math.clamped(session.terrain + delta, 1, 10);
+    const newValue = Math.clamp(session.terrain + delta, 1, 10);
     await JourneySessionManager.updateField('terrain', newValue);
     this.render();
   }
@@ -272,7 +272,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   static async #onAdjustNemesis(event, target) {
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
-    const newValue = Math.clamped(session.nemesis + delta, 0, 10);
+    const newValue = Math.clamp(session.nemesis + delta, 0, 10);
     await JourneySessionManager.updateField('nemesis', newValue);
     this.render();
   }
