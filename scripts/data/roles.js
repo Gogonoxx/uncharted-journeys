@@ -92,6 +92,15 @@ export function getRoleSkill(roleId, useAlternative = false) {
 }
 
 /**
+ * Get a role by its ID
+ * @param {string} roleId - The role ID
+ * @returns {Object|undefined} The role object or undefined
+ */
+export function getRoleById(roleId) {
+  return ROLES[roleId];
+}
+
+/**
  * Get all roles as an array for iteration
  * @returns {Array} Array of role objects
  */
