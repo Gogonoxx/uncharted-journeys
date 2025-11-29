@@ -258,3 +258,25 @@
 .uncharted-journeys-chat .encounter-chat-description p {
   margin: 0;
 }
+
+/* Clickable Encounter Type Link */
+.uncharted-journeys-chat .meta-item.type .content-link {
+  color: #8b4513;
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(139, 69, 19, 0.1);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.uncharted-journeys-chat .meta-item.type .content-link:hover {
+  background: rgba(139, 69, 19, 0.2);
+  border-color: #8b4513;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.uncharted-journeys-chat .meta-item.type .content-link i {
+  margin-right: 4px;
+}

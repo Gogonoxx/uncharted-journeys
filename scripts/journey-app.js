@@ -186,12 +186,16 @@ export class JourneyEncounterApp extends HandlebarsApplicationMixin(ApplicationV
     const region = app.#state.currentRegion;
     const encounterType = app.#state.currentEncounterType;
 
+    // Get the UUID for the encounter type from the global object
+    const encounterTypeUUID = globalThis.UnchartedJourneys?.encounterTypeUUIDs?.[encounterType] || null;
+
     // Render the chat template
     const content = await renderTemplate(
       'modules/uncharted-journeys/templates/chat-encounter.hbs',
       {
         region,
         encounterType,
+        encounterTypeUUID,
         roll: app.#state.encounterRoll,
         encounter
       }
