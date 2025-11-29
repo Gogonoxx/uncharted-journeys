@@ -97,7 +97,8 @@ export class JourneySessionModel extends foundry.abstract.DataModel {
       // Stage 4: End
       outcome: new StringField({
         choices: ['', 'arrived', 'abandoned'],
-        initial: ''
+        initial: '',
+        blank: true
       }),
       arrivalRolls: new ArrayField(new NumberField()),
       arrivalResult: new NumberField({ nullable: true }),
