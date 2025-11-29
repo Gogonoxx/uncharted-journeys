@@ -203,23 +203,25 @@ Hooks.once('ready', async () => {
 
 /**
  * Add a button to the scene controls for quick access
+ * V13 API: controls is now a Record<string, SceneControl> object
  */
 Hooks.on('getSceneControlButtons', (controls) => {
-  if (!game.user.isGM) return;
-
-  const tokenControls = controls.find(c => c.name === 'token');
-  if (tokenControls) {
-    tokenControls.tools.push({
+  // Access the tokens control directly by key (V13 API)
+  const tokenControls = controls.tokens;
+  if (tokenControls?.tools) {
+    tokenControls.tools['uncharted-journeys'] = {
       name: 'uncharted-journeys',
       title: 'Uncharted Journeys',
       icon: 'fas fa-route',
+      order: Object.keys(tokenControls.tools).length,
       button: true,
-      onClick: () => {
+      visible: game.user.isGM,
+      onChange: () => {
         if (journeyApp) {
           journeyApp.render(true);
         }
       }
-    });
+    };
   }
 });
 
