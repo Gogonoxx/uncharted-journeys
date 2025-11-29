@@ -8202,625 +8202,625 @@ export const ENCOUNTERS = {
     "A Chance Meeting": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "opens his bag to reveal a wide array of mismatched jewellery, small personal items, and even some gold teeth. He insists that it was all obtained legitimately, but it is hard to miss the red- tinged mud on his knees and under his nails. Loose Lips: A group of wandering labourers asks to join the party for mutual protection as"
+        "title": "Opportunity Knocks",
+        "description": "A rather seedy-looking Commoner raises his voice in greeting and opens his bag to reveal a wide array of mismatched jewellery, small personal items, and even some gold teeth. He insists that it was all obtained legitimately, but it is hard to miss the red-tinged mud on his knees and under his nails."
       },
       {
         "roll": 2,
-        "title": "they are travelling in the same direction",
-        "description": "As they travel, they chat about the recent fighting and share concerns. The labourers are actually Spies working behind enemy lines to find out more about enemy troop movements and positions. Camp Followers: A ragtag group of peasants are travelling to the site of a recent battle to see"
+        "title": "Loose Lips",
+        "description": "A group of wandering labourers asks to join the party for mutual protection as they are travelling in the same direction. As they travel, they chat about the recent fighting and share concerns. The labourers are actually Spies working behind enemy lines to find out more about enemy troop movements and positions."
       },
       {
         "roll": 3,
-        "title": "what they can find or steal from the dead",
-        "description": "They suggest the party help them look for valuables picked from the fallen, offering to share everything. In truth, they take careful note of the party’s destination and hope to steal back this loot. Whatta Scoop!: As the party navigate the abandoned earthworks of a previous field of battle,"
+        "title": "Camp Followers",
+        "description": "A ragtag group of peasants are travelling to the site of a recent battle to see what they can find or steal from the dead. They suggest the party help them look for valuables picked from the fallen, offering to share everything. In truth, they take careful note of the party's destination and hope to steal back this loot."
       },
       {
         "roll": 4,
-        "title": "they are accosted by a goat-headed Commoner",
-        "description": "A chronicler from a distant land, she has no desire to risk her life to file a factually-accurate report on the war. Offering gold, she asks the party to record their phoney experiences of the conflict. Sole Survivor: Methodically moving across the churned earth of a field, a lone Shield Guardian retrieves the sundered parts of their destroyed companions. Somehow, they can discern which"
+        "title": "Whatta Scoop!",
+        "description": "As the party navigate the abandoned earthworks of a previous field of battle, they are accosted by a goat-headed Commoner. A chronicler from a distant land, she has no desire to risk her life to file a factually-accurate report on the war. Offering gold, she asks the party to record their phoney experiences of the conflict."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "bit of mangled machinery belongs to which Guardian, laying each piece reverently in one of the thousand trenches they have dug. With gentle pride they tell the party the story of each of their fallen allies. Recruiters: A pair of old Veterans are looking for workers to spread their pamphlets of"
+        "title": "Sole Survivor",
+        "description": "Methodically moving across the churned earth of a field, a lone Shield Guardian retrieves the sundered parts of their destroyed companions. Somehow, they can discern which bit of mangled machinery belongs to which Guardian, laying each piece reverently in one of the thousand trenches they have dug. With gentle pride they tell the party the story of each of their fallen allies."
       },
       {
         "roll": 6,
-        "title": "propaganda",
-        "description": "They offer a standard wage for anyone willing to sign up, making it sound very exciting and important to their cause. In truth, they were hired for this job for a much bigger sum, and are bored to tears by the work. Little Drummer Boy: A military drummer emerges from the bushes, limping. He is a Human,"
+        "title": "Recruiters",
+        "description": "A pair of old Veterans are looking for workers to spread their pamphlets of propaganda. They offer a standard wage for anyone willing to sign up, making it sound very exciting and important to their cause. In truth, they were hired for this job for a much bigger sum, and are bored to tears by the work."
       },
       {
         "roll": 7,
-        "title": "barely out of his teens",
-        "description": "Should the party give him medical aid and take him to the nearest friendly military outpost, he gives them a small gift: a little toy soldier that grants everyone Advantage on one Ability Check once a day. The Painter of War: It is a strangely mundane sight in lands of such violence to see an artist"
+        "title": "Little Drummer Boy",
+        "description": "A military drummer emerges from the bushes, limping. He is a Human, barely out of his teens. Should the party give him medical aid and take him to the nearest friendly military outpost, he gives them a small gift: a little toy soldier that grants everyone Advantage on one Ability Check once a day."
       },
       {
         "roll": 8,
-        "title": "riding a summoned Elk laden with scroll cases and paint boxes",
-        "description": "The painter is companionable enough, confiding that her job is to paint large battles for Nobles who wish to celebrate victory by hanging a painting on their wall. Band of the Buried: A group of desperate deserters have united together to recruit and protect"
+        "title": "The Painter of War",
+        "description": "It is a strangely mundane sight in lands of such violence to see an artist riding a summoned Elk laden with scroll cases and paint boxes. The painter is companionable enough, confiding that her job is to paint large battles for Nobles who wish to celebrate victory by hanging a painting on their wall."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "other soldiers who are traumatised by war, or who might otherwise turn to looting. They are cautious and unwilling to start fights, and ask the party to direct any other deserters they might discover to them. Ministering to the Dead: A Cleric searches the battlefields for those who can be healed or"
+        "title": "Band of the Buried",
+        "description": "A group of desperate deserters have united together to recruit and protect other soldiers who are traumatised by war, or who might otherwise turn to looting. They are cautious and unwilling to start fights, and ask the party to direct any other deserters they might discover to them."
       },
       {
         "roll": 10,
-        "title": "have recently died",
-        "description": "They perform rites to ease the passing of spirits, serving a god of death as part of an order that is respected by most. Some of the more fanatical Soldiers dislike the fact that they tend to everyone, regardless of allegiance. ENCOUNTERS: WAANRCTIOENRNT LRAUNINDS 5"
+        "title": "Ministering to the Dead",
+        "description": "A Cleric searches the battlefields for those who can be healed or have recently died. They perform rites to ease the passing of spirits, serving a god of death as part of an order that is respected by most. Some of the more fanatical Soldiers dislike the fact that they tend to everyone, regardless of allegiance."
       }
     ],
     "Hidden Reserves": [
       {
         "roll": 1,
-        "title": "death",
-        "description": "With a successful Wisdom (Animal Handling) check or an offer of food, the party can befriend the wandering animals, who are well-trained in battle, carrying supplies, or keeping watch. Weapons Cache: In a small cave is a cart full of weapons and ammunition, especially arrows"
+        "title": "Homeward Bound",
+        "description": "A skittish Warhorse and a protective Mastiff give the party a wide berth, clearly both once bound to the same master and remaining together despite their master's death. With a successful Wisdom (Animal Handling) check or an offer of food, the party can befriend the wandering animals, who are well-trained in battle, carrying supplies, or keeping watch."
       },
       {
         "roll": 2,
-        "title": "and quarrels",
-        "description": "It is here to reequip one of the armies in a nearby battle if they retreat. The party may steal from it or destroy it depending on their greed or allegiance. Water Supply: The party comes across a cart stuck fast in some mud. The horse is missing and"
+        "title": "Weapons Cache",
+        "description": "In a small cave is a cart full of weapons and ammunition, especially arrows and quarrels. It is here to reequip one of the armies in a nearby battle if they retreat. The party may steal from it or destroy it depending on their greed or allegiance."
       },
       {
         "roll": 3,
-        "title": "it appears abandoned",
-        "description": "Three water barrels remain on board, presumably left as there was no way to carry them. The party can replenish their water, but the barrels are damaged and slowly leak, so they will have to do so quickly. All That’s Left: Buried under a stone wall, the party discovers a cache left by a family fleeing"
+        "title": "Water Supply",
+        "description": "The party comes across a cart stuck fast in some mud. The horse is missing and it appears abandoned. Three water barrels remain on board, presumably left as there was no way to carry them. The party can replenish their water, but the barrels are damaged and slowly leak, so they will have to do so quickly."
       },
       {
         "roll": 4,
-        "title": "the conflict",
-        "description": "In a small wooden chest, bound with twine and sealed with wax, are trinkets, letters, and an etching of the happy Halflings in better times. There is also the family’s accrued wealth: four gold coins and two silver. Aerial Scout: A mangled Flying Sword lies in a flooded crater. Used for scouting by one side of the current conflict, it can be repaired with a Mending spell or with Smith’s Tools. In"
+        "title": "All That's Left",
+        "description": "Buried under a stone wall, the party discovers a cache left by a family fleeing the conflict. In a small wooden chest, bound with twine and sealed with wax, are trinkets, letters, and an etching of the happy Halflings in better times. There is also the family's accrued wealth: four gold coins and two silver."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "telepathic Common, it can relay knowledge on the geography of the surrounding area, though its intelligence on troop movements is completely outdated. Left unguarded, the Sword will attempt to return to its original owners. Lay of the Land: Just off the path are the dead bodies of a few soldiers, ambushed by their enemy. They still have their weapons and armour, revealing the ambushers did not have time"
+        "title": "Aerial Scout",
+        "description": "A mangled Flying Sword lies in a flooded crater. Used for scouting by one side of the current conflict, it can be repaired with a Mending spell or with Smith's Tools. In telepathic Common, it can relay knowledge on the geography of the surrounding area, though its intelligence on troop movements is completely outdated. Left unguarded, the Sword will attempt to return to its original owners."
       },
       {
         "roll": 6,
-        "title": "to search them",
-        "description": "One body has a map, detailing their faction’s troop positions, which is useful if the party wants to avoid them. However, if they are found with the map the party may be taken for spies. Hidden Cache: A party member stumbles over a loose stone, shifting it. The stone covers a"
+        "title": "Lay of the Land",
+        "description": "Just off the path are the dead bodies of a few soldiers, ambushed by their enemy. They still have their weapons and armour, revealing the ambushers did not have time to search them. One body has a map, detailing their faction's troop positions, which is useful if the party wants to avoid them. However, if they are found with the map the party may be taken for spies."
       },
       {
         "roll": 7,
-        "title": "hidden cache of non-perishable food items",
-        "description": "The party finds bars of compressed cacao and seeds, oatmeal cakes, preserved fruit, and strips of meat jerky wrapped in dirty linen, replenishing 1 extra Supply Die on any successful search. Triage: The party comes across the tattered remains of a medical outpost that was hurriedly"
+        "title": "Hidden Cache",
+        "description": "A party member stumbles over a loose stone, shifting it. The stone covers a hidden cache of non-perishable food items. The party finds bars of compressed cacao and seeds, oatmeal cakes, preserved fruit, and strips of meat jerky wrapped in dirty linen, replenishing 1 extra Supply Die on any successful search."
       },
       {
         "roll": 8,
-        "title": "abandoned",
-        "description": "It looks as though most escaped, though a couple of bodies lie haphazardly where they fell. Among the empty sacks and boxes, a few healing supplies have been left behind: a Healer's Kit, a Vial of Antitoxin and a Potion of Healing. Stolen Riches: A stash of gold and valuable items is found, looted from a nearby wealthy"
+        "title": "Triage",
+        "description": "The party comes across the tattered remains of a medical outpost that was hurriedly abandoned. It looks as though most escaped, though a couple of bodies lie haphazardly where they fell. Among the empty sacks and boxes, a few healing supplies have been left behind: a Healer's Kit, a Vial of Antitoxin and a Potion of Healing."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "manor, where the manor's lady has refused to leave her home despite the dangers of the war. The characters can keep the items for their monetary value, but should they be returned, the party are rewarded with an ancestral Arrow-Catching Shield by the lady of the manor. Eye Spy: A well-concealed scout post on a hill has clearly been used recently, though its"
+        "title": "Stolen Riches",
+        "description": "A stash of gold and valuable items is found, looted from a nearby wealthy manor, where the manor's lady has refused to leave her home despite the dangers of the war. The characters can keep the items for their monetary value, but should they be returned, the party are rewarded with an ancestral Arrow-Catching Shield by the lady of the manor."
       },
       {
         "roll": 10,
-        "title": "Entry 10",
-        "description": "occupants do not seem to have returned in a few days, suggesting they have been caught. The hide yields a Spyglass, Paper and Ink, a Rope, a Signal Whistle and maps of the local area detailing hazards and troop movements. 65 UNCHARTED JOURNEYS"
+        "title": "Eye Spy",
+        "description": "A well-concealed scout post on a hill has clearly been used recently, though its occupants do not seem to have returned in a few days, suggesting they have been caught. The hide yields a Spyglass, Paper and Ink, a Rope, a Signal Whistle and maps of the local area detailing hazards and troop movements."
       }
     ],
     "A Bump in the Road": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "To clamber over the steep rocks carefully doubles the time the journey takes, but getting past the checkpoints requires the Outrider to make a Dexterity (Stealth) check, or a Charisma (Deception or Persuasion) check to talk to the guards. Spell Detritus: The remains of especially nasty battle magic hangs over this area. Entering"
+        "title": "Rocky Road",
+        "description": "This area of rocky terrain is controlled by a series of checkpoints at every road. To clamber over the steep rocks carefully doubles the time the journey takes, but getting past the checkpoints requires the Outrider to make a Dexterity (Stealth) check, or a Charisma (Deception or Persuasion) check to talk to the guards."
       },
       {
         "roll": 2,
-        "title": "the area has the same effects as a Stinking Cloud spell",
-        "description": "It is otherwise invisible, requiring an Intelligence (Arcana) check by the Outrider to figure out where its boundaries are and safely pass it. Lost Herd: A large herd of horned cattle that were run out of a nearby village have come to"
+        "title": "Spell Detritus",
+        "description": "The remains of especially nasty battle magic hangs over this area. Entering the area has the same effects as a Stinking Cloud spell. It is otherwise invisible, requiring an Intelligence (Arcana) check by the Outrider to figure out where its boundaries are and safely pass it."
       },
       {
         "roll": 3,
-        "title": "a stop in the middle of the path",
-        "description": "Their fear has made them highly territorial and they attack anyone getting close. It will require a Wisdom (Animal Handling) check to pass through them safely. Defences Destroyed: To cover their retreat, a fleeing army has magically detonated the side of a levee, flooding the low-lying agricultural land behind them. The rushing waters have brought"
+        "title": "Lost Herd",
+        "description": "A large herd of horned cattle that were run out of a nearby village have come to a stop in the middle of the path. Their fear has made them highly territorial and they attack anyone getting close. It will require a Wisdom (Animal Handling) check to pass through them safely."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "all kinds of treacherous debris from the battles upstream and wading through the polluted waters requires careful movement. The Outrider must pass a Dexterity (Survival) check to nimbly wade through the debris. Fallen Giant: Speared through the heart by a jagged bolt, a great Green Dragon has tumbled"
+        "title": "Defences Destroyed",
+        "description": "To cover their retreat, a fleeing army has magically detonated the side of a levee, flooding the low-lying agricultural land behind them. The rushing waters have brought all kinds of treacherous debris from the battles upstream and wading through the polluted waters requires careful movement. The Outrider must pass a Dexterity (Survival) check to nimbly wade through the debris."
       },
       {
         "roll": 5,
-        "title": "from the sky to obstruct the only path forward with a tide of scaly meat",
-        "description": "The Outrider must pass a Strength (Athletics) check to clamber up and over its rotting body, taking care not to disturb the toxic innards protruding through the scales. Bribes and Lies: A group of soldiers have set up a checkpoint to restrict travel and uncover"
+        "title": "Fallen Giant",
+        "description": "Speared through the heart by a jagged bolt, a great Green Dragon has tumbled from the sky to obstruct the only path forward with a tide of scaly meat. The Outrider must pass a Strength (Athletics) check to clamber up and over its rotting body, taking care not to disturb the toxic innards protruding through the scales."
       },
       {
         "roll": 6,
-        "title": "spies",
-        "description": "If the party doesn't want to fight their way past them it will require Charisma (Deception or Persuasion) check, with Advantage if aided by the use of a Disguise Kit. Land Mines: The fighting has moved on from the eastern front but the ground is scattered"
+        "title": "Bribes and Lies",
+        "description": "A group of soldiers have set up a checkpoint to restrict travel and uncover spies. If the party doesn't want to fight their way past them it will require Charisma (Deception or Persuasion) check, with Advantage if aided by the use of a Disguise Kit."
       },
       {
         "roll": 7,
-        "title": "with magical land mines camouflaged by loose soil",
-        "description": "An Outrider who succeeds on a Wisdom (Perception) check can detect them. Setting the mines off in a massive explosion without being in the line of fire rids the land of this danger. In the Wires: A retreating unit has thoroughly trapped the area with caltrops and densely-"
+        "title": "Land Mines",
+        "description": "The fighting has moved on from the eastern front but the ground is scattered with magical land mines camouflaged by loose soil. An Outrider who succeeds on a Wisdom (Perception) check can detect them. Setting the mines off in a massive explosion without being in the line of fire rids the land of this danger."
       },
       {
         "roll": 8,
-        "title": "strung razor wire, from which hang various alchemical flasks",
-        "description": "The Outrider must make a Dexterity (Sleight of Hand) check or use Thieves' Tools to painstakingly clear a path through for the party. Mud and Blood: In the aftermath of a rainy battle between armies on horseback accompanied by siege weapons, the terrain is churned up into a quagmire of mud and blood. The clinging"
+        "title": "In the Wires",
+        "description": "A retreating unit has thoroughly trapped the area with caltrops and densely-strung razor wire, from which hang various alchemical flasks. The Outrider must make a Dexterity (Sleight of Hand) check or use Thieves' Tools to painstakingly clear a path through for the party."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "mud is filled with broken weapons, splinters of wood and other hazards, which require a Constitution (Athletics) check to wade through without getting injured or slowed down significantly. Hungry Thorns: Razor-sharp red plants feeding off the spilled blood have become a major"
+        "title": "Mud and Blood",
+        "description": "In the aftermath of a rainy battle between armies on horseback accompanied by siege weapons, the terrain is churned up into a quagmire of mud and blood. The clinging mud is filled with broken weapons, splinters of wood and other hazards, which require a Constitution (Athletics) check to wade through without getting injured or slowed down significantly."
       },
       {
         "roll": 10,
-        "title": "hazard in this area",
-        "description": "Farmsteads and civilian buildings are at risk of becoming overgrown as the plants have become more aggressive in seeking new prey. A narrow valley is choked with these vines and requires a Wisdom (Survival) check to clear safely. ENCOUNTERS: WAANRCTIOENRNT LRAUNINDS 5"
+        "title": "Hungry Thorns",
+        "description": "Razor-sharp red plants feeding off the spilled blood have become a major hazard in this area. Farmsteads and civilian buildings are at risk of becoming overgrown as the plants have become more aggressive in seeking new prey. A narrow valley is choked with these vines and requires a Wisdom (Survival) check to clear safely."
       }
     ],
     "Needing Assistance": [
       {
         "roll": 1,
-        "title": "killed",
-        "description": "He is disguised as a labourer, but with a successful Wisdom (Insight) check, the party picks up that his hands are far too soft to be those of a commoner. He offers a reward if the party helps him reach his ally's forces. Wounded Soldier: The party comes across a badly wounded veteran from a side they are"
+        "title": "Your Highness",
+        "description": "The king of a losing side has disguised himself to avoid being captured or killed. He is disguised as a labourer, but with a successful Wisdom (Insight) check, the party picks up that his hands are far too soft to be those of a commoner. He offers a reward if the party helps him reach his ally's forces."
       },
       {
         "roll": 2,
-        "title": "sympathetic to",
-        "description": "It will require a Wisdom (Medicine) check to be able to move him safely. He tries to joke his way through the pain, and insists that the party leave an old man like himself alone. Capturing Killers: The party meets a woman with stolen weapons and armour following a"
+        "title": "Wounded Soldier",
+        "description": "The party comes across a badly wounded veteran from a side they are sympathetic to. It will require a Wisdom (Medicine) check to be able to move him safely. He tries to joke his way through the pain, and insists that the party leave an old man like himself alone."
       },
       {
         "roll": 3,
-        "title": "small group of soldiers",
-        "description": "The soldiers were responsible for killing her husband and burning her village. She will ask the party to help her set a trap to catch them (with a Wisdom (Survival) check). She hunkers down and waits patiently for her prey to fall into her trap. Waystones: On a sloping hillside in the pouring rain, a young Elven Acolyte is struggling to drag a large menhir up the slope to an incomplete stone circle. The party can help her drag"
+        "title": "Capturing Killers",
+        "description": "The party meets a woman with stolen weapons and armour following a small group of soldiers. The soldiers were responsible for killing her husband and burning her village. She will ask the party to help her set a trap to catch them (with a Wisdom (Survival) check). She hunkers down and waits patiently for her prey to fall into her trap."
       },
       {
         "roll": 4,
-        "title": "the cumbersome rock to the summit with a successful Strength (Athletics) check",
-        "description": "There they witness the purpose of the stone circle: directing the spirits of the deceased on towards the afterlife. The Last Ingredient: An elderly Svirfneblin apothecary, dressed in bloodied robes, is"
+        "title": "Waystones",
+        "description": "On a sloping hillside in the pouring rain, a young Elven Acolyte is struggling to drag a large menhir up the slope to an incomplete stone circle. The party can help her drag the cumbersome rock to the summit with a successful Strength (Athletics) check. There they witness the purpose of the stone circle: directing the spirits of the deceased on towards the afterlife."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "frantically searching the undergrowth for the final ingredient needed for a life-saving salve: the fluffy blue leaves of the exceedingly rare ‘Shy Hemlock’. The soft warblings of this Awakened Shrub can be tracked and the plant caught with a successful Wisdom (Survival) check. Fire Escape: A village is in flames and several people are trapped in their homes. There is no"
+        "title": "The Last Ingredient",
+        "description": "An elderly Svirfneblin apothecary, dressed in bloodied robes, is frantically searching the undergrowth for the final ingredient needed for a life-saving salve: the fluffy blue leaves of the exceedingly rare 'Shy Hemlock'. The soft warblings of this Awakened Shrub can be tracked and the plant caught with a successful Wisdom (Survival) check."
       },
       {
         "roll": 6,
-        "title": "Entry 6",
-        "description": "way to douse the fires as they have fully taken hold, but Strength (Athletics) or Dexterity (Acrobatics) checks will help get trapped people out. Any party member who fails takes 1d8 fire damage from the flames. Feed the Refugees: A family of refugees, displaced from their homes, clamour for food and"
+        "title": "Fire Escape",
+        "description": "A village is in flames and several people are trapped in their homes. There is no way to douse the fires as they have fully taken hold, but Strength (Athletics) or Dexterity (Acrobatics) checks will help get trapped people out. Any party member who fails takes 1d8 fire damage from the flames."
       },
       {
         "roll": 7,
-        "title": "water",
-        "description": "A Wisdom (Survival) check can help them locate provisions, though a full success can be earned if the Quartermaster hands over two Supply Dice. If helped, the oldest refugee offers their family heirloom, an antique locket bearing the symbol of a god of wealth. Forget Me Not: The Ghost of a lost soldier wanders the road, trying to get home. She regrets"
+        "title": "Feed the Refugees",
+        "description": "A family of refugees, displaced from their homes, clamour for food and water. A Wisdom (Survival) check can help them locate provisions, though a full success can be earned if the Quartermaster hands over two Supply Dice. If helped, the oldest refugee offers their family heirloom, an antique locket bearing the symbol of a god of wealth."
       },
       {
         "roll": 8,
-        "title": "Entry 8",
-        "description": "that she never managed to send the letters she wrote to her husband who remained in their village. With a successful Wisdom (Religion) check, the party follows the Ghost's link to her body and retrieves the soldier's personal items to take back home. Afraid of the Dark: A young camp follower is wandering in the road, covered in blood and"
+        "title": "Forget Me Not",
+        "description": "The Ghost of a lost soldier wanders the road, trying to get home. She regrets that she never managed to send the letters she wrote to her husband who remained in their village. With a successful Wisdom (Religion) check, the party follows the Ghost's link to her body and retrieves the soldier's personal items to take back home."
       },
       {
         "roll": 9,
-        "title": "traumatised by the horrifying monsters that fought on the enemy side",
-        "description": "He wants to find the soldier who mentored him but is terrified that she might be dead. With a successful Charisma (Persuasion) check, the party gains his trust and leads him to safety. Dirty Tricks: A villager runs along the road and collapses in front of the party. They are clearly"
+        "title": "Afraid of the Dark",
+        "description": "A young camp follower is wandering in the road, covered in blood and traumatised by the horrifying monsters that fought on the enemy side. He wants to find the soldier who mentored him but is terrified that she might be dead. With a successful Charisma (Persuasion) check, the party gains his trust and leads him to safety."
       },
       {
         "roll": 10,
-        "title": "in the throes of some sort of poisoning",
-        "description": "With a successful Wisdom (Medicine) check, the party can save the villager and help them recover, but they explain that their whole village was poisoned by food distributed by soldiers and they need healers desperately. 65 UNCHARTED JOURNEYS"
+        "title": "Dirty Tricks",
+        "description": "A villager runs along the road and collapses in front of the party. They are clearly in the throes of some sort of poisoning. With a successful Wisdom (Medicine) check, the party can save the villager and help them recover, but they explain that their whole village was poisoned by food distributed by soldiers and they need healers desperately."
       }
     ],
     "Danger Afoot": [
       {
         "roll": 1,
-        "title": "has been turned into material for the war",
-        "description": "burned in blacksmiths' forges, turned into palisade walls and siege engines, or just cleared for an encampment. They seek to repel trespassers from their lands and consider anyone who is not a natural inhabitant of the forest to be an intruder. Grim Discovery: The party comes across a pack of Winter Wolves who have recently killed a lone soldier. If they drive off the wolves they can search the soldier. In his pocket is a pouch"
+        "title": "Fires of Industry",
+        "description": "A group of Centaurs and Sprites protect the border of their forest home that has been turned into material for the war: burned in blacksmiths' forges, turned into palisade walls and siege engines, or just cleared for an encampment. They seek to repel trespassers from their lands and consider anyone who is not a natural inhabitant of the forest to be an intruder."
       },
       {
         "roll": 2,
-        "title": "Entry 2",
-        "description": "of gold and an old note that should he be found dead, the gold should be given to his wife and child. The note details their names and the town they live in, one close enough that he must have been on his way home. Opportunistic Orcs: A group of nearby Orcs have decided to ‘pick some low hanging fruit’ by"
+        "title": "Grim Discovery",
+        "description": "The party comes across a pack of Winter Wolves who have recently killed a lone soldier. If they drive off the wolves they can search the soldier. In his pocket is a pouch of gold and an old note that should he be found dead, the gold should be given to his wife and child. The note details their names and the town they live in, one close enough that he must have been on his way home."
       },
       {
         "roll": 3,
-        "title": "raiding the border towns and killing off injured soldiers",
-        "description": "They assume the party are also easy prey and launch an optimistic ambush. If defeated, they have spoils from previous encounters that may be useful. Spoils of War: A local tavern has become an impromptu barracks for a mercenary group of Hobgoblins. The road outside of the tavern is despoiled with their filth, while the body of the"
+        "title": "Opportunistic Orcs",
+        "description": "A group of nearby Orcs have decided to 'pick some low hanging fruit' by raiding the border towns and killing off injured soldiers. They assume the party are also easy prey and launch an optimistic ambush. If defeated, they have spoils from previous encounters that may be useful."
       },
       {
         "roll": 4,
-        "title": "unfortunate Halfling owner hangs from a post",
-        "description": "The Hobgoblins have abandoned the war to revel in the pub’s vast stores of food and drink, defending their ill-gotten plunder against any who dare to come near. Saboteurs: Moving under the cover of night, a small group of Dwarven Spies enter an enemy village. They carry large glass beakers in which fizzes a virulent purple substance. They intend"
+        "title": "Spoils of War",
+        "description": "A local tavern has become an impromptu barracks for a mercenary group of Hobgoblins. The road outside of the tavern is despoiled with their filth, while the body of the unfortunate Halfling owner hangs from a post. The Hobgoblins have abandoned the war to revel in the pub's vast stores of food and drink, defending their ill-gotten plunder against any who dare to come near."
       },
       {
         "roll": 5,
-        "title": "to poison the village well with this deadly concoction",
-        "description": "If they are interrupted they will attempt to flee, fighting with normal weapons as well as utilising their poison exactly as in the Poison Splash cantrip. Mercenaries: A group of deserters (use the Thug stat block) try to convince the party that"
+        "title": "Saboteurs",
+        "description": "Moving under the cover of night, a small group of Dwarven Spies enter an enemy village. They carry large glass beakers in which fizzes a virulent purple substance. They intend to poison the village well with this deadly concoction. If they are interrupted they will attempt to flee, fighting with normal weapons as well as utilising their poison exactly as in the Poison Splash cantrip."
       },
       {
         "roll": 6,
-        "title": "they are authorised to collect tolls on this road",
-        "description": "If the party sees through this ruse (Wisdom (Insight) check) or resist paying, the deserters attack and try to steal everything they have. War Elephants on Parade: Fearsome Gladiators mounted upon Elephants bedecked with"
+        "title": "Mercenaries",
+        "description": "A group of deserters (use the Thug stat block) try to convince the party that they are authorised to collect tolls on this road. If the party sees through this ruse (Wisdom (Insight) check) or resist paying, the deserters attack and try to steal everything they have."
       },
       {
         "roll": 7,
-        "title": "spiked barding march toward a city of broken spires",
-        "description": "The thunderous trumpeting alerts the party to their presence. The riders use their Elephants to stomp upon those foolish enough to disrupt their parade. Dying to Eat You: Bodies are piled up in a sheltered cave to get them away from a nearby"
+        "title": "War Elephants on Parade",
+        "description": "Fearsome Gladiators mounted upon Elephants bedecked with spiked barding march toward a city of broken spires. The thunderous trumpeting alerts the party to their presence. The riders use their Elephants to stomp upon those foolish enough to disrupt their parade."
       },
       {
         "roll": 8,
-        "title": "village, but the rotting meat has attracted predators",
-        "description": "Ghouls and a Ghast live among the piles of corpses, aggressively guarding their food source while more and more of them flock to the cave, meaning it will soon spill out into the village. The Rat Queen: A Wererat Druid has declared herself Queen of the Rats and commands"
+        "title": "Dying to Eat You",
+        "description": "Bodies are piled up in a sheltered cave to get them away from a nearby village, but the rotting meat has attracted predators. Ghouls and a Ghast live among the piles of corpses, aggressively guarding their food source while more and more of them flock to the cave, meaning it will soon spill out into the village."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "Giant Rats in raiding parties that isolate and consume wounded people and lone travellers. She is merciless in her cruelty, watching her Giant Rats tear people apart with glee. She seeks to claim more and more land for the rats, taking over whole settlements. Sting in the Tail: A group of Hobgoblins whose leader rides a Manticore are getting arrogant and branching out beyond their usual raiding grounds, stealing supplies and ammunition,"
+        "title": "The Rat Queen",
+        "description": "A Wererat Druid has declared herself Queen of the Rats and commands Giant Rats in raiding parties that isolate and consume wounded people and lone travellers. She is merciless in her cruelty, watching her Giant Rats tear people apart with glee. She seeks to claim more and more land for the rats, taking over whole settlements."
       },
       {
         "roll": 10,
-        "title": "sabotaging equipment, and generally making a nuisance of themselves",
-        "description": "The group can be avoided, but they are also likely to continue their activities until someone teaches them a hard lesson in humility. ENCOUNTERS: WAANRCTIOENRNT LRAUNINDS 5"
+        "title": "Sting in the Tail",
+        "description": "A group of Hobgoblins whose leader rides a Manticore are getting arrogant and branching out beyond their usual raiding grounds, stealing supplies and ammunition, sabotaging equipment, and generally making a nuisance of themselves. The group can be avoided, but they are also likely to continue their activities until someone teaches them a hard lesson in humility."
       }
     ],
     "Natural Wonders": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "the countryside and every person on watch was constantly on edge, dawn finally breaks. The sun rises blood red and seems to echo the violence of the night before in almost unbearable natural beauty. Many of the monstrous creatures hide or dissipate with the morning. Aurora of Lightning: Various deadly magics from a nearby battlefield have badly affected"
+        "title": "Red Sun Rises",
+        "description": "After a night of horrors where creatures from different armies ran wild across the countryside and every person on watch was constantly on edge, dawn finally breaks. The sun rises blood red and seems to echo the violence of the night before in almost unbearable natural beauty. Many of the monstrous creatures hide or dissipate with the morning."
       },
       {
         "roll": 2,
-        "title": "the weather",
-        "description": "The party can see a strangely localised thunderstorm in the valley below, purple clouds and green lightning shimmering beautifully within its circumference. New Life: In a long destroyed village, some new hope is returning. Between the burned out"
+        "title": "Aurora of Lightning",
+        "description": "Various deadly magics from a nearby battlefield have badly affected the weather. The party can see a strangely localised thunderstorm in the valley below, purple clouds and green lightning shimmering beautifully within its circumference."
       },
       {
         "roll": 3,
-        "title": "Entry 3",
-        "description": "homes and lost possessions, a great field of poppies is growing, covering the lost village in a sea of red flowers. The Briefest Beauty: The most recent bombardment of enemy positions has caused one side"
+        "title": "New Life",
+        "description": "In a long destroyed village, some new hope is returning. Between the burned out homes and lost possessions, a great field of poppies is growing, covering the lost village in a sea of red flowers."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "of a steep hill to collapse, revealing a cross-section of delicate crystal caves within. For the first time, sunlight reaches into the galleries, refracting through stalactites of topaz and quartz to fill the space with dancing lights. The next enemy barrage will destroy it all. Memory Food: A dead forest stretches to the horizon, victim of a noxious brew released by one of the combatants. However, a single copse of startlingly green verdure stands amidst"
+        "title": "The Briefest Beauty",
+        "description": "The most recent bombardment of enemy positions has caused one side of a steep hill to collapse, revealing a cross-section of delicate crystal caves within. For the first time, sunlight reaches into the galleries, refracting through stalactites of topaz and quartz to fill the space with dancing lights. The next enemy barrage will destroy it all."
       },
       {
         "roll": 5,
-        "title": "the devastation",
-        "description": "The reason for the trees' survival becomes clear. Their exposed roots, fat and engorged, have fed upon the bodies buried beneath them. Now they take their shape, down to the detail of faces. Peaceful Oasis: In the midst of a shattered battlefield and burned forest is a small pool fed by"
+        "title": "Memory Food",
+        "description": "A dead forest stretches to the horizon, victim of a noxious brew released by one of the combatants. However, a single copse of startlingly green verdure stands amidst the devastation. The reason for the trees' survival becomes clear. Their exposed roots, fat and engorged, have fed upon the bodies buried beneath them. Now they take their shape, down to the detail of faces."
       },
       {
         "roll": 6,
-        "title": "a waterfall",
-        "description": "Both sides of the fighting have avoided damaging the area as it is a useful source of water. As such, it offers a brief interlude of peace in the war torn land. Finger Peak: From the lookout, the tallest peak of the mountain range is visible. A tall, vertical"
+        "title": "Peaceful Oasis",
+        "description": "In the midst of a shattered battlefield and burned forest is a small pool fed by a waterfall. Both sides of the fighting have avoided damaging the area as it is a useful source of water. As such, it offers a brief interlude of peace in the war torn land."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "line of the hardest rock, covered in snow, extending upwards from its shorter cousins like a middle finger, as if throwing the ultimate insult to the gods above. When lightning strikes, the snow upon it flickers like an electric ghost. Unspoiled: A sudden unseasonable snowstorm whips up, creating white, unspoiled fields of"
+        "title": "Finger Peak",
+        "description": "From the lookout, the tallest peak of the mountain range is visible. A tall, vertical line of the hardest rock, covered in snow, extending upwards from its shorter cousins like a middle finger, as if throwing the ultimate insult to the gods above. When lightning strikes, the snow upon it flickers like an electric ghost."
       },
       {
         "roll": 8,
-        "title": "snow",
-        "description": "The clash of weapons is softened by the heavy flakes and the weather freezes the pools of blood and mud, masking the carnage of the battlefield. When the sun finally breaks through the clouds overhead, ice and snow sparkle across the hushed region. Home by Candle Light: By night, floating gold lights hover a few feet above the ground and"
+        "title": "Unspoiled",
+        "description": "A sudden unseasonable snowstorm whips up, creating white, unspoiled fields of snow. The clash of weapons is softened by the heavy flakes and the weather freezes the pools of blood and mud, masking the carnage of the battlefield. When the sun finally breaks through the clouds overhead, ice and snow sparkle across the hushed region."
       },
       {
         "roll": 9,
-        "title": "cannot be explained by insect life",
-        "description": "Called ‘candle-lights’ by the local people, they are believed to be sent by the gods to guide the souls of heroes home to their realms. Supposedly anyone who follows them, living or dead, ends up in the afterlife. Where the Flowers Grow: An expanse of soft white flowers spreads across a valley. Here and"
+        "title": "Home by Candle Light",
+        "description": "By night, floating gold lights hover a few feet above the ground and cannot be explained by insect life. Called 'candle-lights' by the local people, they are believed to be sent by the gods to guide the souls of heroes home to their realms. Supposedly anyone who follows them, living or dead, ends up in the afterlife."
       },
       {
         "roll": 10,
-        "title": "Entry 10",
-        "description": "there saplings emerge from the drifts of flowers, each of them planted in memory of the dead buried beneath them. A sect of Druids move the scattered bodies of the dead into this valley and grow plants on top of them so they bring new life. 65 UNCHARTED JOURNEYS"
+        "title": "Where the Flowers Grow",
+        "description": "An expanse of soft white flowers spreads across a valley. Here and there saplings emerge from the drifts of flowers, each of them planted in memory of the dead buried beneath them. A sect of Druids move the scattered bodies of the dead into this valley and grow plants on top of them so they bring new life."
       }
     ],
     "Monster Hunt": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "the hopes of finding a cure, but the officers make it clear that these horses could endanger the locals, and would rather put them down than hurt a civilian. There is a reward for each horse the party brings back, dead or alive. Nightmare in Green: The war has drawn the attention of a Green Dragon from a nearby"
+        "title": "Dead or Alive",
+        "description": "The party is asked to track and capture a group of armoured War Horses driven wild from the spell of an enemy Mage. Ideally they should be brought back alive in the hopes of finding a cure, but the officers make it clear that these horses could endanger the locals, and would rather put them down than hurt a civilian. There is a reward for each horse the party brings back, dead or alive."
       },
       {
         "roll": 2,
-        "title": "forest, angry at the damage recent fighting has done",
-        "description": "The creature has attacked any soldiers who come near so the party is asked to destroy it. Its lair contains a hoard of gold but also some magical weapons and armour. Fallen Soldiers: An army needs to travel down into a valley that is rumoured to be haunted"
+        "title": "Nightmare in Green",
+        "description": "The war has drawn the attention of a Green Dragon from a nearby forest, angry at the damage recent fighting has done. The creature has attacked any soldiers who come near so the party is asked to destroy it. Its lair contains a hoard of gold but also some magical weapons and armour."
       },
       {
         "roll": 3,
-        "title": "and from which no scout has returned",
-        "description": "The party discovers that several fallen soldiers from a previous battle have become Wraiths and are attacking anyone who comes near. If they are too dangerous to take on directly, destroying or burying their original bodies will put them to rest. Mouths to Feed: On the shores of a foetid, mist-cloaked lake lie bodies from a recent skirmish. Through the mists a ponderous sloshing can be heard as something rises from the depths."
+        "title": "Fallen Soldiers",
+        "description": "An army needs to travel down into a valley that is rumoured to be haunted and from which no scout has returned. The party discovers that several fallen soldiers from a previous battle have become Wraiths and are attacking anyone who comes near. If they are too dangerous to take on directly, destroying or burying their original bodies will put them to rest."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "One by one, the bodies are dragged into the water, consumed by a parasite-riddled Hydra. The bodies are scant sustenance for its many heads. If the party approaches, it will attempt to devour them. Toll of War: Weighed down by plates of rusted metal, its wings broken and useless, an ancient, decrepit War Wyvern wanders the countryside, still wearing its siege panoply. Traumatised"
+        "title": "Mouths to Feed",
+        "description": "On the shores of a foetid, mist-cloaked lake lie bodies from a recent skirmish. Through the mists a ponderous sloshing can be heard as something rises from the depths. One by one, the bodies are dragged into the water, consumed by a parasite-riddled Hydra. The bodies are scant sustenance for its many heads. If the party approaches, it will attempt to devour them."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "by its brutal treatment, it sees all other living things as enemies, savagely attacking before any more hurt can be done to it. Nesting in a destroyed village, the party discovers it methodically depopulating another. Crocodile Beach: There is a beach where warships are plagued by Giant Crocodiles. They"
+        "title": "Toll of War",
+        "description": "Weighed down by plates of rusted metal, its wings broken and useless, an ancient, decrepit War Wyvern wanders the countryside, still wearing its siege panoply. Traumatised by its brutal treatment, it sees all other living things as enemies, savagely attacking before any more hurt can be done to it. Nesting in a destroyed village, the party discovers it methodically depopulating another."
       },
       {
         "roll": 6,
-        "title": "Entry 6",
-        "description": "attack on sight, their iron jaws never letting go of their quarry, be it jolly boats from the ships or their passengers. The party may deal with these pests if they want to form an alliance with whoever commands these warships. Worth Their Wight in Gold: A trio of fallen soldiers have risen as Wights. They murder"
+        "title": "Crocodile Beach",
+        "description": "There is a beach where warships are plagued by Giant Crocodiles. They attack on sight, their iron jaws never letting go of their quarry, be it jolly boats from the ships or their passengers. The party may deal with these pests if they want to form an alliance with whoever commands these warships."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "innocent people in a nearby town and leave behind bodies mangled beyond recognition in the local tavern. The town offers a sizeable reward to those who can slay the Wights and protect the town. The Crate Escape: A major supply route through a tunnel under a mountain has been"
+        "title": "Worth Their Wight in Gold",
+        "description": "A trio of fallen soldiers have risen as Wights. They murder innocent people in a nearby town and leave behind bodies mangled beyond recognition in the local tavern. The town offers a sizeable reward to those who can slay the Wights and protect the town."
       },
       {
         "roll": 8,
-        "title": "interrupted",
-        "description": "Scouts found no evidence of violence, and nothing left of the people at all. The tunnel is strangely empty, without any of the usual flora and fauna, due to a Gelatinous Cube lying in wait for the supply trains. We March Together: A Flesh Golem knitted together from the enemy's soldiers has escaped"
+        "title": "The Crate Escape",
+        "description": "A major supply route through a tunnel under a mountain has been interrupted. Scouts found no evidence of violence, and nothing left of the people at all. The tunnel is strangely empty, without any of the usual flora and fauna, due to a Gelatinous Cube lying in wait for the supply trains."
       },
       {
         "roll": 9,
-        "title": "the control of its creator and gone on an indiscriminate rampage",
-        "description": "It can be tracked easily by the trail of fallen skin and body pieces that fall off as the spells holding it together start to degrade, and by the magical traces of necromancy. Its skin can be used to craft necromantic spell scrolls. Triple Threat: A Chimera whose rider was killed in battle is searching for food in civilian and"
+        "title": "We March Together",
+        "description": "A Flesh Golem knitted together from the enemy's soldiers has escaped the control of its creator and gone on an indiscriminate rampage. It can be tracked easily by the trail of fallen skin and body pieces that fall off as the spells holding it together start to degrade, and by the magical traces of necromancy. Its skin can be used to craft necromantic spell scrolls."
       },
       {
         "roll": 10,
-        "title": "military settlements, attacking anyone who stands between it and a good meal",
-        "description": "Its distinctive footprints, the deep claw marks it leaves, and the scorched areas from its fiery breath show where it has been, and food can be used to lure it out. ENCOUNTERS: WAANRCTIOENRNT LRAUNINDS 5"
+        "title": "Triple Threat",
+        "description": "A Chimera whose rider was killed in battle is searching for food in civilian and military settlements, attacking anyone who stands between it and a good meal. Its distinctive footprints, the deep claw marks it leaves, and the scorched areas from its fiery breath show where it has been, and food can be used to lure it out."
       }
     ],
     "A Place to Rest": [
       {
         "roll": 1,
-        "title": "return to",
-        "description": "Most of the buildings are destroyed and those whose houses no longer remain have been taken in by their neighbours. The party may rest here, if they are willing to repair a building to sleep in, though not all villagers are keen to trust strangers. Merchant Caravan: A group of merchants are making their way through the area and are very"
+        "title": "Broken Village",
+        "description": "The party comes across a half burned village that people are beginning to return to. Most of the buildings are destroyed and those whose houses no longer remain have been taken in by their neighbours. The party may rest here, if they are willing to repair a building to sleep in, though not all villagers are keen to trust strangers."
       },
       {
         "roll": 2,
-        "title": "nervous about travelling near any fighting",
-        "description": "They ask to party to stick with them through the night and keep a lookout for enemy Knights, providing a hearty meal and a chance to trade in return. Neutral Ground: The party comes across a group of soldiers resting between battles. If they"
+        "title": "Merchant Caravan",
+        "description": "A group of merchants are making their way through the area and are very nervous about travelling near any fighting. They ask to party to stick with them through the night and keep a lookout for enemy Knights, providing a hearty meal and a chance to trade in return."
       },
       {
         "roll": 3,
-        "title": "Entry 3",
-        "description": "approach peacefully, the soldiers do not attack and are happy to share their food and supplies. But once the meal is over, talk turns to politics and the party will need to make a Charisma (Deception) or (Persuasion) check to convince the soldiers they are not the enemy. Artificial Heart: In a deep furrow of earth, gouged by its apocalyptic crash landing, the party finds a gigantic mechanical humanoid made of metal and pearl. Its internal mechanisms are"
+        "title": "Neutral Ground",
+        "description": "The party comes across a group of soldiers resting between battles. If they approach peacefully, the soldiers do not attack and are happy to share their food and supplies. But once the meal is over, talk turns to politics and the party will need to make a Charisma (Deception) or (Persuasion) check to convince the soldiers they are not the enemy."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "beyond reconstruction, but a cavernous cavity in its chest provides protection against the elements. Staying too long within the mechanism is not advised, however; its power source cracked in the crash and debilitating magic now leaks out. Grave Circumstances: A pair of Tiefling Veterans, one impossibly thin, the other egregiously rotund, are making tea in the back of their covered wagon. Grateful for company, they present"
+        "title": "Artificial Heart",
+        "description": "In a deep furrow of earth, gouged by its apocalyptic crash landing, the party finds a gigantic mechanical humanoid made of metal and pearl. Its internal mechanisms are beyond reconstruction, but a cavernous cavity in its chest provides protection against the elements. Staying too long within the mechanism is not advised, however; its power source cracked in the crash and debilitating magic now leaks out."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "themselves as honest, if overworked, gravediggers travelling between sites of battle. In reality they are exhuming corpses for use by their demonic master. They do not react well if their secret is uncovered. A Safe Haven for All: The nuns of a convent in the mountains offer food and shelter to"
+        "title": "Grave Circumstances",
+        "description": "A pair of Tiefling Veterans, one impossibly thin, the other egregiously rotund, are making tea in the back of their covered wagon. Grateful for company, they present themselves as honest, if overworked, gravediggers travelling between sites of battle. In reality they are exhuming corpses for use by their demonic master. They do not react well if their secret is uncovered."
       },
       {
         "roll": 6,
-        "title": "everyone regardless of which side they’re fighting on",
-        "description": "Fighting or any kind of misdemeanour are prohibited here and will be punished should the party act too rowdy. Shelter of the Learned: An abandoned library still stands in a town that is all but destroyed by"
+        "title": "A Safe Haven for All",
+        "description": "The nuns of a convent in the mountains offer food and shelter to everyone regardless of which side they're fighting on. Fighting or any kind of misdemeanour are prohibited here and will be punished should the party act too rowdy."
       },
       {
         "roll": 7,
-        "title": "the war",
-        "description": "Though there are holes in the roof, the supports are still intact. The spaces underneath the fallen bookshelves provide adequate cover from adverse weather. Swarms of Insects (Beetles) may turn territorial overnight should the party overstep. The Parting Glass: A Goblin couple offers shelter for all in their inn created from old"
+        "title": "Shelter of the Learned",
+        "description": "An abandoned library still stands in a town that is all but destroyed by the war. Though there are holes in the roof, the supports are still intact. The spaces underneath the fallen bookshelves provide adequate cover from adverse weather. Swarms of Insects (Beetles) may turn territorial overnight should the party overstep."
       },
       {
         "roll": 8,
-        "title": "ammunition crates",
-        "description": "The pair have come up with novel food and drink based on what they can scavenge from the nearby thickets. A group of soldiers outside is watching closely for enemy combatants being harboured, ready to attack. Dire Warning: The party comes across a cave used by soldiers, deserters, and refugees escaping"
+        "title": "The Parting Glass",
+        "description": "A Goblin couple offers shelter for all in their inn created from old ammunition crates. The pair have come up with novel food and drink based on what they can scavenge from the nearby thickets. A group of soldiers outside is watching closely for enemy combatants being harboured, ready to attack."
       },
       {
         "roll": 9,
-        "title": "the war, carefully hidden by a sheet of long vines",
-        "description": "A few possessions and bedrolls are scattered around, including a journal that reads ‘They’re chasing us. Hunting us. They will never give up. Beware if you rest here, lest they believe you helped us.’ Breaking Bread Together: In a ruined church, a family of Halfling camp followers welcome"
+        "title": "Dire Warning",
+        "description": "The party comes across a cave used by soldiers, deserters, and refugees escaping the war, carefully hidden by a sheet of long vines. A few possessions and bedrolls are scattered around, including a journal that reads 'They're chasing us. Hunting us. They will never give up. Beware if you rest here, lest they believe you helped us.'"
       },
       {
         "roll": 10,
-        "title": "the party into their shelter",
-        "description": "They are cooking rabbits caught nearby using their family recipe. They offer to share their meagre meal, as they believe in welcoming any who arrive to share in whatever food they have, but warn that the church might be haunted. 65 UNCHARTED JOURNEYS"
+        "title": "Breaking Bread Together",
+        "description": "In a ruined church, a family of Halfling camp followers welcome the party into their shelter. They are cooking rabbits caught nearby using their family recipe. They offer to share their meagre meal, as they believe in welcoming any who arrive to share in whatever food they have, but warn that the church might be haunted."
       }
     ],
     "Old Memories": [
       {
         "roll": 1,
-        "title": "previous lover from their past",
-        "description": "The person in question has been obviously hurt, possibly with even a disfiguring wound. It may make the character wonder about the fate of those they have left behind. Smiling Through the Pain: Even under the spectre of war, this village is holding a traditional"
+        "title": "Lost Love",
+        "description": "Passing through a village, one of the party sees someone who reminds them of a previous lover from their past. The person in question has been obviously hurt, possibly with even a disfiguring wound. It may make the character wonder about the fate of those they have left behind."
       },
       {
         "roll": 2,
-        "title": "small festival to thank the gods for what they have",
-        "description": "It is very similar to festivals the party may have experienced at home. It might give them peace in the midst of all the fighting, or make them homesick for those they left behind. Futility: Slowly manoeuvring across the moonlit field is a spectral army in battle formation. Formed into tight ranks, the Ghosts of the young soldiers are clad in outdated uniforms and"
+        "title": "Smiling Through the Pain",
+        "description": "Even under the spectre of war, this village is holding a traditional small festival to thank the gods for what they have. It is very similar to festivals the party may have experienced at home. It might give them peace in the midst of all the fighting, or make them homesick for those they left behind."
       },
       {
         "roll": 3,
-        "title": "wield ancient weaponry",
-        "description": "Trotting beside them, seated on a massive war Elk, is a portly officer. He points with his sabre and the army advances into enemy fire. One by one the young soldiers disappear. Empires Die: Rising at an angle from the mire is an old stone statue. In stern, authoritarian"
+        "title": "Futility",
+        "description": "Slowly manoeuvring across the moonlit field is a spectral army in battle formation. Formed into tight ranks, the Ghosts of the young soldiers are clad in outdated uniforms and wield ancient weaponry. Trotting beside them, seated on a massive war Elk, is a portly officer. He points with his sabre and the army advances into enemy fire. One by one the young soldiers disappear."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "angles it depicts a figure in military uniform, arms crossed over a medal-emblazoned chest. At the base of the statue the inscription reads: ‘Your Land Belongs to Us.’ The statue has been so heavily defaced the identity of the ancient invaders cannot be discerned. An Ancient City: The party finds ruins of an ancient city, untouched by the ravages of war."
+        "title": "Empires Die",
+        "description": "Rising at an angle from the mire is an old stone statue. In stern, authoritarian angles it depicts a figure in military uniform, arms crossed over a medal-emblazoned chest. At the base of the statue the inscription reads: 'Your Land Belongs to Us.' The statue has been so heavily defaced the identity of the ancient invaders cannot be discerned."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "Statues of animal-headed gods support the sacred domes of temples draped with ivy and vines. Flat-roofed houses, empty and worn but still intact, appear safe enough for shelter. Their floors bear mosaics of life in old times, peaceful and carefree. Titan Bones in the Trenches: The party nearly falls down a trench, recently dug and abandoned"
+        "title": "An Ancient City",
+        "description": "The party finds ruins of an ancient city, untouched by the ravages of war. Statues of animal-headed gods support the sacred domes of temples draped with ivy and vines. Flat-roofed houses, empty and worn but still intact, appear safe enough for shelter. Their floors bear mosaics of life in old times, peaceful and carefree."
       },
       {
         "roll": 6,
-        "title": "as the army pushes on northwards",
-        "description": "Titanic bones stick out of the walls. These were the original inhabitants of the world, titans that once walked the earth but became extinct. Who knows what killed them all? In Memoriam: On the hill above a bloody battlefield, a collection of polearms and blades have"
+        "title": "Titan Bones in the Trenches",
+        "description": "The party nearly falls down a trench, recently dug and abandoned as the army pushes on northwards. Titanic bones stick out of the walls. These were the original inhabitants of the world, titans that once walked the earth but became extinct. Who knows what killed them all?"
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "been thrust deep into the earth where the weapons of the nameless fallen have been left as a memorial to the senselessness of their deaths. Around the memorial, candles of all shapes and sizes have been left by people passing through as a tribute. Eternal War: An impossibly ancient stone indicates that this place has been a battlefield for"
+        "title": "In Memoriam",
+        "description": "On the hill above a bloody battlefield, a collection of polearms and blades have been thrust deep into the earth where the weapons of the nameless fallen have been left as a memorial to the senselessness of their deaths. Around the memorial, candles of all shapes and sizes have been left by people passing through as a tribute."
       },
       {
         "roll": 8,
-        "title": "thousands of years, torn by unceasing war",
-        "description": "The ground is filled with the bones of those who have died for some cause or another. Can it ever end? Or is this valley cursed to always be the site of violence and conflict? Forgotten Gods: An old blood trail leads to a shrine beside a river, dedicated to a goddess of"
+        "title": "Eternal War",
+        "description": "An impossibly ancient stone indicates that this place has been a battlefield for thousands of years, torn by unceasing war. The ground is filled with the bones of those who have died for some cause or another. Can it ever end? Or is this valley cursed to always be the site of violence and conflict?"
       },
       {
         "roll": 9,
-        "title": "protection and healing",
-        "description": "Her flame is ebbing in the face of so much death. Small offerings are still left here, whether by worshippers or those who instinctively wished to pay tribute for the relief they felt upon reaching the shrine after so much strife. Hidden Sanctuary: A ruined, ramshackle waystation stands empty in a grove, the remains of"
+        "title": "Forgotten Gods",
+        "description": "An old blood trail leads to a shrine beside a river, dedicated to a goddess of protection and healing. Her flame is ebbing in the face of so much death. Small offerings are still left here, whether by worshippers or those who instinctively wished to pay tribute for the relief they felt upon reaching the shrine after so much strife."
       },
       {
         "roll": 10,
-        "title": "what was once a place of safety for refugees",
-        "description": "It seems like it once housed many people, and was an aid to them escaping the horrors of the battlefields. ENCOUNTERS: WAANRCTIOENRNT LRAUNINDS 5"
+        "title": "Hidden Sanctuary",
+        "description": "A ruined, ramshackle waystation stands empty in a grove, the remains of what was once a place of safety for refugees. It seems like it once housed many people, and was an aid to them escaping the horrors of the battlefields."
       }
     ],
     "A Dark Place": [
       {
         "roll": 1,
-        "title": "is poisoned, designed to kill deserters and enemy soldiers who find it",
-        "description": "There is a small mark in Thieves’ Cant on the crate so those who left it know what it is. A Wisdom (Perception) check will reveal the dead bodies of previously poisoned soldiers nearby. Dead Drop: A large fight has occurred here recently, with bodies piled up all around. Neither"
+        "title": "Food Store",
+        "description": "Near some trees is a crate of plain but edible food supplies. Unfortunately the food is poisoned, designed to kill deserters and enemy soldiers who find it. There is a small mark in Thieves' Cant on the crate so those who left it know what it is. A Wisdom (Perception) check will reveal the dead bodies of previously poisoned soldiers nearby."
       },
       {
         "roll": 2,
-        "title": "army has paused to bury their dead as the fighting has pushed to a new area",
-        "description": "Carrion birds pick at the remains and a few peasants search the remains for valuables. Poison Stream: The party comes across a village that seems perfectly fine, but is ominously"
+        "title": "Dead Drop",
+        "description": "A large fight has occurred here recently, with bodies piled up all around. Neither army has paused to bury their dead as the fighting has pushed to a new area. Carrion birds pick at the remains and a few peasants search the remains for valuables."
       },
       {
         "roll": 3,
-        "title": "quiet",
-        "description": "The villagers are all dead, but it takes a while to find any bodies as most died in their homes. Enemy soldiers introduced a slow poison into the nearby river, their only water source. By the time anyone realised, it was too late. War Profiteers: The sound and stink of industry leads the party to a squalid estuary polluted"
+        "title": "Poison Stream",
+        "description": "The party comes across a village that seems perfectly fine, but is ominously quiet. The villagers are all dead, but it takes a while to find any bodies as most died in their homes. Enemy soldiers introduced a slow poison into the nearby river, their only water source. By the time anyone realised, it was too late."
       },
       {
         "roll": 4,
-        "title": "with chemical runoff and strewn with scraps of rusting metal",
-        "description": "On a high platform out in the bay is a Kobold factory where munitions are made. One long line of barges ships raw materials to the platform, another brings finished products back to shore to keep the war going. Nothing Stands: With cool precision, a phalanx of Shield Guardians disassembles an enemy town. Houses have been stripped of belongings, then broken down into their component parts."
+        "title": "War Profiteers",
+        "description": "The sound and stink of industry leads the party to a squalid estuary polluted with chemical runoff and strewn with scraps of rusting metal. On a high platform out in the bay is a Kobold factory where munitions are made. One long line of barges ships raw materials to the platform, another brings finished products back to shore to keep the war going."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "In the fields, arranged with geometrical exactitude, towering bonfires consume the debris. When the party arrives the Guardians are busy with their last task: prising up the cobbles of what used to be the town square. Corpse Pit: There is a deep pit, where the bodies of the dead lie on top of each other. Flies"
+        "title": "Nothing Stands",
+        "description": "With cool precision, a phalanx of Shield Guardians disassembles an enemy town. Houses have been stripped of belongings, then broken down into their component parts. In the fields, arranged with geometrical exactitude, towering bonfires consume the debris. When the party arrives the Guardians are busy with their last task: prising up the cobbles of what used to be the town square."
       },
       {
         "roll": 6,
-        "title": "buzz over maggot-infested mounds of rotting flesh",
-        "description": "Soldiers throw the dead in here, some of them former comrades, and some, their enemies. Some may think it is time to burn everything inside, that the pit can be cleansed and rid of this eyesore for once and for all. The Sacrificial Site: Behind the enemy’s fortress, there is a small area encircled by dead"
+        "title": "Corpse Pit",
+        "description": "There is a deep pit, where the bodies of the dead lie on top of each other. Flies buzz over maggot-infested mounds of rotting flesh. Soldiers throw the dead in here, some of them former comrades, and some, their enemies. Some may think it is time to burn everything inside, that the pit can be cleansed and rid of this eyesore for once and for all."
       },
       {
         "roll": 7,
-        "title": "warriors impaled on stakes",
-        "description": "Skulls half-buried into the ground form a ritual circle where a sacrifice has recently been performed. The ground is streaked with red, for blood has seeped through the soil. Ancient Faith: A ring of standing stones surrounded by mist is haunted by an Invisible Stalker"
+        "title": "The Sacrificial Site",
+        "description": "Behind the enemy's fortress, there is a small area encircled by dead warriors impaled on stakes. Skulls half-buried into the ground form a ritual circle where a sacrifice has recently been performed. The ground is streaked with red, for blood has seeped through the soil."
       },
       {
         "roll": 8,
-        "title": "commanded by an ancient priesthood",
-        "description": "Soldiers scattered by conflict are drawn in by voices and pleas of loved ones. They cannot see one another, only hear the screams as the Invisible Stalker kills them one by one, until finally death comes for them all. Army of the Dead: Though the bodies are long rotted away and buried by the grass that grows"
+        "title": "Ancient Faith",
+        "description": "A ring of standing stones surrounded by mist is haunted by an Invisible Stalker commanded by an ancient priesthood. Soldiers scattered by conflict are drawn in by voices and pleas of loved ones. They cannot see one another, only hear the screams as the Invisible Stalker kills them one by one, until finally death comes for them all."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "over their bones, the ghosts of two armies fight endlessly in a battle that will never end. By night, they ride or trudge, often half-submerged in lands that were once lower or passing through buildings that were not there in the past. Red Wet: A robed person dips a bowl into the red waters of a river clogged with the dead,"
+        "title": "Army of the Dead",
+        "description": "Though the bodies are long rotted away and buried by the grass that grows over their bones, the ghosts of two armies fight endlessly in a battle that will never end. By night, they ride or trudge, often half-submerged in lands that were once lower or passing through buildings that were not there in the past."
       },
       {
         "roll": 10,
-        "title": "entirely aware of the pollution",
-        "description": "When they glance up, their mouth is stained with blood and they give a grin that reveals sharp, white teeth. They give a bow and collapse into a mass of blood that flows into the stream. 65 UNCHARTED JOURNEYS"
+        "title": "Red Wet",
+        "description": "A robed person dips a bowl into the red waters of a river clogged with the dead, entirely aware of the pollution. When they glance up, their mouth is stained with blood and they give a grin that reveals sharp, white teeth. They give a bow and collapse into a mass of blood that flows into the stream."
       }
     ],
     "Deadly Fight": [
       {
         "roll": 1,
-        "title": "factions",
-        "description": "A group of enemy elite soldiers (use the Gladiator stat block) decide to take offence, regardless of what was actually said. They issue a drunken challenge on the spot and take refusal as proof of cowardice. They will fight fair, but they will also do everything to win. Angry Giant: One of the factions has enchanted a Hill Giant into a confused and livid rage"
+        "title": "Take That Back!",
+        "description": "In a roadside inn, the party are overheard mentioning one side of the warring factions. A group of enemy elite soldiers (use the Gladiator stat block) decide to take offence, regardless of what was actually said. They issue a drunken challenge on the spot and take refusal as proof of cowardice. They will fight fair, but they will also do everything to win."
       },
       {
         "roll": 2,
-        "title": "and pointed it at a nearby enemy town or fortification",
-        "description": "It blunders into the place attacking anything that crosses its path. To save innocent people the party will have to destroy it. Crosshairs: While crossing the countryside, the party discovers they are actually walking between two armies. But no sooner have they noticed, the armies choose to charge each other."
+        "title": "Angry Giant",
+        "description": "One of the factions has enchanted a Hill Giant into a confused and livid rage and pointed it at a nearby enemy town or fortification. It blunders into the place attacking anything that crosses its path. To save innocent people the party will have to destroy it."
       },
       {
         "roll": 3,
-        "title": "Entry 3",
-        "description": "In moments the party is surrounded with fighting soldiers (use the Guards stat block), who will attack anything not wearing the colours of their side. The party will have to fight their way out of the middle of the battlefield. Rogue Weapon: In an effort to halt the ongoing conflict, a cadre of Nobles have smuggled into the realm a powerful artefact from a distant land: a magical lamp. None amongst them,"
+        "title": "Crosshairs",
+        "description": "While crossing the countryside, the party discovers they are actually walking between two armies. But no sooner have they noticed, the armies choose to charge each other. In moments the party is surrounded with fighting soldiers (use the Guards stat block), who will attack anything not wearing the colours of their side. The party will have to fight their way out of the middle of the battlefield."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "however, prove strong enough to control the Efreeti they release from its imprisonment. The Efreeti cares nothing for either side in the war, desiring only to prevent its return to its enchanted prison. Secret Cargo: One of the masterminds behind the current conflict is secretly being transported between camps. Carried on a palanquin by a quartet of blinded Ogres and sustained within"
+        "title": "Rogue Weapon",
+        "description": "In an effort to halt the ongoing conflict, a cadre of Nobles have smuggled into the realm a powerful artefact from a distant land: a magical lamp. None amongst them, however, prove strong enough to control the Efreeti they release from its imprisonment. The Efreeti cares nothing for either side in the war, desiring only to prevent its return to its enchanted prison."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "a bubble of water and glass, the monstrous, gold-garlanded Aboleth probes the surrounding area with its vast telepathic powers. It will attempt to destroy anyone who crosses its path, lest they divulge its current whereabouts to the enemy. Fighting Air: A general has summoned Invisible Stalkers to guard a strategic site and kill any"
+        "title": "Secret Cargo",
+        "description": "One of the masterminds behind the current conflict is secretly being transported between camps. Carried on a palanquin by a quartet of blinded Ogres and sustained within a bubble of water and glass, the monstrous, gold-garlanded Aboleth probes the surrounding area with its vast telepathic powers. It will attempt to destroy anyone who crosses its path, lest they divulge its current whereabouts to the enemy."
       },
       {
         "roll": 6,
-        "title": "intruders",
-        "description": "The opposing army wants that strategic site and will pay a large bounty to anyone who can kill these creatures and secure the site for them. The site is en-route to the party’s destination. The Terminator: The city’s military unit has unleashed a Stone Golem in a last ditch attempt"
+        "title": "Fighting Air",
+        "description": "A general has summoned Invisible Stalkers to guard a strategic site and kill any intruders. The opposing army wants that strategic site and will pay a large bounty to anyone who can kill these creatures and secure the site for them. The site is en-route to the party's destination."
       },
       {
         "roll": 7,
-        "title": "to push back invading forces",
-        "description": "Unfortunately, the golem has misinterpreted instructions and is now killing every creature it sees indiscriminately. It stomps through the city, bulldozing everything in its path. Angel on the Battlefield: A Deva released from an iron flask by a Paladin moments before"
+        "title": "The Terminator",
+        "description": "The city's military unit has unleashed a Stone Golem in a last ditch attempt to push back invading forces. Unfortunately, the golem has misinterpreted instructions and is now killing every creature it sees indiscriminately. It stomps through the city, bulldozing everything in its path."
       },
       {
         "roll": 8,
-        "title": "Entry 8",
-        "description": "they died is on a rampage across the area, determined to judge every single person who exists in these unjust lands. They can be talked down, but only after they have been defeated, as their righteous fury is too overwhelming for reasoning to reach them. Shadows of War: In a corrupted area where the fighting involved extensive necromancy,"
+        "title": "Angel on the Battlefield",
+        "description": "A Deva released from an iron flask by a Paladin moments before they died is on a rampage across the area, determined to judge every single person who exists in these unjust lands. They can be talked down, but only after they have been defeated, as their righteous fury is too overwhelming for reasoning to reach them."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "sighing songs on the wind rustle the dead leaves and foul earth, and bodies here decay far too quickly to be natural. The Shadows and Spectres who haunt this place wait until the party is deep inside the life-sapping area of corruption before they attack. Roc and Roll: With a blood-curdling shriek, a Roc wheels down from a peak and swoops to"
+        "title": "Shadows of War",
+        "description": "In a corrupted area where the fighting involved extensive necromancy, sighing songs on the wind rustle the dead leaves and foul earth, and bodies here decay far too quickly to be natural. The Shadows and Spectres who haunt this place wait until the party is deep inside the life-sapping area of corruption before they attack."
       },
       {
         "roll": 10,
-        "title": "attack a group of straggling soldiers ahead",
-        "description": "Its feathers are bloody, but it is not significantly injured, and grabs one soldier while the others scatter. It hunts near a route that is frequented by injured soldiers retreating from the battlefield for easy pickings. ENCOUNTERS: WAANRCTIOENRNT LRAUNINDS 5"
+        "title": "Roc and Roll",
+        "description": "With a blood-curdling shriek, a Roc wheels down from a peak and swoops to attack a group of straggling soldiers ahead. Its feathers are bloody, but it is not significantly injured, and grabs one soldier while the others scatter. It hunts near a route that is frequented by injured soldiers retreating from the battlefield for easy pickings."
       }
     ],
     "Fateful Encounter": [
       {
         "roll": 1,
-        "title": "defeated nation",
-        "description": "His Ghost still haunts this precious possession, and attempts to scare off any who find it, with moans and gestures. He fears the party will discover that those who hold the crown can claim the kingdom for themselves, ignorant that his kingdom fell centuries ago. The Worth of Words: A poor wandering peddler asks the party to take a look at her wares. They are all pretty common but serviceable second hand items. If they buy something, the"
+        "title": "Heavy is the Head",
+        "description": "Carefully hidden in a cave is a small crown belonging to the king of a defeated nation. His Ghost still haunts this precious possession, and attempts to scare off any who find it, with moans and gestures. He fears the party will discover that those who hold the crown can claim the kingdom for themselves, ignorant that his kingdom fell centuries ago."
       },
       {
         "roll": 2,
-        "title": "peddler reveals she has much better wares in terms of information",
-        "description": "She has travelled the area extensively and can tell the party anything about the local politics, troop positions, and even what bribes to offer certain officers. Nothing More: A raven familiar arrives and tries to get the party’s attention to lead them to its"
+        "title": "The Worth of Words",
+        "description": "A poor wandering peddler asks the party to take a look at her wares. They are all pretty common but serviceable second hand items. If they buy something, the peddler reveals she has much better wares in terms of information. She has travelled the area extensively and can tell the party anything about the local politics, troop positions, and even what bribes to offer certain officers."
       },
       {
         "roll": 3,
-        "title": "master, a powerful Archmage who has been injured in a battle",
-        "description": "She is in need of healing and can reward anyone that helps them with a magic item of arcane lore. She hides the fact that it was her own half-cooked spell that injured her. Consumers: On the roadside near a burned out cart, the party encounters a young mother and her three children. She begs the party to escort her safely to a nearby town. In actuality, the"
+        "title": "Nothing More",
+        "description": "A raven familiar arrives and tries to get the party's attention to lead them to its master, a powerful Archmage who has been injured in a battle. She is in need of healing and can reward anyone that helps them with a magic item of arcane lore. She hides the fact that it was her own half-cooked spell that injured her."
       },
       {
         "roll": 4,
-        "title": "woman is a corrupted Archmage, her three children transmogrified Imps",
-        "description": "Together they stalk the battlefields consuming emotions for use in devious spells. One child eats rage, the other fear, the last despair. The King Returns: Slowly, with great difficulty, an old man follows a narrow lane. Stooped and"
+        "title": "Consumers",
+        "description": "On the roadside near a burned out cart, the party encounters a young mother and her three children. She begs the party to escort her safely to a nearby town. In actuality, the woman is a corrupted Archmage, her three children transmogrified Imps. Together they stalk the battlefields consuming emotions for use in devious spells. One child eats rage, the other fear, the last despair."
       },
       {
         "roll": 5,
-        "title": "leaning on a cane, he wears dark clothes, his face covered in a porcelain mask",
-        "description": "He speaks gently but sparingly, asking for guidance as ‘memory isn’t what it used to be.’ The man is actually an ancient Mummy, the region’s first monarch, returned to lead it back to peace. An Angelic Vision: The party receives a vision one night when they are sleeping. An angel"
+        "title": "The King Returns",
+        "description": "Slowly, with great difficulty, an old man follows a narrow lane. Stooped and leaning on a cane, he wears dark clothes, his face covered in a porcelain mask. He speaks gently but sparingly, asking for guidance as 'memory isn't what it used to be.' The man is actually an ancient Mummy, the region's first monarch, returned to lead it back to peace."
       },
       {
         "roll": 6,
-        "title": "appears before them",
-        "description": "Though it seems invested in their plight, the angel secretly does not have faith in the party. When they wake up, they find a doll that resembles the angel. The doll can be used to cast Dispel Magic and Counterspell once a day. The Boy in the Well: A teenage boy hides inside a well in a burning field. He pleads with the"
+        "title": "An Angelic Vision",
+        "description": "The party receives a vision one night when they are sleeping. An angel appears before them. Though it seems invested in their plight, the angel secretly does not have faith in the party. When they wake up, they find a doll that resembles the angel. The doll can be used to cast Dispel Magic and Counterspell once a day."
       },
       {
         "roll": 7,
-        "title": "party to take him somewhere safe",
-        "description": "He offers to be a scout for the party, but hides the fact that he can turn invisible for up to an hour once a day. This ability brings him shame, as he hid from attackers who burnt down his village. The Universal Soldier: A soldier in armour sits wearily beside a stream. He shudders with"
+        "title": "The Boy in the Well",
+        "description": "A teenage boy hides inside a well in a burning field. He pleads with the party to take him somewhere safe. He offers to be a scout for the party, but hides the fact that he can turn invisible for up to an hour once a day. This ability brings him shame, as he hid from attackers who burnt down his village."
       },
       {
         "roll": 8,
-        "title": "every distant sound of fighting",
-        "description": "In truth, he died on the battlefield but somehow rose again, becoming an avatar of war who can feel every violent thing that happens within this region. He hopes to find out why this happened and how to stop it. The Warmonger: A cheery inventor tinkers with a small mechanism as she walks along and"
+        "title": "The Universal Soldier",
+        "description": "A soldier in armour sits wearily beside a stream. He shudders with every distant sound of fighting. In truth, he died on the battlefield but somehow rose again, becoming an avatar of war who can feel every violent thing that happens within this region. He hopes to find out why this happened and how to stop it."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "happily expounds on how she has applied magical theories to it without being asked. She eventually reveals that she is seeking out an example of the war machines used by the enemy to understand how they work and how they could benefit her side. Watcher of the Wars: A Storm Giant is walking the road, ignoring the people who hurry past"
+        "title": "The Warmonger",
+        "description": "A cheery inventor tinkers with a small mechanism as she walks along and happily expounds on how she has applied magical theories to it without being asked. She eventually reveals that she is seeking out an example of the war machines used by the enemy to understand how they work and how they could benefit her side."
       },
       {
         "roll": 10,
-        "title": "her",
-        "description": "She has come to this place to better understand the proclivity of so many other species for violence, to know whether they should be allowed to live. She offers the characters knowledge in return for every story they tell her of violence. 65 UNCHARTED JOURNEYS"
+        "title": "Watcher of the Wars",
+        "description": "A Storm Giant is walking the road, ignoring the people who hurry past her. She has come to this place to better understand the proclivity of so many other species for violence, to know whether they should be allowed to live. She offers the characters knowledge in return for every story they tell her of violence."
       }
     ]
   },

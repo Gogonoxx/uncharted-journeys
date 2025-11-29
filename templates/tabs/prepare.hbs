@@ -1,0 +1,158 @@
+{{#if (eq tab "prepare")}}
+<section class="journey-stage stage-prepare" data-tab="prepare">
+  <header class="stage-header">
+    <h2><i class="fas fa-tasks"></i> Prepare for the Journey</h2>
+    <p class="stage-description">Assign party roles, make preparations, and complete group checks.</p>
+    <div class="difficulty-badge">
+      <span class="label">Current DC:</span>
+      <span class="value">{{difficulty}}</span>
+    </div>
+  </header>
+
+  {{!-- Role Assignments --}}
+  <div class="role-assignments">
+    <h3><i class="fas fa-users-cog"></i> Assign Roles</h3>
+    <p class="section-hint">Each party member must be assigned a journey role.</p>
+
+    <div class="roles-grid">
+      {{#each roles}}
+      <div class="role-card role-assignment" data-role="{{id}}">
+        <div class="role-header">
+          <i class="{{icon}}"></i>
+          <h4>{{name}}</h4>
+        </div>
+        <div class="role-skills">
+          <span class="primary-skill" data-tooltip="Primary Skill">{{primarySkill}}</span>
+          <span class="alt-skill" data-tooltip="Alternative Skill">{{alternativeSkill}}</span>
+        </div>
+        <div class="role-ability">
+          <small>{{ability}}</small>
+        </div>
+        <div class="role-assignment-controls">
+          <select name="actor-{{id}}" class="actor-select">
+            <option value="">-- Select Actor --</option>
+            {{#each ../actors}}
+            <option value="{{id}}" {{#if (eq id (lookup (lookup ../session.partyMembers ../id) "actorId"))}}selected{{/if}}>
+              {{name}}
+            </option>
+            {{/each}}
+          </select>
+          <button type="button" class="assign-btn" data-action="assignRole" data-role="{{id}}">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+
+        {{!-- Show assigned member status --}}
+        {{#with (lookup ../session.partyMembers id)}}
+        <div class="member-status assigned">
+          <i class="fas fa-user-check"></i>
+          <span>Assigned</span>
+        </div>
+        {{/with}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Preparations --}}
+  <div class="preparations-section">
+    <h3><i class="fas fa-clipboard-list"></i> Preparations</h3>
+    <p class="section-hint">Each role may select and attempt one preparation. DC: {{preparationDC}}</p>
+
+    {{#each session.partyMembers}}
+    <div class="preparation-row" data-role="{{role}}">
+      <div class="prep-actor">
+        <strong>{{lookup (lookup ../actors actorId) "name"}}</strong>
+        <span class="prep-role">({{role}})</span>
+      </div>
+      <div class="prep-select">
+        <select data-action="selectPreparation" data-role="{{role}}">
+          <option value="">-- No Preparation --</option>
+          {{#each ../preparations}}
+          <option value="{{id}}" {{#if (eq id ../preparationId)}}selected{{/if}}>
+            {{name}} ({{skillSlug}})
+          </option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="prep-actions">
+        <button type="button"
+                class="roll-prep-btn"
+                data-action="rollPreparation"
+                data-role="{{role}}"
+                {{#unless preparationId}}disabled{{/unless}}
+                {{#if (ne preparationResult "pending")}}disabled{{/if}}>
+          <i class="fas fa-dice-d20"></i> Roll
+        </button>
+      </div>
+      <div class="prep-result {{preparationResult}}">
+        {{#if (eq preparationResult "success")}}
+        <i class="fas fa-check-circle"></i> Success
+        {{else if (eq preparationResult "failure")}}
+        <i class="fas fa-times-circle"></i> Failure
+        {{else}}
+        <i class="fas fa-clock"></i> Pending
+        {{/if}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  {{!-- Group Checks --}}
+  <div class="group-checks-section">
+    <h3><i class="fas fa-users"></i> Group Journey Checks</h3>
+    <p class="section-hint">Each party member rolls their role skill against DC {{difficulty}}.</p>
+
+    <div class="group-check-controls">
+      <button type="button" class="send-check-btn" data-action="sendGroupCheck">
+        <i class="fas fa-paper-plane"></i> Send Checks to Chat
+      </button>
+    </div>
+
+    <div class="group-check-results">
+      {{#each session.partyMembers}}
+      <div class="check-result-row" data-role="{{role}}">
+        <span class="check-actor">{{lookup (lookup ../actors actorId) "name"}} ({{role}})</span>
+        <div class="check-buttons">
+          <button type="button"
+                  class="success-btn {{#if (eq groupCheckResult "success")}}active{{/if}}"
+                  data-action="setGroupCheckResult"
+                  data-role="{{role}}"
+                  data-result="success">
+            <i class="fas fa-check"></i>
+          </button>
+          <button type="button"
+                  class="failure-btn {{#if (eq groupCheckResult "failure")}}active{{/if}}"
+                  data-action="setGroupCheckResult"
+                  data-role="{{role}}"
+                  data-result="failure">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="group-check-summary">
+      <p>
+        <strong>Passed:</strong> {{passedGroupChecks}} / {{session.partyMembers.length}}
+        {{#if (gte failedGroupChecks 2)}}
+        <span class="warning"><i class="fas fa-exclamation-triangle"></i> +1 encounter for 2+ failures</span>
+        {{/if}}
+      </p>
+    </div>
+  </div>
+
+  <footer class="stage-footer">
+    <button type="button"
+            class="confirm-btn"
+            data-action="confirmPreparation"
+            {{#unless allGroupChecksComplete}}disabled{{/unless}}>
+      <i class="fas fa-hiking"></i> Begin Journey
+    </button>
+    {{#unless allGroupChecksComplete}}
+    <p class="footer-hint">Complete all group checks to proceed.</p>
+    {{/unless}}
+  </footer>
+</section>
+{{/if}}

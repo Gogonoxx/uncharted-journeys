@@ -1,0 +1,129 @@
+{{#if (eq tab "route")}}
+<section class="journey-stage stage-route" data-tab="route">
+  <header class="stage-header">
+    <h2><i class="fas fa-map-marked-alt"></i> Set the Route</h2>
+    <p class="stage-description">Define your journey's parameters to calculate difficulty and encounters.</p>
+  </header>
+
+  <div class="route-form">
+    {{!-- Origin & Destination --}}
+    <div class="form-group locations">
+      <div class="location-field">
+        <label for="origin"><i class="fas fa-home"></i> Origin</label>
+        <input type="text" id="origin" name="origin" value="{{session.origin}}" placeholder="Starting location...">
+      </div>
+      <div class="location-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="location-field">
+        <label for="destination"><i class="fas fa-flag"></i> Destination</label>
+        <input type="text" id="destination" name="destination" value="{{session.destination}}" placeholder="Destination...">
+      </div>
+    </div>
+
+    {{!-- Distance Selection --}}
+    <div class="form-group distance-selection">
+      <label><i class="fas fa-ruler-horizontal"></i> Journey Distance</label>
+      <div class="distance-buttons">
+        {{#each distances}}
+        <button type="button"
+                class="distance-btn {{#if (eq ../session.distance @key)}}active{{/if}}"
+                data-action="setDistance"
+                data-distance="{{@key}}"
+                data-tooltip="{{encounters}} base encounter(s)">
+          <span class="distance-label">{{label}}</span>
+          <span class="distance-days">{{days}}</span>
+        </button>
+        {{/each}}
+      </div>
+    </div>
+
+    {{!-- Difficulty Modifiers --}}
+    <div class="difficulty-modifiers">
+      <h3><i class="fas fa-sliders-h"></i> Difficulty Modifiers</h3>
+
+      {{!-- Weather --}}
+      <div class="modifier-row">
+        <label><i class="fas fa-cloud-sun"></i> Weather</label>
+        <div class="modifier-control">
+          <button type="button" data-action="adjustWeather" data-delta="-1" {{#if (eq session.weather 1)}}disabled{{/if}}>
+            <i class="fas fa-minus"></i>
+          </button>
+          <span class="modifier-value">{{session.weather}}</span>
+          <button type="button" data-action="adjustWeather" data-delta="1" {{#if (eq session.weather 10)}}disabled{{/if}}>
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <span class="modifier-hint">1 = Clear, 10 = Severe Storm</span>
+      </div>
+
+      {{!-- Terrain --}}
+      <div class="modifier-row">
+        <label><i class="fas fa-mountain"></i> Terrain</label>
+        <div class="modifier-control">
+          <button type="button" data-action="adjustTerrain" data-delta="-1" {{#if (eq session.terrain 1)}}disabled{{/if}}>
+            <i class="fas fa-minus"></i>
+          </button>
+          <span class="modifier-value">{{session.terrain}}</span>
+          <button type="button" data-action="adjustTerrain" data-delta="1" {{#if (eq session.terrain 10)}}disabled{{/if}}>
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <span class="modifier-hint">1 = Easy Road, 10 = Treacherous</span>
+      </div>
+
+      {{!-- Nemesis --}}
+      <div class="modifier-row nemesis-row">
+        <label>
+          <i class="fas fa-skull"></i> Nemesis
+          <input type="checkbox"
+                 data-action="toggleNemesis"
+                 {{#if session.nemesisActive}}checked{{/if}}>
+        </label>
+        <div class="modifier-control {{#unless session.nemesisActive}}disabled{{/unless}}">
+          <button type="button" data-action="adjustNemesis" data-delta="-1"
+                  {{#unless session.nemesisActive}}disabled{{/unless}}
+                  {{#if (eq session.nemesis 0)}}disabled{{/if}}>
+            <i class="fas fa-minus"></i>
+          </button>
+          <span class="modifier-value">{{session.nemesis}}</span>
+          <button type="button" data-action="adjustNemesis" data-delta="1"
+                  {{#unless session.nemesisActive}}disabled{{/unless}}
+                  {{#if (eq session.nemesis 10)}}disabled{{/if}}>
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <span class="modifier-hint">Threat level of pursuer (optional)</span>
+      </div>
+    </div>
+
+    {{!-- Difficulty Preview --}}
+    <div class="difficulty-preview">
+      <div class="difficulty-card">
+        <div class="dc-value">
+          <span class="dc-label">Journey DC</span>
+          <span class="dc-number">{{difficulty}}</span>
+        </div>
+        <div class="encounter-count">
+          <span class="enc-label">Base Encounters</span>
+          <span class="enc-number">{{baseEncounters}}</span>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Region Selection --}}
+    <div class="form-group region-selection">
+      <label for="defaultRegion"><i class="fas fa-globe"></i> Default Region</label>
+      <select id="defaultRegion" name="defaultRegion">
+        {{#each regions}}
+        <option value="{{this}}" {{#if (eq this ../session.defaultRegion)}}selected{{/if}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <footer class="stage-footer">
+    <button type="button" class="confirm-btn" data-action="confirmRoute">
+      <i class="fas fa-check"></i> Confirm Route & Continue
+    </button>
+  </footer>
+</section>
+{{/if}}

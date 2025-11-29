@@ -1,0 +1,159 @@
+{{#if (eq tab "journey")}}
+<section class="journey-stage stage-journey" data-tab="journey">
+  <header class="stage-header">
+    <h2><i class="fas fa-hiking"></i> The Journey</h2>
+    <p class="stage-description">
+      From <strong>{{session.origin}}</strong> to <strong>{{session.destination}}</strong>
+    </p>
+    <div class="journey-stats">
+      <span class="stat"><i class="fas fa-bullseye"></i> DC {{difficulty}}</span>
+      <span class="stat"><i class="fas fa-map-marker-alt"></i> Encounter {{add session.currentEncounterIndex 1}}/{{totalEncounters}}</span>
+    </div>
+  </header>
+
+  {{!-- Pace Selection --}}
+  <div class="pace-selection">
+    <h3><i class="fas fa-tachometer-alt"></i> Travel Pace</h3>
+    <div class="pace-buttons">
+      {{#each paceOptions}}
+      <button type="button"
+              class="pace-btn {{#if (eq @key ../session.pace)}}active{{/if}}"
+              data-action="setPace"
+              data-pace="{{@key}}"
+              data-tooltip="{{description}}">
+        <i class="fas {{icon}}"></i>
+        <span class="pace-label">{{label}}</span>
+        <span class="pace-effect">{{effect}}</span>
+      </button>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Encounter Progress --}}
+  <div class="encounter-progress">
+    <div class="progress-bar">
+      {{#each session.encounters}}
+      <div class="progress-pip {{status}} {{#if (eq ../session.currentEncounterIndex @index)}}current{{/if}}"
+           data-tooltip="Encounter {{add @index 1}}: {{status}}">
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Current Encounter --}}
+  <div class="current-encounter-section">
+    <h3><i class="fas fa-exclamation-circle"></i> Current Encounter</h3>
+
+    {{#with currentEncounter}}
+    <div class="encounter-card">
+      {{!-- Region Selection --}}
+      <div class="encounter-region">
+        <label for="encounterRegion">Region:</label>
+        <select id="encounterRegion" name="encounterRegion">
+          {{#each ../regions}}
+          <option value="{{this}}" {{#if (eq this ../region)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      {{!-- Roll Controls --}}
+      <div class="encounter-roll-controls">
+        <div class="roll-group">
+          <button type="button" class="roll-btn" data-action="rollEncounterType">
+            <i class="fas fa-dice-d20"></i> Roll Type (d12)
+          </button>
+          {{#if typeRoll}}
+          <span class="roll-result">
+            <strong>{{typeRoll}}</strong>: {{encounterType}}
+          </span>
+          {{/if}}
+        </div>
+
+        <div class="roll-group">
+          <button type="button"
+                  class="roll-btn"
+                  data-action="rollEncounter"
+                  {{#unless encounterType}}disabled{{/unless}}>
+            <i class="fas fa-dice-d20"></i> Roll Encounter (d10)
+          </button>
+          {{#if encounterRoll}}
+          <span class="roll-result">
+            <strong>{{encounterRoll}}</strong>
+          </span>
+          {{/if}}
+        </div>
+      </div>
+
+      {{!-- Encounter Details --}}
+      {{#if title}}
+      <div class="encounter-details">
+        <h4 class="encounter-title">{{title}}</h4>
+        <p class="encounter-description">{{description}}</p>
+
+        <div class="encounter-actions">
+          <button type="button" class="send-btn" data-action="sendEncounterToChat">
+            <i class="fas fa-paper-plane"></i> Send to Chat
+          </button>
+          <button type="button" class="resolve-btn" data-action="resolveEncounter">
+            <i class="fas fa-check"></i> Resolve Encounter
+          </button>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    {{else}}
+    <p class="no-encounter">No active encounter. All encounters have been resolved!</p>
+    {{/with}}
+  </div>
+
+  {{!-- Role Abilities --}}
+  <div class="role-abilities-section">
+    <h3><i class="fas fa-star"></i> Role Abilities</h3>
+    <div class="role-ability-grid">
+      {{#each session.partyMembers}}
+      {{#with (lookup ../roles role)}}
+      <div class="role-ability-card {{#if ../roleAbilityUsed}}used{{/if}}">
+        <div class="ability-header">
+          <i class="{{icon}}"></i>
+          <span>{{name}}</span>
+        </div>
+        <p class="ability-text">{{ability}}</p>
+        <button type="button"
+                class="use-ability-btn"
+                data-action="useRoleAbility"
+                data-role="{{../role}}"
+                {{#if ../roleAbilityUsed}}disabled{{/if}}>
+          {{#if ../roleAbilityUsed}}
+          <i class="fas fa-check"></i> Used
+          {{else}}
+          <i class="fas fa-bolt"></i> Use Ability
+          {{/if}}
+        </button>
+      </div>
+      {{/with}}
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Navigation --}}
+  <footer class="stage-footer">
+    {{#if (and currentEncounter (eq currentEncounter.status "resolved"))}}
+    {{#if (lt session.currentEncounterIndex (sub totalEncounters 1))}}
+    <button type="button" class="next-btn" data-action="nextEncounter">
+      <i class="fas fa-arrow-right"></i> Next Encounter
+    </button>
+    {{/if}}
+    {{/if}}
+
+    {{#if allEncountersResolved}}
+    <button type="button" class="confirm-btn" data-action="completeJourney">
+      <i class="fas fa-flag-checkered"></i> Complete Journey
+    </button>
+    {{/if}}
+
+    <button type="button" class="abandon-btn danger" data-action="abandonJourney">
+      <i class="fas fa-times"></i> Abandon Journey
+    </button>
+  </footer>
+</section>
+{{/if}}

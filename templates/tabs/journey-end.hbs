@@ -1,0 +1,136 @@
+{{#if (eq tab "journeyEnd")}}
+<section class="journey-stage stage-journey-end" data-tab="journeyEnd">
+  <header class="stage-header">
+    <h2><i class="fas fa-flag-checkered"></i> Journey's End</h2>
+    {{#if (eq session.outcome "arrived")}}
+    <p class="stage-description success">
+      <i class="fas fa-check-circle"></i> The party has arrived at <strong>{{session.destination}}</strong>!
+    </p>
+    {{else}}
+    <p class="stage-description warning">
+      <i class="fas fa-exclamation-triangle"></i> The journey was abandoned.
+    </p>
+    {{/if}}
+  </header>
+
+  {{!-- Journey Summary --}}
+  <div class="journey-summary-section">
+    <h3><i class="fas fa-scroll"></i> Journey Summary</h3>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span class="label">Route</span>
+        <span class="value">{{session.origin}} to {{session.destination}}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Distance</span>
+        <span class="value">{{lookup distances session.distance}}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Encounters</span>
+        <span class="value">{{session.resolvedEncounterCount}} / {{totalEncounters}}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Final DC</span>
+        <span class="value">{{difficulty}}</span>
+      </div>
+    </div>
+  </div>
+
+  {{!-- Arrival Roll --}}
+  {{#if (eq session.outcome "arrived")}}
+  <div class="arrival-roll-section">
+    <h3><i class="fas fa-dice"></i> Arrival Circumstances</h3>
+    {{#if session.arrivalResult}}
+    <div class="arrival-result">
+      <div class="dice-result">
+        <span class="dice">2d6 = {{session.arrivalResult}}</span>
+      </div>
+      <div class="arrival-details">
+        {{!-- Result will be shown via chat message --}}
+        <p>Arrival roll complete. Check chat for details.</p>
+      </div>
+    </div>
+    {{else}}
+    <div class="arrival-roll-prompt">
+      <p>Roll to determine arrival circumstances.</p>
+      <button type="button" class="roll-btn" data-action="rollArrival">
+        <i class="fas fa-dice"></i> Roll Arrival (2d6)
+      </button>
+    </div>
+    {{/if}}
+  </div>
+  {{/if}}
+
+  {{!-- Exhaustion Saves --}}
+  <div class="exhaustion-section">
+    <h3><i class="fas fa-tired"></i> End of Journey Exhaustion</h3>
+    <p class="section-hint">
+      Each party member must make a Fortitude save (DC {{difficulty}}) or gain a level of exhaustion.
+    </p>
+
+    <div class="exhaustion-saves-grid">
+      {{#each session.partyMembers}}
+      <div class="exhaustion-save-card">
+        <div class="actor-info">
+          {{#with (lookup ../actors actorId)}}
+          <img src="{{img}}" alt="{{name}}">
+          <span class="actor-name">{{name}}</span>
+          {{/with}}
+        </div>
+
+        {{#with (lookup ../session.endOfJourneySaves @index)}}
+        <div class="save-result {{#if success}}success{{else}}failure{{/if}}">
+          {{#if success}}
+          <i class="fas fa-check-circle"></i> Saved ({{roll}})
+          {{else}}
+          <i class="fas fa-times-circle"></i> Failed ({{roll}})
+          {{/if}}
+        </div>
+        {{else}}
+        <button type="button"
+                class="roll-save-btn"
+                data-action="rollExhaustionSave"
+                data-actor-id="{{actorId}}">
+          <i class="fas fa-dice-d20"></i> Roll Save
+        </button>
+        {{/with}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Party Status --}}
+  <div class="party-status-section">
+    <h3><i class="fas fa-users"></i> Party Status</h3>
+    <div class="party-status-grid">
+      {{#each session.partyMembers}}
+      <div class="party-member-status">
+        {{#with (lookup ../actors actorId)}}
+        <div class="member-header">
+          <img src="{{img}}" alt="{{name}}">
+          <span>{{name}}</span>
+        </div>
+        <div class="member-conditions">
+          {{!-- Show exhaustion level if any --}}
+          {{#with (call ExhaustionManager.getExhaustionLevel this)}}
+          {{#if this}}
+          <span class="condition exhaustion">Exhaustion {{this}}</span>
+          {{/if}}
+          {{/with}}
+        </div>
+        {{/with}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <footer class="stage-footer">
+    <button type="button" class="send-summary-btn" data-action="sendEndSummary">
+      <i class="fas fa-paper-plane"></i> Send Summary to Chat
+    </button>
+    <button type="button" class="new-journey-btn confirm-btn" data-action="newJourney">
+      <i class="fas fa-plus"></i> Start New Journey
+    </button>
+  </footer>
+</section>
+{{/if}}

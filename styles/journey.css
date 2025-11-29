@@ -280,3 +280,961 @@
 .uncharted-journeys-chat .meta-item.type .content-link i {
   margin-right: 4px;
 }
+
+/* ===================================
+   Journey Manager - Multi-Tab Layout
+   =================================== */
+
+.uncharted-journeys.journey-manager {
+  --uj-primary: #8b4513;
+  --uj-secondary: #d2691e;
+  --uj-accent: #daa520;
+  --uj-bg: #f5f0e6;
+  --uj-border: #a0522d;
+  --uj-text: #3d2914;
+  --uj-hint: #777;
+  --uj-success: #228b22;
+  --uj-failure: #b22222;
+  --uj-warning: #cc8400;
+}
+
+/* Tab Navigation */
+.journey-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--uj-border);
+  padding: 2px 2px 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.journey-tabs .tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0.5rem 0.25rem;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 4px 4px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.journey-tabs .tab:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.journey-tabs .tab.active {
+  background: var(--uj-bg);
+  color: var(--uj-primary);
+}
+
+.journey-tabs .tab.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.journey-tabs .tab.complete:not(.active) {
+  background: rgba(34, 139, 34, 0.2);
+}
+
+.journey-tabs .tab i {
+  font-size: 1rem;
+}
+
+/* Stage Sections */
+.journey-stage {
+  padding: 1rem;
+  background: var(--uj-bg);
+  min-height: 500px;
+}
+
+.stage-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--uj-primary);
+}
+
+.stage-header h2 {
+  margin: 0 0 0.25rem;
+  color: var(--uj-primary);
+  font-size: 1.25rem;
+}
+
+.stage-header .stage-description {
+  margin: 0;
+  color: var(--uj-hint);
+  font-size: 0.9rem;
+}
+
+.stage-header .difficulty-badge,
+.stage-header .journey-stats {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.stage-header .stat,
+.difficulty-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.difficulty-badge .value {
+  font-weight: bold;
+  color: var(--uj-primary);
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: var(--uj-primary);
+  margin-bottom: 0.25rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  background: white;
+}
+
+/* Locations Row */
+.locations {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.location-field {
+  flex: 1;
+}
+
+.location-arrow {
+  padding-bottom: 0.5rem;
+  color: var(--uj-primary);
+}
+
+/* Distance Buttons */
+.distance-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.distance-btn {
+  flex: 1;
+  padding: 0.5rem;
+  background: white;
+  border: 2px solid var(--uj-border);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.distance-btn:hover {
+  border-color: var(--uj-secondary);
+  background: rgba(210, 105, 30, 0.1);
+}
+
+.distance-btn.active {
+  background: var(--uj-primary);
+  border-color: var(--uj-primary);
+  color: white;
+}
+
+.distance-btn .distance-label {
+  display: block;
+  font-weight: bold;
+}
+
+.distance-btn .distance-days {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Modifier Controls */
+.difficulty-modifiers h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--uj-primary);
+}
+
+.modifier-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+}
+
+.modifier-row label {
+  flex: 1;
+  margin: 0;
+  font-weight: normal;
+}
+
+.modifier-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modifier-control button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.modifier-control button:hover:not(:disabled) {
+  background: var(--uj-accent);
+}
+
+.modifier-control button:disabled {
+  opacity: 0.3;
+}
+
+.modifier-value {
+  min-width: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.modifier-hint {
+  font-size: 0.75rem;
+  color: var(--uj-hint);
+  flex: 1;
+  text-align: right;
+}
+
+/* Difficulty Preview */
+.difficulty-preview {
+  margin-top: 1rem;
+}
+
+.difficulty-card {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: linear-gradient(to bottom, white, #f8f4eb);
+  border: 2px solid var(--uj-primary);
+  border-radius: 8px;
+}
+
+.dc-value, .encounter-count {
+  text-align: center;
+}
+
+.dc-label, .enc-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--uj-hint);
+  text-transform: uppercase;
+}
+
+.dc-number, .enc-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--uj-primary);
+}
+
+/* Roles Grid */
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.role-card {
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.role-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.role-header i {
+  color: var(--uj-secondary);
+  font-size: 1.1rem;
+}
+
+.role-header h4 {
+  margin: 0;
+  color: var(--uj-primary);
+}
+
+.role-skills {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.role-skills span {
+  padding: 2px 6px;
+  background: var(--uj-bg);
+  border-radius: 3px;
+}
+
+.role-ability {
+  font-size: 0.75rem;
+  color: var(--uj-hint);
+  margin-bottom: 0.5rem;
+}
+
+.role-assignment-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.role-assignment-controls select {
+  flex: 1;
+}
+
+.role-assignment-controls .assign-btn {
+  padding: 0.25rem 0.5rem;
+  background: var(--uj-success);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.member-status {
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.member-status.assigned {
+  background: rgba(34, 139, 34, 0.1);
+  color: var(--uj-success);
+}
+
+/* Preparations Section */
+.preparation-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.prep-actor {
+  flex: 0 0 120px;
+}
+
+.prep-role {
+  font-size: 0.8rem;
+  color: var(--uj-hint);
+}
+
+.prep-select {
+  flex: 1;
+}
+
+.prep-select select {
+  width: 100%;
+}
+
+.prep-actions button {
+  padding: 0.25rem 0.5rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.prep-result {
+  flex: 0 0 80px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.prep-result.success {
+  color: var(--uj-success);
+}
+
+.prep-result.failure {
+  color: var(--uj-failure);
+}
+
+.prep-result.pending {
+  color: var(--uj-hint);
+}
+
+/* Group Checks */
+.group-check-controls {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.send-check-btn {
+  padding: 0.5rem 1rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.group-check-results {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.check-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+}
+
+.check-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.check-buttons button {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+.check-buttons .success-btn:hover,
+.check-buttons .success-btn.active {
+  background: var(--uj-success);
+  border-color: var(--uj-success);
+  color: white;
+}
+
+.check-buttons .failure-btn:hover,
+.check-buttons .failure-btn.active {
+  background: var(--uj-failure);
+  border-color: var(--uj-failure);
+  color: white;
+}
+
+.group-check-summary {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.group-check-summary .warning {
+  color: var(--uj-warning);
+  margin-left: 0.5rem;
+}
+
+/* Pace Selection */
+.pace-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pace-btn {
+  flex: 1;
+  padding: 0.75rem;
+  background: white;
+  border: 2px solid var(--uj-border);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.pace-btn:hover {
+  border-color: var(--uj-secondary);
+}
+
+.pace-btn.active {
+  background: var(--uj-primary);
+  border-color: var(--uj-primary);
+  color: white;
+}
+
+.pace-label {
+  display: block;
+  font-weight: bold;
+}
+
+.pace-effect {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Encounter Progress */
+.encounter-progress {
+  margin: 1rem 0;
+}
+
+.progress-bar {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.progress-pip {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--uj-border);
+  background: white;
+}
+
+.progress-pip.pending {
+  background: white;
+}
+
+.progress-pip.active {
+  background: var(--uj-accent);
+  border-color: var(--uj-primary);
+}
+
+.progress-pip.resolved {
+  background: var(--uj-success);
+  border-color: var(--uj-success);
+}
+
+.progress-pip.current {
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.4);
+}
+
+/* Encounter Card */
+.encounter-card {
+  background: white;
+  border: 2px solid var(--uj-border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.encounter-region {
+  margin-bottom: 0.75rem;
+}
+
+.encounter-roll-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.roll-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.roll-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.roll-btn:hover:not(:disabled) {
+  background: var(--uj-secondary);
+}
+
+.roll-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.encounter-details {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--uj-border);
+}
+
+.encounter-title {
+  margin: 0 0 0.5rem;
+  color: var(--uj-primary);
+}
+
+.encounter-description {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.encounter-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.send-btn, .resolve-btn {
+  padding: 0.4rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.send-btn {
+  background: var(--uj-secondary);
+  color: white;
+}
+
+.resolve-btn {
+  background: var(--uj-success);
+  color: white;
+}
+
+/* Role Abilities */
+.role-ability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.role-ability-card {
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.role-ability-card.used {
+  opacity: 0.5;
+}
+
+.ability-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: bold;
+  color: var(--uj-primary);
+  margin-bottom: 0.25rem;
+}
+
+.ability-text {
+  font-size: 0.75rem;
+  color: var(--uj-hint);
+  margin: 0 0 0.5rem;
+}
+
+.use-ability-btn {
+  width: 100%;
+  padding: 0.25rem;
+  background: var(--uj-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.use-ability-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Stage Footer */
+.stage-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--uj-primary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to bottom, var(--uj-success), #1a6b1a);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confirm-btn:hover:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(34, 139, 34, 0.4);
+}
+
+.confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.abandon-btn, .danger {
+  padding: 0.5rem 1rem;
+  background: var(--uj-failure);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.next-btn {
+  padding: 0.5rem 1rem;
+  background: var(--uj-secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer-hint {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--uj-hint);
+  margin: 0;
+}
+
+/* Journey End Styles */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.summary-item {
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+}
+
+.summary-item .label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--uj-hint);
+  text-transform: uppercase;
+}
+
+.summary-item .value {
+  font-weight: bold;
+  color: var(--uj-primary);
+}
+
+.arrival-result {
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  border: 2px solid var(--uj-primary);
+  border-radius: 6px;
+}
+
+.dice-result {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--uj-primary);
+}
+
+.exhaustion-saves-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.exhaustion-save-card {
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.exhaustion-save-card .actor-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.exhaustion-save-card img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--uj-border);
+}
+
+.save-result.success {
+  color: var(--uj-success);
+}
+
+.save-result.failure {
+  color: var(--uj-failure);
+}
+
+.roll-save-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.party-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.party-member-status {
+  background: white;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.member-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.member-header img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.condition {
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 2px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.condition.exhaustion {
+  background: rgba(178, 34, 34, 0.1);
+  color: var(--uj-failure);
+  border: 1px solid var(--uj-failure);
+}
+
+/* Section hints */
+.section-hint {
+  color: var(--uj-hint);
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+/* Chat Cards */
+.uncharted-journeys.chat-card {
+  padding: 0.75rem;
+  background: linear-gradient(to bottom, #f9f5eb, #f0e8d8);
+  border: 2px solid var(--uj-primary, #8b4513);
+  border-radius: 6px;
+}
+
+.uncharted-journeys.chat-card h3 {
+  margin: 0 0 0.5rem;
+  color: #8b4513;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.uncharted-journeys.chat-card .outcome-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.uncharted-journeys.chat-card .outcome-buttons button {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.uncharted-journeys.chat-card .success-btn {
+  background: rgba(34, 139, 34, 0.1);
+}
+
+.uncharted-journeys.chat-card .success-btn:hover {
+  background: rgba(34, 139, 34, 0.3);
+}
+
+.uncharted-journeys.chat-card .failure-btn {
+  background: rgba(178, 34, 34, 0.1);
+}
+
+.uncharted-journeys.chat-card .failure-btn:hover {
+  background: rgba(178, 34, 34, 0.3);
+}
+
+.uncharted-journeys.chat-card .result-success {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card .result-failure {
+  color: #b22222;
+}
+
+/* Exhaustion Chat Message */
+.uncharted-journeys-exhaustion {
+  padding: 0.75rem;
+  background: linear-gradient(to bottom, #fff5f5, #ffe8e8);
+  border: 2px solid #b22222;
+  border-radius: 6px;
+}
+
+.uncharted-journeys-exhaustion h3 {
+  margin: 0 0 0.5rem;
+  color: #b22222;
+}
+
+.uncharted-journeys-exhaustion .exhaustion-effect {
+  font-style: italic;
+  color: #666;
+}

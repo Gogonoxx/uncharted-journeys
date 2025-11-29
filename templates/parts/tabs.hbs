@@ -1,0 +1,12 @@
+<nav class="journey-tabs" data-group="primary">
+  {{#each tabs}}
+  <button type="button"
+          class="tab {{#if active}}active{{/if}} {{cssClass}} {{#unless enabled}}disabled{{/unless}}"
+          data-action="changeTab"
+          data-tab="{{id}}"
+          {{#unless enabled}}disabled{{/unless}}>
+    <i class="fas {{icon}}"></i>
+    <span>{{label}}</span>
+  </button>
+  {{/each}}
+</nav>
