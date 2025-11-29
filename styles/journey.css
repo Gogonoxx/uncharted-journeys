@@ -291,8 +291,8 @@
   --uj-accent: #daa520;
   --uj-bg: #f5f0e6;
   --uj-border: #a0522d;
-  --uj-text: #3d2914;
-  --uj-hint: #777;
+  --uj-text: #2d1f10;
+  --uj-hint: #555;
   --uj-success: #228b22;
   --uj-failure: #b22222;
   --uj-warning: #cc8400;
@@ -351,6 +351,12 @@
   padding: 1rem;
   background: var(--uj-bg);
   min-height: 500px;
+  display: none; /* Hidden by default */
+}
+
+/* Show only the active tab's content */
+.journey-stage.active {
+  display: block;
 }
 
 .stage-header {

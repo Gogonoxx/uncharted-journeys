@@ -1,4 +1,4 @@
-<section class="journey-stage stage-journey-end" data-tab="journeyEnd">
+<section class="journey-stage stage-journey-end {{#if (eq tab "journeyEnd")}}active{{/if}}" data-tab="journeyEnd">
   <header class="stage-header">
     <h2><i class="fas fa-flag-checkered"></i> Journey's End</h2>
     {{#if (eq session.outcome "arrived")}}
