@@ -23,7 +23,7 @@
       </div>
       <div class="summary-item">
         <span class="label">Distance</span>
-        <span class="value">{{lookup distances session.distance}}</span>
+        <span class="value">{{lookup (lookup distances session.distance) "name"}}</span>
       </div>
       <div class="summary-item">
         <span class="label">Encounters</span>
@@ -111,12 +111,7 @@
           <span>{{name}}</span>
         </div>
         <div class="member-conditions">
-          {{!-- Show exhaustion level if any --}}
-          {{#with (call ExhaustionManager.getExhaustionLevel this)}}
-          {{#if this}}
-          <span class="condition exhaustion">Exhaustion {{this}}</span>
-          {{/if}}
-          {{/with}}
+          <span class="condition role">{{../role}}</span>
         </div>
         {{/with}}
       </div>

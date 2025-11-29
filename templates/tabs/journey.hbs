@@ -21,9 +21,9 @@
               data-action="setPace"
               data-pace="{{@key}}"
               data-tooltip="{{description}}">
-        <i class="fas {{icon}}"></i>
-        <span class="pace-label">{{label}}</span>
-        <span class="pace-effect">{{effect}}</span>
+        <i class="fas fa-walking"></i>
+        <span class="pace-label">{{name}}</span>
+        <span class="pace-effect">{{description}}</span>
       </button>
       {{/each}}
     </div>
@@ -114,10 +114,10 @@
       {{#with (lookup ../roles role)}}
       <div class="role-ability-card {{#if ../roleAbilityUsed}}used{{/if}}">
         <div class="ability-header">
-          <i class="{{icon}}"></i>
+          <i class="fas {{icon}}"></i>
           <span>{{name}}</span>
         </div>
-        <p class="ability-text">{{ability}}</p>
+        <p class="ability-text">{{ability.description}}</p>
         <button type="button"
                 class="use-ability-btn"
                 data-action="useRoleAbility"

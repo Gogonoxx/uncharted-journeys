@@ -28,9 +28,9 @@
                 class="distance-btn {{#if (eq ../session.distance @key)}}active{{/if}}"
                 data-action="setDistance"
                 data-distance="{{@key}}"
-                data-tooltip="{{encounters}} base encounter(s)">
-          <span class="distance-label">{{label}}</span>
-          <span class="distance-days">{{days}}</span>
+                data-tooltip="{{baseEncounters}} base encounter(s)">
+          <span class="distance-label">{{name}}</span>
+          <span class="distance-days">{{miles}}</span>
         </button>
         {{/each}}
       </div>

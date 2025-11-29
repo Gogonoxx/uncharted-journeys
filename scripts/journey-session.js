@@ -22,12 +22,14 @@ class PartyMemberSchema extends SchemaField {
       preparationId: new StringField({ blank: true }),
       preparationResult: new StringField({
         choices: ['', 'pending', 'success', 'failure'],
-        initial: 'pending'
+        initial: 'pending',
+        blank: true
       }),
       roleAbilityUsed: new BooleanField({ initial: false }),
       groupCheckResult: new StringField({
         choices: ['', 'pending', 'success', 'failure'],
-        initial: 'pending'
+        initial: 'pending',
+        blank: true
       })
     }, options);
   }

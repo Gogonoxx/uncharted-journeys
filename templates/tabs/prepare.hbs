@@ -18,7 +18,7 @@
       {{#each roles}}
       <div class="role-card role-assignment" data-role="{{id}}">
         <div class="role-header">
-          <i class="{{icon}}"></i>
+          <i class="fas {{icon}}"></i>
           <h4>{{name}}</h4>
         </div>
         <div class="role-skills">
@@ -26,7 +26,7 @@
           <span class="alt-skill" data-tooltip="Alternative Skill">{{alternativeSkill}}</span>
         </div>
         <div class="role-ability">
-          <small>{{ability}}</small>
+          <small>{{ability.description}}</small>
         </div>
         <div class="role-assignment-controls">
           <select name="actor-{{id}}" class="actor-select">

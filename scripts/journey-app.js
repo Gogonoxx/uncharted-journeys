@@ -324,7 +324,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
         <div class="route-details">
           <p><strong>From:</strong> ${session.origin}</p>
           <p><strong>To:</strong> ${session.destination}</p>
-          <p><strong>Distance:</strong> ${DISTANCES[session.distance]?.label || session.distance}</p>
+          <p><strong>Distance:</strong> ${DISTANCES[session.distance]?.name || session.distance}</p>
           <p><strong>Base Encounters:</strong> ${session.baseEncounterCount}</p>
           <p><strong>Starting Difficulty:</strong> DC ${session.difficulty}</p>
         </div>
@@ -676,7 +676,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       <div class="uncharted-journeys chat-card role-ability">
         <h3><i class="${roleData.icon}"></i> ${roleData.name} Ability</h3>
         <p><strong>${actor.name}</strong> uses their ${roleData.name} ability!</p>
-        <p class="ability-description">${roleData.ability}</p>
+        <p class="ability-description">${roleData.ability.description}</p>
       </div>
     `;
 
@@ -787,7 +787,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
         <div class="summary-section">
           <h3>Route</h3>
           <p><strong>From:</strong> ${session.origin} <strong>To:</strong> ${session.destination}</p>
-          <p><strong>Distance:</strong> ${DISTANCES[session.distance]?.label || session.distance}</p>
+          <p><strong>Distance:</strong> ${DISTANCES[session.distance]?.name || session.distance}</p>
         </div>
         <div class="summary-section">
           <h3>Party</h3>
