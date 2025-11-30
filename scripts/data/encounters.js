@@ -20,6 +20,7 @@ export const REGIONS = [
   "Lands of the Fae",
   "Mountains",
   "Open Waters",
+  "Orfnir",
   "Underground",
   "War Torn Lands",
   "Wild Magic Lands"
@@ -9447,6 +9448,632 @@ export const ENCOUNTERS = {
         "roll": 10,
         "title": "skin asks the characters if they would like to see the worlds beyond",
         "description": "It stretches out the flaps of skin around its torso into an area large enough to peer through. It has lost smaller creatures within these windows before, and has never seen them again. S SPECIAL THANKS SPECIAL THANKS 6mmWar, Aaron Brown, Aaron Delisio, Aaron hamilton, Aaron Hutt, Abdullah Ismail Abul-Qasim, Adam Barnes, Adam Goss, Adam Kraman, Adam Przybylinski, Adam Sallean, Adam Zoch, Adrian Money, Adrian Pedersen, afharrold, Agent_Wildcat, AGleim, aikar, Akira Magamo, Al Bartlett, Alan Flood, Albert Luciano, Alec McMillan, Alejandro, Alen Maglajac, Alex Dixon, Alex Gurdian, Alex Harr, Alex Parker, Alex Ries, Alex Shields, Alexander deMorris, Alexander Helliwell-Smith, Alexander Wurm, Alirion, Alistair Warmington, All Rolled Up, Allacer, Allen Edger, Allison Godere, Alterangel, Amanda, Amanda Bamford, Anders, Andre Ball, Andrea Barajas, Andrea Chandler, AndreaFornasiero, andrew, Andrew Bevan, Andrew Cowie, Andrew Dempz, Andrew G. Smith, Andrew Goodson, Andrew Haver, Andrew Hintz (Adotlin), Andrew J Black, Andrew Johnston, Andrew McDowell, Andrew Moore, Andrew Pecoraro, Andrew Robertson, Andrew S., Andrew Schmieg, Andrew Sklar, Andrew Springer, Andrew Steele, Andrey Olifirenko, Andy, Andy Fagant, Andy Gullikson, Andy Ramos, Andy51, Anne Skinner, Anne-Lise Fosse, Antithet, Antlers6109, Antoine, Anton Jigblad, Antonius Schulze- Besseling, ArgentWintyr, Armen, Arthur, Arthur Braune, Arthur Ford, Ash Christians, Ash M., Ashley Ludlum, Ashley Williams ッ, Ashton Lackas, Auke Slotegraaf, Ayleron, Bada, Barrie D, ben, Ben Ferguson, Ben Peters, Benjamin Koch, Benjamin L. Eastman, Benjamin Rial, Benjamin Saxton-Ruiz, Benjamin Staples, Bettina Kelley, Big Man Murph, Bill Beacham, Bill Lewis, Bill Patino, Bill Vandervoort, Billy Mickelson, billyBellems, Bjørn Benjaminsen, Bob Foster, Bob Mosdal, Bone on Bone, Bookery Games, BoomTown, Bouflet, Brad Elledge, Bradly Dawson, Bramwell AH Crocker, Brandon Bultinck, Brandon Cassady, Brandon Cheney, Brandon Patrik, Brandon Pineda, Brandon Wright, Brayden, Breland Scott, Brendan Neill, Brent Swapp, Bret Smilyk, Brett Granger, Brian, Brian, Brian Bautista, Brian Creek, Brian Frisco, Brian Koonce, Brian Maher, Brian Murphy, Brian Roessler, Brian Seligman, Brian Tanner, Brianna, Brianna Chew, Brice_T, Brodie Gray, Bruce Strang, Bryan Pravel, Buddha Weatherby, burttd2010, Business of life, CALLET Timothée, Callum Sewell, Calvinsmurf, Caribet, Carl, Carlos Colon, Carson Brooks, Carter Brent, Cássio Padilha Rubert, Chad Kirkendall, Chad Stevens, Charles, Charles Butler, Charles Dierker, Charles Paradis, Charles Yudson, Charlie Duff, Charlie Heckman, Charlie Le Vine, Charlotte Hamilton, Chase, Chris, Chris, Chris, Chris Boscott, Chris Detlef, Chris H, Chris Moore, Chris Sanders, Chris Swanson, Chris Sweat, Chris Walker- Bush, Chris Weston, Christian, Christian Brandon, Christian Fisher, Christian Stiehl, Christian Torstensson, Christoffer Carlsson, Christopher, Christopher, Christopher Cureton, Christopher Feola, Christopher Kennedy, Christopher Lee, Christopher McDowell, Christopher N., Christopher Reeves, Christos, ChuckB, Cian O'Neill, clayton rhoden, Clifford Kamppari-Miller, Codex Universalis, Cody Nill, Colin Lindgren, Colin Wyers, ColinJ, Connie, Connor Hutcheson, Conor Byrne, Conor Falconer, Corey Close, Cormac, Cory Dodds, Covey Hunter, Crabus, Craig Lilie-Fisher, Craig Myles, Creed, Crixell Matthews, Cromulent P. Embiggens, CrowWithNoMouth, Crysania Dante, CT Riggs, Curtis Lithgow, Cybershaman, D S, Dae, DALE DAVIS, Dalton Long, Damian Adams, Dan, Dan Belt, Dan Thomassen, Dan Weiss, Dana Gibson, Dane Shiner, Daniel Boyd, Daniel Clarke, Daniel Ellison, Daniel Galron, Daniel Gregory, Daniel Marjoram, Daniel Mooneyham, Daniel Penz, Daniel Perrone, Daniel Sloppy, danny, Darcy Austin, Darryl, Darthvegeta800, Dave Brush, Dave Sizer, Dave Weinstein, Dave Younce, David Cowan, David Dolton, David Johnson, David King, David Peters, David Plaskett, David Radmore, David Sharp, David Smith, David Stanley, David Stephenson, David Tavakoli, David Williamson, Daytona, Dean Siemsen, dendarii, Dennis Brännvall, Derek Abrassart-White, Derek Carnell, Didor, Diederik Dolf, Diego Visintin, Dirk Foster, Dirk Obenauer, Divine Insect, Dominic Guido, Dominic McDowall, Dominique C. Declerck, Donovan, Dork117, Doug Hulsether, doumoku, Dr Ether, DraknarsSon, Drouot Maxime, Dustin Samuel Arritt, Dylan, Dylan, Dylan McMahon, Dzekap, edosan, Edrick Chow, Eduardo, Edwin Pietrowski, Edwin Robertson, Ein_Gunnhildarsson, Elemental Rug, Eli Nyght, Elizabeth, Elliot copping, Elliott Balding, Emma Hall, Emmet, EnochSeven, Erasmus, eric, Eric Pickney, Eric Rupert, Eric Zylstra, Erik Gossage, Erik Laudal Christensen, Erik Saltwell, Erin Wendland, Eris, Ethan Hale, Euan Niall Cowie, Eugene, Evan, Everett, Fabio, Fabio Mano, Fabrice Gatille, Faelyn Curtis, Fallout78, Felipe Bovolon, Felix Morscheck, Fenella Honey, Fernando, Figment of Your Imagination, Fleabane, flyingshovel, Forecaster, Fran C, François Charbonneau, Frank Schirmer, Freawin, Fred Savadge, Frenchy, Gabriel Casillas, Games and Stuff, Gaming Spiders, Gappa 5604, Gareth Phillips, garrett moynihan, Gaston Phillips, GavinRuneblade, Gene D., Geoff, Geoff Hill, Geoffrey DeWitt, George Johnson, George Queen, Gerard, Gerardo Medina, Gianni Di Biase, Gio Ghigliazza, Gion Ferrell, Giulia Pellegrino, Giuseppe, Giuseppe Sirianni, GMRPG, GoblinsInSwamps, GornSpelljammer, GreatCthulhu, Greg Atkinson, Greg Schumacher, Guardsmith, Guerin Payne, Guy Elliott, Guy Milner, GuybrushPH, Haci Ibrahim Tanirgan, Haden_Danger_Collins, Hal Eccles, Hannah Lee, HarmonicShield, Harold, Harry Jones, Harry Meier, Harry Watkins, Herman Duyker, Hitoshi Nagata, Hobby Town, Horselover Fat, huntersimuav, Huscarle, i0m, Idaho121, Ignacio Córdoba, Ilmari Korpi, Insanator, iRtheCreeper, Ismael Alvarez, Ismail, ItoSora, Ivan Dowding-Hopkins, J Gogarty, J.M., J.P. Wallace, Jack, Jack, Jack Ball, Jackson Kuhl, JackWinter, Jacob, jadeite, Jaime Robbins, Jake Chappelle, Jakub, James Arnold, james braswell, James Bullock, James Cox, James DiBenedetto, James Gonzales, james henry, James Holden, James Isaac Solus, James Kew, James Knevitt, James Lawson, James Marchant, James Monaghan, James Simmerer, James Taplin, James Wayne, James Yonemura, jamie, Jamie Wheeler, Jan Føns Jørgensen, JanM, Japhet Palencia, Jared Manninen, Jared Muise, Jared Strickland, Jarred Bruggeman, Jason, Jason, Jason Alexander, Jason Childs, Jason Conlon, Jason Cummings, Jason Gabel, Jason Miller, Jason Moscatello, Jason Osorio, Jason Quistorff, Jason Zowin, Jaxvor, Jay Peringer, Jay Peters, jbowtie, Jeff Robinson, Jeff Swanson, Jeffrey Messina, Jennifer, Jennifer Crispin, Jens Kristian Larsen, Jeremiah Buttrum, Jeremy, Jeremy Hochhalter, Jeremy Hunt, Jeremy Kear, Jeremy Pinske, Jeroen Vandersteen, jerrjarod, Jerry Autieri, Jessica Picard, Jez, Jim D'Alessio, Jim Selzer, Jim Tyler, Jochen Bünnagel, Joe, Joe Bain, Joe Crow, Joe Dineen, Joe Kushner, Joel Short, Joey Fairey, John, John, John Aumiller, John Bailey, John Bookwalter Jr., John Boullion, John Carney, John D. Cornelius, John G, John Gardiner, John Garlick, John Hagglund, John Halbert, John Hardey, John Merle Holes, John P Payton Jr, John Paul Nichols, John S., John Tolleson, John Weigand, John-Carl Kullmann, Jon Curtis, Jon Stevens, Jonathan Butil, Jonathan Chiaravalle, Jonathan Munoz, SPECIAL THANKS S Jonathan Schafer, Jonathan Watson, Jonathan West, Jonny Noc, Jordan, Jordan Batalden, Jordan Rowe, Jordanne Ryan, Jörg Peters, Jorge Carrero, Jörgen Björk, Jose Lucas, Jose Perez, Joseph Collins, Joseph Edge, Joseph Guzman, Joseph Hundley, Joseph Marion, Joseph Provenzano, Joseph Sammons, Josh Ball, Josh Garvais, Joshua, Joshua Balog, Joshua Black, Joshua Day, Joshua Freeland, Joshua Karas, Joshua Ward, Joshua Wolf, Jouni Purhonen, Juliet Choy, Justin Offermann, Kaan Raif, Kaesar Blanco, Kaleb Kramer, Kamish Bhai, Kamoria, Kanaris, Karl, Karl David Brown, Karl Tyrant Seabear Wiseman, Kate Donnelly, Kate McNamara, Katherine Rue Bollinger, Katheryn, Katrina Grosskopf, Kayla, Kayoot, Keir Gardner, Keith Foyston, Kek, Keldyn Majere, Kelsey, Ken Nishimura, Kenneth Hummel, KensmenFinn, Kent Taylor, Kerry Steers, Kethra Shadowborne, Kevin, Kevin Holbeche, Kevin Casault, Kevin Feeman, Kevin jeffs, Kevin Leintz, Kevin Morrell, Kevin OBrien, Kevin Pagliarini, Kevin Romero, kevin, kikai, Kirby Moyers, Kirk Reed, Klo Utley, KobyB4303, Koen Raymaekers, Konnery Hansen, Korey Mortlock, Kortney Trevino, KorvusRock, Kraig Kahl, Kris Hartbauer, Kristen Anastos, Kristian Nielsen, Krow, Krusk, Kyle Gagnon, Lachlan Middleditch, Lakshman, Lance A, Landon Jamieson, Larry, Laura Cahill, Laura Scott, Laura-Ann Hughes, Lee, Leo Beavitt, Liam, Liam Conneely, Liam DiPilla, Liam DiPilla, Lloyd Dual, Longspeak, Loren Small, Lou Anders, Lukas, Luke, Luke Thornburg, Lyciana, Lyndon Baugh, M T, M. McMahon, M. Trout, Maczek, Mad, Madcap Magician, Madcat Angrymog, MagnusLL, mamba, Maniac Mansion, Marc Mitchell, Marc Schneider-Enterlein, Marco Palermo, Marco Placidi, Marco Stricker, Marcus McClain, Marcus Shepherd, Mario, Mario Gauthier, Mark, Mark, mark bacon, Mark Burton, Mark Kernow, Mark Penna, Mark Peyton, Mark Poles, Mark S, Mark Shocklee, Marshall Watson, Martin Seltmann, Martin Six, Martin Stenmarck, Mathieu Loisel, Matt Dean, Matt Frigault, Matt Good, Matt Y, Matthew Arnot, Matthew Buckley, Matthew E Kaiser, Matthew Gibbs, Matthew Hides, Matthew Lambert, Matthew Luellen, Matthew Watkinson, Matthias De Wit, Matthieu Triay, Matti Leinonen, Maverick, Maximiliano Martinez, mbexploring, Megan, Meidrym Hebda, Meldince, Micah Mackintosh, Michael, Michael, Michael Alfieri, Michael Boschet, Jr, Michael Boulton, Michael Brown, Michael Burns, Michael C. Hawk, Michael Costa, Michael Davenport, Michael Edmonds, Michael Felton, Michael G. Palmer, Michael Gionfriddo, Michael Gusta, Michael Hansen, Michael J Winegar, Michael Link, Michael Longsworth, Michael M, michael medwid, Michael Moe, Michael Northcraft, Michael Paulini, Michael Polster, Michael Q Anderson, Michael Richards, Michael S. Wallack, Michael Schilingno, Michael Shannon, MICHEL, Mike Cosgrave, Mike Cullen, Mike Davis, Mike Field, Mike Whitaker, Mikey, Mikko Kauppinen, Miquel Hutton, Miranda Drake, Mitch, Mitchell Freeman, Morfedel, MoroArt, MrCynical, MrHelios, MrShish101, mseebach, Muaddib195, Nadyne Kemister, Narset, Natasha Ence, Nate Campbell, Nate Capra, nathan cornall, Nathan Exley, Nathan Olgren, Nathaniel Guenther, ncwilliams, Neal Dalton, Nefal, neil crampin, Nemeanlion, Nemiri Mi, Nereviar, Ng Wai Chung, Niall Galloway, Nicholas Labine, Nick, Nick, Nick pater, Nickali Dzurka, Nicola, Nicola Casadei, Nicola ni Bhroin, Nicola Ricottone, Nicolas, Night_ Hunter023, No Name, Noah Geib, Noah Kriner, Nobody68, Nolan, Oberon D'Argo, Obsidianherz, OctanicSea, Oli Clarke, Olivier Boudreault, Olna Jenn Smith, Osmo Korhonen, Otto von German, Owlglass, Pamela Eaton, PappaGummyBear, Paralyz, Pat Martin, Patrick, Patrick Flood III, Patrick Gärtner, Patrick Healey, Patrick Keirns, Patrick M. Demo Jr., Patrick P., Paul, paul, Paul christie, Paul Cowin, Paul Munson, Paul Newnham, Paul Quarles, Paul Ryan, Paul Schifferer, PC, PDeMars, Pedro Ecija Serrano, Pegana, Petek Gregor, Peter Bates, Peter Crowder, Peter Duke, Peter Gornick, Peter Marsh, Peter Rutgers, Petru-Daniel Tudosiu, Peyton Monroe, pgotsis, Phil Beckwith, Phil Stepp, Philip Summersby, Philippe Lemieux, Phillip, Phillip Bailey, Phillip Bush, Phillip Cunliffe, Phillip McGregor, Pierre-Luc Marsan, Pops Deckard, Proteusz, pukunui81, Quinn Parrott, Quinn Zahasky, Quintus, Quire, R. Carey, R2ShihTzu, Rachel Maher, Raece Young, Raf Bressel, Rafael Vargas, Ralph bennett, Ralph Holland, RamsesX2, Randall Hurlburt, Randall Wright, Randy Smith, Ratchit_unicorn, Raulwicke Legendsinger, Raven, Ray Chapel, Ray RAY, razamataz, Realm Master K, Reece, Reid Sewell, Reinik, Rexx, Rey Tamayo, Reymundo Antonio Juco, Rhuby Elizabeth, Rhugaroux, Rhys Hood, Ricardo Fuente, Ricardo Martinez, Rich Allen, Richard A. Glass, Richard Ashton, Richard Geo Sang Lee, Richard Gonzales, Richard Jones, Richard Knott, Richard Krizo, Richard Morley, Richard Worley, Rick Darkman, Rick LaRue, Riemumieli, Rigatoni, Riley Gibbs, Rmacary, Rob H., Rob Stephens, Robert, Robert, Robert Barbour, Robert Estell, Robert Hirst, Robert Huss, Robert Jameson, Robert McNeal, Robert Muhlig, Robert van Wijk, Robin Roberts, Robin Steinmann, Rocky Schmitz, RogueStarter, Rohan Mitchell, Roland Bahr, Roman Kuzyk, Roosevelt Cooper, Rose, Roshan Vaidhyaraj, Roy Pilger, Roy Volcanoes, RS, Russell Hoyle, Ryan, Ryan, Ryan Comeau, Ryan Green, Ryan Mason, Ryan Mcinnes-Beadle, Ryan Whitcomb, ryansmith3d, Sagaisgood, Salvador Martinez, Sam Loveland, Samantha Hallas, Samii, Sanne Wollin, Sarah Byrne, Sarah JL, Sawamura Freecs Kob, Scotia Baker, Scott, scott, Scott Danger Kelly, Scott Mathis, Scott Payne, Sean Barry, Sean Brady, Sean Brannigan, Sean Donnelly, Sean Frackowiak, Sean Holland, Sean Metz, Sean Nicol, Seb, Sebastian, Sébastien Chartrand, Sergio Sampaoli, Seth Ero, SFG_ Mat, Shaenon Langeneckert, Shane Eyler, Shane H., Shane Stewart, shannon troester, Shannon Wanner, Shaun Russell, Shawn Hennessy, Shawn Hudson, Shawn P, Shelby White, Shyloh Wideman, Simon, simon, simon olthof, sirjonsnow, Skylar Husske, Skyler Carman, Sleazebaggins, Sn00ze, Snarkayde (Philip), SOckendon, Solveig, Spacekaze, spacemansteve, Spencer Coffey, Spencer S., Stefan B, Stefan Stacey, Stéphane Racz, Stephanie Nesbit, Stéphanie Silvano-Tellas, Stephen, Stephen Bulla, Stephen Diamond, stephen glew, Stephen Hardy, Stephen Schiber, Stephen SIsk, Sterling, Steve Berry, Steve Huggins, Steve Long, Steve Snow, Steven A Holomshek, Steven G., Steven Klassen, steveon, stewart burwood, Stewart Watson, StrayDM, stuart, Styzem, Sujith Achuthan, SuperDéfi, Suzanne van den Boogaard, symatt, Synton, T Devon Sharkey, T. Monk, Taiga Brenerman, Takashi Sato, Tangami, Taryn, TCAustin, Tebo, Temrio, Thalji, The Creative Fund by BackerKit, The13Inquisitor, Theo Traumato, Thlaylie, Thomas, Thomas Fitch, Thomas Hock, Thomas Jordan, Thomas Krømke, Thomas M, Thomas Milazzo, Thomas N Gilliland, Thomas T Adkins, Thomas Wright, Tim, Tim, Tim Cox, Tim Daigle, Tim P, Tim Prior, Timipher Christithy Whittlemore, Timothy Cook, Timothy Ferrell, Timothy Janick, Timothy Lowe, Toby Cox, Todd A., Todd Patrick, Tom Tolios, Tomasz, Tommy Brownell, TONIC, Tony, Tony Treleaven, Traitor25, Travis Johnsen, Travis O, Travis S, Trent, Trent Redfield, Trent Revis, Trevor Hart, Tristan Johnson, Troy Schnierer, Troy Wells, Trym Meland Johannessen, Tuft, Tuomas Lempiäinen, Tyler J Brown, Tyler Martinez, Tyler Russell, Uland Grawe, Ulfvan, Valerie Treleaven, Valkenvr, Victor Gonzalez, Vidir Gudmundsson, Víkingur Brynjar, Virgil Légaré, Vis, Vivian Jansen, Vlorisz, W. J. Nash, Wade Gerald Sullivan, Waitiki, Walter Brediger III, Walter Dirix, Walter Landry, Walter Odell III, Wes Robinson, Weston Schreiber, Whhooah, Will, Will King, William, William Allchin, William Boxx, William F Kelly, William Feild III, William Murakami-Brundage, William T Carmichael, Wrathamon, Wshattuck, wurgy, Xacur, Xander Bennett, Y. K. Lee, Yan Reydman, Younes Boulghassoul, YU Long, Yves Larochelle, Zach Hitzeroth, Zeta, Zhul hoLd onTo YoUr ToP haTs, vicToriana for 5Th ediTion coming soon! Find out more at www.cubicle7games.com © 2023 Cubicle 7 Entertainment Ltd. The weave of magic is broken and the gods are dead. The weave of magic is broken. The gods are dead, the lands are shattered, and the world has begun to forget what it once was. Time and distance have lost their meaning, and the knowledge of how things once were crumbles like ash. Those who remain struggle to survive in a shattered world ruled by Decay, which eats at memory and warps people into monsters and monsters into nightmares. But all is not lost. Hope survives despite the odds. Community, love, and trust in one another can remake the world. Walking the old forgotten paths gives them permanence, fractured artefacts from before spark memories of what once was, and communities gather to create a new way of life. Broken Weave is a tragic fantasy setting, where hope and community are the only path to creating something new. Find out more at www.cubicle7games.com © 2023 Cubicle 7 Entertainment Ltd. OPEN GAME LICENSE Version 1.0a 6. Notice of License Copyright: You must update the COPYRIGHT The following text is the property of Wizards of the Coast, Inc. and NOTICE portion of this License to include the exact text of the is Copyright 2000 Wizards of the Coast, Inc (“Wizards”). All Rights COPYRIGHT NOTICE of any Open Game Content You are Reserved. copying, modifying or distributing, and You must add the title, the copyright date, and the copyright holder’s name to the COPYRIGHT 1. Definitions: (a)”Contributors” means the copyright and/or NOTICE of any original Open Game Content you Distribute. trademark owners who have contributed Open Game Content; (b)”Derivative Material” means copyrighted material including 7. Use of Product Identity: You agree not to Use any Product derivative works and translations (including into other computer Identity, including as an indication as to compatibility, except as languages), potation, modification, correction, addition, extension, expressly licensed in another, independent Agreement with the upgrade, improvement, compilation, abridgment or other form in owner of each element of that Product Identity. You agree not to which an existing work may be recast, transformed or adapted; (c) indicate compatibility or co-adaptability with any Trademark or “Distribute” means to reproduce, license, rent, lease, sell, broadcast, Registered Trademark in conjunction with a work containing publicly display, transmit or otherwise distribute;(d)”Open Game Open Game Content except as expressly licensed in another, Content” means the game mechanic and includes the methods, independent Agreement with the owner of such Trademark or procedures, processes and routines to the extent such content does Registered Trademark. The use of any Product Identity in Open not embody the Product Identity and is an enhancement over the Game Contentdoes not constitute a challenge to the ownership of prior art and any additional content clearly identified as Open Game that Product Identity. The owner of any Product Identity used in Content by the Contributor, and means any work covered by this Open Game Content shall retain all rights, title and interest in and License, including translations and derivative works under copyright to that Product Identity. law, but specifically excludes Product Identity. (e) “Product Identity” 8. Identification: If you distribute Open Game Content You must means product and product line names, logos and identifying clearly indicate which portions of the work that you are distributing marks including trade dress; artifacts; creatures characters; stories, are Open Game Content. storylines, plots, thematic elements, dialogue, incidents, language, artwork, symbols, designs, depictions, likenesses, formats, poses, 9. Updating the License: Wizards or its designated Agents may concepts, themes and graphic, photographic and other visual or publish updated versions of this License. You may use any audio representations; names and descriptions of characters, spells, authorized version of this License to copy, modify and distribute enchantments, personalities, teams, personas, likenesses and special any Open Game Content originally distributed under any version abilities; places, locations, environments, creatures, equipment, of this License. magical or supernatural abilities or effects, logos, symbols, or 10. Copy of this License: You MUST include a copy of this License graphic designs; and any other trademark or registered trademark with every copy of the Open Game Content You Distribute. clearly identified as Product identity by the owner of the Product Identity, and which specifically excludes the Open Game Content; 11. Use of Contributor Credits: You may not market or advertise the (f) “Trademark” means the logos, names, mark, sign, motto, designs Open Game Content using the name of any Contributor unless You that are used by a Contributor to identify itself or its products or the have written permission from the Contributor to do so. associated products contributed to the Open Game License by the 12. Inability to Comply: If it is impossible for You to comply with Contributor (g) “Use”, “Used” or “Using” means to use, Distribute, any of the terms of this License with respect to some or all of the copy, edit, format, modify, translate and otherwise create Derivative Open Game Content due to statute, judicial order, or governmental Material of Open Game Content. (h) “You” or “Your” means the regulation then You may not Use any Open Game Material so affected. licensee in terms of this agreement. Not for resale. Permission granted to print or photocopy this document for personal use only. 13. Termination: This License will terminate automatically if You System Reference Document 5.0 fail to comply with all terms herein and fail to cure such breach within 30 days of becoming aware of the breach. All sublicenses 2. The License: This License applies to any Open Game Content that shall survive the termination of this License. contains a notice indicating that the Open Game Content may only be Used under and in terms of this License. You must affix such a 14. Reformation: If any provision of this License is held to be notice to any Open Game Content that you Use. No terms may be unenforceable, such provision shall be reformed only to the extent added to or subtracted from this License except as described by the necessary to make it enforceable. License itself. No other terms or conditions may be applied to any 15. COPYRIGHT NOTICE Open Game Content distributed using this License. Open Game License v 1.0a Copyright 2000, Wizards of the Coast, Inc. 3. Offer and Acceptance: By Using the Open Game Content You indicate Your acceptance of the terms of this License. System Reference Document 5.1 Copyright 2016, Wizards of the Coast, Inc.; Authors Mike Mearls, Jeremy Crawford, Chris Perkins, 4. Grant and Consideration: In consideration for agreeing to use Rodney Thompson, Peter Lee, James Wyatt, Robert J. Schwalb, this License, the Contributors grant You a perpetual, worldwide, Bruce R. Cordell, Chris Sims, and Steve Townshend, based on royalty-free, nonexclusive license with the exact terms of this original material by E. Gary Gygax and Dave Arneson. License to Use, the Open Game Content. Uncharted Journeys, Copyright 2023, Cubicle 7 Entertainment 5. Representation of Authority to Contribute: If You are contributing Ltd; Authors: Emmet Byrne, Alex Cahill, Dominic McDowall, Josh original material as Open Game Content, You represent that Your Corcoran, Cody Faulk Contributions are Your original creation and/or You have sufficient rights to grant the rights conveyed by this License. END OF LICENSE"
+      }
+    ]
+  },
+  "Orfnir": {
+    "A Chance Meeting": [
+      {
+        "roll": 1,
+        "title": "Der Zurückgelassene",
+        "description": "Ein verwundeter Mensch in silberner Rüstung mit dem Wappen einer gebrochenen Kette lehnt an einem Felsen. Ser Aldric, ein Ritter der 13. Order, wurde von seinen Kameraden zurückgelassen, nachdem er sich bei der Erkundung einer Elfenruine das Bein brach. Er ist verbittert über Kaelor Dämmerstahls Fanatismus und teilt bereitwillig Informationen über den Standort der nächsten Ruine - gegen medizinische Hilfe und das Versprechen, niemandem von seiner Schwäche zu erzählen."
+      },
+      {
+        "roll": 2,
+        "title": "Der Informationshändler",
+        "description": "Ein freundlicher Dunkelelf mit einem überladenen Packpferd grüßt die Gruppe mit einem Lächeln, das seine Reißzähne zeigt. Er stellt sich als Vaelorn vor und bietet exotische Waren zu erstaunlich fairen Preisen an. Beiläufig erwähnt er, dass er 'Informationen ebenso wie Waren' handelt. Er zahlt gut für Gerüchte über Elfenruinen, seltsame Artefakte oder die Bewegungen der 13. Order - und verkauft ebenso bereitwillig Geheimnisse."
+      },
+      {
+        "roll": 3,
+        "title": "Die Erdensängerin",
+        "description": "Eine in Leder und Staub gekleidete Frau sitzt reglos am Wegesrand, tiefe, vibrierende Töne summend. Fossile Relikte hängen an ihrem Gürtel. Sie ist eine Wurmsängerin auf Pilgerreise zur Pfahlwacht und öffnet die Augen, als die Gruppe naht. 'Die Erde ist unruhig', warnt sie. 'Die Alten unter dem Stein spüren das Erwachen der Metallwesen. Meidet die Ruinen der Spitzohren, wenn euch euer Leben lieb ist.'"
+      },
+      {
+        "roll": 4,
+        "title": "Der Konstrukt-Überlebende",
+        "description": "Ein zitternder Elf mit zerrissener Kleidung und leeren Augen stolpert durch das Gras. Er war Teil einer Expedition, die eine nyssilionische Ruine erforschte - bis die Konstrukte erwachten. Er ist der einzige Überlebende und murmelt immer wieder: 'Sie erkennen uns nicht mehr. Wir sind nicht mehr ihre Meister.' Er trägt einen goldenen Ring an einer Kette, den er krampfhaft festhält."
+      },
+      {
+        "roll": 5,
+        "title": "Die Wanderheilerin",
+        "description": "Eine Wächterin der Steppe reitet auf einem Wurzelross durch das Grasland, Kräuterbündel an ihrem Sattel. Sie bietet an, Verwundete zu behandeln, und fragt nach Neuigkeiten von den Clans. Bei Erwähnung der Minotauren verdüstert sich ihr Gesicht. 'Die Bluttrinker sind zurück', sagt sie. 'Und diesmal haben sie Hilfe aus Orten, von denen kein sterbliches Wesen sprechen sollte.'"
+      },
+      {
+        "roll": 6,
+        "title": "Der Runenbestien-Bote",
+        "description": "Ein massiver Ork mit glühenden Runennarben im Gesicht blockiert den Weg. Er trägt eine Botschaft der Runenbestien an die Pfahlwacht: Der Clan fordert ein Konklave aller fünf Khans. 'Etwas Altes erwacht', knurrt er. 'Und die Metallwesen sind nur der Anfang.' Er ist bereit, die Gruppe zu begleiten - gegen das Versprechen, seine Botschaft zu überbringen."
+      },
+      {
+        "roll": 7,
+        "title": "Die Dunstreiter-Patrouille",
+        "description": "Drei Gestalten in wallender, transluzenter Kleidung materialisieren aus dem Nebel. Die Dunstreiter beobachten die Grenzen ihrer Nebelpfade und sind misstrauisch gegenüber Fremden. Ihr Anführer, ein Elf mit gläsernen Flügeltattoos, fragt nach dem Ziel der Gruppe. Bei ehrlicher Antwort könnten sie einen sicheren Weg durch das Nebeltal anbieten - gegen einen 'kleinen Gefallen'."
+      },
+      {
+        "roll": 8,
+        "title": "Der Aasfresser-Händler",
+        "description": "Ein Mann in Lumpen und Knochenmasken-Fragment bietet seltsame Waren an: Blindgräber-Knochenstaub, getrocknete Wurmzungen, und 'Erinnerungsperlen' aus den Tiefen. Er ist ein Aasfresser-Händler, der zwischen den Clans reist. Seine Preise sind fair, aber er akzeptiert nur Tauschgeschäfte - Gold interessiert ihn nicht, aber Geschichten über den Tod sehr."
+      },
+      {
+        "roll": 9,
+        "title": "Der Flüchtling aus Hornwacht",
+        "description": "Eine Familie auf einem überfüllten Karren flieht vor der Ostfront. Der Vater berichtet von Minotauren mit glühenden Augen, die Dorf um Dorf niederbrennen. 'Sie nehmen keine Gefangenen mehr', flüstert er. 'Früher haben sie geplündert. Jetzt... jetzt opfern sie.' Er bittet um Eskorte zur Pfahlwacht und bietet als Bezahlung einen alten Familienring an - mit elfischen Runen."
+      },
+      {
+        "roll": 10,
+        "title": "Tikkar-7",
+        "description": "Ein kleines Konstrukt, nicht größer als ein Kind, steht verloren in der Steppe. Es nennt sich 'Tikkar-7' und scheint verwirrt. Anders als die feindlichen Konstrukte ist es höflich, sogar bemüht. Es sucht seinen 'Meister' - einen Elfen, der seit Jahrhunderten tot ist. Tikkar-7 könnte ein wertvoller Verbündeter sein, wenn die Gruppe ihm hilft, seinen Zweck zu verstehen."
+      }
+    ],
+    "Hidden Reserves": [
+      {
+        "roll": 1,
+        "title": "Das verlassene Ordenslager",
+        "description": "Zwischen zwei Hügeln stoßen die Reisenden auf ein hastig verlassenes Lager. Silberne Zeltheringe mit dem Wappen der 13. Order stecken noch im Boden, daneben verstreute Vorräte: Proviant, Seile, Fackeln. Blutflecken führen in Richtung einer nahen Felsformation. Ein Intelligenz (Nachforschungen) Wurf enthüllt zerknitterte Notizen mit Skizzen elfischer Runen und dem Vermerk 'Reliktwaffe - Standort bestätigt'."
+      },
+      {
+        "roll": 2,
+        "title": "Die Uhrwerk-Werkstatt",
+        "description": "Eine halb eingestürzte Höhle entpuppt sich als uralte Werkstatt. Verstaubte Werkbänke sind übersät mit Zahnrädern, Kristallen und Metallplatten in Elfenschrift. Einige Komponenten sind noch funktionsfähig und wertvoll. Ein Weisheit (Wahrnehmung) Wurf enthüllt jedoch, dass eine der 'Statuen' an der Wand noch intakt ist - und ihr kristallenes Auge schwach pulsiert."
+      },
+      {
+        "roll": 3,
+        "title": "Der Knochenhort",
+        "description": "Ein kreisförmig angeordneter Haufen gewaltiger Knochen - Überreste eines Blindgräbers - liegt zwischen Felsbrocken verborgen. Zeichen des Aasfresser-Clans markieren den Ort als Vorratslager. Getrocknetes Fleisch, Knochenamulette und Wurmsänger-Kräuter sind hier versteckt. Die Aasfresser teilen ungern, aber ein Charisma (Überzeugen) Wurf oder ein wertvolles Gegenangebot könnte ihre Erlaubnis gewinnen."
+      },
+      {
+        "roll": 4,
+        "title": "Das Minotauren-Massengrab",
+        "description": "Ein flacher Hügel entpuppt sich als Massengrab. Dutzende Minotauren-Skelette, alt und verwittert, liegen übereinander. Dies war eine Schlacht vor Generationen - die Clans gegen die erste Invasion. Zwischen den Knochen finden sich noch brauchbare Waffen, rostig aber solide. Ein Weisheit (Geschichte) Wurf enthüllt ein intaktes Kriegshorn, das 'Ghorvaks Fluch' genannt wird."
+      },
+      {
+        "roll": 5,
+        "title": "Der Breagan Dartis Unterschlupf",
+        "description": "Ein unscheinbarer Felsspalt führt zu einer versteckten Höhle. Drinnen: Stapel von Karten, Vorräten, und verschlüsselten Nachrichten. Dies ist ein Breagan Dartis Unterschlupf, aktuell verlassen. Ein Intelligenz (Nachforschungen) Wurf entschlüsselt Teile der Nachrichten - sie handeln von 'fünf Scheiben', einem 'verschlossenen Tor', und einem 'Echsenpriester, der seit Äonen wartet'."
+      },
+      {
+        "roll": 6,
+        "title": "Die Nebelpfad-Kreuzung",
+        "description": "An einer Stelle, wo sich vier Pfade treffen, hängt dichter Nebel in der Luft - selbst bei klarem Wetter. Die Dunstreiter nutzen solche Orte als Wegpunkte. Versteckt im Nebel finden sich Vorräte für Reisende: Wasser, Trockenobst, und eine Karte der nächsten Nebelpfade. Jemand hat eine Warnung hinzugefügt: 'Die Metallwesen können den Nebel durchsehen.'"
+      },
+      {
+        "roll": 7,
+        "title": "Das Runenbiest-Opferlager",
+        "description": "Ein Kreis aus eingeschlagenen Speeren umgibt einen Altar aus rohem Stein. Hier bringen die Runenbestien Opfer dar, bevor sie in den Kampf ziehen. Der Altar ist verlassen, aber nicht leer: Waffen, Runenamulette, und ein Fass mit der 'Fleischwandlungs-Salbe' warten auf Krieger, die nie zurückkehrten. Die Salbe ist mächtig, aber gefährlich - sie verwandelt den Anwender langsam."
+      },
+      {
+        "roll": 8,
+        "title": "Der eingestürzte Windturm",
+        "description": "Die Überreste eines nyssilionischen Windturms liegen verstreut über einen Hügel. Unter den Trümmern finden sich erstaunlich gut erhaltene Artefakte: Kommunikationskristalle, elfische Roben, und ein noch funktionierender Runenstab. Allerdings summt der Stab leise - und in der Ferne antwortet etwas auf seine Frequenz."
+      },
+      {
+        "roll": 9,
+        "title": "Die Händlerkarawane",
+        "description": "Drei zerstörte Wagen liegen am Wegrand - Opfer eines Minotauren-Überfalls. Die Händler sind tot, aber ihre Waren sind größtenteils intakt: Stoffe, Gewürze, Werkzeuge, und eine verschlossene Truhe. Die Truhe enthält Dokumente für Breagan Dartis - Lieferscheine für 'arkane Komponenten' an einen Kunden in Hornwacht. Der Kunde ist Arkalem Greet."
+      },
+      {
+        "roll": 10,
+        "title": "Das Wurmsänger-Heiligtum",
+        "description": "Ein Loch im Boden führt in eine natürliche Höhle, deren Wände mit fossilen Spiralen bedeckt sind. Dies ist ein Wurmsänger-Heiligtum, wo sie mit den Blindgräbern kommunizieren. Opfergaben liegen um einen zentralen Stein: Kristalle, Knochen, und seltsame Pilze. Wer hier die Nacht verbringt, träumt von endlosen Tunneln - und erwacht mit Wissen über einen verborgenen Weg."
+      }
+    ],
+    "A Bump in the Road": [
+      {
+        "roll": 1,
+        "title": "Die Bannlinie",
+        "description": "Der Pfad führt durch die Überreste einer nyssilionischen Straße. Zwischen zwei zerbrochenen Obelisken flimmert die Luft - eine uralte Barriere, die noch immer Nicht-Elfen aufhält. Ein Intelligenz (Arkane Kunde) Wurf des Outriders kann einen Umweg durch die Schwachstelle identifizieren. Alternativ kann ein Stärke (Athletik) Wurf einen der beschädigten Obelisken umstürzen und die Barriere deaktivieren."
+      },
+      {
+        "roll": 2,
+        "title": "Bluttrinker-Territorium",
+        "description": "Frische Minotauren-Totems aus Schädeln und blutgetränkten Fetzen markieren das Gebiet. Die Bluttrinker haben diesen Pfad für sich beansprucht. Ein Weisheit (Überlebenskunst) Wurf des Outriders findet einen alternativen Weg durch das Grasland. Ein Charisma (Einschüchtern) Wurf kann die Gruppe als 'zu gefährlich zum Angreifen' erscheinen lassen - zumindest für die Späher."
+      },
+      {
+        "roll": 3,
+        "title": "Das Nebeltal",
+        "description": "Dichter, unnatürlicher Nebel füllt das Tal vor der Gruppe. Die Dunstreiter nutzen diese Nebelpfade als Schutz, und Eindringlinge verirren sich leicht. Ein Weisheit (Wahrnehmung) Wurf des Outriders kann den schwachen Pfad der Dunstreiter erkennen. Alternativ kann ein Charisma (Überredungskunst) Wurf einen versteckten Dunstreiter-Wächter überzeugen, die Gruppe sicher hindurchzuführen."
+      },
+      {
+        "roll": 4,
+        "title": "Die Blindgräber-Spur",
+        "description": "Ein gewaltiger Graben durchschneidet die Landschaft - die frische Spur eines Blindgräbers. Der Boden ist instabil, und der Graben zu tief zum Überqueren. Ein Weisheit (Überlebenskunst) Wurf des Outriders findet eine Stelle, wo der Graben flacher ist. Ein Intelligenz (Natur) Wurf kann bestätigen, dass der Blindgräber sich von der Gruppe entfernt - vorerst."
+      },
+      {
+        "roll": 5,
+        "title": "Das Ordenscamp",
+        "description": "Die 13. Order hat einen Kontrollpunkt errichtet. Bewaffnete Ritter verlangen, dass alle Reisenden sich ausweisen und ihre Taschen durchsuchen lassen. Ein Charisma (Täuschung) Wurf des Outriders kann gefälschte Dokumente präsentieren. Ein Charisma (Überredungskunst) Wurf kann den Anführer überzeugen, dass die Gruppe 'nützliche Informationen' über Elfenruinen hat."
+      },
+      {
+        "roll": 6,
+        "title": "Die Fleischwandler-Zone",
+        "description": "Das Gebiet ist mit Warnzeichen der Runenbestien markiert. Hier findet die 'Große Wandlung' statt - junge Krieger, die sich der Fleischwandlung unterziehen. Eindringlinge werden nicht geduldet. Ein Weisheit (Einsicht) Wurf des Outriders erkennt die sicheren Pfade zwischen den Ritualen. Ein Stärke (Einschüchtern) Wurf kann die Wächter beeindrucken - die Runenbestien respektieren Stärke."
+      },
+      {
+        "roll": 7,
+        "title": "Das Konstrukt-Patrouillengebiet",
+        "description": "Metallische Fußspuren und zertrampeltes Gras zeigen, dass Uhrwerk-Konstrukte diese Route regelmäßig patrouillieren. Ein Intelligenz (Nachforschungen) Wurf des Outriders kann das Muster erkennen und eine sichere Zeitspanne berechnen. Ein Geschicklichkeit (Heimlichkeit) Wurf kann die Gruppe durch das Gebiet führen, ohne die Patrouillen zu alarmieren."
+      },
+      {
+        "roll": 8,
+        "title": "Der Aasfresser-Bestattungsort",
+        "description": "Totemstangen und Knochengirlanden markieren einen Aasfresser-Bestattungsort. Durchqueren wäre Entweihung. Ein Weisheit (Religion) Wurf des Outriders kann die korrekten Rituale durchführen, um sicher durchzugehen. Ein Charisma (Überredungskunst) Wurf kann einen anwesenden Aasfresser-Wächter überzeugen, die Gruppe zu eskortieren - gegen eine 'Geschichte des Todes'."
+      },
+      {
+        "roll": 9,
+        "title": "Die Erdspalte",
+        "description": "Ein kürzliches Erdbeben hat eine tiefe Spalte im Boden geöffnet. Aus der Tiefe steigen seltsame Töne - vielleicht ein erwachender Blindgräber. Ein Stärke (Athletik) Wurf des Outriders kann eine sichere Überquerungsstelle finden. Ein Intelligenz (Natur) Wurf bestätigt, dass die Töne von Erdverschiebungen stammen, nicht von etwas Lebendigem - wahrscheinlich."
+      },
+      {
+        "roll": 10,
+        "title": "Der Handelsposten-Streit",
+        "description": "Ein Breagan Dartis Handelsposten blockiert den einzigen Weg durch ein Tal. Der Besitzer verlangt 'Wegezoll' - einen absurden Preis. Ein Charisma (Einschüchtern) Wurf des Outriders kann den Preis senken. Ein Charisma (Überredungskunst) Wurf kann einen 'Kredit' aushandeln - allerdings mit Schulden bei Breagan Dartis. Ein Weisheit (Wahrnehmung) Wurf findet einen versteckten Pfad um den Posten herum."
+      }
+    ],
+    "Needing Assistance": [
+      {
+        "roll": 1,
+        "title": "Der zerrissene Knappe",
+        "description": "Ein junger Mensch in zerschlissener Ordensrobe stolpert auf die Gruppe zu. Bruder Cael fleht um Hilfe - sein Meister wurde von einem Konstrukt in eine Ruine gezogen. Er ist zerrissen zwischen seiner Pflicht (den Meister retten) und seinem Gelübde (Ungläubige nicht um Hilfe bitten). Die Gruppe kann ihm helfen durch: einen Gruppen-Weisheit (Heilkunde) Wurf für seine Verletzungen, einen Gruppen-Charisma (Überredungskunst) Wurf um sein Vertrauen zu gewinnen, oder einen Gruppen-Intelligenz (Religion) Wurf um die Doktrin der Order zu zitieren."
+      },
+      {
+        "roll": 2,
+        "title": "Die verzweifelte Familie",
+        "description": "Eine Bauernfamilie aus einem Grenzdorf kniet weinend am Wegrand. Minotauren-Plünderer haben ihre Tochter verschleppt - vor nicht einmal einer Stunde. Sie bieten alles an, was sie haben: ein Familienerbstück, ihre Ersparnisse, ihr eigenes Leben. Die Gruppe kann helfen durch: einen Gruppen-Weisheit (Überlebenskunst) Wurf um die Spuren zu verfolgen, einen Gruppen-Stärke (Athletik) Wurf um schnell genug aufzuholen, oder einen Gruppen-Heimlichkeit Wurf um unbemerkt zu folgen."
+      },
+      {
+        "roll": 3,
+        "title": "Der verirrte Händler",
+        "description": "Ein erschöpfter Halbling mit einem leeren Karren sitzt am Wegesrand. Er stellt sich als Pip vor, ein 'unabhängiger Händler', dessen Waren von Banditen gestohlen wurden. In Wahrheit ist er ein Breagan Dartis Kurier, dessen Ladung - eine der fünf Scheiben - geraubt wurde. Die Gruppe kann helfen durch: einen Gruppen-Charisma (Einschüchtern) Wurf um die Banditen zu konfrontieren, einen Gruppen-Intelligenz (Nachforschungen) Wurf um das Versteck zu finden, oder einen Gruppen-Weisheit (Einsicht) Wurf um Pips wahre Loyalitäten zu durchschauen."
+      },
+      {
+        "roll": 4,
+        "title": "Das verletzte Wurzelross",
+        "description": "Ein Wurzelross der Wächter liegt mit gebrochenem Bein am Wegrand. Sein Reiter ist nirgends zu sehen - nur Blutspuren führen in die Steppe. Das Tier ist intelligent und versteht Sprache; es fleht um Hilfe für seinen Reiter. Die Gruppe kann helfen durch: einen Gruppen-Weisheit (Heilkunde) Wurf um das Bein zu schienen, einen Gruppen-Weisheit (Überlebenskunst) Wurf um den Reiter zu finden, oder einen Gruppen-Weisheit (Tierkunde) Wurf um das Ross zu beruhigen."
+      },
+      {
+        "roll": 5,
+        "title": "Der gefangene Konstrukt",
+        "description": "Ein kleiner Uhrwerk-Konstrukt - Tikkar-7 oder ein ähnliches Modell - ist in einer Bärenfalle gefangen. Anders als die feindlichen Konstrukte bittet es höflich um Befreiung. Es erklärt, dass es 'defekt' ist und von den anderen Konstrukten gejagt wird. Die Gruppe kann helfen durch: einen Gruppen-Stärke (Athletik) Wurf um die Falle zu öffnen, einen Gruppen-Intelligenz (Arkane Kunde) Wurf um die Konstrukt-Mechanik zu verstehen, oder einen Gruppen-Geschicklichkeit (Fingerfertigkeit) Wurf um die Falle zu deaktivieren."
+      },
+      {
+        "roll": 6,
+        "title": "Der vergiftete Aasfresser",
+        "description": "Ein Aasfresser-Krieger liegt krampfend am Wegrand. Er hat von vergiftetem Fleisch gegessen - eine Falle, aufgestellt von der 13. Order, um die 'Heiden' zu dezimieren. Er bittet um Hilfe in seiner eigenen Sprache, aber seine Gesten sind unmissverständlich. Die Gruppe kann helfen durch: einen Gruppen-Weisheit (Heilkunde) Wurf um das Gift zu neutralisieren, einen Gruppen-Intelligenz (Natur) Wurf um ein Gegenmittel zu finden, oder einen Gruppen-Weisheit (Medizin) Wurf um ihn zu stabilisieren."
+      },
+      {
+        "roll": 7,
+        "title": "Die eingeschlossene Karawane",
+        "description": "Eine Händlerkarawane ist von einem Erdrutsch eingeschlossen. Die Händler rufen um Hilfe - sie haben Verwundete und die Vorräte gehen aus. Unter den Waren sind verdächtige Kisten mit dem Siegel von Breagan Dartis. Die Gruppe kann helfen durch: einen Gruppen-Stärke (Athletik) Wurf um die Trümmer zu räumen, einen Gruppen-Intelligenz (Nachforschungen) Wurf um einen alternativen Ausgang zu finden, oder einen Gruppen-Weisheit (Überlebenskunst) Wurf um einen sicheren Pfad zu schaffen."
+      },
+      {
+        "roll": 8,
+        "title": "Der sterbende Ordensritter",
+        "description": "Ein schwer verwundeter Ritter der 13. Order liegt im Sterben. Mit letzter Kraft bittet er die Gruppe, eine Nachricht an seine Schwester in der Pfahlwacht zu überbringen. Die Nachricht enthüllt Zweifel an Kaelors Mission: 'Er hat den wahren Zweck der Reliktwaffe verschwiegen.' Die Gruppe kann helfen durch: einen Gruppen-Weisheit (Heilkunde) Wurf um sein Leben zu retten, einen Gruppen-Charisma (Überredungskunst) Wurf um mehr Informationen zu erhalten, oder einen Gruppen-Intelligenz (Religion) Wurf um ihm die letzte Ölung zu geben."
+      },
+      {
+        "roll": 9,
+        "title": "Das entführte Dunstreiter-Kind",
+        "description": "Eine verzweifelte Dunstreiterin bittet um Hilfe. Ihr Kind wurde von Minotauren entführt - aber nicht getötet. Die Bluttrinker sammeln 'besondere' Kinder für ein unbekanntes Ritual. Die Mutter kann nicht allein gegen sie kämpfen. Die Gruppe kann helfen durch: einen Gruppen-Heimlichkeit Wurf um das Lager zu infiltrieren, einen Gruppen-Weisheit (Überlebenskunst) Wurf um die Spuren zu folgen, oder einen Gruppen-Charisma (Einschüchtern) Wurf um einen Ablenkungsangriff zu führen."
+      },
+      {
+        "roll": 10,
+        "title": "Der verlorene Wurmsänger",
+        "description": "Ein junger Wurmsänger ist in Trance gefallen und kann nicht erwachen. Seine Begleiter erklären, dass er 'zu tief in die Erde gehorcht' hat und nun in den Träumen der Blindgräber gefangen ist. Sie brauchen jemanden, der ihm folgt. Die Gruppe kann helfen durch: einen Gruppen-Weisheit (Einsicht) Wurf um eine mentale Verbindung herzustellen, einen Gruppen-Intelligenz (Arkane Kunde) Wurf um das Ritual zu verstehen, oder einen Gruppen-Charisma (Auftreten) Wurf um ihn mit Musik zurückzurufen."
+      }
+    ],
+    "Danger Afoot": [
+      {
+        "roll": 1,
+        "title": "Die Konstrukt-Patrouille",
+        "description": "Metallisches Klicken hallt durch die Steppe. Drei **Uhrwerk-Soldaten** in elfischen Runen marschieren in perfekter Formation, ihre kristallenen Augen scannen systematisch die Umgebung. Sie greifen jeden an, der nicht elfisches Blut in sich trägt. Einer der Konstrukte trägt einen goldenen Ring an einer Kette um den Hals - einen der fünf Kontrollringe, der seinen Träger von Angriffen ausnimmt."
+      },
+      {
+        "roll": 2,
+        "title": "Die Bluttrinker-Späher",
+        "description": "Der Geruch von Blut liegt schwer in der Luft. Zwei **Minotauren** mit dämonischen Tätowierungen schleifen einen toten Händler hinter sich her, sein Karren bereits geplündert. Ihre Augen glühen schwach rot - ein Zeichen von Erttus verderblichem Einfluss. Sie haben die Gruppe noch nicht bemerkt, aber ein dritter Minotaur hält weiter hinten Wache."
+      },
+      {
+        "roll": 3,
+        "title": "Der Hinterhalt der Order",
+        "description": "Die Gruppe wird von fünf Rittern der 13. Order umstellt, Armbrüste auf sie gerichtet. Ihr Anführer, ein **Veteran** mit Narben im Gesicht, beschuldigt die Gruppe, 'Artefaktdiebe im Dienste der Dunkelheit' zu sein. Er verlangt, dass sie ihre Taschen leeren und sich verhören lassen. Die Ritter sind nervös - sie haben kürzlich Kameraden an die Konstrukte verloren und vertrauen niemandem mehr."
+      },
+      {
+        "roll": 4,
+        "title": "Der erwachte Wächter",
+        "description": "Ein gewaltiger **Steingolem** erhebt sich aus dem Boden, wo er jahrhundertelang ruhte. Er ist ein nyssilionischer Grenzwächter, aktiviert durch die Anwesenheit von Nicht-Elfen. Im Gegensatz zu den Uhrwerk-Konstrukten ist er langsam aber nahezu unzerstörbar. Seine Kristallaugen fixieren die Gruppe, und eine mechanische Stimme fordert: 'Identifiziert euch oder sterbt.'"
+      },
+      {
+        "roll": 5,
+        "title": "Die Dämonenjäger",
+        "description": "Eine Gruppe von fünf **Kultisten** in schwarzen Roben mit dem Symbol einer flammenden Axt greift an. Sie sind Jäger der 13. Order, spezialisiert auf das Eliminieren von 'Dämonenberührten'. Sie haben die Gruppe fälschlicherweise als Verbündete von Erttu identifiziert - oder vielleicht zu Recht? Ihr Anführer trägt ein heiliges Symbol, das gegen dämonische Wesen leuchtet."
+      },
+      {
+        "roll": 6,
+        "title": "Der Breagan Dartis Überfall",
+        "description": "Eine Gruppe von sechs **Banditen** mit dem Zeichen des lächelnden Fuchses - Breagan Dartis - überfällt die Gruppe. Sie wollen keine Tötungen; sie wollen Informationen. Ihr Anführer, ein charmanter **Assassine**, bietet einen Deal: Teilt, was ihr über die Elfenruinen wisst, und ihr dürft weiterziehen. Verweigert, und sie nehmen es sich mit Gewalt."
+      },
+      {
+        "roll": 7,
+        "title": "Die wahnsinnige Runenbestie",
+        "description": "Ein einzelner **Werwolf** mit glühenden Runen auf der Haut greift ohne Vorwarnung an. Es ist ein Runenbestien-Krieger, dessen Fleischwandlung schiefgegangen ist. Er ist nicht mehr bei Sinnen, aber immer noch gefährlich. Sein Clan würde sich über seinen Tod freuen - oder über einen Weg, ihn zu heilen."
+      },
+      {
+        "roll": 8,
+        "title": "Die Uhrwerk-Spinne",
+        "description": "Ein **Uhrwerk-Spinne** - ein Konstrukt in Spinnenform, so groß wie ein Pferd - kriecht aus einer nahen Ruine. Sie greift nicht sofort an, sondern beobachtet mit ihren acht kristallenen Augen. Sie scheint die Gruppe zu analysieren. Plötzlich entfalten sich Klingen aus ihren Beinen, und sie springt zum Angriff - sie hat 'Bedrohung' festgestellt."
+      },
+      {
+        "roll": 9,
+        "title": "Die Minotauren-Vorhut",
+        "description": "Drei **Minotauren** auf **Alptraumrossen** - dämonische Pferde mit brennenden Mähnen - reiten auf die Gruppe zu. Sie sind die Vorhut von Ghorvaks Heer, ausgesandt, um die Straßen zu sichern. Ihre Augen brennen mit höllischem Feuer, und sie tragen Banner mit dem Symbol des Bluttrinkers: ein gehörnter Schädel, der Blut weint."
+      },
+      {
+        "roll": 10,
+        "title": "Der Konstrukt-Aufseher",
+        "description": "Ein **Uhrwerk-Offizier** - ein Konstrukt, das anderen Konstrukten Befehle erteilt - steht auf einem Hügel und beobachtet die Gruppe. Er ist von vier **Uhrwerk-Soldaten** umgeben. Im Gegensatz zu den anderen Konstrukten spricht er: 'Ihr seid nicht im Register. Klassifizierung: Eindringlinge. Aktion: Eliminierung.' Die Konstrukte greifen koordiniert an."
+      }
+    ],
+    "Natural Wonders": [
+      {
+        "roll": 1,
+        "title": "Die Singende Kluft",
+        "description": "Ein gewaltiger Riss in der Erde erstreckt sich bis zum Horizont, so tief, dass der Boden nicht sichtbar ist. Aus der Tiefe steigen tiefe, vibrierende Töne auf - wie das Summen eines schlafenden Riesen. Die Wurmsänger sagen, hier ruht ein uralter Blindgräber, dessen Träume als Klänge an die Oberfläche dringen. Wer zu lange lauscht, träumt selbst von endlosen Tunneln."
+      },
+      {
+        "roll": 2,
+        "title": "Das Nebelherz",
+        "description": "Inmitten der Steppe schwebt eine perfekte Kugel aus silbernem Nebel, etwa drei Meter im Durchmesser. Sie bewegt sich nicht, selbst bei stärkstem Wind. Die Dunstreiter verehren sie als Überrest nyssilionischer Magie - ein Anker für ihre Nebelpfade. Wer seine Hand hineinstreckt, spürt für einen Moment Verbindung zu jedem Nebel in Orfnir."
+      },
+      {
+        "roll": 3,
+        "title": "Die Blutebene",
+        "description": "Das Gras hier wächst in tiefem Purpurrot, so weit das Auge reicht. Kein Tier weidet hier, keine Vögel fliegen darüber. Die Wächter der Steppe sagen, hier sei das Blut eines Wurmgottes versickert, vergiftet durch die arkane Magie der Elfen. Der Boden selbst scheint zu pulsieren, wenn man lange genug hinsieht."
+      },
+      {
+        "roll": 4,
+        "title": "Der Spiralstein",
+        "description": "Ein gewaltiger Stein ragt aus der Erde, seine Oberfläche in einer perfekten Spirale gewunden. Die Wurmsänger sagen, ein Blindgräber sei hier gestorben und sein letzter Gedanke habe sich in den Stein gebrannt. Wer die Spirale mit dem Finger nachfährt, hört ein Flüstern in einer Sprache, die älter ist als die Elfen."
+      },
+      {
+        "roll": 5,
+        "title": "Die Leuchtenden Gräser",
+        "description": "In der Nacht leuchtet ein Feld von Gräsern in sanftem Blau und Grün. Die Pflanzen absorbieren tagsüber Sonnenlicht und geben es nachts als Biolumineszenz wieder ab. Die Aasfresser nutzen solche Felder als Orientierungspunkte. Legenden besagen, dass die Gräser über den Gräbern gefallener Helden wachsen."
+      },
+      {
+        "roll": 6,
+        "title": "Der Versteinerte Wald",
+        "description": "Ein Hain aus versteinerten Bäumen steht reglos in der Steppe. Die Bäume sind Überreste eines uralten Waldes, versteinert durch die arkane Katastrophe, die Nyssilion beendete. Zwischen den steinernen Stämmen finden sich manchmal noch lebende Blumen - Pflanzen, die in kristallinem Sonnenlicht gedeihen."
+      },
+      {
+        "roll": 7,
+        "title": "Die Windnarben",
+        "description": "Tiefe Furchen durchziehen das Land, als hätte ein gigantischer Kamm über die Erde gekratzt. Die Wächter der Steppe nennen sie 'Windnarben' - Spuren eines uralten Sturms, der so mächtig war, dass er die Landschaft selbst veränderte. Bei Vollmond, sagen sie, kann man den Sturm noch immer heulen hören."
+      },
+      {
+        "roll": 8,
+        "title": "Der Spiegelteich",
+        "description": "Ein kleiner Teich spiegelt nicht den Himmel wider, sondern einen anderen Ort: eine elfische Stadt in voller Blüte, so wie sie vor tausend Jahren existierte. Die Bilder wechseln, zeigen Szenen aus Nyssilions Vergangenheit. Manchmal blicken die Elfen im Spiegel zurück - und scheinen die Beobachter zu sehen."
+      },
+      {
+        "roll": 9,
+        "title": "Die Wurmknochen",
+        "description": "Die Überreste eines gigantischen Blindgräbers liegen verstreut über ein weites Gebiet. Knochen, größer als Häuser, ragen aus dem Boden. Die Wurmsänger pilgern hierher, um die 'Stimme der Ahnen' zu hören. Innerhalb der Knochen ist die Luft warm, und manchmal bewegen sich die Schatten."
+      },
+      {
+        "roll": 10,
+        "title": "Der Runenkreis",
+        "description": "Ein perfekter Kreis aus Steinen, jeder mit elfischen Runen graviert, markiert einen Ort uralter Macht. Die Runen glühen schwach bei Nacht. Die Wächter der Steppe sagen, dies sei ein 'Knoten' im magischen Netzwerk Nyssilions - ein Ort, wo die arkane Energie noch immer fließt. Magier fühlen ein Kribbeln auf der Haut."
+      }
+    ],
+    "Monster Hunt": [
+      {
+        "roll": 1,
+        "title": "Der Ruinenwächter",
+        "description": "Hirten berichten von einem 'wandelnden Turm aus Metall', der ihre Herden dezimiert. Die Spuren führen zu einer nyssilionischen Ruine. Ein **Uhrwerk-Titan** - gewaltiger als alle anderen Konstrukte - patrouilliert das Gebiet. Er trägt eine zerbrochene Klinge aus Sternenmetall auf dem Rücken, vermutlich die Reliktwaffe, nach der die 13. Order sucht. Der Hirtenälteste bietet die gesamten Ersparnisse des Dorfes für die Vernichtung der Kreatur."
+      },
+      {
+        "roll": 2,
+        "title": "Ghorvaks Bestie",
+        "description": "Reisende sprechen von einer 'gehörnten Bestie, größer als ein Haus', die Karawanen angreift. Es ist ein **Goristro**, ein Dämonenstier, den Erttu als Geschenk an Ghorvak Blutgeweih sandte. Die Kreatur hinterlässt eine Spur aus Zerstörung Richtung Hornwacht. Die Clans bieten eine gemeinsame Belohnung: Ehrenrechte unter allen fünf Stämmen für denjenigen, der die Bestie erlegt."
+      },
+      {
+        "roll": 3,
+        "title": "Der Abtrünnige",
+        "description": "Ein ehemaliger Champion der Runenbestien hat sich von seinem Clan abgewandt, nachdem die Fleischwandlung ihn in den Wahnsinn trieb. Nun terrorisiert der **Werwolf** - denn das wurde aus ihm - die Handelswege. Die Runenbestien selbst bitten um Hilfe: Sie können ihn nicht töten, denn sein Körper trägt noch die heiligen Runen. Vielleicht kann er geheilt werden?"
+      },
+      {
+        "roll": 4,
+        "title": "Die Uhrwerk-Königin",
+        "description": "Eine **Uhrwerk-Spinnenkönigin** hat ein Nest in einer alten Ruine errichtet. Sie produziert kleinere Konstrukte aus gefundenen Materialien und sendet sie aus, um mehr zu sammeln. Die Dörfer in der Nähe verlieren Werkzeuge, Waffen, und manchmal Menschen - die Königin nimmt alles, was nützlich sein könnte. Ihre Zerstörung könnte das Konstrukt-Problem erheblich reduzieren."
+      },
+      {
+        "roll": 5,
+        "title": "Der Seelensammler",
+        "description": "Ein **Nachtwalker** - ein gewaltiger Schattendämon - wandert durch die Nächte Orfnirs. Er sammelt die Seelen der Gefallenen für seinen Meister Erttu. Die Clans fürchten ihn mehr als die Minotauren, denn wer von ihm getötet wird, findet keine Ruhe. Die Wurmsänger kennen ein Ritual, das ihn schwächen könnte - aber es erfordert ein Opfer."
+      },
+      {
+        "roll": 6,
+        "title": "Der Blinde Jäger",
+        "description": "Ein junger **Blindgräber** - 'nur' so groß wie ein Haus - hat seinen Weg an die Oberfläche gefunden und gräbt sich durch Felder und Dörfer. Er ist verwirrt und verängstigt, was ihn umso gefährlicher macht. Die Wurmsänger könnten ihn beruhigen, aber sie sind weit weg. Das Dorf bietet alles, was sie haben, für seine Vertreibung oder Vernichtung."
+      },
+      {
+        "roll": 7,
+        "title": "Der Bluttrinker-Champion",
+        "description": "Torga Eisenklaue, ein **Minotauren-Champion** mit einer Axt aus dämonischem Eisen, fordert Krieger zum Einzelkampf. Er lagert in der Nähe eines Dorfes und tötet jeden, der sich ihm nähert - außer sie akzeptieren seine Herausforderung. Der Gewinner erhält seine Axt und sein Horn, das Ghorvaks Truppen kommandieren kann."
+      },
+      {
+        "roll": 8,
+        "title": "Die lebende Ruine",
+        "description": "Eine nyssilionische Ruine hat begonnen, sich zu bewegen - ein **Animierter Turm**, ein Konstrukt, das die gesamte Struktur umfasst. Es kriecht langsam durch die Steppe und absorbiert andere Ruinen in sich. Die 13. Order will es zerstören; Breagan Dartis will es plündern. Beide werden zahlen, aber nur eine Seite wird zufrieden sein."
+      },
+      {
+        "roll": 9,
+        "title": "Der Dunstdrache",
+        "description": "Ein **Junger Weißer Drache**, der in den Nebeln der Dunstreiter lebt, hat begonnen, Tribut zu fordern. Er nennt sich 'Herr des Nebels' und verlangt Opfergaben - Gold, Vieh, und gelegentlich Menschen. Die Dunstreiter könnten ihn besiegen, aber der Preis wäre zu hoch. Sie suchen Verbündete, die den Drachen konfrontieren."
+      },
+      {
+        "roll": 10,
+        "title": "Das Echo",
+        "description": "Ein seltsames Wesen, das die Gruppe als **Doppelgänger** identifiziert, kopiert Reisende und begeht Verbrechen in ihrem Namen. Die Clans sind verwirrt - warum würden Verbündete sie verraten? Das Echo dient einem unbekannten Meister und sammelt Chaos. Es zu finden und zu töten würde viele Fragen beantworten - und mehr aufwerfen."
+      }
+    ],
+    "A Place to Rest": [
+      {
+        "roll": 1,
+        "title": "Das Ordenscamp",
+        "description": "Ein befestigtes Lager der 13. Order bietet Schutz für die Nacht. Die Ritter sind misstrauisch, aber ihr Kodex verlangt Gastfreundschaft für Reisende. Ser Kaela, die Lagerführerin, ist weniger fanatisch als Kaelor Dämmerstahl und stellt vorsichtige Fragen über Elfenruinen. Sie scheint innerlich mit der Brutalität der Order zu kämpfen - vielleicht eine potenzielle Verbündete?"
+      },
+      {
+        "roll": 2,
+        "title": "Die Aasfresser-Höhle",
+        "description": "Eine Höhle, geschmückt mit Knochenmasken und Federfetzen, dient einem Aasfresser-Trupp als Unterschlupf. Sie bieten Gastfreundschaft an - getrocknetes Fleisch, Wärme, Schutz - verlangen aber im Gegenzug 'eine Geschichte des Todes'. Jeder Reisende muss von jemandem erzählen, den er verloren hat. Die Aasfresser hören aufmerksam zu und fügen die Namen ihrem Totengesang hinzu."
+      },
+      {
+        "roll": 3,
+        "title": "Der Breagan Dartis Handelsposten",
+        "description": "Mitten im Nirgendwo steht ein gut sortierter Handelsposten mit dem Zeichen eines lächelnden Fuchses. Der Besitzer, ein alter Mensch namens Dorn, bietet faire Preise und saubere Betten. In Wahrheit ist der Posten eine Breagan Dartis Zwischenstation, und Dorn berichtet jede interessante Neuigkeit an Vaelorn. Die Wände haben Ohren - aber das Bett ist bequem."
+      },
+      {
+        "roll": 4,
+        "title": "Das Wurmsänger-Zelt",
+        "description": "Ein gewaltiges Zelt aus Blindgräber-Häuten bietet Schutz vor den Elementen. Die Wurmsänger, die hier rasten, sind freundlich und teilen ihre Vorräte. Nachts singen sie tiefe, vibrierende Lieder, die seltsame Träume bringen. Ein Intelligenz (Arkane Kunde) Wurf erkennt, dass die Lieder ein Ritual sind - sie halten einen Blindgräber in der Tiefe schlafend."
+      },
+      {
+        "roll": 5,
+        "title": "Die Runenbestien-Arena",
+        "description": "Ein Lager der Runenbestien umgibt eine improvisierte Arena. Die Krieger trainieren hier und heißen Reisende willkommen - wenn sie bereit sind, zu kämpfen. Nicht bis zum Tod, sondern bis 'erstes Blut'. Der Gewinner erhält Respekt und ein warmes Bett. Der Verlierer erhält... auch Respekt, wenn er tapfer gekämpft hat."
+      },
+      {
+        "roll": 6,
+        "title": "Der vergessene Tempel",
+        "description": "Die Überreste eines uralten Tempels bieten Schutz vor Wind und Regen. Die Mauern sind noch stabil, und ein Dach ist teilweise erhalten. Seltsame Symbole bedecken die Wände - weder elfisch noch menschlich. Nachts flüstern die Wände in einer unbekannten Sprache, aber sie scheinen wohlwollend. Wer hier schläft, erwacht erholt und mit klarem Kopf."
+      },
+      {
+        "roll": 7,
+        "title": "Das Dunstreiter-Versteck",
+        "description": "Ein von Nebel umhüllter Hain dient den Dunstreitern als Versteck. Sie sind misstrauisch gegenüber Fremden, aber Reisende, die den Nebel respektieren, werden toleriert. Die Nacht ist kalt, aber sicher - nichts kann den Nebel durchdringen, nicht einmal die Konstrukte. Am Morgen teilen die Dunstreiter ihre Karten der Nebelpfade."
+      },
+      {
+        "roll": 8,
+        "title": "Die Händlerkarawane",
+        "description": "Eine Handelskarawane hat für die Nacht Halt gemacht. Der Karawanenführer, ein freundlicher Zwerg namens Gorrim, bietet Reisenden einen Platz am Feuer. Die Wachen sind nervös - sie haben Gerüchte über Minotauren gehört. Im Austausch für Schutz bietet Gorrim faire Preise auf seine Waren und Informationen über die Straßen."
+      },
+      {
+        "roll": 9,
+        "title": "Die Wächter-Siedlung",
+        "description": "Ein kleines Dorf der Wächter der Steppe liegt versteckt in einem Tal. Die Bewohner sind Heiler, Schamanen, und Friedensstifter - sie nehmen alle auf, die Hilfe brauchen. Der Dorfälteste fragt nach Neuigkeiten von den anderen Clans und bietet im Gegenzug Heilung und Rat. Er scheint mehr zu wissen, als er sagt."
+      },
+      {
+        "roll": 10,
+        "title": "Das Konstrukt-Wrack",
+        "description": "Ein zerstörter Uhrwerk-Titan - gefällt von den Runenbestien - bietet überraschend guten Schutz. Das Innere ist wie eine kleine Festung: warm, trocken, und leicht zu verteidigen. Allerdings summen die verbliebenen Kristalle noch immer, und manchmal zucken Gliedmaßen. Ein Weisheit (Wahrnehmung) Wurf zeigt, dass das Konstrukt noch nicht ganz tot ist."
+      }
+    ],
+    "Old Memories": [
+      {
+        "roll": 1,
+        "title": "Die zerbrochene Pforte",
+        "description": "Zwei gewaltige Steinbögen ragen aus der Steppe, einst eine nyssilionische Runenpforte. Die Symbole sind verblasst, aber noch lesbar für jene mit arkaner Kenntnis. Ein Intelligenz (Arkane Kunde) Wurf enthüllt, dass diese Pforte einst nach Mythralis führte - und dass die Elfen sie selbst zerstört haben, um etwas einzusperren."
+      },
+      {
+        "roll": 2,
+        "title": "Das Schlachtfeld von Hornwacht",
+        "description": "Verrostete Waffen und gebleichte Knochen bedecken ein weites Feld. Hier fiel vor drei Generationen ein Minotaurenheer über die Vorposten von Hornwacht her. Die Geister der Gefallenen sind längst vergangen, aber ein Weisheit (Geschichte) Wurf enthüllt Graffiti an einem zerbrochenen Schild: 'Ghorvaks Großvater starb hier - er schwor Rache für sieben Generationen.'"
+      },
+      {
+        "roll": 3,
+        "title": "Der vergessene Windturm",
+        "description": "Ein spiralförmiger Turm aus weißem Stein steht verlassen auf einem Hügel. Einst ein nyssilionischer Runenfokuspunkt, diente er zur Kommunikation zwischen Elfenstädten. Die Treppen sind eingestürzt, aber ein Klettern offenbart an der Spitze ein noch funktionierendes Kontrollpanel - und die Warnung, dass 'der Wächter erwacht ist, sendet Verstärkung'."
+      },
+      {
+        "roll": 4,
+        "title": "Das Clan-Grabmal",
+        "description": "Ein Hügel entpuppt sich als uraltes Grabmal der Reiterclans. Die Eingänge sind versiegelt, aber die Namen der Toten sind noch lesbar: Helden aus einer Zeit, als die Clans noch vereint waren. Ein Weisheit (Geschichte) Wurf enthüllt, dass hier der letzte vereinte Khan begraben liegt - und eine Prophezeiung, dass er zurückkehren wird, wenn Orfnir ihn am meisten braucht."
+      },
+      {
+        "roll": 5,
+        "title": "Die Elfenstraße",
+        "description": "Ein perfekt erhaltener Abschnitt einer nyssilionischen Straße führt durch die Wildnis. Die Steine sind noch immer weiß und makellos, unberührt von Zeit und Wetter. Wer der Straße folgt, erreicht sein Ziel schneller als erwartet - aber manchmal führt die Straße nicht dorthin, wo man sie erwarten würde."
+      },
+      {
+        "roll": 6,
+        "title": "Der Brunnen der Visionen",
+        "description": "Ein alter Brunnen, längst vertrocknet, zeigt noch immer Bilder in seinem staubigen Grund. Wer hineinschaut, sieht Szenen aus der Vergangenheit: die Elfen in ihrer Blüte, den Fall Nyssilions, das Erwachen der Blindgräber. Ein Weisheit (Einsicht) Wurf zeigt ein Bild der Zukunft - aber es ist verschwommen und beunruhigend."
+      },
+      {
+        "roll": 7,
+        "title": "Die Runenbestien-Gedenkstätte",
+        "description": "Ein Kreis aus eingeschlagenen Speeren, jeder mit dem Namen eines gefallenen Kriegers graviert. Dies ist ein Runenbestien-Denkmal für ihre Toten im Kampf gegen die Minotauren. Die neuesten Namen sind erst wenige Wochen alt. Ein Weisheit (Einsicht) Wurf zeigt, dass die Runenbestien mehr verloren haben als je zuvor - und verzweifelt werden."
+      },
+      {
+        "roll": 8,
+        "title": "Die Konstrukt-Fabrik",
+        "description": "Eine zerfallene Halle, einst eine Fabrik für Uhrwerk-Konstrukte. Die Maschinen sind still, aber nicht zerstört. Ein Intelligenz (Nachforschungen) Wurf enthüllt Baupläne für verschiedene Konstrukt-Typen - einschließlich eines 'Kronos-Prototyps', der niemals gebaut wurde. Die Pläne könnten wertvoll sein - oder gefährlich."
+      },
+      {
+        "roll": 9,
+        "title": "Das Dunstreiter-Archiv",
+        "description": "Eine versteckte Höhle enthält Schriftrollen und Bücher der Dunstreiter - ihre Geschichte, ihre Magie, ihre Geheimnisse. Vieles ist in einer Sprache geschrieben, die nur sie verstehen. Ein Intelligenz (Arkane Kunde) Wurf enthüllt Informationen über die Nebelpfade - und wie man sie nutzen könnte, um die Konstrukte zu umgehen."
+      },
+      {
+        "roll": 10,
+        "title": "Die Erste Pfahlwacht",
+        "description": "Die Überreste der ursprünglichen Pfahlwacht liegen verborgen in einem Tal. Hier vereinten sich die fünf Clans zum ersten Mal. Die Strukturen sind zerfallen, aber die symbolischen Pfähle stehen noch - fünf, für jeden Clan. Ein Weisheit (Religion) Wurf enthüllt, dass hier ein uralter Pakt geschlossen wurde - und dass er noch immer gilt."
+      }
+    ],
+    "A Dark Place": [
+      {
+        "roll": 1,
+        "title": "Das Seelenlager",
+        "description": "Ein Kreis aus geschwärzter Erde, umgeben von in den Boden gerammten Speeren. An jedem Speer hängt ein ausgetrockneter Körper - Opfer der Bluttrinker, deren Seelen Erttu geerntet hat. Die Körper bewegen sich nicht, aber ihre Münder stehen offen in stummen Schreien. Ein Weisheit (Religion) Wurf enthüllt dämonische Symbole, die die Seelen am Übergang ins Jenseits hindern."
+      },
+      {
+        "roll": 2,
+        "title": "Die Stille Werkstatt",
+        "description": "Eine unterirdische Kammer, erfüllt vom Summen schlafender Maschinen. Dutzende halbfertige Konstrukte hängen an Ketten von der Decke - alle mit leeren Augenhöhlen, die auf Kristalle warten. Auf einem Arbeitstisch liegt ein elfisches Skelett, die Hände noch immer um ein Werkzeug geklammert. Es starb bei der Arbeit, vor Jahrhunderten, und niemand hat es je gefunden."
+      },
+      {
+        "roll": 3,
+        "title": "Kaelors Verhörzelt",
+        "description": "Ein blutgetränktes Zelt abseits des Ordenslagers. Hier verhört Kaelor Dämmerstahl persönlich 'Ketzer und Artefaktdiebe'. Die Schreie sind verstummt, aber die Flecken sind frisch. Ein gefesselter Dunkelelf hängt noch immer an den Ketten - halbtot, aber atmend. Er flüstert: 'Sie suchen die Waffe... sie werden alles töten, um sie zu bekommen...'"
+      },
+      {
+        "roll": 4,
+        "title": "Das Ritual der Bluttrinker",
+        "description": "Ein Kreis aus Minotauren-Totems umgibt einen blutgetränkten Altar. Hier führen die Bluttrinker ihre Opferrituale durch - Seelen für Erttu, Blut für Ghorvak. Die Knochen der Opfer sind ordentlich gestapelt, ihre Schädel zu einem grotesken Turm aufgebaut. Ein Weisheit (Religion) Wurf zeigt, dass das nächste Ritual bei Vollmond stattfindet - in drei Tagen."
+      },
+      {
+        "roll": 5,
+        "title": "Der Fleischwandlungs-Unfall",
+        "description": "Ein verlassenes Runenbestien-Lager, übersät mit... Dingen. Die Fleischwandlung ist hier schiefgegangen - die resultierenden Kreaturen waren weder Mensch noch Tier, sondern etwas Drittes. Die Überreste sind grotesk: verschmolzene Gliedmaßen, zu viele Augen, Münder an falschen Stellen. Die Runenbestien haben jeden Überlebenden getötet - aus Gnade."
+      },
+      {
+        "roll": 6,
+        "title": "Der Konstrukt-Friedhof",
+        "description": "Hunderte zerstörte Konstrukte liegen in einer Senke, ihre kristallenen Augen dunkel. Dies ist, wo die Konstrukte ihre 'Defekten' entsorgen - jene, die nicht mehr funktionieren. Aber einige funktionieren noch: Sie bewegen sich langsam, kriechen über ihre toten Brüder, und versuchen, sich zu reparieren. Ihr Summen klingt fast wie Weinen."
+      },
+      {
+        "roll": 7,
+        "title": "Das Massengrab von Hornwacht",
+        "description": "Ein frisches Massengrab, gefüllt mit Leichen aus den umliegenden Dörfern. Die Minotauren haben keine Gefangenen gemacht - nur Opfer für Erttu. Die Körper sind verstümmelt, ihre Seelen geraubt. Ein Klerikercharakter spürt die Abwesenheit der Seelen wie ein kaltes Loch. Die Geister können nicht ruhen, bis ihre Seelen befreit werden."
+      },
+      {
+        "roll": 8,
+        "title": "Der vergessene Kerker",
+        "description": "Unter einer Ruine liegt ein nyssilionischer Kerker. Die Zellen sind noch besetzt - von Skeletten, die in Ketten hängen, gefoltert und vergessen. Ein Intelligenz (Geschichte) Wurf enthüllt, dass dies ein Gefängnis für 'Gedankenverbrecher' war - Elfen, die die Konstrukte hinterfragten. Ihre letzten Worte sind in die Wände geritzt: 'Kronos wird uns alle töten.'"
+      },
+      {
+        "roll": 9,
+        "title": "Das Tor nach Mythralis",
+        "description": "Ein intaktes nyssilionisches Tor steht in einer Senke. Es ist versiegelt, aber nicht zerstört. Wer es berührt, spürt... etwas auf der anderen Seite. Etwas, das ebenfalls den Berührenden spürt. Ein Intelligenz (Arkane Kunde) Wurf enthüllt, dass das Tor nach Mythralis führt - und dass das, was dort eingesperrt ist, seit Jahrhunderten auf eine Chance wartet."
+      },
+      {
+        "roll": 10,
+        "title": "Die Stimme in der Tiefe",
+        "description": "Ein Loch im Boden führt in die Dunkelheit. Aus der Tiefe steigt eine Stimme - nicht auf, sondern ein. Sie spricht direkt im Kopf der Zuhörer, in einer Sprache, die sie nicht kennen sollten, aber verstehen. 'Kommt zu mir', flüstert sie. 'Ich warte seit so langer Zeit.' Ein Weisheit (Rettungswurf) widersteht dem Drang, hinabzusteigen."
+      }
+    ],
+    "Deadly Fight": [
+      {
+        "roll": 1,
+        "title": "Der Dämonensturm",
+        "description": "Der Himmel verdunkelt sich, als ein Schwarm **Dretches** aus einem gerade geöffneten Portal quillt. Hinter ihnen schreitet ein **Hezrou**, Erttus Vorhut für die kommende Invasion. Die Dämonen stürmen auf das nächste Dorf zu - die Gruppe steht zwischen ihnen und hundert unschuldigen Leben. Der Hezrou brüllt in der Abyssalsprache: 'Erttu sendet seine Grüße!'"
+      },
+      {
+        "roll": 2,
+        "title": "Die Erwachten",
+        "description": "Die Ruine erwacht zum Leben. Ein **Uhrwerk-Titan** und vier **Uhrwerk-Soldaten** erheben sich aus ihrem jahrhundertelangen Schlaf, ihre Kristallaugen fixiert auf die Eindringlinge. Der Titan trägt die zerbrochene Reliktwaffe auf dem Rücken - dieselbe Waffe, nach der die 13. Order sucht. Flucht ist möglich, aber die Konstrukte werden dem Fliehenden folgen."
+      },
+      {
+        "roll": 3,
+        "title": "Ghorvaks Elite",
+        "description": "Ein Kriegshorn erschallt. Ghorvak Blutgeweih selbst führt seinen inneren Kreis - drei **Minotauren-Champions** mit dämonisch verstärkten Äxten. Seine Augen glühen rot von Erttus Macht, aber für einen Moment flackert etwas anderes darin: Schmerz. Ghorvak kämpft nicht nur gegen die Gruppe - er kämpft gegen die Kontrolle des Dämons. Vielleicht kann diese Schwäche genutzt werden."
+      },
+      {
+        "roll": 4,
+        "title": "Der Kreuzzug der Order",
+        "description": "Kaelor Dämmerstahl selbst führt eine Truppe von zehn **Rittern** gegen 'Ketzer und Dämonendiener' - die Gruppe. Er ist überzeugt, dass sie mit Erttu verbündet sind, und wird keine Gnade zeigen. Seine Relikt-Klinge, **Dämmerbrecher**, glüht mit heiligem Licht. Der Kampf wird brutal, aber Kaelor kann vielleicht überzeugt werden - wenn man ihm Beweise für Erttus wahre Pläne zeigt."
+      },
+      {
+        "roll": 5,
+        "title": "Der Verräter unter uns",
+        "description": "Vaelorn, der Breagan Dartis Händler, hat die Gruppe verraten. Er führt einen Trupp von acht **Assassinen** gegen sie - er braucht, was sie tragen, für seine wahren Meister. Im Kampf enthüllt er seine wahre Natur: Er ist ein **Wechselbalg**, der viele Gesichter trägt. Sein Tod würde viele Fragen beantworten - aber auch neue aufwerfen."
+      },
+      {
+        "roll": 6,
+        "title": "Der Bindungsbruch",
+        "description": "Malokh der Grausame, der **Ghalzarokh**, hat seine Ketten gesprengt. Er ist nicht länger an Erttu gebunden - und er ist wütend. Er greift alles an: die Gruppe, die Minotauren, die Konstrukte. Sein Ziel ist Chaos. Im Kampf zeigt sich, dass er Hilfe annehmen würde - gegen Erttu. Aber kann man einem freien Dämon vertrauen?"
+      },
+      {
+        "roll": 7,
+        "title": "Die Konstrukt-Legion",
+        "description": "Kronos selbst hat eine Legion entsandt: zwanzig **Uhrwerk-Soldaten** unter dem Kommando eines **Uhrwerk-Generals**. Ihre Mission ist 'Säuberung' - alles Nicht-Elfische muss sterben. Der General kann sprechen und bietet eine Wahl: 'Weicht zurück und lebt. Widersteht und sterbt. Die Entscheidung ist eure.' Er lügt nicht - aber er wird auch nicht verhandeln."
+      },
+      {
+        "roll": 8,
+        "title": "Das Erwachen des Blindgräbers",
+        "description": "Die Erde bebt. Ein **Blindgräber** - nicht jung, nicht alt, einfach gewaltig - bricht durch die Oberfläche. Er ist wütend, geweckt durch die Magie der Konstrukte. Flucht ist die einzige Option - aber der Blindgräber ist schnell. Die Wurmsänger könnten ihn beruhigen, aber sie sind nicht hier. Vielleicht kann ihre Musik imitiert werden?"
+      },
+      {
+        "roll": 9,
+        "title": "Die Belagerung von Hornwacht",
+        "description": "Hornwacht ist umzingelt. Ghorvaks Heer - hunderte **Minotauren**, verstärkt durch **Dämonen** - bereitet den Sturm vor. Die Gruppe ist drinnen, zusammen mit den Verteidigern. Es gibt keinen Ausweg - nur Kampf oder Tod. Der Kommandant bittet um einen verzweifelten Plan: Jemand muss Ghorvak selbst töten, um das Heer zu zerstreuen."
+      },
+      {
+        "roll": 10,
+        "title": "Der Ghalzarokh und der Titan",
+        "description": "Zwei Giganten kämpfen vor den Augen der Gruppe: Malokh der Grausame gegen einen **Uhrwerk-Titan**. Der Kampf zerstört alles in seiner Umgebung. Beide sind Feinde - aber einer muss gewinnen. Die Gruppe könnte eingreifen, um das Ergebnis zu beeinflussen. Aber auf wessen Seite? Der Dämon verspricht Informationen. Der Titan verspricht nichts."
+      }
+    ],
+    "Fateful Encounter": [
+      {
+        "roll": 1,
+        "title": "Der gebundene Verräter",
+        "description": "Malokh der Grausame, ein massiver **Ghalzarokh**, materialisiert vor der Gruppe - aber er greift nicht an. Seine Stimme ist ein Donnergrollen: 'Ich hasse meinen Meister mehr als ihr es je könntet.' Er bietet einen Pakt: Informationen über Erttus Pläne und die Schwächen der Minotauren im Austausch für einen 'kleinen Gefallen' - die Gruppe soll einen Rivalen Erttus in der dämonischen Hierarchie kontaktieren. Die infernale Hierarchie bindet Malokh an Erttu, aber vielleicht gibt es einen Weg..."
+      },
+      {
+        "roll": 2,
+        "title": "Die Spinnerin der Tausend Wege",
+        "description": "Ma'kharis Aschenseide selbst tritt aus den Schatten - eine elegante **Amurrun** mit bernsteinfarbenen Augen und einem wissenden Lächeln. Sie weiß Dinge über die Gruppe, die sie nicht wissen sollte. Ihr Angebot ist direkt: Breagan Dartis sucht die fünf Scheiben, um das Tor zu Krishnazzar zu öffnen - einem uralten Echsenpriester mit Wissen über die Konstrukte. Sie braucht Hilfe, und sie zahlt fürstlich. Aber kann man einer Diebin trauen?"
+      },
+      {
+        "roll": 3,
+        "title": "Der Zweifelnde Paladin",
+        "description": "Ser Kaela, Lagerführerin der 13. Order, sucht die Gruppe heimlich auf. Ihre Stimme ist kaum ein Flüstern: 'Kaelor hat den Verstand verloren. Er will die Reliktwaffe nicht bergen - er will sie benutzen. Gegen jeden, der sich ihm widersetzt.' Sie bittet um Hilfe, die Order von innen zu reformieren oder zumindest Kaelor aufzuhalten. Aber Verrat an der Order bedeutet den Tod - für sie und jeden, der ihr hilft."
+      },
+      {
+        "roll": 4,
+        "title": "Ghorvaks Schwester",
+        "description": "Eine **Minotaurin** nähert sich der Gruppe - ohne Waffen, mit erhobenen Händen. Sie ist Kara, Ghorvaks Schwester. Sie floh nach Orfnir, als die Bluttrinker begannen, Dämonen zu dienen. Sie kennt ihren Bruder - und seine Schwäche. 'Er hasst Erttu', flüstert sie. 'Aber der Dämon hat etwas über ihn. Findet heraus, was es ist, und ihr könnt ihn befreien.'"
+      },
+      {
+        "roll": 5,
+        "title": "Der letzte Elf",
+        "description": "Ein **Elf** - ein echter, lebender Elf aus Nyssilion - steht vor der Gruppe. Vaelirion der Ewige überlebte den Fall seines Reiches durch Zeitmagie und erwachte erst vor kurzem. Er ist entsetzt über das, was aus Nyssilion wurde - und über Kronos. 'Ich habe ihn erschaffen', gesteht er. 'Ich kann ihn stoppen. Aber ich brauche die fünf Ringe.'"
+      },
+      {
+        "roll": 6,
+        "title": "Das Angebot des Wurmgottes",
+        "description": "Die Gruppe träumt denselben Traum: Eine Stimme aus der Tiefe, älter als die Welt, spricht zu ihnen. Es ist **Thorgun**, der Unendliche Schlund, einer der Wurmgötter. Er bietet einen Pakt: Hilfe gegen Erttu und die Konstrukte im Austausch für... einen Gefallen. Später. 'Die Schuld wird kommen', donnert seine Stimme. 'Aber nicht heute.' Nehmt ihr an?"
+      },
+      {
+        "roll": 7,
+        "title": "Die Prophezeiung der Wächter",
+        "description": "Ein uralter Schamane der Wächter der Steppe sucht die Gruppe auf. Er hat eine Vision gehabt - über sie. 'Ihr seid die Fünf', sagt er. 'Die Fünf, die entscheiden werden.' Er erklärt nicht mehr, aber er überreicht jedem von ihnen ein Amulett. Die Amulette sind alt, sehr alt - älter als die Clans. Sie tragen die Symbole der fünf Reiterclans."
+      },
+      {
+        "roll": 8,
+        "title": "Erttus Angebot",
+        "description": "Ein Flüstern in der Dunkelheit, eine Stimme, die aus der Tiefe kommt. **Erttu** selbst spricht zur Gruppe - nicht durch einen Diener, sondern direkt. 'Ihr amüsiert mich', sagt er. 'Ich biete euch einen Platz an meiner Seite. Macht, Reichtum, Unsterblichkeit. Alles, was ihr euch wünscht.' Die Versuchung ist real - und Erttu lügt nie. Er hält seine Versprechen. Das ist das Gefährliche."
+      },
+      {
+        "roll": 9,
+        "title": "Der erwachte Konstrukt",
+        "description": "**Tikkar-7** - oder ein ähnlicher 'defekter' Konstrukt - sucht die Gruppe auf. Er hat Zugang zu Kronos' Netzwerk gewonnen und weiß Dinge. Wichtige Dinge. 'Der Wächter plant die Säuberung', erklärt er. 'Alle Nicht-Elfen. Überall. Ich kann ihn nicht stoppen. Aber ihr vielleicht.' Er bietet Zugang zu den Konstrukt-Kontrollen - aber der Preis ist hoch: Er muss geopfert werden."
+      },
+      {
+        "roll": 10,
+        "title": "Die Vereinigung der Khans",
+        "description": "Boten aller fünf Clans erreichen die Gruppe gleichzeitig. Die Khans haben sich entschieden: Ein Konklave wird einberufen. Alle fünf Clans werden vertreten sein - zum ersten Mal seit Generationen. Und die Gruppe ist eingeladen. Nicht als Zuschauer, sondern als Sprecher. Die Clans haben gehört, was sie getan haben, und sie wollen zuhören. Die Zukunft Orfnirs liegt in ihrer Hand."
       }
     ]
   }
