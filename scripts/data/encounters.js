@@ -2549,625 +2549,625 @@ export const ENCOUNTERS = {
     "A Chance Meeting": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "way to the nearest town to preside over the trials of prisoners awaiting their day in court. The judge is pleased to share news with decent folk but also explains they are wary of strangers because circuit judges are prime targets for miscreants and ne’er-do-wells. Grace for Sale: An itinerant priest crosses paths with the party, offering to bless them"
+        "title": "Circuit Judge",
+        "description": "A mounted traveller introduces themself as the region's circuit judge on their way to the nearest town to preside over the trials of prisoners awaiting their day in court. The judge is pleased to share news with decent folk but also explains they are wary of strangers because circuit judges are prime targets for miscreants and ne'er-do-wells."
       },
       {
         "roll": 2,
-        "title": "with a deity’s favour for a reasonable price",
-        "description": "Holy water and chanting precede sermons and counselling. Whatever the party members need, the priest is selling. And what luck! The priest is a physician, too, selling all manner of tonics, tinctures, and definitely not snake oil. First Contact: Another group coming from the unknown frontier encounters the party. This"
+        "title": "Grace for Sale",
+        "description": "An itinerant priest crosses paths with the party, offering to bless them with a deity's favour for a reasonable price. Holy water and chanting precede sermons and counselling. Whatever the party members need, the priest is selling. And what luck! The priest is a physician, too, selling all manner of tonics, tinctures, and definitely not snake oil."
       },
       {
         "roll": 3,
-        "title": "group comes from an entirely different culture and speaks an unknown language",
-        "description": "This group, however, is fleeing unidentified attackers that have destroyed their frontier communities. Through exaggerated actions, the group may communicate with the party to varying effect. Dangerous Herbs: A friendly herbalist has learned of a patch of rare moss growing just beyond"
+        "title": "First Contact",
+        "description": "Another group coming from the unknown frontier encounters the party. This group comes from an entirely different culture and speaks an unknown language. This group, however, is fleeing unidentified attackers that have destroyed their frontier communities. Through exaggerated actions, the group may communicate with the party to varying effect."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "the borders of civilization and is just returning from the journey when she meets the party. She found the moss near a Green Dragon nest, but hides the fact that she absconded with an egg. Wagons Retreat: The party stumbles upon a caravan arguing over which direction to turn."
+        "title": "Dangerous Herbs",
+        "description": "A friendly herbalist has learned of a patch of rare moss growing just beyond the borders of civilization and is just returning from the journey when she meets the party. She found the moss near a Green Dragon nest, but hides the fact that she absconded with an egg."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "Their wagon leader has died of dysentery and the caravan has seen enough wilderness for a lifetime. They request the party’s aid in finding their way back to their hometown. Land Rush: An assorted group of Humans travel at breakneck speed, each bearing small flags."
+        "title": "Wagons Retreat",
+        "description": "The party stumbles upon a caravan arguing over which direction to turn. Their wagon leader has died of dysentery and the caravan has seen enough wilderness for a lifetime. They request the party's aid in finding their way back to their hometown."
       },
       {
         "roll": 6,
-        "title": "Entry 6",
-        "description": "Their leader, a wealthy Dragonborn, informs the party that the surrounding million acres are available for settlement by whomever can claim them first. The party is invited to partake in the rush just as the sound of fighting breaks out in the distance. Go Down to the River: Enthusiastic Humans dressed in lilac robes form a disorderly line as they make their way to the mouth of a river. Worshipping a newly encountered god of this"
+        "title": "Land Rush",
+        "description": "An assorted group of Humans travel at breakneck speed, each bearing small flags. Their leader, a wealthy Dragonborn, informs the party that the surrounding million acres are available for settlement by whomever can claim them first. The party is invited to partake in the rush just as the sound of fighting breaks out in the distance."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "river, they have brought new initiates to be cleansed in the water, confirming their faith. They are eager to tell the party all about their new religion, insisting they come to their baptismal ritual. Pony Express: A horse rears as it nearly crashes into the party. The mounted man apologises,"
+        "title": "Go Down to the River",
+        "description": "Enthusiastic Humans dressed in lilac robes form a disorderly line as they make their way to the mouth of a river. Worshipping a newly encountered god of this river, they have brought new initiates to be cleansed in the water, confirming their faith. They are eager to tell the party all about their new religion, insisting they come to their baptismal ritual."
       },
       {
         "roll": 8,
-        "title": "Entry 8",
-        "description": "explaining that his service as a postman carrying letters between the new settlements and the larger cities requires that he be the fastest courier in the land, or else the frontier towns run the risk of total isolation. Map Swap: The party encounters a Half-Orc pathfinder who is trying to help a neighbouring"
+        "title": "Pony Express",
+        "description": "A horse rears as it nearly crashes into the party. The mounted man apologises, explaining that his service as a postman carrying letters between the new settlements and the larger cities requires that he be the fastest courier in the land, or else the frontier towns run the risk of total isolation."
       },
       {
         "roll": 9,
-        "title": "nation establish a fort along the frontier",
-        "description": "He is willing to share his map and insights with the party in return for a look at theirs. He tells them that the fort captain is looking for a party to scout the area beyond the fort’s immediate territory. Amnesiac: A High Elf lies in the grass. She is well-dressed and speaks both Common and"
+        "title": "Map Swap",
+        "description": "The party encounters a Half-Orc pathfinder who is trying to help a neighbouring nation establish a fort along the frontier. He is willing to share his map and insights with the party in return for a look at theirs. He tells them that the fort captain is looking for a party to scout the area beyond the fort's immediate territory."
       },
       {
         "roll": 10,
-        "title": "Elvish with a pronounced accent",
-        "description": "She has no idea who she is but she has a surprising knowledge of the local area. Her fingertips spark with eldritch magic, though she can’t remember how to wield it. ENCOUNTAERNSC: IFERNOTNRTUIEINRS 5"
+        "title": "Amnesiac",
+        "description": "A High Elf lies in the grass. She is well-dressed and speaks both Common and Elvish with a pronounced accent. She has no idea who she is but she has a surprising knowledge of the local area. Her fingertips spark with eldritch magic, though she can't remember how to wield it."
       }
     ],
     "Hidden Reserves": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "that the camp was abandoned suddenly, as all the mining equipment and much of the supplies remain, as do carts of unprocessed ore. Hopefully, whatever scared the miners away is no longer around, but for now the party can resupply with whatever is leftover. Airship Wreckage: The remains of a magical airship lie broken above a jagged patch of rocks,"
+        "title": "Abandoned Mining Camp",
+        "description": "The party comes across the remains of a mining camp. It's obvious that the camp was abandoned suddenly, as all the mining equipment and much of the supplies remain, as do carts of unprocessed ore. Hopefully, whatever scared the miners away is no longer around, but for now the party can resupply with whatever is leftover."
       },
       {
         "roll": 2,
-        "title": "its crew having long since abandoned it",
-        "description": "Inside, the party finds not the equipment of the original fliers, but instead the gathered booty of a group of Gnolls that claimed the wreckage as their home. Fortunately, these humanoids are also long gone. Icy Mystery: A small ice hill sits in the distance. Inside is a dead party of adventurers whose"
+        "title": "Airship Wreckage",
+        "description": "The remains of a magical airship lie broken above a jagged patch of rocks, its crew having long since abandoned it. Inside, the party finds not the equipment of the original fliers, but instead the gathered booty of a group of Gnolls that claimed the wreckage as their home. Fortunately, these humanoids are also long gone."
       },
       {
         "roll": 3,
-        "title": "gold and gear may be chiselled out of the ice",
-        "description": "Worryingly, the weather is cool but not ice cold, so questions remain regarding what caused the ice, and the age of the corpses within it. An Intelligence (Arcana or Nature) check reveals it was the frozen Sorcerer’s own doing. Old Lines: This part of the frontier receded over the last few decades, as dangerous monsters"
+        "title": "Icy Mystery",
+        "description": "A small ice hill sits in the distance. Inside is a dead party of adventurers whose gold and gear may be chiselled out of the ice. Worryingly, the weather is cool but not ice cold, so questions remain regarding what caused the ice, and the age of the corpses within it. An Intelligence (Arcana or Nature) check reveals it was the frozen Sorcerer's own doing."
       },
       {
         "roll": 4,
-        "title": "and lack of support forced frontier communities to pull back",
-        "description": "Some of these communities retreated quickly, leaving deserted villages that still hold equipment and gear, though the threat of these monsters lingers in the silent air. Liquid Gold: The party discovers a mine long abandoned after it flooded. Examining the water in daylight reveals it is vibrantly colourful and the ripples sound like singing. Drinking a"
+        "title": "Old Lines",
+        "description": "This part of the frontier receded over the last few decades, as dangerous monsters and lack of support forced frontier communities to pull back. Some of these communities retreated quickly, leaving deserted villages that still hold equipment and gear, though the threat of these monsters lingers in the silent air."
       },
       {
         "roll": 5,
-        "title": "bottle of the water provides the benefit of a Short Rest",
-        "description": "Drinking three or more bottles in one day requires succeeding on a Charisma saving throw to avoid fixating on the water and taking one level of Exhaustion. All Right Corral: Characters stumble upon an abandoned ranch filled with blood-stained hay"
+        "title": "Liquid Gold",
+        "description": "The party discovers a mine long abandoned after it flooded. Examining the water in daylight reveals it is vibrantly colourful and the ripples sound like singing. Drinking a bottle of the water provides the benefit of a Short Rest. Drinking three or more bottles in one day requires succeeding on a Charisma saving throw to avoid fixating on the water and taking one level of Exhaustion."
       },
       {
         "roll": 6,
-        "title": "and hoofprints",
-        "description": "Behind the horse stalls are dozens of freshly dug graves, each with a bloody weapon sitting atop the crudely made headstone. No one living is present, except for a singular blood stained horse with mud caked-hooves. Reanimation Ranch: The party come across a bustling farm, but on closer inspection, every worker is either a Zombie or a Skeleton. If they investigate, the farm owner is indeed a"
+        "title": "All Right Corral",
+        "description": "Characters stumble upon an abandoned ranch filled with blood-stained hay and hoofprints. Behind the horse stalls are dozens of freshly dug graves, each with a bloody weapon sitting atop the crudely made headstone. No one living is present, except for a singular blood stained horse with mud caked-hooves."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "Necromancer, who claims to be trying to aid the community with ‘efficient and basically free labour.’ She offers the party as much produce as they can carry if they can help to improve her reputation with the neighbouring farmers. Gold Rush: Sentient species, humanoid and monstrous alike, line the bank of a river panning"
+        "title": "Reanimation Ranch",
+        "description": "The party come across a bustling farm, but on closer inspection, every worker is either a Zombie or a Skeleton. If they investigate, the farm owner is indeed a Necromancer, who claims to be trying to aid the community with 'efficient and basically free labour.' She offers the party as much produce as they can carry if they can help to improve her reputation with the neighbouring farmers."
       },
       {
         "roll": 8,
-        "title": "for gold",
-        "description": "A sense of camaraderie binds these creatures together, with plenty of food provided by a large Halfling family. Each party member can roll 1d20, striking gold on a 20. Lizard Lounge: A group of Giant Lizards are lounging on an island amid a swamp. They"
+        "title": "Gold Rush",
+        "description": "Sentient species, humanoid and monstrous alike, line the bank of a river panning for gold. A sense of camaraderie binds these creatures together, with plenty of food provided by a large Halfling family. Each party member can roll 1d20, striking gold on a 20."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "barely react to the party’s presence, placid and docile, happy to bathe in the sun. Though slow and often lazy, these beasts can wade through the bog water with ease and make for excellent mounts or draft animals. Fool’s Gold: A Mule trudges along the road, dragging the corpse of its rider along behind it."
+        "title": "Lizard Lounge",
+        "description": "A group of Giant Lizards are lounging on an island amid a swamp. They barely react to the party's presence, placid and docile, happy to bathe in the sun. Though slow and often lazy, these beasts can wade through the bog water with ease and make for excellent mounts or draft animals."
       },
       {
         "roll": 10,
-        "title": "Entry 10",
-        "description": "The dead rider is littered with arrows, their ankle stuck in a rope tied to the saddle made of fine leather. The packs tied to the sides are filled with food and travel supplies, as well as a small bag of precious gems hidden in a bag of dirt. 65 UNCHARTED JOURNEYS"
+        "title": "Fool's Gold",
+        "description": "A Mule trudges along the road, dragging the corpse of its rider along behind it. The dead rider is littered with arrows, their ankle stuck in a rope tied to the saddle made of fine leather. The packs tied to the sides are filled with food and travel supplies, as well as a small bag of precious gems hidden in a bag of dirt."
       }
     ],
     "A Bump in the Road": [
       {
         "roll": 1,
-        "title": "its banks and washing away the only bridge in this region",
-        "description": "Braving the swift currents to guide the party across the treacherous water requires the Outrider to make a Strength (Athletics) check. Swampland: The party comes to the edge of a vast and dense swamp. Travelling around it"
+        "title": "River Ford",
+        "description": "Recent flooding has caused a river crossing the party's path to swell, overflowing its banks and washing away the only bridge in this region. Braving the swift currents to guide the party across the treacherous water requires the Outrider to make a Strength (Athletics) check."
       },
       {
         "roll": 2,
-        "title": "would take a lot of time, but moving through it is also quite a challenge",
-        "description": "The Outrider may make a Constitution (Survival) check to slog their way through the swamp and determine the best path. Bovine Blockade: A herd of cattle, bison, or buffalo block the plains in massive numbers, the"
+        "title": "Swampland",
+        "description": "The party comes to the edge of a vast and dense swamp. Travelling around it would take a lot of time, but moving through it is also quite a challenge. The Outrider may make a Constitution (Survival) check to slog their way through the swamp and determine the best path."
       },
       {
         "roll": 3,
-        "title": "noise of their calls filling the air and making it hard to concentrate",
-        "description": "Navigating a safe passage between these beasts without getting trampled or upsetting the herd requires the Outrider to make a successful Wisdom (Animal Handling) check. The Holy Pass: A community at the mouth of a mountain pass believes that the pass leads to the home of the gods. They allow no one to enter the pass except to accompany funeral processions"
+        "title": "Bovine Blockade",
+        "description": "A herd of cattle, bison, or buffalo block the plains in massive numbers, the noise of their calls filling the air and making it hard to concentrate. Navigating a safe passage between these beasts without getting trampled or upsetting the herd requires the Outrider to make a successful Wisdom (Animal Handling) check."
       },
       {
         "roll": 4,
-        "title": "that leave bodies on a ‘sacred ridge’ not far from the village",
-        "description": "An Intelligence (Religion) check or a Charisma (Deception) check by the Outrider can convince the community that the party should be allowed to pass. Draw City: Passing through a one-horse town, the party find themselves unwittingly entered into a duelling competition. The party isn't allowed to leave the town without competing. The"
+        "title": "The Holy Pass",
+        "description": "A community at the mouth of a mountain pass believes that the pass leads to the home of the gods. They allow no one to enter the pass except to accompany funeral processions that leave bodies on a 'sacred ridge' not far from the village. An Intelligence (Religion) check or a Charisma (Deception) check by the Outrider can convince the community that the party should be allowed to pass."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "Outrider must succeed on a contested Strength (Athletics) or Dexterity (Sleight of Hand) check to win a round, while succeeding on a Charisma (Persuasion or Intimidation) check grants them leave without competing. Caulk the Wagon: The party reaches a crossing impossible to ford. They can attempt to"
+        "title": "Draw City",
+        "description": "Passing through a one-horse town, the party find themselves unwittingly entered into a duelling competition. The party isn't allowed to leave the town without competing. The Outrider must succeed on a contested Strength (Athletics) or Dexterity (Sleight of Hand) check to win a round, while succeeding on a Charisma (Persuasion or Intimidation) check grants them leave without competing."
       },
       {
         "roll": 6,
-        "title": "Entry 6",
-        "description": "construct a ferry, with the Outrider making a Wisdom (Survival) check, or an Intelligence check with appropriate Tools, or they can swim across, following the Outrider’s Strength (Athletics) check. Secret Quicksand: Dense foliage and moss disguise quicksand as passable terrain. The Outrider"
+        "title": "Caulk the Wagon",
+        "description": "The party reaches a crossing impossible to ford. They can attempt to construct a ferry, with the Outrider making a Wisdom (Survival) check, or an Intelligence check with appropriate Tools, or they can swim across, following the Outrider's Strength (Athletics) check."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "must make an Intelligence (Investigation) check to notice the subtle indicators that the path is not as safe as it seems before the party wanders into the pool of quicksand. Fortunately, it only sinks them waist deep, but may cause other complications. Infernal Isolation: Clear markers draw the border of ‘Tiefling territory’, where Tieflings have"
+        "title": "Secret Quicksand",
+        "description": "Dense foliage and moss disguise quicksand as passable terrain. The Outrider must make an Intelligence (Investigation) check to notice the subtle indicators that the path is not as safe as it seems before the party wanders into the pool of quicksand. Fortunately, it only sinks them waist deep, but may cause other complications."
       },
       {
         "roll": 8,
-        "title": "gathered to escape the prejudice found in the big cities",
-        "description": "Should any member of the party not be a Tiefling, the Outrider must ask for permission to pass through with a Charisma (Persuasion) check. The party must pass through these lands as fast as they can to avoid offence. Rolling Hills: The party must pass through a region of unmarred rolling hills. The continuous"
+        "title": "Infernal Isolation",
+        "description": "Clear markers draw the border of 'Tiefling territory', where Tieflings have gathered to escape the prejudice found in the big cities. Should any member of the party not be a Tiefling, the Outrider must ask for permission to pass through with a Charisma (Persuasion) check. The party must pass through these lands as fast as they can to avoid offence."
       },
       {
         "roll": 9,
-        "title": "changes in elevation and visibility makes navigation more difficult",
-        "description": "The Outrider must make a Wisdom (Survival) check to avoid getting lost. Nothing Left: A village on the road that was once a peaceful pit-stop is now left a burning"
+        "title": "Rolling Hills",
+        "description": "The party must pass through a region of unmarred rolling hills. The continuous changes in elevation and visibility makes navigation more difficult. The Outrider must make a Wisdom (Survival) check to avoid getting lost."
       },
       {
         "roll": 10,
-        "title": "ruin, still smouldering from a recent ransack by unknown assailants",
-        "description": "The Outrider must make a Dexterity (Stealth) check to get closer before they can tell if the raiders still linger. Success reveals a pack of Gnolls still sifting through the rubble. ENCOUNTAERNSC: IFERNOTNRTUIEINRS 5"
+        "title": "Nothing Left",
+        "description": "A village on the road that was once a peaceful pit-stop is now left a burning ruin, still smouldering from a recent ransack by unknown assailants. The Outrider must make a Dexterity (Stealth) check to get closer before they can tell if the raiders still linger. Success reveals a pack of Gnolls still sifting through the rubble."
       }
     ],
     "Needing Assistance": [
       {
         "roll": 1,
-        "title": "were digging, but no one is willing to to investigate",
-        "description": "A group Intelligence (Investigation) check reveals the subterranean graverobbing that’s been taking place, ending the mystery and the noises, though the culprits are long gone by the time the empty graves are found. Wounded Soldier: An exhausted horse staggers along, approaching the party with a hollow"
+        "title": "Buried Them Deep",
+        "description": "A small town's graveyard issues rhythmic sounds, as though the dead were digging, but no one is willing to investigate. A group Intelligence (Investigation) check reveals the subterranean graverobbing that's been taking place, ending the mystery and the noises, though the culprits are long gone by the time the empty graves are found."
       },
       {
         "roll": 2,
-        "title": "look in its eyes",
-        "description": "An unconscious Dragonborn slumps over its back. A group Wisdom (Medicine) check revives the Dragonborn, who begs the party to return the way he came and help the settlement he abandoned. The undead have risen and are attacking his home. Trapped!: A child approaches the party seeking help. Their friend went foraging in the woods"
+        "title": "Wounded Soldier",
+        "description": "An exhausted horse staggers along, approaching the party with a hollow look in its eyes. An unconscious Dragonborn slumps over its back. A group Wisdom (Medicine) check revives the Dragonborn, who begs the party to return the way he came and help the settlement he abandoned. The undead have risen and are attacking his home."
       },
       {
         "roll": 3,
-        "title": "and tumbled into a hole",
-        "description": "A group Wisdom (Survival) or Strength (Athletics) check can rescue the children, who have had a great time on their adventure. An Intelligence (Investigation or Nature) check determines that these holes are ancient mineshafts. This Old Map: A friendly prospector is having trouble following the map she purchased that"
+        "title": "Trapped!",
+        "description": "A child approaches the party seeking help. Their friend went foraging in the woods and tumbled into a hole. A group Wisdom (Survival) or Strength (Athletics) check can rescue the children, who have had a great time on their adventure. An Intelligence (Investigation or Nature) check determines that these holes are ancient mineshafts."
       },
       {
         "roll": 4,
-        "title": "should lead to a valuable silver vein",
-        "description": "An Intelligence (History) check reveals the map was made before an earthquake irrevocably changed the landscape. A group Intelligence (Nature) check may provide a reasonable guess as to the ore’s current whereabouts. Party Foals: The party hears shouts of frustration accompanied by thundering hooves."
+        "title": "This Old Map",
+        "description": "A friendly prospector is having trouble following the map she purchased that should lead to a valuable silver vein. An Intelligence (History) check reveals the map was made before an earthquake irrevocably changed the landscape. A group Intelligence (Nature) check may provide a reasonable guess as to the ore's current whereabouts."
       },
       {
         "roll": 5,
-        "title": "They find several Centaurs whose children have run away from the herd",
-        "description": "Rounding up the foals requires succeeding on a group Charisma (Persuasion) check or Charisma (Musical Instrument) check to guide the children back home. Dead and Unburied: A grieving woman approaches the party. Her recently deceased partner is banned from being buried in the town’s cemetery for being a Wererat. The group can help"
+        "title": "Party Foals",
+        "description": "The party hears shouts of frustration accompanied by thundering hooves. They find several Centaurs whose children have run away from the herd. Rounding up the foals requires succeeding on a group Charisma (Persuasion) check or Charisma (Musical Instrument) check to guide the children back home."
       },
       {
         "roll": 6,
-        "title": "her in one of these ways",
-        "description": "a Carpenter’s Tools check to create a beautiful casket, a Strength (Athletics) check to dig a fresh grave, or a Charisma (Intimidation) check to convince the town to bury her beloved. Rhythmic Ribbits: A Giant Frog hops headfirst into the Sentry, apologising to the party in"
+        "title": "Dead and Unburied",
+        "description": "A grieving woman approaches the party. Her recently deceased partner is banned from being buried in the town's cemetery for being a Wererat. The group can help her in one of these ways: a Carpenter's Tools check to create a beautiful casket, a Strength (Athletics) check to dig a fresh grave, or a Charisma (Intimidation) check to convince the town to bury her beloved."
       },
       {
         "roll": 7,
-        "title": "Common",
-        "description": "He has escaped his arcane master, who only wished to use him in assistance to her spells. The frog has other dreams however; he wishes to be a musician. A group Charisma (Performance) or Charisma (Musical Instrument) check can help teach him some notes. Forward Planning: A Gnome inventor has been tinkering away on an ingenious sailing ship,"
+        "title": "Rhythmic Ribbits",
+        "description": "A Giant Frog hops headfirst into the Sentry, apologising to the party in Common. He has escaped his arcane master, who only wished to use him in assistance to her spells. The frog has other dreams however; he wishes to be a musician. A group Charisma (Performance) or Charisma (Musical Instrument) check can help teach him some notes."
       },
       {
         "roll": 8,
-        "title": "crafting it expertly on her plot of land",
-        "description": "Unfortunately, she failed to take into account the lack of open water anywhere near her workshop. The party can help drag the boat to a body of water with a Strength (Athletics) check, doing so with Advantage if they have a strong pack animal. Diversified Portfolio: The only bridge over a particularly tempestuous river is guarded by a Troll tollkeeper who is having trouble with the local tax collector raising their rates. The"
+        "title": "Forward Planning",
+        "description": "A Gnome inventor has been tinkering away on an ingenious sailing ship, crafting it expertly on her plot of land. Unfortunately, she failed to take into account the lack of open water anywhere near her workshop. The party can help drag the boat to a body of water with a Strength (Athletics) check, doing so with Advantage if they have a strong pack animal."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "Troll charges an exorbitant fee to cross the bridge, clearly unconfident in his toll. A group Intelligence (Investigation or History) check can help them understand this new system and the ebb and flow of taxation. Old Wounds: A large city’s population has dwindled and local Druids are attempting to reclaim the land, causing tension with the settlers. A group Charisma (Persuasion) check can"
+        "title": "Diversified Portfolio",
+        "description": "The only bridge over a particularly tempestuous river is guarded by a Troll tollkeeper who is having trouble with the local tax collector raising their rates. The Troll charges an exorbitant fee to cross the bridge, clearly unconfident in his toll. A group Intelligence (Investigation or History) check can help them understand this new system and the ebb and flow of taxation."
       },
       {
         "roll": 10,
-        "title": "aid in an agreement between the two sides",
-        "description": "Alternatively, a group Intelligence (Nature) check can allow the Druids to take over, or a Charisma (Intimidation) check can keep the town in the hands of the residents. 65 UNCHARTED JOURNEYS"
+        "title": "Old Wounds",
+        "description": "A large city's population has dwindled and local Druids are attempting to reclaim the land, causing tension with the settlers. A group Charisma (Persuasion) check can aid in an agreement between the two sides. Alternatively, a group Intelligence (Nature) check can allow the Druids to take over, or a Charisma (Intimidation) check can keep the town in the hands of the residents."
       }
     ],
     "Danger Afoot": [
       {
         "roll": 1,
-        "title": "the brim of his hat",
-        "description": "If the party try to interact with him, he sneers, remarking that they’ve caught him at a bad time, and that he’s feeling mighty feisty. He chugs a vial that he whips from his belt, growing in size as though under the effects of Enlarge/Reduce. Unwelcome Refuge: After a tiring day, the Outrider spots a small hunting cottage in the"
+        "title": "Lone Stranger",
+        "description": "A Human Barbarian walks down a lonely road, never looking up from beneath the brim of his hat. If the party try to interact with him, he sneers, remarking that they've caught him at a bad time, and that he's feeling mighty feisty. He chugs a vial that he whips from his belt, growing in size as though under the effects of Enlarge/Reduce."
       },
       {
         "roll": 2,
-        "title": "distance",
-        "description": "It looks inviting enough, a sturdy building that can protect them from both the elements and predators. Unfortunately, the front door is actually a Mimic lying in wait, with another Mimic disguised as a rocking chair on the porch. Predator/Prey: Goblins have always been a problem for this community, so when a band"
+        "title": "Unwelcome Refuge",
+        "description": "After a tiring day, the Outrider spots a small hunting cottage in the distance. It looks inviting enough, a sturdy building that can protect them from both the elements and predators. Unfortunately, the front door is actually a Mimic lying in wait, with another Mimic disguised as a rocking chair on the porch."
       },
       {
         "roll": 3,
-        "title": "of them comes out of the wilderness the town prepares to fight",
-        "description": "It is soon revealed that the Goblins aren’t charging the town: they’re fleeing a larger predator. An Ettin crashes out of the woods, both heads shouting in unison. Respecting Boundaries: The party finds, or is currently helping, a new community that has"
+        "title": "Predator/Prey",
+        "description": "Goblins have always been a problem for this community, so when a band of them comes out of the wilderness the town prepares to fight. It is soon revealed that the Goblins aren't charging the town: they're fleeing a larger predator. An Ettin crashes out of the woods, both heads shouting in unison."
       },
       {
         "roll": 4,
-        "title": "just established itself further into the frontier",
-        "description": "Unfortunately, the move has inadvertently activated the long-dormant Stone Golem that was a sentinel for a lost empire. Unless the party assists, the new community is going to be crushed underfoot! Ghost Stories: Travellers tremble at the memory of the ill-fated Ferndream Party, a caravan of"
+        "title": "Respecting Boundaries",
+        "description": "The party finds, or is currently helping, a new community that has just established itself further into the frontier. Unfortunately, the move has inadvertently activated the long-dormant Stone Golem that was a sentinel for a lost empire. Unless the party assists, the new community is going to be crushed underfoot!"
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "Halflings (use the Ghast entry) forced to eat their own before vanishing without a trace. Small footprints and drool near the party’s campsite every morning imply they are neither gone nor forgotten. It seems they hunger still. Too Good to be True: An abandoned wagon on the side of the road sporting a broken axle"
+        "title": "Ghost Stories",
+        "description": "Travellers tremble at the memory of the ill-fated Ferndream Party, a caravan of Halflings (use the Ghast entry) forced to eat their own before vanishing without a trace. Small footprints and drool near the party's campsite every morning imply they are neither gone nor forgotten. It seems they hunger still."
       },
       {
         "roll": 6,
-        "title": "looks to be a serendipitous repository of supplies",
-        "description": "Upon inspection, the party find their hands phase right through the food and equipment: a trap set by magical marauders (use the Bandit Captain and Mage stat blocks). Live Bait: A group of devil-worshipping Cultists led by a Spined Devil have constructed a"
+        "title": "Too Good to be True",
+        "description": "An abandoned wagon on the side of the road sporting a broken axle looks to be a serendipitous repository of supplies. Upon inspection, the party find their hands phase right through the food and equipment: a trap set by magical marauders (use the Bandit Captain and Mage stat blocks)."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "set of linked treehouses above a dilapidated road, and are using long, hooked chains and nets to capture unwary passers-by to steal their goods. The party watches as the brigands snag a merchant by the voluminous robes they’re wearing. Tumbleweed Terror: A rumbling dust cloud of screaming tumbleweed rampages across"
+        "title": "Live Bait",
+        "description": "A group of devil-worshipping Cultists led by a Spined Devil have constructed a set of linked treehouses above a dilapidated road, and are using long, hooked chains and nets to capture unwary passers-by to steal their goods. The party watches as the brigands snag a merchant by the voluminous robes they're wearing."
       },
       {
         "roll": 8,
-        "title": "the blasted landscape towards the party",
-        "description": "Each tumbleweed is in fact a bandit that has been transformed into a plant by a witch with a strange sense of humour. There are dozens of tumbleweeds, each using the statistics of an Awakened Shrub. Forced Providers: A band of Veterans approaches the party. They were tasked with destroying"
+        "title": "Tumbleweed Terror",
+        "description": "A rumbling dust cloud of screaming tumbleweed rampages across the blasted landscape towards the party. Each tumbleweed is in fact a bandit that has been transformed into a plant by a witch with a strange sense of humour. There are dozens of tumbleweeds, each using the statistics of an Awakened Shrub."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "a raiding party menacing frontier villages, but soon discovered that the raiders were more formidable than previously thought. Unfortunately, they believe their mission to be more important than the party’s needs, and demand their food and any useful magic items, or else. Move Along: From over the crest of a hill, the sound of battle can be heard; but by the time the"
+        "title": "Forced Providers",
+        "description": "A band of Veterans approaches the party. They were tasked with destroying a raiding party menacing frontier villages, but soon discovered that the raiders were more formidable than previously thought. Unfortunately, they believe their mission to be more important than the party's needs, and demand their food and any useful magic items, or else."
       },
       {
         "roll": 10,
-        "title": "source is visible, the fighting is over",
-        "description": "A number of Centaurs stand victorious over the remains of some kind of camp, and look to the party in a moment of tense hesitation before raising their weapons. ENCOUNTAERNSC: IFERNOTNRTUIEINRS 5"
+        "title": "Move Along",
+        "description": "From over the crest of a hill, the sound of battle can be heard; but by the time the source is visible, the fighting is over. A number of Centaurs stand victorious over the remains of some kind of camp, and look to the party in a moment of tense hesitation before raising their weapons."
       }
     ],
     "Natural Wonders": [
       {
         "roll": 1,
-        "title": "surreal colours and a breathtaking sea of stars",
-        "description": "Beneath this humbling cosmic display, awe, wonder, and dread descend upon the party in equal parts, and each individual must make their own peace with existence and their place within the vast infinity arrayed before them. Vast Herd: Out beyond the nearest population centres, a vast herd of cattle roams. The sheer"
+        "title": "Stark Truth Beneath the Stars",
+        "description": "Far from settled lands, the moonless night sky is awash with surreal colours and a breathtaking sea of stars. Beneath this humbling cosmic display, awe, wonder, and dread descend upon the party in equal parts, and each individual must make their own peace with existence and their place within the vast infinity arrayed before them."
       },
       {
         "roll": 2,
-        "title": "abundance of life gathered in one place is a staggering sight",
-        "description": "Unspoiled nature free from the influences of society, ambition, and settlement is an increasingly rare sight as the frontier expands and unexplored spaces recede into obscurity. Crystal Canyon: There is a place beyond the frontier where a mighty river has carved a canyon"
+        "title": "Vast Herd",
+        "description": "Out beyond the nearest population centres, a vast herd of cattle roams. The sheer abundance of life gathered in one place is a staggering sight. Unspoiled nature free from the influences of society, ambition, and settlement is an increasingly rare sight as the frontier expands and unexplored spaces recede into obscurity."
       },
       {
         "roll": 3,
-        "title": "to reveal layers of crystals along the banks",
-        "description": "When the sunlight hits it just right, the entire canyon blinks in a kaleidoscope of colours. There are rumours that there is a message within the blinking, but thus far no explorer has identified it. The Eversmoking Mountain: Just beyond the frontier there is a mountain volcano that"
+        "title": "Crystal Canyon",
+        "description": "There is a place beyond the frontier where a mighty river has carved a canyon to reveal layers of crystals along the banks. When the sunlight hits it just right, the entire canyon blinks in a kaleidoscope of colours. There are rumours that there is a message within the blinking, but thus far no explorer has identified it."
       },
       {
         "roll": 4,
-        "title": "discourages further encroachment due to its eversmoking vent",
-        "description": "While it occasionally produces ash that harmlessly falls on the closest villages, the volcano has yet to erupt. Some wonder if it hides a Dragon’s lair, or a Giant’s forge. Giant Golf: Massive arches of stone loom on the horizon, framing the scenery with rocky"
+        "title": "The Eversmoking Mountain",
+        "description": "Just beyond the frontier there is a mountain volcano that discourages further encroachment due to its eversmoking vent. While it occasionally produces ash that harmlessly falls on the closest villages, the volcano has yet to erupt. Some wonder if it hides a Dragon's lair, or a Giant's forge."
       },
       {
         "roll": 5,
-        "title": "splendour",
-        "description": "In the distance, the sound of rockfalls echo like thunder. Legends tell of ancient giants building these arches for their golf matches. Perhaps they return to play when no one is looking. Dusty Dreams: The wind howls in the distance, whipping the dust into a storm. From certain"
+        "title": "Giant Golf",
+        "description": "Massive arches of stone loom on the horizon, framing the scenery with rocky splendour. In the distance, the sound of rockfalls echo like thunder. Legends tell of ancient giants building these arches for their golf matches. Perhaps they return to play when no one is looking."
       },
       {
         "roll": 6,
-        "title": "angles, the maelstrom looks like wild Pegasi and Imps in an endless struggle",
-        "description": "While the dust storm itself is deadly if approached, such visuals have for centuries inspired bards to write ballads of good versus evil. One Man’s Trash: A poorly planned settlement has been dumping its waste in a ditch outside"
+        "title": "Dusty Dreams",
+        "description": "The wind howls in the distance, whipping the dust into a storm. From certain angles, the maelstrom looks like wild Pegasi and Imps in an endless struggle. While the dust storm itself is deadly if approached, such visuals have for centuries inspired bards to write ballads of good versus evil."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "the town border, and the town Wizard has also contributed with her magical dregs and runoff. This unseemly combination has led to an inverted waterfall of sewage, glittering beautifully with magical energy, though a thoroughly disgusting odour poisons the air for miles around. Petrified Farm: A farm stands seemingly unoccupied, but on closer inspection it is evident"
+        "title": "One Man's Trash",
+        "description": "A poorly planned settlement has been dumping its waste in a ditch outside the town border, and the town Wizard has also contributed with her magical dregs and runoff. This unseemly combination has led to an inverted waterfall of sewage, glittering beautifully with magical energy, though a thoroughly disgusting odour poisons the air for miles around."
       },
       {
         "roll": 8,
-        "title": "Entry 8",
-        "description": "that there are several farmers that have been petrified while going about their normal work in a perfect diorama. Further inspection reveals that only a single blind farmer still lives here, rearing Basilisk pups for a purpose they will not disclose. Swamp of Resizing: Crimson red bubbles rise into the sky from a sulphurous, ever-bubbling"
+        "title": "Petrified Farm",
+        "description": "A farm stands seemingly unoccupied, but on closer inspection it is evident that there are several farmers that have been petrified while going about their normal work in a perfect diorama. Further inspection reveals that only a single blind farmer still lives here, rearing Basilisk pups for a purpose they will not disclose."
       },
       {
         "roll": 9,
-        "title": "blood-red swamp",
-        "description": "Animals regularly drink from its waters, and all that do randomly increase in size. If the party linger here, they will observe a Swarm of Rats drink from the oozing pool and become 20 Giant Rats. Eternal Honey: A towering lean-to constructed entirely of bee hives dominates the skyline. It is maintained by a single Clay Golem who dutifully cares for the bees day and night,"
+        "title": "Swamp of Resizing",
+        "description": "Crimson red bubbles rise into the sky from a sulphurous, ever-bubbling blood-red swamp. Animals regularly drink from its waters, and all that do randomly increase in size. If the party linger here, they will observe a Swarm of Rats drink from the oozing pool and become 20 Giant Rats."
       },
       {
         "roll": 10,
-        "title": "continuously (if slowly) aiding in building and expanding the hives",
-        "description": "They have a tremendous store of honey that is of no use to a golem, and are more than willing to part with it for anyone that is willing to provide assistance. 65 UNCHARTED JOURNEYS"
+        "title": "Eternal Honey",
+        "description": "A towering lean-to constructed entirely of bee hives dominates the skyline. It is maintained by a single Clay Golem who dutifully cares for the bees day and night, continuously (if slowly) aiding in building and expanding the hives. They have a tremendous store of honey that is of no use to a golem, and are more than willing to part with it for anyone that is willing to provide assistance."
       }
     ],
     "Monster Hunt": [
       {
         "roll": 1,
-        "title": "messages left behind warning of ‘giants’",
-        "description": "No sooner does the party venture forward into the unmapped wilderness than they learn what the ‘giant’ is. Loud roaring and thundering footsteps reveal that this area is the domain of Giant Apes. Fiery Domain: The forest ahead is charred, with the remnants of a wildfire finally burning"
+        "title": "Giants Revealed",
+        "description": "Frontier communities have receded after abandoning the further settlements, messages left behind warning of 'giants'. No sooner does the party venture forward into the unmapped wilderness than they learn what the 'giant' is. Loud roaring and thundering footsteps reveal that this area is the domain of Giant Apes."
       },
       {
         "roll": 2,
-        "title": "itself out",
-        "description": "The party soon comes across a similarly burned village, which should have been outside the wildfire’s range. A few discarded red scales soon reveal the truth. At least one Young Red Dragon calls this region home, and jealously guards its territory. The Pristine Forest: Elf lore holds that none should enter the nearby forest. When this decree"
+        "title": "Fiery Domain",
+        "description": "The forest ahead is charred, with the remnants of a wildfire finally burning itself out. The party soon comes across a similarly burned village, which should have been outside the wildfire's range. A few discarded red scales soon reveal the truth. At least one Young Red Dragon calls this region home, and jealously guards its territory."
       },
       {
         "roll": 3,
-        "title": "Entry 3",
-        "description": "is violated, whether due to a community needing firewood, a party passing through, or even livestock wandering in, a band of angry Treants exacts a bloody toll in response. The bodies and loot of all those victims is a tempting haul for daring adventurers. Missing Persons: People and livestock in a frontier village have been going missing one by one"
+        "title": "The Pristine Forest",
+        "description": "Elf lore holds that none should enter the nearby forest. When this decree is violated, whether due to a community needing firewood, a party passing through, or even livestock wandering in, a band of angry Treants exacts a bloody toll in response. The bodies and loot of all those victims is a tempting haul for daring adventurers."
       },
       {
         "roll": 4,
-        "title": "each night, causing mass panic",
-        "description": "A Phase Spider is the culprit, snatching villagers and dragging their webbed bodies back to its hungry children for future consumption. The sheriff will pay a handsome reward to those who can squash the spider. Welcome to Tyrannosaur Park: A local village excitedly shares news of their mines unearthing"
+        "title": "Missing Persons",
+        "description": "People and livestock in a frontier village have been going missing one by one each night, causing mass panic. A Phase Spider is the culprit, snatching villagers and dragging their webbed bodies back to its hungry children for future consumption. The sheriff will pay a handsome reward to those who can squash the spider."
       },
       {
         "roll": 5,
-        "title": "titan bones",
-        "description": "The bones actually belong to a Tyrannosaurus Rex skeleton and the excitement has awoken the creature from its undead slumber. These bones would be valuable to any archeologist, or perhaps a necromancer. Booters Beware: Frontier dwellers are accustomed to leaving their boots upside-down before resting, and shaking them out upon waking to avoid Scorpions. What leaves them utterly"
+        "title": "Welcome to Tyrannosaur Park",
+        "description": "A local village excitedly shares news of their mines unearthing titan bones. The bones actually belong to a Tyrannosaurus Rex skeleton and the excitement has awoken the creature from its undead slumber. These bones would be valuable to any archeologist, or perhaps a necromancer."
       },
       {
         "roll": 6,
-        "title": "bewildered, however, is waking to find their left shoe missing",
-        "description": "The culprit is a Kobold stealing shoes for its pet Giant Wolf Spider. Cobblers in the town will owe the party a great debt upon the boots' return. Lost Labyrinth: A recent earthquake has left a fissure in the earth, where frightening roars"
+        "title": "Booters Beware",
+        "description": "Frontier dwellers are accustomed to leaving their boots upside-down before resting, and shaking them out upon waking to avoid Scorpions. What leaves them utterly bewildered, however, is waking to find their left shoe missing. The culprit is a Kobold stealing shoes for its pet Giant Wolf Spider. Cobblers in the town will owe the party a great debt upon the boots' return."
       },
       {
         "roll": 7,
-        "title": "and lonely whimpers emanate from within",
-        "description": "A brief expedition inside reveals an underground labyrinth, where a Minotaur roams. The loot of lost adventurers is a tempting treasure to plunder from this subterranean maze. Planar Pyromaniac: The town Wizard, locals say, has been experimenting with interplanar"
+        "title": "Lost Labyrinth",
+        "description": "A recent earthquake has left a fissure in the earth, where frightening roars and lonely whimpers emanate from within. A brief expedition inside reveals an underground labyrinth, where a Minotaur roams. The loot of lost adventurers is a tempting treasure to plunder from this subterranean maze."
       },
       {
         "roll": 8,
-        "title": "magic, and has not been seen for days",
-        "description": "Lights shine from within her tower, flickering and moving. Summoning a horde of Magmins, the Wizard was overrun and killed, leaving any spell scrolls that haven’t been used for kindling up for grabs. Toad in the Hole: A Giant Toad lies in wait beneath the muddy waters of a swamp, poised to"
+        "title": "Planar Pyromaniac",
+        "description": "The town Wizard, locals say, has been experimenting with interplanar magic, and has not been seen for days. Lights shine from within her tower, flickering and moving. Summoning a horde of Magmins, the Wizard was overrun and killed, leaving any spell scrolls that haven't been used for kindling up for grabs."
       },
       {
         "roll": 9,
-        "title": "swallow whole any prey that wades nearby",
-        "description": "A perceptive adventurer will notice that the ripples in the water are not natural, indicating movement below. Many travellers have succumbed to the toad’s ambush, and as such it has swallowed a lot of valuable items. Barely Wounded: Locals warn of a grizzled, monstrous bear (use the statistics for a Werebear)"
+        "title": "Toad in the Hole",
+        "description": "A Giant Toad lies in wait beneath the muddy waters of a swamp, poised to swallow whole any prey that wades nearby. A perceptive adventurer will notice that the ripples in the water are not natural, indicating movement below. Many travellers have succumbed to the toad's ambush, and as such it has swallowed a lot of valuable items."
       },
       {
         "roll": 10,
-        "title": "spotted in the forest, dozens of weapons buried into its hide",
-        "description": "Many attempts have been made to poach this beast, though it shrugs off attacks with ease. Magical weapons are among those embedded in its back. ENCOUNTAERNSC: IFERNOTNRTUIEINRS 5"
+        "title": "Barely Wounded",
+        "description": "Locals warn of a grizzled, monstrous bear (use the statistics for a Werebear) spotted in the forest, dozens of weapons buried into its hide. Many attempts have been made to poach this beast, though it shrugs off attacks with ease. Magical weapons are among those embedded in its back."
       }
     ],
     "A Place to Rest": [
       {
         "roll": 1,
-        "title": "of grounded ships",
-        "description": "The villagers are descendants of a navy who were transported here through magic. They settled and turned their ships into new homes. This has proven surprisingly defensible, and the village thrives, though they are wary of landlubbing strangers. The Giant Homestead: An old Hill Giant homestead sits out on the frontier, surrounded by giant animals still grazing in its gardens. The occupants are long since gone but the structure"
+        "title": "The Old Fleet",
+        "description": "A small village in the frontier is built from the hulls of grounded ships. The villagers are descendants of a navy who were transported here through magic. They settled and turned their ships into new homes. This has proven surprisingly defensible, and the village thrives, though they are wary of landlubbing strangers."
       },
       {
         "roll": 2,
-        "title": "remains, which is especially welcome in bad weather",
-        "description": "The inside is safe and warm enough, but the party may have trouble with the Huge-sized furniture and tools. The animals have grown unaccustomed to humanoids, and are easily spooked. Monk Hospitality: A lone monastery sits atop a hill or nestled against a mountain cliff on"
+        "title": "The Giant Homestead",
+        "description": "An old Hill Giant homestead sits out on the frontier, surrounded by giant animals still grazing in its gardens. The occupants are long since gone but the structure remains, which is especially welcome in bad weather. The inside is safe and warm enough, but the party may have trouble with the Huge-sized furniture and tools. The animals have grown unaccustomed to humanoids, and are easily spooked."
       },
       {
         "roll": 3,
-        "title": "the edge of the frontier",
-        "description": "The monks and other residents keep watch for any lurking dangers or large-scale movements on the horizon. While martial in character, they are very hospitable to guests and offer food and shelter, though they may wish to spar. Friendly Skies: A Dragonborn airship captain is performing maintenance on their small"
+        "title": "Monk Hospitality",
+        "description": "A lone monastery sits atop a hill or nestled against a mountain cliff on the edge of the frontier. The monks and other residents keep watch for any lurking dangers or large-scale movements on the horizon. While martial in character, they are very hospitable to guests and offer food and shelter, though they may wish to spar."
       },
       {
         "roll": 4,
-        "title": "airship when the party encounters them",
-        "description": "The captain is mapping the uncharted frontier and is happy to give the party a place to rest on their ship. Though their vessel is not yet ready for flight, their map points towards an Old Memories or A Dark Place encounter. Hagspitality: Dancing lights in the darkness lead the party to a welcoming cottage with an unruly garden. The proprietor is a friendly older female Commoner with a half-dozen Cats,"
+        "title": "Friendly Skies",
+        "description": "A Dragonborn airship captain is performing maintenance on their small airship when the party encounters them. The captain is mapping the uncharted frontier and is happy to give the party a place to rest on their ship. Though their vessel is not yet ready for flight, their map points towards an Old Memories or A Dark Place encounter."
       },
       {
         "roll": 5,
-        "title": "a Raven, and several Frogs as pets",
-        "description": "She exclaims how delighted she is to have guests and immediately offers them freshly baked cookies and tea, though strangers aren’t always to be trusted. Tombstone Tunnel: The full moon rises over a small graveyard constructed between two"
+        "title": "Hagspitality",
+        "description": "Dancing lights in the darkness lead the party to a welcoming cottage with an unruly garden. The proprietor is a friendly older female Commoner with a half-dozen Cats, a Raven, and several Frogs as pets. She exclaims how delighted she is to have guests and immediately offers them freshly baked cookies and tea, though strangers aren't always to be trusted."
       },
       {
         "roll": 6,
-        "title": "rocky plateaus",
-        "description": "Flat ground and defensible entrances make this a suitable campsite. The wind blowing through the tunnel sounds like crying, though the dead appear quiet for now. A Town With No Name: The party finds a group of tents bustling with people, around them"
+        "title": "Tombstone Tunnel",
+        "description": "The full moon rises over a small graveyard constructed between two rocky plateaus. Flat ground and defensible entrances make this a suitable campsite. The wind blowing through the tunnel sounds like crying, though the dead appear quiet for now."
       },
       {
         "roll": 7,
-        "title": "a swathe of cleared land and work sites",
-        "description": "The locals explain it is the foundation of their new frontier town. They notice that everyone is arguing about what their new town should be named, and are soon approached for suggestions. Tiny Home: An upturned boot lies amongst the scrub, unimpressive save for a tiny colourful garden surrounding it. Any who touch the boot immediately shrink, becoming Tiny while in"
+        "title": "A Town With No Name",
+        "description": "The party finds a group of tents bustling with people, around them a swathe of cleared land and work sites. The locals explain it is the foundation of their new frontier town. They notice that everyone is arguing about what their new town should be named, and are soon approached for suggestions."
       },
       {
         "roll": 8,
-        "title": "the circle of the garden",
-        "description": "Inside the boot is a pristine house, comfortable and well supplied. The party may choose to rest here, though the Sprite homeowner may not appreciate uninvited guests. It Belongs in a Museum: A group of scholars led by an eccentric Gnome has set up camp"
+        "title": "Tiny Home",
+        "description": "An upturned boot lies amongst the scrub, unimpressive save for a tiny colourful garden surrounding it. Any who touch the boot immediately shrink, becoming Tiny while in the circle of the garden. Inside the boot is a pristine house, comfortable and well supplied. The party may choose to rest here, though the Sprite homeowner may not appreciate uninvited guests."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "around a fresh dig site, believing the ground beneath them holds some significant ruins of a long lost culture. The scholars are happy to share their findings and boast of their discoveries. The mercenaries hired to protect them, however, grow frustrated in their boredom. Work Break: A camp of Humans are circled around a fireplace, sharing stories and laughing"
+        "title": "It Belongs in a Museum",
+        "description": "A group of scholars led by an eccentric Gnome has set up camp around a fresh dig site, believing the ground beneath them holds some significant ruins of a long lost culture. The scholars are happy to share their findings and boast of their discoveries. The mercenaries hired to protect them, however, grow frustrated in their boredom."
       },
       {
         "roll": 10,
-        "title": "heartily",
-        "description": "They invite the party to join them, offering portions from the pot of beans they are cooking over the fire. Conversation can turn sour however if the topic of why they’re here is pressed, as this band of Thugs usually make their living by ambushing travellers. 65 UNCHARTED JOURNEYS"
+        "title": "Work Break",
+        "description": "A camp of Humans are circled around a fireplace, sharing stories and laughing heartily. They invite the party to join them, offering portions from the pot of beans they are cooking over the fire. Conversation can turn sour however if the topic of why they're here is pressed, as this band of Thugs usually make their living by ambushing travellers."
       }
     ],
     "Old Memories": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "many barns, houses, and other structures indicating that previous occupants attempted just that. It is equally obvious, however, that the land proved unsuitable for farming, at least for the crops attempted, as the buildings are abandoned and falling apart. The Wall: The party spots a partially-standing wall off in the distance, an obvious attempt to"
+        "title": "Poor Soil",
+        "description": "This relatively gentle stretch of frontier looks perfect for farming and there are many barns, houses, and other structures indicating that previous occupants attempted just that. It is equally obvious, however, that the land proved unsuitable for farming, at least for the crops attempted, as the buildings are abandoned and falling apart."
       },
       {
         "roll": 2,
-        "title": "set a boundary and keep out the dangerous elements on the other side",
-        "description": "Interestingly, the wall does not exist on any of the party’s maps, nor does anyone recall hearing of such a wall. Further investigation reveals it is the corpse of a Grey Ooze. Halfling Memories: The ground is a patchwork maze of open channels, the remnants of an"
+        "title": "The Wall",
+        "description": "The party spots a partially-standing wall off in the distance, an obvious attempt to set a boundary and keep out the dangerous elements on the other side. Interestingly, the wall does not exist on any of the party's maps, nor does anyone recall hearing of such a wall. Further investigation reveals it is the corpse of a Grey Ooze."
       },
       {
         "roll": 3,
-        "title": "old Halfling village",
-        "description": "This was once an area of hills that have weathered down and exposed the old building interiors and linking passages. Intelligence (Investigation) checks may reveal hidden places where old treasures may lie. Forgotten Monument: A crumbling old statue stands forgotten in the ruins of what was once"
+        "title": "Halfling Memories",
+        "description": "The ground is a patchwork maze of open channels, the remnants of an old Halfling village. This was once an area of hills that have weathered down and exposed the old building interiors and linking passages. Intelligence (Investigation) checks may reveal hidden places where old treasures may lie."
       },
       {
         "roll": 4,
-        "title": "a temple",
-        "description": "The statue represents a god that is no longer worshipped, as its place in the pantheon was usurped by another. Wisps of the old god’s spirit or those of dedicated followers still whisper in the wind. Just Right: A home, long abandoned, holds three of everything: beds, chairs, bowls, and more."
+        "title": "Forgotten Monument",
+        "description": "A crumbling old statue stands forgotten in the ruins of what was once a temple. The statue represents a god that is no longer worshipped, as its place in the pantheon was usurped by another. Wisps of the old god's spirit or those of dedicated followers still whisper in the wind."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "The name on the door reads ‘Björnstad’ along with a welcome mat reading ‘Wipe Your Paws’. The lock has been broken by a previous intruder and it appears the family left in a hurry. An Intelligence (Investigation) check reveals strands of golden hair and blood stains. Bad Sun Arising: A massive stone sundial marks the grounds of an ancient duel. No matter the weather conditions, the sundial always points to midday. An Intelligence (Arcana) check"
+        "title": "Just Right",
+        "description": "A home, long abandoned, holds three of everything: beds, chairs, bowls, and more. The name on the door reads 'Björnstad' along with a welcome mat reading 'Wipe Your Paws'. The lock has been broken by a previous intruder and it appears the family left in a hurry. An Intelligence (Investigation) check reveals strands of golden hair and blood stains."
       },
       {
         "roll": 6,
-        "title": "reveals remnants of a chronomantic abjuration spell",
-        "description": "Breaking the spell via Dispel Magic results in the sound of two rapid explosions, which then allows the sundial to function normally again. Harrowed Graves: An ancient graveyard lies inside an open glade, much older than the surrounding settlements. The weather-ravaged gravestones stand at awkward angles, some"
+        "title": "Bad Sun Arising",
+        "description": "A massive stone sundial marks the grounds of an ancient duel. No matter the weather conditions, the sundial always points to midday. An Intelligence (Arcana) check reveals remnants of a chronomantic abjuration spell. Breaking the spell via Dispel Magic results in the sound of two rapid explosions, which then allows the sundial to function normally again."
       },
       {
         "roll": 7,
-        "title": "toppled over entirely",
-        "description": "The plots around them are split open, some exposing planks of rotten wood. A scattering of used reagents from a necromantic spell are found along the borders of this site. The Old Haunt: A long disused wayside tavern sits derelict and abandoned. The bottles of"
+        "title": "Harrowed Graves",
+        "description": "An ancient graveyard lies inside an open glade, much older than the surrounding settlements. The weather-ravaged gravestones stand at awkward angles, some toppled over entirely. The plots around them are split open, some exposing planks of rotten wood. A scattering of used reagents from a necromantic spell are found along the borders of this site."
       },
       {
         "roll": 8,
-        "title": "Entry 8",
-        "description": "spirits gather dust or lay shattered, broken in a brawl between friends long passed. The lonely barkeep still tends to the place, even after death, their phantom spirit still polishing glasses. Well-Intended: A well stands alone on an arid plain, looking relatively new in construction."
+        "title": "The Old Haunt",
+        "description": "A long disused wayside tavern sits derelict and abandoned. The bottles of spirits gather dust or lay shattered, broken in a brawl between friends long passed. The lonely barkeep still tends to the place, even after death, their phantom spirit still polishing glasses."
       },
       {
         "roll": 9,
-        "title": "Entry 9",
-        "description": "Pulling the bucket up from below brings nothing but dust and dirt, despite the clear signs of water-wear on the inner walls. Whoever tried to settle here has long moved on, leaving only shallow pits around the well where building foundations once lay. Crumbling Heavens: Escaping a minor rockfall, the party runs down a hill and tumble along"
+        "title": "Well-Intended",
+        "description": "A well stands alone on an arid plain, looking relatively new in construction. Pulling the bucket up from below brings nothing but dust and dirt, despite the clear signs of water-wear on the inner walls. Whoever tried to settle here has long moved on, leaving only shallow pits around the well where building foundations once lay."
       },
       {
         "roll": 10,
-        "title": "the dry ground before falling through the dirt",
-        "description": "Exposing a deep cavern, it appears this was once a family home of Duergar, neatly abandoned until now. ENCOUNTAERNSC: IFERNOTNRTUIEINRS 5"
+        "title": "Crumbling Heavens",
+        "description": "Escaping a minor rockfall, the party runs down a hill and tumble along the dry ground before falling through the dirt. Exposing a deep cavern, it appears this was once a family home of Duergar, neatly abandoned until now."
       }
     ],
     "A Dark Place": [
       {
         "roll": 1,
-        "title": "Entry 1",
-        "description": "bleached humanoid skeletons lying in disarray around a single charred pole set into the ground. A blackened skeleton bound to the pole with chains grins out over the others, defiant in death. Evil permeates the site, but either party from the execution could be its source. Cursed Road: This stretch of road is well-kept and well-marked. Each mile features a tall"
+        "title": "The Grinning Witch",
+        "description": "A mass death site, marked by bleached humanoid skeletons lying in disarray around a single charred pole set into the ground. A blackened skeleton bound to the pole with chains grins out over the others, defiant in death. Evil permeates the site, but either party from the execution could be its source."
       },
       {
         "roll": 2,
-        "title": "Entry 2",
-        "description": "wooden post with a unique rune burned into it, though the language is unrecognisable. Scores of dead birds in various states of decay litter the ground around each post: some recent, others deeply decayed. A gap-toothed humanoid jawbone tops every third post. Strange Bumps: A patch of land has several small mounds dotting the landscape. Digging up"
+        "title": "Cursed Road",
+        "description": "This stretch of road is well-kept and well-marked. Each mile features a tall wooden post with a unique rune burned into it, though the language is unrecognisable. Scores of dead birds in various states of decay litter the ground around each post: some recent, others deeply decayed. A gap-toothed humanoid jawbone tops every third post."
       },
       {
         "roll": 3,
-        "title": "one of the mounds reveals the remains of a Dire Wolf",
-        "description": "A Wisdom (Medicine) check reveals that the wolf was ritually slaughtered as part of a ceremony after it had consumed humanoid flesh. The party now stands on unholy ground; it is possible they are now afflicted with a curse. Village Slaughter: The party arrives in a small town. Blood is smeared everywhere and corpses"
+        "title": "Strange Bumps",
+        "description": "A patch of land has several small mounds dotting the landscape. Digging up one of the mounds reveals the remains of a Dire Wolf. A Wisdom (Medicine) check reveals that the wolf was ritually slaughtered as part of a ceremony after it had consumed humanoid flesh. The party now stands on unholy ground; it is possible they are now afflicted with a curse."
       },
       {
         "roll": 4,
-        "title": "litter the streets",
-        "description": "It seems everyone is dead except for a twitching body that is pinned to a cart by a large sword. The twitching body is a Zombie, and a Wisdom (Perception) or Intelligence (Investigation) check reveals that the bodies and blood are arranged in a pattern. Another Mouse’s Sky: A small empty town is filled with the bodies of Mousefolk. Bloodstains"
+        "title": "Village Slaughter",
+        "description": "The party arrives in a small town. Blood is smeared everywhere and corpses litter the streets. It seems everyone is dead except for a twitching body that is pinned to a cart by a large sword. The twitching body is a Zombie, and a Wisdom (Perception) or Intelligence (Investigation) check reveals that the bodies and blood are arranged in a pattern."
       },
       {
         "roll": 5,
-        "title": "are smeared on walls and doors",
-        "description": "Sounds of commotion lead to the culprit: a Giant Constrictor Snake fighting for its life against an Invisible Stalker, rodent in shape, summoned to avenge the town. Two Bits a Play: On a lonesome road, one building struggles to stand against the skyline. Its"
+        "title": "Another Mouse's Sky",
+        "description": "A small empty town is filled with the bodies of Mousefolk. Bloodstains are smeared on walls and doors. Sounds of commotion lead to the culprit: a Giant Constrictor Snake fighting for its life against an Invisible Stalker, rodent in shape, summoned to avenge the town."
       },
       {
         "roll": 6,
-        "title": "Entry 6",
-        "description": "windows are shattered, gambling tables lay broken, and corset-strewn balconies have collapsed. Strains of harpsichord music jangle tunelessly. A tiny clockwork child smacks at the keys of the piano, still animated by ethereal strings long after its patrons have left. The Empty Altar: A stone altar stands within a copse of rotting trees. Three cadavers surround"
+        "title": "Two Bits a Play",
+        "description": "On a lonesome road, one building struggles to stand against the skyline. Its windows are shattered, gambling tables lay broken, and corset-strewn balconies have collapsed. Strains of harpsichord music jangle tunelessly. A tiny clockwork child smacks at the keys of the piano, still animated by ethereal strings long after its patrons have left."
       },
       {
         "roll": 7,
-        "title": "Entry 7",
-        "description": "it, frozen in pain at the moment of their death, like their life force has been sucked right out of them. An Intelligence (Investigation) check reveals that whatever was enshrined upon the altar is now gone, residues of unknown magics surrounding where it lay. Living Fertiliser: A stunning field of myriad mushroom species grows in seemingly infertile"
+        "title": "The Empty Altar",
+        "description": "A stone altar stands within a copse of rotting trees. Three cadavers surround it, frozen in pain at the moment of their death, like their life force has been sucked right out of them. An Intelligence (Investigation) check reveals that whatever was enshrined upon the altar is now gone, residues of unknown magics surrounding where it lay."
       },
       {
         "roll": 8,
-        "title": "ground",
-        "description": "The fungi tower overhead, some bioluminescent, some oozing a delicious-smelling ichor. Soon the party spots the upper body of a bandit submerged in the ground. Warnings in Druidic are etched into the stalks of these fungi. Totem Boundary: The party comes up to a group of humanoid corpses lashed against"
+        "title": "Living Fertiliser",
+        "description": "A stunning field of myriad mushroom species grows in seemingly infertile ground. The fungi tower overhead, some bioluminescent, some oozing a delicious-smelling ichor. Soon the party spots the upper body of a bandit submerged in the ground. Warnings in Druidic are etched into the stalks of these fungi."
       },
       {
         "roll": 9,
-        "title": "standing poles",
-        "description": "It is apparent that this is a warning to keep them from going further. What is also apparent is that these corpses are fresh. The party can still smell the stench of recent death and the bodies haven’t even begun to decay. The Church: An old, boarded-up church sits on a hill. It is inhabited by Wights who once"
+        "title": "Totem Boundary",
+        "description": "The party comes up to a group of humanoid corpses lashed against standing poles. It is apparent that this is a warning to keep them from going further. What is also apparent is that these corpses are fresh. The party can still smell the stench of recent death and the bodies haven't even begun to decay."
       },
       {
         "roll": 10,
-        "title": "refused to fight and sought refuge here",
-        "description": "They were cursed by their god for their cowardice and refused entry into the afterlife until they can prove themselves worthy. They tell their tale solemnly to the party, still unwilling to draw blood, despite their curse. 65 UNCHARTED JOURNEYS"
+        "title": "The Church",
+        "description": "An old, boarded-up church sits on a hill. It is inhabited by Wights who once refused to fight and sought refuge here. They were cursed by their god for their cowardice and refused entry into the afterlife until they can prove themselves worthy. They tell their tale solemnly to the party, still unwilling to draw blood, despite their curse."
       }
     ],
     "Deadly Fight": [
       {
         "roll": 1,
-        "title": "back to town with a spike in one leg",
-        "description": "She is the sole survivor of her hunting party, who had the misfortune of gaining a Manticore’s attention. Unfortunately, the Manticore is hot on her tail, and its brought a friend or two along with it. The Secret Threat: A friendly traveller from beyond the frontier stops at the same inn where"
+        "title": "Supper Interrupted",
+        "description": "A frightened Halfling hunter comes stumbling back to town with a spike in one leg. She is the sole survivor of her hunting party, who had the misfortune of gaining a Manticore's attention. Unfortunately, the Manticore is hot on her tail, and its brought a friend or two along with it."
       },
       {
         "roll": 2,
-        "title": "the party is staying",
-        "description": "They offer tales of life beyond the frontier and prove an exceptionally able drinker. Unfortunately it is all a ruse and, at night, this traveller transforms into an Oni. Its first victims will be the innkeeper’s children unless it is stopped. Meet the Deity: The party visits an isolated town deep in the frontier. The town has made sacrifices to survive, including adopting a local Young Black Dragon as their ‘god’. This"
+        "title": "The Secret Threat",
+        "description": "A friendly traveller from beyond the frontier stops at the same inn where the party is staying. They offer tales of life beyond the frontier and prove an exceptionally able drinker. Unfortunately it is all a ruse and, at night, this traveller transforms into an Oni. Its first victims will be the innkeeper's children unless it is stopped."
       },
       {
         "roll": 3,
-        "title": "Entry 3",
-        "description": "dragon demands regular humanoid sacrifices and, with the arrival of the party, the townsfolk need not sacrifice one of their own. They welcome the travellers even as they poison their food and drink. Deadly Trophy: Frontier ranches have been plagued by wolf attacks. One old retired adventurer"
+        "title": "Meet the Deity",
+        "description": "The party visits an isolated town deep in the frontier. The town has made sacrifices to survive, including adopting a local Young Black Dragon as their 'god'. This dragon demands regular humanoid sacrifices and, with the arrival of the party, the townsfolk need not sacrifice one of their own. They welcome the travellers even as they poison their food and drink."
       },
       {
         "roll": 4,
-        "title": "Entry 4",
-        "description": "proudly proclaims that he killed the beast with his magical axe, only for the corpse to return to Human form. Needless to say, the deceased’s Werewolf lycanthropic family isn’t pleased by this turn of events and vow to kill everyone in town. Ghost Riders: The howling wind disguises the sounds of screaming. The hunt of the infamous"
+        "title": "Deadly Trophy",
+        "description": "Frontier ranches have been plagued by wolf attacks. One old retired adventurer proudly proclaims that he killed the beast with his magical axe, only for the corpse to return to Human form. Needless to say, the deceased's Werewolf lycanthropic family isn't pleased by this turn of events and vow to kill everyone in town."
       },
       {
         "roll": 5,
-        "title": "ghost riders (Wraiths on Nightmares) has begun",
-        "description": "They travel the winds, killing the weak and inducting the strong into their eternal hunt across the plains. Black Gold: A gold mine is quickly abandoned when their sudden excitement to strike the"
+        "title": "Ghost Riders",
+        "description": "The howling wind disguises the sounds of screaming. The hunt of the infamous ghost riders (Wraiths on Nightmares) has begun. They travel the winds, killing the weak and inducting the strong into their eternal hunt across the plains."
       },
       {
         "roll": 6,
-        "title": "elusive ‘black gold’ is replaced with horror",
-        "description": "The mine is home to a massive Black Pudding that devours all intruders. Only gold dust, corroded pickaxes, and unsent letters filled with hope remain of the original crew. Putrid Plain: Settlements encircle an empty plot of land, where seeds die the second they are"
+        "title": "Black Gold",
+        "description": "A gold mine is quickly abandoned when their sudden excitement to strike the elusive 'black gold' is replaced with horror. The mine is home to a massive Black Pudding that devours all intruders. Only gold dust, corroded pickaxes, and unsent letters filled with hope remain of the original crew."
       },
       {
         "roll": 7,
-        "title": "buried, and foul odours stink up the air",
-        "description": "A band of Dretches have found their way to this plane and have sought to expand their vile territory into nearby settlements. Firebrand: Bandits riding Nightmares ambush the party, their fiendish mounts burning"
+        "title": "Putrid Plain",
+        "description": "Settlements encircle an empty plot of land, where seeds die the second they are buried, and foul odours stink up the air. A band of Dretches have found their way to this plane and have sought to expand their vile territory into nearby settlements."
       },
       {
         "roll": 8,
-        "title": "brightly against the setting sun",
-        "description": "These Bandits are unhappy with the party’s recent good deeds, revealing that they were actually the cause of a previous encounter, and now intend to take the fight into their own hands. Welcome to the Neighbourhood: The party arrives at a small village that has only been set up fairly recently. Several homes are still being built, but the settlers seem inexperienced and"
+        "title": "Firebrand",
+        "description": "Bandits riding Nightmares ambush the party, their fiendish mounts burning brightly against the setting sun. These Bandits are unhappy with the party's recent good deeds, revealing that they were actually the cause of a previous encounter, and now intend to take the fight into their own hands."
       },
       {
         "roll": 9,
-        "title": "aren’t too knowledgeable about the area",
-        "description": "Their hubris is apparent when Gnolls arrive and surround the village, poised for a fight and filled with bloodlust. Among them are tamed Giant Scorpions. There's a Snake in My Boot!: A towering mesa has left a number of rocks in the party’s path from a recent landslide. Amongst these rocks, however, is a pack of Grick waiting in ambush."
+        "title": "Welcome to the Neighbourhood",
+        "description": "The party arrives at a small village that has only been set up fairly recently. Several homes are still being built, but the settlers seem inexperienced and aren't too knowledgeable about the area. Their hubris is apparent when Gnolls arrive and surround the village, poised for a fight and filled with bloodlust. Among them are tamed Giant Scorpions."
       },
       {
         "roll": 10,
-        "title": "Entry 10",
-        "description": "The dry ground has been disturbed by the recent geological instability and can crumble underfoot, sinking an unfortunate ankle into a vice-like trap that requires a successful Strength (Athletics) check to escape. ENCOUNTAERNSC: IFERNOTNRTUIEINRS 5"
+        "title": "There's a Snake in My Boot!",
+        "description": "A towering mesa has left a number of rocks in the party's path from a recent landslide. Amongst these rocks, however, is a pack of Grick waiting in ambush. The dry ground has been disturbed by the recent geological instability and can crumble underfoot, sinking an unfortunate ankle into a vice-like trap that requires a successful Strength (Athletics) check to escape."
       }
     ],
     "Fateful Encounter": [
       {
         "roll": 1,
-        "title": "worse, a farmer is having trouble with some Goblins in his fields",
-        "description": "The farmer hires the party to catch them. When the party catches a Goblin, it explains that its community is also suffering from the plague, but there is a cure — wild herbs growing in the farmer’s field. Wolf ’s Clothing: After suffering a few demon attacks, frontier ranchers are noticing demonic"
+        "title": "Dual Plagues",
+        "description": "While a mysterious plague ravages a nearby village, making matters worse, a farmer is having trouble with some Goblins in his fields. The farmer hires the party to catch them. When the party catches a Goblin, it explains that its community is also suffering from the plague, but there is a cure — wild herbs growing in the farmer's field."
       },
       {
         "roll": 2,
-        "title": "symbols freshly painted around the outskirts of the community",
-        "description": "The culprit is a sketchy Priest who is actually a retired demon hunter, the runes warding against future attacks. Removing the symbols allows the demons back in. Strange Face: The party reaches a town at the outskirts of a famed ancient temple. The"
+        "title": "Wolf's Clothing",
+        "description": "After suffering a few demon attacks, frontier ranchers are noticing demonic symbols freshly painted around the outskirts of the community. The culprit is a sketchy Priest who is actually a retired demon hunter, the runes warding against future attacks. Removing the symbols allows the demons back in."
       },
       {
         "roll": 3,
-        "title": "Entry 3",
-        "description": "innkeeper looks strangely at a party member while he warns them of the temple's many traps. He recognises this member of the party, as their face is depicted in large murals on the temple walls. Opposites Attract: A town of Humans is unusually run by two mayors: a Bearded Devil and a"
+        "title": "Strange Face",
+        "description": "The party reaches a town at the outskirts of a famed ancient temple. The innkeeper looks strangely at a party member while he warns them of the temple's many traps. He recognises this member of the party, as their face is depicted in large murals on the temple walls."
       },
       {
         "roll": 4,
-        "title": "Deva",
-        "description": "This balance of good and evil keeps the town neutral, and strict agreements are in place to ensure no violence between the angel and devil, though a secret love is blossoming between the two. I Run This Town: A small outpost deals in secrets and favours instead of currency. Their"
+        "title": "Opposites Attract",
+        "description": "A town of Humans is unusually run by two mayors: a Bearded Devil and a Deva. This balance of good and evil keeps the town neutral, and strict agreements are in place to ensure no violence between the angel and devil, though a secret love is blossoming between the two."
       },
       {
         "roll": 5,
-        "title": "Entry 5",
-        "description": "leader, a Rakshasa disguised as an Elven noble, is keen to wrap the party in their web of debts and conspiracies. They offer whatever the party most desires and appear capable of fulfilling their promises as long as the party ‘plays by town rules’. Strange Omens: The party encounters a dazed Tiefling Acolyte at a crossroads. The young traveller states they have left their monastic school for orphans in search of their parents,"
+        "title": "I Run This Town",
+        "description": "A small outpost deals in secrets and favours instead of currency. Their leader, a Rakshasa disguised as an Elven noble, is keen to wrap the party in their web of debts and conspiracies. They offer whatever the party most desires and appear capable of fulfilling their promises as long as the party 'plays by town rules'."
       },
       {
         "roll": 6,
-        "title": "whom they are positive still live thanks to visions they’ve received",
-        "description": "In truth, their parents are a Pit Fiend and a Planetar who supervised this territory for millennia and abandoned their child for everyone’s safety. Not All Bad: A dishevelled Warlock spends the night in a frontier town before travelling into"
+        "title": "Strange Omens",
+        "description": "The party encounters a dazed Tiefling Acolyte at a crossroads. The young traveller states they have left their monastic school for orphans in search of their parents, whom they are positive still live thanks to visions they've received. In truth, their parents are a Pit Fiend and a Planetar who supervised this territory for millennia and abandoned their child for everyone's safety."
       },
       {
         "roll": 7,
-        "title": "the unknown to ‘meet his patron’",
-        "description": "He has been seen leaving markings on several buildings. His patron has asked him to condemn this town, though an Intelligence (Arcana) check discerns that he has built in protective runes to spare the lives of the children. A Time of Change: A teenage Half-Orc asks the party to tag along on their adventures, seeking"
+        "title": "Not All Bad",
+        "description": "A dishevelled Warlock spends the night in a frontier town before travelling into the unknown to 'meet his patron'. He has been seen leaving markings on several buildings. His patron has asked him to condemn this town, though an Intelligence (Arcana) check discerns that he has built in protective runes to spare the lives of the children."
       },
       {
         "roll": 8,
-        "title": "to leave his podunk town behind and forge his own path",
-        "description": "He is incessantly annoying in his enthusiasm, wanting to know everything about the party. He has recently discovered that he is the Changeling son of a Doppelganger and is running away from his family. Low Noon: A mysterious stranger enters the taverns of outskirt towns at dusk, challenging"
+        "title": "A Time of Change",
+        "description": "A teenage Half-Orc asks the party to tag along on their adventures, seeking to leave his podunk town behind and forge his own path. He is incessantly annoying in his enthusiasm, wanting to know everything about the party. He has recently discovered that he is the Changeling son of a Doppelganger and is running away from his family."
       },
       {
         "roll": 9,
-        "title": "individuals to a duel at midnight",
-        "description": "A party member is challenged by this stranger, and they refuse to back down unless a Strength (Intimidation) check is passed. The stranger hides that they are a Vampire who uses these duels as a means of feeding unnoticed. Right Place, Wrong Time: An Elf in unusual garb wanders into the tavern on the edge of the"
+        "title": "Low Noon",
+        "description": "A mysterious stranger enters the taverns of outskirt towns at dusk, challenging individuals to a duel at midnight. A party member is challenged by this stranger, and they refuse to back down unless a Strength (Intimidation) check is passed. The stranger hides that they are a Vampire who uses these duels as a means of feeding unnoticed."
       },
       {
         "roll": 10,
-        "title": "frontier",
-        "description": "They speak in a strange dialect of Elvish, their only language. They claim to be from a faraway kingdom, and react sheepishly to mechanical contraptions. The distance they travelled is actually time, as they fell through a portal that brought them millennia into the future. 65 UNCHARTED JOURNEYS"
+        "title": "Right Place, Wrong Time",
+        "description": "An Elf in unusual garb wanders into the tavern on the edge of the frontier. They speak in a strange dialect of Elvish, their only language. They claim to be from a faraway kingdom, and react sheepishly to mechanical contraptions. The distance they travelled is actually time, as they fell through a portal that brought them millennia into the future."
       }
     ]
   },

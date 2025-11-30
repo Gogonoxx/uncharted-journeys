@@ -4,6 +4,9 @@
  *
  * PF2E doesn't have exhaustion levels like D&D 5E, so this module
  * implements a custom system that stacks PF2E conditions.
+ *
+ * The exhaustion is tracked via a clickable effect item on the actor
+ * that works like afflictions - left click to increase, right click to decrease.
  */
 
 /**
@@ -56,20 +59,85 @@ export class ExhaustionManager {
   };
 
   /**
+   * The slug/ID for our exhaustion effect
+   */
+  static EXHAUSTION_EFFECT_SLUG = 'effect-exhaustion-uncharted-journeys';
+
+  /**
+   * Get the exhaustion effect item from an actor
+   * @param {Actor} actor - The PF2E actor
+   * @returns {Item|null} The exhaustion effect item or null
+   */
+  static getExhaustionEffect(actor) {
+    return actor.items.find(i =>
+      i.type === 'effect' &&
+      i.flags?.['uncharted-journeys']?.isExhaustionEffect === true
+    ) ?? null;
+  }
+
+  /**
    * Get current exhaustion level for an actor
    * @param {Actor} actor - The PF2E actor
    * @returns {number} Exhaustion level (0-6)
    */
   static getExhaustionLevel(actor) {
-    return actor.getFlag('uncharted-journeys', 'exhaustionLevel') ?? 0;
+    const effect = this.getExhaustionEffect(actor);
+    if (!effect) return 0;
+
+    // Get the badge value from the effect
+    const badgeValue = effect.system?.badge?.value;
+    return typeof badgeValue === 'number' ? badgeValue : 0;
+  }
+
+  /**
+   * Create the exhaustion effect data for a given level
+   * @param {number} level - Exhaustion level (1-6)
+   * @returns {Object} Effect item data
+   */
+  static createExhaustionEffectData(level) {
+    const levelData = this.EXHAUSTION_LEVELS[level];
+
+    return {
+      type: 'effect',
+      name: `Exhaustion ${level}`,
+      img: 'icons/svg/unconscious.svg',
+      system: {
+        slug: this.EXHAUSTION_EFFECT_SLUG,
+        description: {
+          value: `<p><strong>Exhaustion Level ${level}</strong></p><p>${levelData?.description || ''}</p>`
+        },
+        duration: {
+          value: -1,
+          unit: 'unlimited',
+          sustained: false,
+          expiry: null
+        },
+        level: { value: null },
+        badge: {
+          type: 'counter',
+          value: level,
+          min: 1,
+          max: 6,
+          label: 'Stage'
+        },
+        rules: []
+      },
+      flags: {
+        'uncharted-journeys': {
+          isExhaustionEffect: true,
+          exhaustionLevel: level
+        }
+      }
+    };
   }
 
   /**
    * Set exhaustion level and apply appropriate conditions
    * @param {Actor} actor - The PF2E actor
    * @param {number} level - Target exhaustion level (0-6)
+   * @param {boolean} silent - If true, don't send chat messages
    */
-  static async setExhaustionLevel(actor, level) {
+  static async setExhaustionLevel(actor, level, silent = false) {
     const currentLevel = this.getExhaustionLevel(actor);
     level = Math.max(0, Math.min(6, level));
 
@@ -78,13 +146,36 @@ export class ExhaustionManager {
     // Remove all exhaustion-related conditions first
     await this.clearExhaustionConditions(actor);
 
-    // Apply conditions for new level (cumulative)
-    if (level > 0) {
-      await this.applyExhaustionConditions(actor, level);
-    }
+    // Handle the effect item
+    const existingEffect = this.getExhaustionEffect(actor);
 
-    // Store the level
-    await actor.setFlag('uncharted-journeys', 'exhaustionLevel', level);
+    if (level === 0) {
+      // Remove exhaustion entirely
+      if (existingEffect) {
+        await existingEffect.delete();
+      }
+      await actor.unsetFlag('uncharted-journeys', 'exhaustionLevel');
+    } else {
+      // Apply conditions for new level (cumulative)
+      await this.applyExhaustionConditions(actor, level);
+
+      if (existingEffect) {
+        // Update existing effect
+        await existingEffect.update({
+          name: `Exhaustion ${level}`,
+          'system.badge.value': level,
+          'system.description.value': `<p><strong>Exhaustion Level ${level}</strong></p><p>${this.EXHAUSTION_LEVELS[level]?.description || ''}</p>`,
+          'flags.uncharted-journeys.exhaustionLevel': level
+        });
+      } else {
+        // Create new effect
+        const effectData = this.createExhaustionEffectData(level);
+        await actor.createEmbeddedDocuments('Item', [effectData]);
+      }
+
+      // Store the level as a flag too for quick access
+      await actor.setFlag('uncharted-journeys', 'exhaustionLevel', level);
+    }
 
     // Build notification message
     const levelData = this.EXHAUSTION_LEVELS[level];
@@ -100,25 +191,29 @@ export class ExhaustionManager {
     ui.notifications.info(message);
 
     // Create a chat message for the exhaustion change
-    await this.createExhaustionMessage(actor, level, currentLevel);
+    if (!silent) {
+      await this.createExhaustionMessage(actor, level, currentLevel);
+    }
   }
 
   /**
    * Increase exhaustion by 1 level
    * @param {Actor} actor - The PF2E actor
+   * @param {boolean} silent - If true, don't send chat messages
    */
-  static async increaseExhaustion(actor) {
+  static async increaseExhaustion(actor, silent = false) {
     const current = this.getExhaustionLevel(actor);
-    await this.setExhaustionLevel(actor, current + 1);
+    await this.setExhaustionLevel(actor, current + 1, silent);
   }
 
   /**
    * Decrease exhaustion by 1 level
    * @param {Actor} actor - The PF2E actor
+   * @param {boolean} silent - If true, don't send chat messages
    */
-  static async decreaseExhaustion(actor) {
+  static async decreaseExhaustion(actor, silent = false) {
     const current = this.getExhaustionLevel(actor);
-    await this.setExhaustionLevel(actor, current - 1);
+    await this.setExhaustionLevel(actor, current - 1, silent);
   }
 
   /**
@@ -323,16 +418,14 @@ export class ExhaustionManager {
    */
   static async createExhaustionMessage(actor, newLevel, oldLevel) {
     const levelData = this.EXHAUSTION_LEVELS[newLevel];
-    const direction = newLevel > oldLevel ? 'increased' : 'decreased';
 
-    let content = `<div class="uncharted-journeys-exhaustion">`;
-    content += `<h3><i class="fas fa-tired"></i> Exhaustion ${direction}</h3>`;
+    let content = `<div class="uncharted-journeys-exhaustion compact">`;
     content += `<p><strong>${actor.name}</strong> is now at exhaustion level <strong>${newLevel}</strong>.</p>`;
 
     if (newLevel > 0 && levelData) {
       content += `<p class="exhaustion-effect">${levelData.description}</p>`;
     } else if (newLevel === 0) {
-      content += `<p class="exhaustion-effect">All exhaustion effects have been removed.</p>`;
+      content += `<p class="exhaustion-effect">All exhaustion effects removed.</p>`;
     }
 
     content += `</div>`;
@@ -391,6 +484,55 @@ export class ExhaustionManager {
       description: this.EXHAUSTION_LEVELS[level]?.description || ''
     };
   }
+
+  /**
+   * Handle exhaustion effect badge changes (left/right click)
+   * This is called when the user clicks the badge on the effect
+   * Note: We can't use setExhaustionLevel here because the badge value
+   * is already updated by PF2E, so getExhaustionLevel would return the new value
+   * @param {Actor} actor - The actor
+   * @param {Item} effect - The exhaustion effect item
+   * @param {number} newValue - The new badge value
+   */
+  static async handleBadgeChange(actor, effect, newValue) {
+    const oldLevel = effect.flags?.['uncharted-journeys']?.exhaustionLevel || 0;
+
+    // Clamp to valid range
+    newValue = Math.max(0, Math.min(6, newValue));
+
+    if (newValue === oldLevel) return;
+
+    // Clear existing exhaustion conditions
+    await this.clearExhaustionConditions(actor);
+
+    if (newValue === 0) {
+      // Remove the effect entirely
+      await effect.delete();
+      await actor.unsetFlag('uncharted-journeys', 'exhaustionLevel');
+      ui.notifications.info(`${actor.name} is no longer exhausted.`);
+      await this.createExhaustionMessage(actor, 0, oldLevel);
+    } else {
+      // Apply conditions for new level
+      await this.applyExhaustionConditions(actor, newValue);
+
+      // Update the effect's flag and name (badge value already updated by PF2E)
+      await effect.update({
+        name: `Exhaustion ${newValue}`,
+        'system.description.value': `<p><strong>Exhaustion Level ${newValue}</strong></p><p>${this.EXHAUSTION_LEVELS[newValue]?.description || ''}</p>`,
+        'flags.uncharted-journeys.exhaustionLevel': newValue
+      });
+
+      // Update actor flag
+      await actor.setFlag('uncharted-journeys', 'exhaustionLevel', newValue);
+
+      // Notify
+      const levelData = this.EXHAUSTION_LEVELS[newValue];
+      const direction = newValue > oldLevel ? 'gains' : 'reduces to';
+      ui.notifications.info(`${actor.name} ${direction} exhaustion level ${newValue}. ${levelData?.description || ''}`);
+
+      await this.createExhaustionMessage(actor, newValue, oldLevel);
+    }
+  }
 }
 
 /**
@@ -428,4 +570,52 @@ Hooks.on('pf2e.restForTheNight', async (actor) => {
   if (currentLevel > 0) {
     await ExhaustionManager.decreaseExhaustion(actor);
   }
+});
+
+/**
+ * Hook: Watch for exhaustion effect updates (badge clicks)
+ * When the user left/right clicks the effect badge, PF2E updates the badge value
+ */
+Hooks.on('updateItem', async (item, changes, options, userId) => {
+  // Only process if this is an exhaustion effect
+  if (!item.flags?.['uncharted-journeys']?.isExhaustionEffect) return;
+
+  // Only process if the badge value changed
+  if (!changes.system?.badge?.value) return;
+
+  // Only the user who made the change should process it
+  if (game.user.id !== userId) return;
+
+  const actor = item.actor;
+  if (!actor) return;
+
+  const newValue = changes.system.badge.value;
+  const currentLevel = item.flags['uncharted-journeys'].exhaustionLevel || 0;
+
+  // Prevent recursive updates
+  if (newValue === currentLevel) return;
+
+  // Handle the badge change
+  await ExhaustionManager.handleBadgeChange(actor, item, newValue);
+});
+
+/**
+ * Hook: Watch for exhaustion effect deletion
+ * When the user deletes the effect, clear all exhaustion
+ */
+Hooks.on('deleteItem', async (item, options, userId) => {
+  // Only process if this is an exhaustion effect
+  if (!item.flags?.['uncharted-journeys']?.isExhaustionEffect) return;
+
+  // Only the user who made the change should process it
+  if (game.user.id !== userId) return;
+
+  const actor = item.actor;
+  if (!actor) return;
+
+  // Clear all exhaustion conditions without creating a new effect
+  await ExhaustionManager.clearExhaustionConditions(actor);
+  await actor.unsetFlag('uncharted-journeys', 'exhaustionLevel');
+
+  ui.notifications.info(`${actor.name} is no longer exhausted.`);
 });

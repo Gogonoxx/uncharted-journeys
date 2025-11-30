@@ -1,0 +1,27 @@
+<div class="uncharted-journeys chat-card resolution-check encounter-choice">
+  <h3><i class="fas fa-question-circle"></i> Party Decision</h3>
+
+  {{#if isGM}}
+  <p class="gm-only"><em>({{encounterType}})</em></p>
+  {{/if}}
+
+  <p class="choice-prompt">{{prompt}}</p>
+
+  <div class="choice-buttons" data-encounter-index="{{encounterIndex}}">
+    {{#each choices}}
+    <button type="button" class="choice-btn" data-action="makeChoice" data-choice="{{id}}" data-encounter-index="{{../encounterIndex}}">
+      <i class="fas {{icon}}"></i> {{label}}
+    </button>
+    {{/each}}
+  </div>
+
+  {{#if isGM}}
+  <div class="choice-details">
+    {{#each choices}}
+    <div class="choice-detail">
+      <p><strong>{{label}}:</strong> {{description}}</p>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>

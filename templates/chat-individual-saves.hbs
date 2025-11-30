@@ -1,0 +1,60 @@
+<div class="uncharted-journeys chat-card resolution-check individual-saves">
+  <h3><i class="fas fa-shield-alt"></i> Saving Throws</h3>
+
+  <p>Each party member must make a saving throw:</p>
+  <p class="dc-info"><strong>DC:</strong> {{dc}}</p>
+
+  {{#if advantageState}}
+  <p class="advantage-note">
+    {{#if (eq advantageState "advantage")}}
+    <i class="fas fa-arrow-up"></i> <strong>Advantage</strong> on all saves from {{keyRoleName}}'s check
+    {{else}}
+    <i class="fas fa-arrow-down"></i> <strong>Disadvantage</strong> on all saves from {{keyRoleName}}'s guidance
+    {{/if}}
+  </p>
+  {{/if}}
+
+  <div class="check-prompt save-type">
+    <p>{{{saveCheck}}}</p>
+  </div>
+
+  <div class="saves-results" data-encounter-index="{{encounterIndex}}">
+    {{#each partyMembers}}
+    <div class="member-result-row" data-actor-id="{{actorId}}">
+      <span class="member-name">{{name}}</span>
+      <div class="result-buttons">
+        <button type="button" class="success-btn" data-action="setMemberResult" data-actor-id="{{actorId}}" data-result="success">
+          <i class="fas fa-check"></i>
+        </button>
+        <button type="button" class="failure-btn" data-action="setMemberResult" data-actor-id="{{actorId}}" data-result="failure">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <span class="result-display"></span>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="saves-tally">
+    <span>Saves Made: <strong class="success-count">0</strong>/{{partySize}}</span>
+    <button type="button" class="finalize-btn" data-action="finalizeSaves" data-encounter-index="{{encounterIndex}}" disabled>
+      <i class="fas fa-check-double"></i> Finalize Results
+    </button>
+  </div>
+
+  {{#if isGM}}
+  {{#if outcomes}}
+  <div class="outcome-preview">
+    {{#if outcomes.isGroup}}
+    <p class="outcome-tier outcome-all"><strong>All succeed:</strong> {{outcomes.all}}</p>
+    <p class="outcome-tier outcome-majority"><strong>Majority:</strong> {{outcomes.majority}}</p>
+    <p class="outcome-tier outcome-minority"><strong>Half or fewer:</strong> {{outcomes.minority}}</p>
+    <p class="outcome-tier outcome-none"><strong>None succeed:</strong> {{outcomes.none}}</p>
+    {{else}}
+    <p class="outcome-tier outcome-success"><i class="fas fa-check"></i> <strong>On Success:</strong> {{outcomes.success}}</p>
+    <p class="outcome-tier outcome-failure"><i class="fas fa-times"></i> <strong>On Failure:</strong> {{outcomes.failure}}</p>
+    {{/if}}
+  </div>
+  {{/if}}
+  {{/if}}
+</div>

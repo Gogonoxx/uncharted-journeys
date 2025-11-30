@@ -311,3 +311,475 @@ export const ENCOUNTER_TYPE_RULES = {
 </ul>`
   }
 };
+
+/**
+ * Resolution configuration for encounter types
+ * Defines the mechanical flow for resolving each encounter type
+ * Phase 1: A Chance Meeting, A Bump in the Road, Hidden Reserves, Monster Hunt
+ */
+export const ENCOUNTER_RESOLUTION_CONFIG = {
+  "A Chance Meeting": {
+    pattern: "keyRole-then-group",
+    keyRole: "leader",
+    keyRoleCheck: {
+      skill: "society",  // PF2E Society (5E Insight)
+      description: "Evaluate the mood of the newcomers and gauge their intentions.",
+      successEffect: { groupDcMod: -2 },
+      failureEffect: { groupDcMod: +2 }
+    },
+    groupCheck: {
+      skills: ["diplomacy", "perception", "deception"],
+      description: "Contribute to the conversation and make a good impression.",
+      canReplace: null,  // Leader cannot replace in this encounter
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "The party leaves a good impression. Roll d6: 1-3 Natural Wonder, 4 Old Memories, 5 Place to Rest, 6 Hidden Reserves replaces next encounter.",
+          effect: "replaceNextEncounter"
+        },
+        majority: {
+          label: "Partial Success",
+          description: "The groups part amicably. Each character has advantage on their next ability check.",
+          effect: "advantageNextCheck"
+        },
+        minority: {
+          label: "Failure",
+          description: "The travellers share little and are keen to be on their way.",
+          effect: "noEffect"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The party leaves a bad impression. The GM adds another encounter as the party takes the wrong path.",
+          effect: "addEncounter"
+        }
+      }
+    }
+  },
+
+  "A Bump in the Road": {
+    pattern: "keyRole-then-saves",
+    keyRole: "outrider",
+    keyRoleCheck: {
+      skill: null,  // Varies by specific encounter - see description
+      skillVariable: true,
+      description: "Scout ahead and find the best way to approach the obstacle. (Check type varies by encounter)",
+      successBy5Effect: { saveAdvantage: true },
+      successEffect: {},
+      failureEffect: { saveDisadvantage: true }
+    },
+    individualSaves: {
+      save: "fortitude",  // PF2E Fortitude (CON save)
+      description: "Endure the trials of pushing through or going around the obstacle.",
+      canReplace: null,
+      outcomes: {
+        success: {
+          label: "Success",
+          description: "You endure the trials without any negative consequence.",
+          effect: "noEffect"
+        },
+        failure: {
+          label: "Failure",
+          description: "You gain 1 level of exhaustion from the strain.",
+          effect: "exhaustion"
+        }
+      }
+    }
+  },
+
+  "Hidden Reserves": {
+    pattern: "group-only",
+    keyRole: "quartermaster",  // Key role for replacement ability
+    groupCheck: {
+      skills: ["perception", "thievery", "survival"],  // Investigation → Perception, Sleight of Hand → Thievery
+      description: "Search through the area to find the hidden cache of supplies.",
+      canReplace: "quartermaster",
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "More supplies than expected! Each party member gains Inspiration or removes one level of Exhaustion. Quartermaster recovers 1 Supply Die.",
+          effect: "inspirationOrRemoveExhaustion",
+          quartermasterBonus: "recoverSupplyDie"
+        },
+        majority: {
+          label: "Partial Success",
+          description: "The extra supplies lessen the burden. Each party member removes one level of Exhaustion.",
+          effect: "removeExhaustion"
+        },
+        minority: {
+          label: "Failure",
+          description: "The supplies found are meagre, only just balancing out the energy expended.",
+          effect: "noEffect"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The search is grueling. Each party member gains one level of Exhaustion.",
+          effect: "addExhaustion"
+        }
+      }
+    }
+  },
+
+  "Monster Hunt": {
+    pattern: "choice",
+    keyRole: null,  // Depends on choice
+    choicePrompt: "The party has found evidence of a monster. What do you do?",
+    choices: {
+      track: {
+        label: "Track the Monster",
+        icon: "fa-paw",
+        description: "Follow the creature's trail to its location.",
+        pattern: "group-only",
+        keyRole: "outrider",
+        groupCheck: {
+          skills: ["survival", "nature"],
+          description: "Track the creature to its lair.",
+          canReplace: "outrider",
+          outcomes: {
+            all: {
+              label: "Complete Success",
+              description: "You find the creature's location without being noticed. When combat begins, the creature is Surprised.",
+              effect: "enemySurprised"
+            },
+            majority: {
+              label: "Success",
+              description: "You find the creature's location without being noticed. When combat begins, the creature is Surprised.",
+              effect: "enemySurprised"
+            },
+            minority: {
+              label: "Failure",
+              description: "You track the creature but your presence is noticed. Combat begins immediately.",
+              effect: "combatStarts"
+            },
+            none: {
+              label: "Critical Failure",
+              description: "The creature has been hunting YOU! Combat begins immediately and the party is Surprised.",
+              effect: "partySurprised"
+            }
+          }
+        }
+      },
+      avoid: {
+        label: "Avoid the Monster",
+        icon: "fa-shoe-prints",
+        description: "Sneak past the creature without being detected.",
+        pattern: "group-only",
+        keyRole: "sentry",
+        groupCheck: {
+          skills: ["stealth", "perception"],
+          description: "Avoid the creature's notice.",
+          canReplace: "sentry",
+          outcomes: {
+            all: {
+              label: "Complete Success",
+              description: "The party escapes from the monster without notice. No combat occurs.",
+              effect: "noCombat"
+            },
+            majority: {
+              label: "Success",
+              description: "The party escapes from the monster without notice. No combat occurs.",
+              effect: "noCombat"
+            },
+            minority: {
+              label: "Failure",
+              description: "The party stumbles into the monster! Combat begins immediately and the party is Surprised.",
+              effect: "partySurprised"
+            },
+            none: {
+              label: "Critical Failure",
+              description: "The party stumbles into the monster's lair! Combat begins immediately and the party is Surprised.",
+              effect: "partySurprised"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "Needing Assistance": {
+    pattern: "group-only",
+    keyRole: "quartermaster",
+    groupCheck: {
+      skills: ["medicine", "survival", "athletics", "crafting"],  // Varies per specific encounter
+      description: "Aid the other group with your skills and supplies.",
+      canReplace: "quartermaster",
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "The travellers are eternally grateful. Quartermaster recovers 1 Supply Die, OR party can choose the next encounter type, OR promise of future aid.",
+          effect: "quartermasterRecoverSupply",
+          quartermasterBonus: "recoverSupplyDie"
+        },
+        majority: {
+          label: "Partial Success",
+          description: "The party helped someone in need and their spirits are raised. Each party member gains Inspiration.",
+          effect: "gainInspiration"
+        },
+        minority: {
+          label: "Failure",
+          description: "The party's efforts were in vain. The effect is dejecting. Each party member loses Inspiration.",
+          effect: "loseInspiration"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The party fails completely. GM chooses: exhaustion for all, Quartermaster loses Supply Die, lose Inspiration, or inadvertently make things worse.",
+          effect: "gmChooseNegative"
+        }
+      }
+    }
+  },
+
+  "Danger Afoot": {
+    pattern: "group-only",
+    keyRole: "sentry",
+    groupCheck: {
+      skills: ["perception", "stealth"],  // Insight → Perception, Perception, Stealth
+      description: "Spot the danger and prepare for trouble.",
+      canReplace: "sentry",
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "The party notices the danger and has ample time to prepare. If combat begins, the enemy is Surprised.",
+          effect: "enemySurprised"
+        },
+        majority: {
+          label: "Partial Success",
+          description: "The more observant party members warn the rest. If combat begins, neither side is Surprised.",
+          effect: "neitherSurprised"
+        },
+        minority: {
+          label: "Failure",
+          description: "The enemy gets the drop on some party members. Any character who failed their check is Surprised.",
+          effect: "failedMembersSurprised"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The party is caught completely unaware! The whole party is Surprised and makes Initiative with Disadvantage.",
+          effect: "partySurprisedDisadvantage"
+        }
+      }
+    }
+  },
+
+  "Natural Wonders": {
+    pattern: "group-only",
+    keyRole: "leader",
+    groupCheck: {
+      skills: [],  // Wisdom saving throw, not a skill check
+      saveType: "will",  // PF2E Will save (Wisdom)
+      description: "Steel yourself against being overwhelmed by the awesome presence of this natural wonder.",
+      canReplace: "leader",
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "The party feels their burdens lifted. Each party member gains Inspiration. GM may grant additional rewards.",
+          effect: "gainInspiration"
+        },
+        majority: {
+          label: "Partial Success",
+          description: "The party is invigorated by the beauty. Each party member gains Advantage on their next ability check or saving throw.",
+          effect: "advantageNextCheck"
+        },
+        minority: {
+          label: "Failure",
+          description: "The party fails to see this wonder as more than just another sight on the long road.",
+          effect: "noEffect"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The party feels small and insignificant. Each party member loses Inspiration and has Disadvantage on their next check.",
+          effect: "loseInspirationDisadvantage"
+        }
+      }
+    }
+  },
+
+  "A Place to Rest": {
+    pattern: "keyRole-then-group",
+    keyRole: "quartermaster",
+    keyRoleCheck: {
+      skill: "survival",
+      description: "Determine how safe the location is and prepare the campsite.",
+      successBy5Effect: { groupAdvantage: true },
+      successEffect: {},
+      failureEffect: { groupDisadvantage: true }
+    },
+    groupCheck: {
+      skills: ["perception"],  // Constitution (Perception) check to stay alert
+      saveType: "fortitude",  // Can use Fortitude as alternative
+      description: "Stay alert and awake through your watch shift.",
+      canReplace: null,
+      outcomes: {
+        all: {
+          label: "Long Rest",
+          description: "The party has a peaceful and refreshing night's sleep. They gain the benefits of a Long Rest.",
+          effect: "longRest"
+        },
+        majority: {
+          label: "Short Rest",
+          description: "The party has a relatively comfortable night's sleep. They gain the benefits of a Short Rest.",
+          effect: "shortRest"
+        },
+        minority: {
+          label: "No Rest",
+          description: "The party has an uneasy night and can't relax. No benefits from the night's sleep.",
+          effect: "noEffect"
+        },
+        none: {
+          label: "Terrible Night",
+          description: "The party has a terrible night's sleep. Each party member gains one level of Exhaustion.",
+          effect: "addExhaustion"
+        }
+      }
+    }
+  },
+
+  "Old Memories": {
+    pattern: "group-only",
+    keyRole: "leader",
+    groupCheck: {
+      skills: ["society", "religion", "arcana"],  // History → Society in PF2E
+      description: "Recall or glean information about this ancient place.",
+      canReplace: "leader",
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "The party is inspired by the history. Each party member may add 1d4 to all checks, saves, and attacks in the next encounter.",
+          effect: "bonusD4NextEncounter"
+        },
+        majority: {
+          label: "Partial Success",
+          description: "The party gains appreciation for the history, noting this location on their maps.",
+          effect: "noEffect"
+        },
+        minority: {
+          label: "Failure",
+          description: "The party reflects on past struggles and their malaise lingers. Each party member has Disadvantage on their next ability check.",
+          effect: "disadvantageNextCheck"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The party becomes dejected. Each party member loses Inspiration and must subtract 1d4 from all checks in the next encounter.",
+          effect: "penaltyD4NextEncounter"
+        }
+      }
+    }
+  },
+
+  "A Dark Place": {
+    pattern: "keyRole-then-saves",
+    keyRole: "outrider",
+    keyRoleCheck: {
+      skill: "survival",
+      description: "Scout the Dark Place and identify potential hazards.",
+      successBy5Effect: { saveAdvantage: true },
+      successEffect: {},
+      failureEffect: { saveDisadvantage: true }
+    },
+    individualSaves: {
+      save: "will",  // PF2E Will save (Wisdom)
+      description: "Overcome the oppressive dread and find inner tenacity.",
+      canReplace: "leader",  // Leader can replace another's save result
+      outcomes: {
+        all: {
+          label: "Inner Strength",
+          description: "The party finds resolve to persevere. Each party member regains a Hit Die.",
+          effect: "regainHitDie"
+        },
+        majority: {
+          label: "Unperturbed",
+          description: "The party resists the grim aura and marches through unperturbed.",
+          effect: "noEffect"
+        },
+        minority: {
+          label: "Morale Undermined",
+          description: "The party's morale is undermined by the horrors. Each party member loses a Hit Die.",
+          effect: "loseHitDie"
+        },
+        none: {
+          label: "Overwhelming Dread",
+          description: "An overwhelming sense of dread overcomes the party. Each party member loses a Hit Die and gains Exhaustion.",
+          effect: "loseHitDieAndExhaustion"
+        }
+      }
+    }
+  },
+
+  "Deadly Fight": {
+    pattern: "keyRole-then-group-conditional",
+    keyRole: "sentry",
+    keyRoleCheck: {
+      skill: "perception",
+      description: "Spot the approaching threat before combat starts.",
+      successEffect: { proceedToGroup: true },
+      failureEffect: { skipToResult: "partySurprised" }  // Immediate failure - party is surprised
+    },
+    groupCheck: {
+      skills: ["stealth", "deception"],
+      description: "Hide or set up an ambush for the approaching enemies.",
+      canReplace: null,
+      outcomes: {
+        all: {
+          label: "Perfect Ambush",
+          description: "The party lays a perfect ambush. Enemies are Surprised. GM may award bonus effects from preparations.",
+          effect: "enemySurprisedBonus"
+        },
+        majority: {
+          label: "Successful Ambush",
+          description: "The party is prepared for the attack. Enemies are Surprised.",
+          effect: "enemySurprised"
+        },
+        minority: {
+          label: "Squandered Opportunity",
+          description: "The party squandered their chance for surprise. Neither side is Surprised.",
+          effect: "neitherSurprised"
+        },
+        none: {
+          label: "Tables Turned",
+          description: "The party delayed too long and the enemies got the drop on them! Party is Surprised.",
+          effect: "partySurprised"
+        }
+      }
+    }
+  },
+
+  "Fateful Encounter": {
+    pattern: "group-only",
+    keyRole: "sentry",
+    groupCheck: {
+      skills: ["diplomacy", "perception", "society"],  // Persuasion → Diplomacy, Investigation → Perception, Insight → Society
+      description: "Make a good impression and gauge the traveller's intent.",
+      canReplace: "sentry",
+      outcomes: {
+        all: {
+          label: "Complete Success",
+          description: "The party learns the secret information this person is hiding.",
+          effect: "learnSecret"
+        },
+        majority: {
+          label: "Success",
+          description: "Through amicable discussions or keen insight, the party learns the traveller's secret.",
+          effect: "learnSecret"
+        },
+        minority: {
+          label: "Failure",
+          description: "Despite their best efforts, the party is unable to uncover the traveller's true intent.",
+          effect: "noEffect"
+        },
+        none: {
+          label: "Critical Failure",
+          description: "The party fails to learn anything and may have made a poor impression.",
+          effect: "noEffect"
+        }
+      }
+    }
+  }
+};
+
+/**
+ * Get the resolution configuration for an encounter type
+ * @param {string} encounterType - The encounter type name
+ * @returns {Object|null} Resolution config or null if not found
+ */
+export function getResolutionConfig(encounterType) {
+  return ENCOUNTER_RESOLUTION_CONFIG[encounterType] ?? null;
+}

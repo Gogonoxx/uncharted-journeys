@@ -1,0 +1,44 @@
+<div class="uncharted-journeys chat-card resolution-check key-role-check">
+  <h3><i class="fas fa-user-shield"></i> {{roleName}} Check</h3>
+
+  {{#if isGM}}
+  <p class="gm-only"><em>({{encounterType}} - {{checkDescription}})</em></p>
+  {{/if}}
+
+  <p class="actor-name"><strong>{{actorName}}</strong> ({{roleName}}) must make a check.</p>
+
+  <p class="dc-info"><strong>DC:</strong> {{dc}}</p>
+
+  <div class="check-prompt skill-options">
+    <p>{{{skillCheck}}}</p>
+  </div>
+
+  <div class="outcome-buttons" data-encounter-index="{{encounterIndex}}">
+    {{#if hasCriticalSuccess}}
+    <button type="button" class="crit-success-btn" data-action="setKeyRoleResult" data-result="criticalSuccess">
+      <i class="fas fa-star"></i> Success by 5+
+    </button>
+    {{/if}}
+    <button type="button" class="success-btn" data-action="setKeyRoleResult" data-result="success">
+      <i class="fas fa-check"></i> Success
+    </button>
+    <button type="button" class="failure-btn" data-action="setKeyRoleResult" data-result="failure">
+      <i class="fas fa-times"></i> Failure
+    </button>
+  </div>
+
+  {{#if isGM}}
+  {{#if effectsPreview.length}}
+  <div class="effects-preview">
+    {{#each effectsPreview}}
+    <p class="{{type}}-effect">
+      {{#if (eq type "critSuccess")}}<i class="fas fa-star"></i>{{/if}}
+      {{#if (eq type "success")}}<i class="fas fa-check"></i>{{/if}}
+      {{#if (eq type "failure")}}<i class="fas fa-times"></i>{{/if}}
+      {{text}}
+    </p>
+    {{/each}}
+  </div>
+  {{/if}}
+  {{/if}}
+</div>

@@ -42,7 +42,7 @@
     {{#if session.arrivalResult}}
     <div class="arrival-result">
       <div class="dice-result">
-        <span class="dice">2d6 = {{session.arrivalResult}}</span>
+        <span class="dice">Result: {{session.arrivalResult}}</span>
       </div>
       <div class="arrival-details">
         {{!-- Result will be shown via chat message --}}
@@ -51,9 +51,9 @@
     </div>
     {{else}}
     <div class="arrival-roll-prompt">
-      <p>Roll to determine arrival circumstances.</p>
+      <p>The Sentry rolls Xd12 (X = Wisdom modifier, minimum 1) and takes the highest result.</p>
       <button type="button" class="roll-btn" data-action="rollArrival">
-        <i class="fas fa-dice"></i> Roll Arrival (2d6)
+        <i class="fas fa-dice"></i> Roll Arrival
       </button>
     </div>
     {{/if}}
@@ -64,7 +64,8 @@
   <div class="exhaustion-section">
     <h3><i class="fas fa-tired"></i> End of Journey Exhaustion</h3>
     <p class="section-hint">
-      Each party member must make a Fortitude save (DC {{difficulty}}) or gain a level of exhaustion.
+      Each party member must make a Fortitude save (DC {{difficulty}}), adding the Quartermaster's Strength or Intelligence modifier to the roll.
+      Success grants temporary HP equal to level. Failure causes 1 level of exhaustion.
     </p>
 
     <div class="exhaustion-saves-grid">

@@ -1,0 +1,45 @@
+<div class="uncharted-journeys chat-card resolution-outcome outcome-{{outcomeTier}}">
+  <h3>
+    {{#if (eq outcomeTier "all")}}
+    <i class="fas fa-trophy"></i> Complete Success!
+    {{else if (eq outcomeTier "majority")}}
+    <i class="fas fa-check-circle"></i> Partial Success
+    {{else if (eq outcomeTier "minority")}}
+    <i class="fas fa-exclamation-circle"></i> Mixed Results
+    {{else}}
+    <i class="fas fa-times-circle"></i> Failure
+    {{/if}}
+  </h3>
+
+  <div class="result-summary">
+    <p><strong>{{successCount}}/{{totalCount}}</strong> party members succeeded</p>
+  </div>
+
+  <div class="outcome-effect">
+    {{#if isCombat}}
+    <p class="combat-reminder"><i class="fas fa-swords"></i> <strong>Combat Encounter</strong></p>
+    <p class="combat-note">{{outcomeText}}</p>
+    {{else}}
+    <p>{{outcomeText}}</p>
+    {{/if}}
+  </div>
+
+  {{#if hasExhaustion}}
+  <div class="exhaustion-applied">
+    <p class="exhaustion-header"><i class="fas fa-tired"></i> <strong>Exhaustion Applied:</strong></p>
+    <ul>
+      {{#each exhaustionApplied}}
+      <li>{{this}} (+1 exhaustion level)</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  {{#if isGM}}
+  <div class="gm-controls">
+    <button type="button" class="resolve-btn" data-action="markEncounterResolved" data-encounter-index="{{encounterIndex}}">
+      <i class="fas fa-flag-checkered"></i> Mark Encounter Resolved
+    </button>
+  </div>
+  {{/if}}
+</div>

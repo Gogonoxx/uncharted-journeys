@@ -36,6 +36,75 @@ class PartyMemberSchema extends SchemaField {
 }
 
 /**
+ * Data model for encounter resolution member results
+ */
+class ResolutionMemberResultSchema extends SchemaField {
+  constructor(options = {}) {
+    super({
+      actorId: new StringField({ required: true }),
+      result: new StringField({
+        choices: ['', 'success', 'failure'],
+        initial: '',
+        blank: true
+      }),
+      replaced: new BooleanField({ initial: false })
+    }, options);
+  }
+}
+
+/**
+ * Data model for encounter resolution state
+ */
+class EncounterResolutionSchema extends SchemaField {
+  constructor(options = {}) {
+    super({
+      // Current step in resolution flow
+      step: new StringField({
+        choices: ['pending', 'choice', 'keyRole', 'group', 'saves', 'complete'],
+        initial: 'pending'
+      }),
+      // For Monster Hunt - which path was chosen
+      choiceMade: new StringField({
+        choices: ['', 'track', 'avoid'],
+        initial: '',
+        blank: true
+      }),
+      // Key role check result
+      keyRoleResult: new StringField({
+        choices: ['', 'criticalSuccess', 'success', 'failure'],
+        initial: '',
+        blank: true
+      }),
+      // DC modifier from key role check (e.g., -2 or +2)
+      dcModifier: new NumberField({ integer: true, initial: 0 }),
+      // Advantage/disadvantage state from key role check
+      advantageState: new StringField({
+        choices: ['', 'advantage', 'disadvantage'],
+        initial: '',
+        blank: true
+      }),
+      // Individual member results for group checks/saves
+      memberResults: new ArrayField(new ResolutionMemberResultSchema()),
+      // Final outcome tier
+      outcome: new StringField({
+        choices: [
+          '', 'all', 'majority', 'minority', 'none', 'individual', 'combat',
+          // Combat-related outcomes (Deadly Fight, etc.)
+          'partySurprised', 'partySurprisedDisadvantage',
+          'enemySurprised', 'enemySurprisedBonus', 'neitherSurprised',
+          // Special outcomes for key role failures
+          'keyRoleFailure'
+        ],
+        initial: '',
+        blank: true
+      }),
+      // Whether effects have been applied
+      effectsApplied: new BooleanField({ initial: false })
+    }, options);
+  }
+}
+
+/**
  * Data model for an encounter in the journey
  */
 class EncounterSchema extends SchemaField {
@@ -51,7 +120,9 @@ class EncounterSchema extends SchemaField {
       status: new StringField({
         choices: ['pending', 'active', 'resolved'],
         initial: 'pending'
-      })
+      }),
+      // Resolution tracking
+      resolution: new EncounterResolutionSchema()
     }, options);
   }
 }
@@ -302,7 +373,8 @@ export class JourneySessionManager {
     const session = this.getCurrent();
     if (!session) return;
 
-    foundry.utils.setProperty(session, path, value);
+    // DataModels require updateSource() to modify values
+    session.updateSource({ [path]: value });
     await this.save(session);
   }
 
@@ -315,13 +387,9 @@ export class JourneySessionManager {
     const session = this.getCurrent();
     if (!session) return;
 
-    // Remove existing member with same role
-    const existingIndex = session.partyMembers.findIndex(m => m.role === role);
-    if (existingIndex >= 0) {
-      session.partyMembers.splice(existingIndex, 1);
-    }
-
-    session.partyMembers.push({
+    // Build new party members array (DataModel arrays are immutable)
+    const newMembers = session.partyMembers.filter(m => m.role !== role);
+    newMembers.push({
       actorId,
       role,
       isPrimary: true,
@@ -331,6 +399,7 @@ export class JourneySessionManager {
       groupCheckResult: 'pending'
     });
 
+    session.updateSource({ partyMembers: newMembers });
     await this.save(session);
   }
 
@@ -344,18 +413,25 @@ export class JourneySessionManager {
     const session = this.getCurrent();
     if (!session) return;
 
-    const member = session.partyMembers.find(m => m.role === role);
-    if (member) {
-      member.preparationResult = result;
-    }
+    // Build new party members array with updated result (DataModel arrays are immutable)
+    const newMembers = session.partyMembers.map(m => {
+      if (m.role === role) {
+        return { ...m, preparationResult: result };
+      }
+      return { ...m };
+    });
 
+    // Build new modifiers array if needed
+    const updates = { partyMembers: newMembers };
     if (difficultyMod !== 0) {
-      session.difficultyModifiers.push({
+      const newModifiers = [...session.difficultyModifiers, {
         source: `preparation-${role}`,
         value: difficultyMod
-      });
+      }];
+      updates.difficultyModifiers = newModifiers;
     }
 
+    session.updateSource(updates);
     await this.save(session);
   }
 
@@ -368,11 +444,15 @@ export class JourneySessionManager {
     const session = this.getCurrent();
     if (!session) return;
 
-    const member = session.partyMembers.find(m => m.role === role);
-    if (member) {
-      member.groupCheckResult = result;
-    }
+    // Build new party members array with updated result (DataModel arrays are immutable)
+    const newMembers = session.partyMembers.map(m => {
+      if (m.role === role) {
+        return { ...m, groupCheckResult: result };
+      }
+      return { ...m };
+    });
 
+    session.updateSource({ partyMembers: newMembers });
     await this.save(session);
   }
 
@@ -384,10 +464,10 @@ export class JourneySessionManager {
     if (!session) return;
 
     const count = session.totalEncounterCount;
-    session.encounters = [];
+    const newEncounters = [];
 
     for (let i = 0; i < count; i++) {
-      session.encounters.push({
+      newEncounters.push({
         id: foundry.utils.randomID(),
         region: session.defaultRegion,
         typeRoll: null,
@@ -395,12 +475,111 @@ export class JourneySessionManager {
         encounterRoll: null,
         title: '',
         description: '',
-        status: i === 0 ? 'active' : 'pending'
+        status: i === 0 ? 'active' : 'pending',
+        // Initialize resolution tracking
+        resolution: {
+          step: 'pending',
+          choiceMade: '',
+          keyRoleResult: '',
+          dcModifier: 0,
+          advantageState: '',
+          memberResults: [],
+          outcome: '',
+          effectsApplied: false
+        }
       });
     }
 
-    session.currentEncounterIndex = 0;
+    // Use updateSource for DataModel immutability
+    session.updateSource({
+      encounters: newEncounters,
+      currentEncounterIndex: 0
+    });
     await this.save(session);
+  }
+
+  /**
+   * Update the resolution state for the current encounter
+   * @param {Object} resolutionUpdate - Partial resolution object to merge
+   */
+  static async updateEncounterResolution(resolutionUpdate) {
+    const session = this.getCurrent();
+    if (!session) return;
+
+    const currentIndex = session.currentEncounterIndex;
+    const currentEncounter = session.encounters[currentIndex];
+    if (!currentEncounter) return;
+
+    // Merge resolution updates
+    const newResolution = {
+      ...currentEncounter.resolution,
+      ...resolutionUpdate
+    };
+
+    // Build new encounters array (DataModel arrays are immutable)
+    const newEncounters = session.encounters.map((e, i) => {
+      if (i === currentIndex) {
+        return { ...e, resolution: newResolution };
+      }
+      return { ...e };
+    });
+
+    session.updateSource({ encounters: newEncounters });
+    await this.save(session);
+  }
+
+  /**
+   * Set a member's result in the current encounter resolution
+   * @param {string} actorId - Actor ID
+   * @param {string} result - 'success' or 'failure'
+   * @param {boolean} replaced - Whether this result was replaced by key role
+   */
+  static async setResolutionMemberResult(actorId, result, replaced = false) {
+    const session = this.getCurrent();
+    if (!session) return;
+
+    const currentIndex = session.currentEncounterIndex;
+    const currentEncounter = session.encounters[currentIndex];
+    if (!currentEncounter) return;
+
+    // Update or add the member result
+    const existingResults = currentEncounter.resolution.memberResults || [];
+    const existingIndex = existingResults.findIndex(r => r.actorId === actorId);
+
+    let newMemberResults;
+    if (existingIndex >= 0) {
+      newMemberResults = existingResults.map((r, i) => {
+        if (i === existingIndex) {
+          return { actorId, result, replaced };
+        }
+        return { ...r };
+      });
+    } else {
+      newMemberResults = [...existingResults, { actorId, result, replaced }];
+    }
+
+    await this.updateEncounterResolution({ memberResults: newMemberResults });
+  }
+
+  /**
+   * Calculate the outcome tier based on member results
+   * @returns {string} 'all', 'majority', 'minority', or 'none'
+   */
+  static calculateOutcomeTier() {
+    const session = this.getCurrent();
+    if (!session) return 'none';
+
+    const currentEncounter = session.currentEncounter;
+    if (!currentEncounter) return 'none';
+
+    const results = currentEncounter.resolution.memberResults || [];
+    const total = results.length;
+    const successes = results.filter(r => r.result === 'success').length;
+
+    if (successes === total && total > 0) return 'all';
+    if (successes > total / 2) return 'majority';
+    if (successes > 0) return 'minority';
+    return 'none';
   }
 
   /**
@@ -411,7 +590,8 @@ export class JourneySessionManager {
     if (!session) return;
 
     if (session.currentStage < 4) {
-      session.currentStage += 1;
+      // Use updateSource for DataModel immutability
+      session.updateSource({ currentStage: session.currentStage + 1 });
       await this.save(session);
     }
   }

@@ -11,12 +11,13 @@ export const ROLES = {
     emoji: '👑',
     description: 'The Leader keeps spirits high and the group moving forward together.',
     primarySkill: 'diplomacy',
-    alternativeSkill: 'intimidation',
+    alternativeSkill: 'perception',
     groupCheckDescription: 'Rally the party and maintain morale.',
     ability: {
       name: 'Inspirational Resolve',
-      description: 'Once per journey, when a party member fails a check, the Leader can give an inspiring speech. The party member may reroll the check with a +2 circumstance bonus.',
-      usesPerJourney: 1
+      description: 'Once per Journey, as a Reaction when a party member fails a saving throw or ability check, you can allow them to reroll. You can use this ability once per party member per Journey.',
+      usesPerJourney: 1,
+      shortDescription: 'Reaction: Allow an ally to reroll a failed check (1/party member/journey)'
     }
   },
   outrider: {
@@ -30,8 +31,9 @@ export const ROLES = {
     groupCheckDescription: 'Scout ahead for safe passage.',
     ability: {
       name: 'Find the Path',
-      description: 'Once per journey, the Outrider can spend 1 hour scouting. On a successful Survival check (DC = Journey Difficulty), reduce the number of encounters by 1 (minimum 1).',
-      usesPerJourney: 1
+      description: 'Once per Journey when the GM rolls to determine the Encounter Type, you can also roll. The GM tells you both results, and you choose which Encounter type the group faces.',
+      usesPerJourney: 1,
+      shortDescription: 'Once/journey: Roll encounter type and choose between your roll or GM\'s'
     }
   },
   quartermaster: {
@@ -45,15 +47,13 @@ export const ROLES = {
     groupCheckDescription: 'Manage supplies and maintain equipment.',
     ability: {
       name: 'Well Prepared',
-      description: 'The Quartermaster has a pool of Supply Dice (d6s by default, upgradeable to d8s). They can roll these dice to reduce damage taken, negate conditions, or provide bonuses during encounters.',
+      description: 'At the start of Stage 3, gain Supply Dice equal to your Proficiency Bonus (d6s, or d8s with Procure Supplies). As a Reaction when an ally makes an ability check, spend a Supply Die to add it to their result.',
       supplyDice: {
         count: 3,
         die: 'd6',
         upgradedDie: 'd8'
-      }
-    },
-    endOfJourneyBonus: {
-      description: 'Add Strength modifier as a circumstance bonus to all party members\' Fortitude saves at journey\'s end.'
+      },
+      shortDescription: 'Supply Dice (d6): Reaction to add die to ally\'s ability check'
     }
   },
   sentry: {
@@ -67,14 +67,12 @@ export const ROLES = {
     groupCheckDescription: 'Watch for dangers and opportunities.',
     ability: {
       name: 'Ever Vigilant',
-      description: 'The Sentry has a pool of Focus Dice (d6s by default). They can roll these dice to gain bonuses to Perception checks, grant allies bonuses to initiative, or spot hidden threats.',
+      description: 'At the start of Stage 3, gain Focus Dice equal to your Proficiency Bonus (d6s). As a Reaction when an ally makes a saving throw, spend a Focus Die to add it to their result. You can also spend a Focus Die to grant +1d6 to an ally\'s Initiative.',
       focusDice: {
         count: 3,
         die: 'd6'
-      }
-    },
-    arrivalRoll: {
-      description: 'At journey\'s end, the Sentry rolls Xd12 (where X = Wisdom modifier, minimum 1) and takes the highest result to determine arrival circumstances.'
+      },
+      shortDescription: 'Focus Dice (d6): Reaction to add die to ally\'s save or Initiative'
     }
   }
 };

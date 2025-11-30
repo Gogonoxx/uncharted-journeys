@@ -30,6 +30,13 @@
 
   {{!-- Encounter Progress --}}
   <div class="encounter-progress">
+    <button type="button"
+            class="encounter-adjust-btn"
+            data-action="removeEncounter"
+            data-tooltip="Remove an encounter"
+            {{#if (lte totalEncounters 1)}}disabled{{/if}}>
+      <i class="fas fa-minus"></i>
+    </button>
     <div class="progress-bar">
       {{#each session.encounters}}
       <div class="progress-pip {{status}} {{#if (eq ../session.currentEncounterIndex @index)}}current{{/if}}"
@@ -37,6 +44,12 @@
       </div>
       {{/each}}
     </div>
+    <button type="button"
+            class="encounter-adjust-btn"
+            data-action="addEncounter"
+            data-tooltip="Add an encounter">
+      <i class="fas fa-plus"></i>
+    </button>
   </div>
 
   {{!-- Current Encounter --}}
@@ -93,10 +106,59 @@
           <button type="button" class="send-btn" data-action="sendEncounterToChat">
             <i class="fas fa-paper-plane"></i> Send to Chat
           </button>
-          <button type="button" class="resolve-btn" data-action="resolveEncounter">
-            <i class="fas fa-check"></i> Resolve Encounter
-          </button>
+
+          {{!-- Resolution Flow Controls --}}
+          {{#if (eq resolution.step "pending")}}
+            {{#if ../hasResolutionConfig}}
+            <button type="button" class="resolve-btn" data-action="beginResolution">
+              <i class="fas fa-play"></i> Begin Resolution
+            </button>
+            {{else}}
+            <button type="button" class="resolve-btn" data-action="resolveEncounter">
+              <i class="fas fa-check"></i> Resolve Encounter
+            </button>
+            {{/if}}
+          {{else if (eq resolution.step "complete")}}
+            <button type="button" class="resolve-btn success" data-action="finalizeEncounter">
+              <i class="fas fa-flag-checkered"></i> Finalize & Continue
+            </button>
+          {{else}}
+            <div class="resolution-in-progress">
+              <span class="resolution-status">
+                <i class="fas fa-sync-alt fa-spin"></i>
+                {{#if (eq resolution.step "choice")}}Awaiting party decision...{{/if}}
+                {{#if (eq resolution.step "keyRole")}}Awaiting key role check...{{/if}}
+                {{#if (eq resolution.step "group")}}Awaiting group checks...{{/if}}
+                {{#if (eq resolution.step "saves")}}Awaiting saving throws...{{/if}}
+              </span>
+            </div>
+          {{/if}}
         </div>
+
+        {{!-- Resolution Progress (GM only) --}}
+        {{#if ../isGM}}
+        {{#unless (eq resolution.step "pending")}}
+        <div class="resolution-progress">
+          <h5><i class="fas fa-clipboard-list"></i> Resolution Progress</h5>
+          <div class="resolution-steps">
+            {{#if resolution.choiceMade}}
+            <p class="step-complete"><i class="fas fa-check"></i> Choice: <strong>{{resolution.choiceMade}}</strong></p>
+            {{/if}}
+            {{#if resolution.keyRoleResult}}
+            <p class="step-complete"><i class="fas fa-check"></i> Key Role: <strong>{{resolution.keyRoleResult}}</strong>
+              {{#if resolution.dcModifier}}(DC {{#if (gt resolution.dcModifier 0)}}+{{/if}}{{resolution.dcModifier}}){{/if}}
+            </p>
+            {{/if}}
+            {{#if resolution.memberResults.length}}
+            <p class="step-info"><i class="fas fa-users"></i> Results: {{../resolutionSuccessCount}}/{{resolution.memberResults.length}} succeeded</p>
+            {{/if}}
+            {{#if resolution.outcome}}
+            <p class="step-complete outcome-{{resolution.outcome}}"><i class="fas fa-trophy"></i> Outcome: <strong>{{resolution.outcome}}</strong></p>
+            {{/if}}
+          </div>
+        </div>
+        {{/unless}}
+        {{/if}}
       </div>
       {{/if}}
     </div>

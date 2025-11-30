@@ -1,254 +1,266 @@
 /**
  * Uncharted Journeys - Preparations
- * All 19 preparations that can be made before a journey
+ * Preparations from the Uncharted Journeys book (converted to PF2E skills)
  */
 
 /**
- * Base DC for preparation checks
+ * Base DC for preparation checks (book default is 13, but we use journey DC)
  */
 export const PREPARATION_BASE_DC = 13;
 
 /**
- * All available preparations
+ * Icon mapping for preparation effects
+ */
+export const PREPARATION_ICONS = {
+  assistAlly: 'icons/skills/social/diplomacy-handshake-yellow.webp',
+  brewTonics: 'icons/consumables/potions/potion-flask-corked-orange.webp',
+  carouse: 'icons/consumables/drinks/alcohol-beer-mug-brown.webp',
+  chartCourse: 'icons/sundries/documents/document-sealed-brown-red.webp',
+  consultTheOccult: 'icons/magic/symbols/runes-star-pentagon-orange.webp',
+  packUp: 'icons/svg/chest.svg',  // V13-compatible icon
+  prepareAFeast: 'icons/consumables/food/turkey-leg-cooked-brown.webp',
+  procureBeastsOfBurden: 'icons/creatures/mammals/ox-buffalo-horned-brown.webp',
+  procureMounts: 'icons/creatures/mammals/horse-brown.webp',
+  procureSupplies: 'icons/commodities/treasure/chest-simple-wooden.webp',
+  rallyTheParty: 'icons/magic/sonic/bell-alarm-ringing-gold.webp',
+  research: 'icons/sundries/documents/book-worn-brown.webp',
+  seekAdvice: 'icons/skills/social/diplomacy-handshake.webp',
+  studyTheWeather: 'icons/magic/air/fog-gas-smoke-swirling-gray.webp'
+};
+
+/**
+ * Rally the Party options
+ */
+export const RALLY_OPTIONS = {
+  encouraging: {
+    id: 'encouraging',
+    name: 'Encouraging',
+    description: 'Each party member begins the Journey with Inspiration.',
+    shortDescription: 'Party has Inspiration'
+  },
+  galvanising: {
+    id: 'galvanising',
+    name: 'Galvanising',
+    description: 'Each party member gains +1 to ability checks until the end of the Journey.',
+    shortDescription: '+1 status bonus to skill checks',
+    rules: [{
+      key: 'FlatModifier',
+      selector: 'skill-check',
+      value: 1,
+      type: 'status',
+      label: 'Rally the Party (Galvanising)'
+    }]
+  },
+  hopeful: {
+    id: 'hopeful',
+    name: 'Hopeful',
+    description: 'Each party member has advantage on ability checks and saving throws during the first Encounter.',
+    shortDescription: 'Advantage on first encounter checks/saves'
+  },
+  resolute: {
+    id: 'resolute',
+    name: 'Resolute',
+    description: 'Each party member gains temporary hit points equal to twice their Proficiency Bonus.',
+    shortDescription: 'Temp HP = 2x Proficiency'
+  },
+  solemn: {
+    id: 'solemn',
+    name: 'Solemn',
+    description: 'Each party member gains +1 to saving throws until the end of the Journey.',
+    shortDescription: '+1 status bonus to saving throws',
+    rules: [{
+      key: 'FlatModifier',
+      selector: 'saving-throw',
+      value: 1,
+      type: 'status',
+      label: 'Rally the Party (Solemn)'
+    }]
+  }
+};
+
+/**
+ * All available preparations from the book
  */
 export const PREPARATIONS = {
-  rallyTheParty: {
-    id: 'rallyTheParty',
-    name: 'Rally the Party',
-    skillSlug: 'performance',
-    altSkillSlug: 'diplomacy',
-    dc: PREPARATION_BASE_DC,
-    traits: ['auditory', 'linguistic'],
-    description: 'Give a rousing speech or pep talk to boost the party\'s morale for the journey ahead.',
-    successEffect: 'Party gains +1 status bonus to all skill checks during the journey.',
+  assistAlly: {
+    id: 'assistAlly',
+    name: 'Assist Ally',
+    skillSlug: 'diplomacy',
+    description: 'You assist an ally with their Preparations. One other character may make the ability check for their Preparation with advantage.',
+    successEffect: 'One ally gains advantage on their Preparation check.',
+    failureEffect: 'No effect.',
+    difficultyModifier: { success: 0, failure: 0 }
+  },
+  brewTonics: {
+    id: 'brewTonics',
+    name: 'Brew Tonics',
+    skillSlug: 'crafting',
+    description: 'You bolster your party with fortifying brews, potions, salves, or tinctures.',
+    successEffect: 'Each party member has advantage on Constitution checks and saving throws until the Journey ends. A character loses this benefit the first time they fail a Constitution check or saving throw.',
     failureEffect: 'No effect.',
     difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'partyBonus', value: 1, target: 'skillChecks' }
+    effectOnSuccess: {
+      name: 'Brew Tonics',
+      description: 'Advantage on Constitution checks and saving throws (lose on first failure).',
+      applyToAll: true
+    }
+  },
+  carouse: {
+    id: 'carouse',
+    name: 'Carouse',
+    skillSlug: 'athletics',
+    altSkillSlug: 'performance',
+    description: 'You decide the best way to prepare for the road ahead is to enjoy life now — visiting bars, enjoying fine meals, and swapping stories with the locals.',
+    successEffect: 'Success: Advantage on all ability checks during the first Encounter. Success by 5+: Also reduce Journey Difficulty by 2.',
+    failureEffect: 'Failure: Disadvantage on all ability checks during the first Encounter. Failure by 5+: Also skip the Rest step and begin with half Hit Dice.',
+    difficultyModifier: { success: -2, failure: 0 },
+    effectOnSuccess: {
+      name: 'Carouse',
+      description: 'Advantage on all ability checks during the first Encounter.',
+      applyToAll: true
+    }
   },
   chartCourse: {
     id: 'chartCourse',
     name: 'Chart Course',
     skillSlug: 'survival',
     altSkillSlug: 'crafting',
-    dc: PREPARATION_BASE_DC,
-    traits: ['concentrate'],
-    description: 'Study maps and charts to plan the optimal route for the journey.',
+    description: 'Using the information you have about your origin and destination, you lay out the best possible course to follow for your Journey.',
     successEffect: 'Journey Difficulty reduced by 5.',
     failureEffect: 'Journey Difficulty increased by 2.',
-    difficultyModifier: { success: -5, failure: +2 }
+    difficultyModifier: { success: -5, failure: 2 }
+  },
+  consultTheOccult: {
+    id: 'consultTheOccult',
+    name: 'Consult the Occult',
+    skillSlug: 'arcana',
+    altSkillSlug: 'occultism',
+    description: 'You spend a few hours practising esoteric traditions to search for signs and portents concerning the difficulties that lie ahead.',
+    successEffect: 'Each party member may reroll a failed saving throw once before the end of the Journey.',
+    failureEffect: 'No effect.',
+    difficultyModifier: { success: 0, failure: 0 },
+    effectOnSuccess: {
+      name: 'Consult the Occult',
+      description: 'May reroll a failed saving throw once during this Journey.',
+      applyToAll: true
+    }
   },
   packUp: {
     id: 'packUp',
     name: 'Pack Up',
     skillSlug: 'athletics',
-    dc: PREPARATION_BASE_DC,
-    traits: ['manipulate'],
-    description: 'Carefully organize and distribute supplies among the party for efficient travel.',
+    description: 'You lug, haul, and consolidate the party\'s supplies, then painstakingly organise and pack them tightly to make them as easy to carry as possible.',
     successEffect: 'Journey Difficulty reduced by 2.',
     failureEffect: 'No effect.',
     difficultyModifier: { success: -2, failure: 0 }
   },
+  prepareAFeast: {
+    id: 'prepareAFeast',
+    name: 'Prepare a Feast',
+    skillSlug: 'survival',
+    altSkillSlug: 'crafting',
+    description: 'You prepare a feast, either simple and hearty or elaborate and decadent, lavishing your party with good food and company to lift their spirits before the Journey begins.',
+    successEffect: 'The first time each party member suffers an effect that would make them gain a level of Exhaustion during the Journey, they do not gain Exhaustion.',
+    failureEffect: 'No effect.',
+    difficultyModifier: { success: 0, failure: 0 },
+    effectOnSuccess: {
+      name: 'Feast Prepared',
+      description: 'Ignore the first level of Exhaustion you would gain during this Journey.',
+      applyToAll: true
+    }
+  },
+  procureBeastsOfBurden: {
+    id: 'procureBeastsOfBurden',
+    name: 'Procure Beasts of Burden',
+    skillSlug: 'diplomacy',
+    altSkillSlug: 'nature',
+    description: 'You take time to find capable creatures to bear your party\'s supplies on the Journey ahead.',
+    successEffect: 'Journey Difficulty reduced by 2.',
+    failureEffect: 'No effect.',
+    difficultyModifier: { success: -2, failure: 0 }
+  },
+  procureMounts: {
+    id: 'procureMounts',
+    name: 'Procure Mounts',
+    skillSlug: 'diplomacy',
+    altSkillSlug: 'stealth',
+    description: 'You search for riding animals to carry your party throughout the Journey. You can purchase mounts or attempt to steal them.',
+    successEffect: 'The party acquires a mount for each character (Agile, Rugged, or Strong type as determined by GM).',
+    failureEffect: 'Failure when stealing: You are spotted and must abandon plans. Failure by 5+: Caught in the act with consequences.',
+    difficultyModifier: { success: 0, failure: 0 },
+    effectOnSuccess: {
+      name: 'Mounted',
+      description: 'You have a mount for this Journey (Agile, Rugged, or Strong type).',
+      applyToAll: true
+    }
+  },
   procureSupplies: {
     id: 'procureSupplies',
     name: 'Procure Supplies',
-    skillSlug: 'society',
-    altSkillSlug: 'survival',
-    dc: PREPARATION_BASE_DC,
-    traits: ['exploration'],
-    description: 'Gather extra supplies, either by purchasing or foraging before departure.',
-    successEffect: 'Quartermaster\'s Supply Dice are upgraded from d6 to d8.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'upgradeSupplyDice', value: 'd8' }
-  },
-  scoutAhead: {
-    id: 'scoutAhead',
-    name: 'Scout Ahead',
-    skillSlug: 'survival',
-    altSkillSlug: 'stealth',
-    dc: PREPARATION_BASE_DC,
-    traits: ['exploration'],
-    description: 'Send scouts ahead to check the first part of the route for dangers.',
-    successEffect: 'First encounter is revealed to the GM before traveling.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'revealEncounter', count: 1 }
-  },
-  gatherIntel: {
-    id: 'gatherIntel',
-    name: 'Gather Intel',
     skillSlug: 'diplomacy',
-    altSkillSlug: 'society',
-    dc: PREPARATION_BASE_DC,
-    traits: ['linguistic'],
-    description: 'Ask locals about current conditions along the planned route.',
-    successEffect: 'Journey Difficulty reduced by 3 and learn about one regional hazard.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: -3, failure: 0 },
-    specialEffect: { type: 'revealHazard' }
-  },
-  prepareDefenses: {
-    id: 'prepareDefenses',
-    name: 'Prepare Defenses',
-    skillSlug: 'crafting',
-    altSkillSlug: 'athletics',
-    dc: PREPARATION_BASE_DC,
-    traits: ['manipulate'],
-    description: 'Prepare defensive measures like caltrops, alarms, or fortification supplies.',
-    successEffect: 'Party gains +2 circumstance bonus to Initiative during ambush encounters.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'initiativeBonus', value: 2, condition: 'ambush' }
-  },
-  maintainGear: {
-    id: 'maintainGear',
-    name: 'Maintain Gear',
-    skillSlug: 'crafting',
-    dc: PREPARATION_BASE_DC,
-    traits: ['manipulate'],
-    description: 'Perform maintenance on weapons, armor, and equipment before the journey.',
-    successEffect: 'No equipment-related mishaps during travel. +1 to repair attempts.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'gearReliability' }
-  },
-  studyBestiary: {
-    id: 'studyBestiary',
-    name: 'Study Bestiary',
-    skillSlug: 'nature',
-    altSkillSlug: 'arcana',
-    dc: PREPARATION_BASE_DC,
-    traits: ['concentrate'],
-    description: 'Research creatures known to inhabit the region you\'ll be traveling through.',
-    successEffect: '+2 circumstance bonus to Recall Knowledge about creatures during encounters.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'recallKnowledgeBonus', value: 2 }
-  },
-  prepareRemedies: {
-    id: 'prepareRemedies',
-    name: 'Prepare Remedies',
-    skillSlug: 'medicine',
-    altSkillSlug: 'nature',
-    dc: PREPARATION_BASE_DC,
-    traits: ['manipulate'],
-    description: 'Prepare healing supplies and remedies for common travel ailments.',
-    successEffect: '+2 to Treat Wounds and Treat Disease checks during the journey.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'medicineBonus', value: 2 }
-  },
-  performRitual: {
-    id: 'performRitual',
-    name: 'Perform Ritual',
-    skillSlug: 'religion',
-    altSkillSlug: 'occultism',
-    dc: PREPARATION_BASE_DC,
-    traits: ['concentrate'],
-    description: 'Perform a religious or magical ritual to bless the journey.',
-    successEffect: 'Party gains +1 status bonus to saving throws for the first day.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'savingThrowBonus', value: 1, duration: 'firstDay' }
-  },
-  establishSignals: {
-    id: 'establishSignals',
-    name: 'Establish Signals',
-    skillSlug: 'society',
-    dc: PREPARATION_BASE_DC,
-    traits: ['concentrate'],
-    description: 'Establish a system of signals and codes for communication during travel.',
-    successEffect: 'Party can communicate silently during encounters. +2 to group Stealth.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'stealthBonus', value: 2 }
-  },
-  trainFormation: {
-    id: 'trainFormation',
-    name: 'Train Formation',
-    skillSlug: 'athletics',
-    altSkillSlug: 'acrobatics',
-    dc: PREPARATION_BASE_DC,
-    traits: ['exploration'],
-    description: 'Practice traveling in a specific formation for efficiency and safety.',
-    successEffect: 'Journey Difficulty reduced by 2. Group can\'t be flanked while traveling.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: -2, failure: 0 },
-    specialEffect: { type: 'preventFlanking' }
-  },
-  secureAnimals: {
-    id: 'secureAnimals',
-    name: 'Secure Animals',
-    skillSlug: 'nature',
-    dc: PREPARATION_BASE_DC,
-    traits: ['exploration'],
-    description: 'Ensure mounts and pack animals are healthy, rested, and properly equipped.',
-    successEffect: 'Mounted travel bonuses. Animals won\'t bolt during encounters.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'mountReliability' }
-  },
-  camouflageGear: {
-    id: 'camouflageGear',
-    name: 'Camouflage Gear',
-    skillSlug: 'stealth',
-    altSkillSlug: 'crafting',
-    dc: PREPARATION_BASE_DC,
-    traits: ['manipulate'],
-    description: 'Prepare camouflage and concealment for gear and party members.',
-    successEffect: '+2 circumstance bonus to avoid being spotted during travel.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'avoidanceBonus', value: 2 }
-  },
-  planContingencies: {
-    id: 'planContingencies',
-    name: 'Plan Contingencies',
-    skillSlug: 'society',
     altSkillSlug: 'survival',
-    dc: PREPARATION_BASE_DC,
-    traits: ['concentrate'],
-    description: 'Develop backup plans for common travel emergencies.',
-    successEffect: 'Once per journey, reroll a failed group check.',
+    thirdSkillSlug: 'stealth',
+    description: 'You spend time inventorying the party\'s supplies and procuring the proper provisions to outfit the group for the challenges ahead.',
+    successEffect: 'Each of the Quartermaster\'s Supply Dice increase from a d6 to a d8.',
     failureEffect: 'No effect.',
     difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'groupReroll', count: 1 }
+    effectOnSuccess: {
+      name: 'Supplies Procured',
+      description: 'Quartermaster\'s Supply Dice are upgraded to d8s.',
+      applyToQuartermaster: true
+    }
   },
-  lightenLoads: {
-    id: 'lightenLoads',
-    name: 'Lighten Loads',
-    skillSlug: 'athletics',
-    dc: PREPARATION_BASE_DC,
-    traits: ['exploration'],
-    description: 'Review and reduce unnecessary weight from everyone\'s packs.',
-    successEffect: 'Party isn\'t slowed by encumbrance. +5 feet to party Speed.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'speedBonus', value: 5 }
-  },
-  inspireConfidence: {
-    id: 'inspireConfidence',
-    name: 'Inspire Confidence',
+  rallyTheParty: {
+    id: 'rallyTheParty',
+    name: 'Rally the Party',
     skillSlug: 'performance',
-    dc: PREPARATION_BASE_DC,
-    traits: ['auditory', 'emotion'],
-    description: 'Give the party confidence through stories of successful journeys.',
-    successEffect: 'Party is immune to frightened condition for the first encounter.',
+    description: 'You speak to or perform for your party members, mentally and emotionally preparing them for the long road ahead. Choose: Encouraging (Inspiration), Galvanising (+1 to checks), Hopeful (advantage on first encounter), Resolute (temp HP), or Solemn (+1 to saves).',
+    successEffect: 'Party gains the chosen benefit until the end of the Journey.',
     failureEffect: 'No effect.',
     difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'fearImmunity', duration: 'firstEncounter' }
+    effectOnSuccess: {
+      hasDropdown: true,
+      dropdownOptions: 'RALLY_OPTIONS',
+      applyToAll: true
+    }
   },
-  coordinateRoles: {
-    id: 'coordinateRoles',
-    name: 'Coordinate Roles',
-    skillSlug: 'diplomacy',
-    dc: PREPARATION_BASE_DC,
-    traits: ['linguistic'],
-    description: 'Ensure everyone understands their role and responsibilities.',
-    successEffect: 'Each role ability can be used one additional time.',
+  research: {
+    id: 'research',
+    name: 'Research',
+    skillSlug: 'society',
+    description: 'Poring over the records available at your origin, you search for relevant maps and information specific to the Journey you are about to undertake.',
+    successEffect: 'Each party member may reroll a failed ability check once before the end of the Journey.',
     failureEffect: 'No effect.',
     difficultyModifier: { success: 0, failure: 0 },
-    specialEffect: { type: 'extraRoleUse', value: 1 }
+    effectOnSuccess: {
+      name: 'Research',
+      description: 'May reroll a failed ability check once during this Journey.',
+      applyToAll: true
+    }
+  },
+  seekAdvice: {
+    id: 'seekAdvice',
+    name: 'Seek Advice',
+    skillSlug: 'perception',
+    altSkillSlug: 'diplomacy',
+    description: 'You ask local inhabitants or travellers to provide advice about the Journey you are about to make.',
+    successEffect: 'Each party member has advantage on Wisdom checks and saving throws until the Journey ends. A character loses this benefit the first time they fail a Wisdom check or saving throw.',
+    failureEffect: 'No effect.',
+    difficultyModifier: { success: 0, failure: 0 },
+    effectOnSuccess: {
+      name: 'Seek Advice',
+      description: 'Advantage on Wisdom checks and saving throws (lose on first failure).',
+      applyToAll: true
+    }
+  },
+  studyTheWeather: {
+    id: 'studyTheWeather',
+    name: 'Study the Weather',
+    skillSlug: 'nature',
+    description: 'You survey the state of nature around you and do your best to forecast the weather, allowing you to prepare accordingly.',
+    successEffect: 'Journey Difficulty reduced by 2.',
+    failureEffect: 'No effect.',
+    difficultyModifier: { success: -2, failure: 0 }
   }
 };
 

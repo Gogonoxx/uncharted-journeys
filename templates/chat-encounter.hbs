@@ -12,13 +12,9 @@
     </span>
     <span class="meta-item type">
       <i class="fas fa-dice-d20"></i>
-      {{#if encounterTypeUUID}}
-        <a class="content-link" draggable="true" data-uuid="{{encounterTypeUUID}}" data-type="JournalEntry">
-          <i class="fas fa-book-open"></i> {{encounterType}}
-        </a>
-      {{else}}
-        {{encounterType}}
-      {{/if}}
+      <a class="encounter-type-link" data-encounter-type="{{encounterType}}" data-action="showEncounterTypeRules">
+        <i class="fas fa-book-open"></i> {{encounterType}}
+      </a>
     </span>
     <span class="meta-item roll">
       <i class="fas fa-dice"></i> Roll: {{roll}}

@@ -260,7 +260,8 @@
 }
 
 /* Clickable Encounter Type Link */
-.uncharted-journeys-chat .meta-item.type .content-link {
+.uncharted-journeys-chat .meta-item.type .content-link,
+.uncharted-journeys-chat .meta-item.type .encounter-type-link {
   color: #8b4513;
   text-decoration: none;
   padding: 2px 6px;
@@ -271,13 +272,15 @@
   transition: all 0.2s ease;
 }
 
-.uncharted-journeys-chat .meta-item.type .content-link:hover {
+.uncharted-journeys-chat .meta-item.type .content-link:hover,
+.uncharted-journeys-chat .meta-item.type .encounter-type-link:hover {
   background: rgba(139, 69, 19, 0.2);
   border-color: #8b4513;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-.uncharted-journeys-chat .meta-item.type .content-link i {
+.uncharted-journeys-chat .meta-item.type .content-link i,
+.uncharted-journeys-chat .meta-item.type .encounter-type-link i {
   margin-right: 4px;
 }
 
@@ -431,6 +434,19 @@
   border: 1px solid var(--uj-border);
   border-radius: 4px;
   background: white;
+  color: #1a1008;
+}
+
+/* Ensure all inputs have dark readable text */
+.uncharted-journeys.journey-manager input,
+.uncharted-journeys.journey-manager select,
+.uncharted-journeys.journey-manager textarea {
+  color: #1a1008;
+  background: white;
+}
+
+.uncharted-journeys.journey-manager input::placeholder {
+  color: #888;
 }
 
 /* Locations Row */
@@ -664,7 +680,52 @@
   color: var(--uj-success);
 }
 
+/* Assign All Roles Button */
+.assign-all-controls {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.assign-all-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.assign-all-btn:hover {
+  background: var(--uj-primary-dark, #1976d2);
+}
+
+.assign-all-btn i {
+  margin-right: 0.5rem;
+}
+
 /* Preparations Section */
+.prep-info-controls {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.send-prep-list-btn {
+  padding: 0.5rem 1rem;
+  background: var(--uj-secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.send-prep-list-btn:hover {
+  background: var(--uj-primary);
+}
+
 .preparation-row {
   display: flex;
   align-items: center;
@@ -677,7 +738,7 @@
 }
 
 .prep-actor {
-  flex: 0 0 120px;
+  flex: 0 0 180px;
 }
 
 .prep-role {
@@ -720,21 +781,106 @@
   color: var(--uj-hint);
 }
 
-/* Group Checks */
-.group-check-controls {
-  text-align: center;
-  margin-bottom: 0.75rem;
+/* Rest Section */
+.rest-section {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(139, 69, 19, 0.05);
+  border: 1px solid var(--uj-border);
+  border-radius: 6px;
 }
 
-.send-check-btn {
+.rest-section h3 {
+  margin: 0 0 0.5rem;
+  color: var(--uj-primary);
+}
+
+.rest-controls {
+  text-align: center;
+}
+
+.send-rest-btn {
   padding: 0.5rem 1rem;
-  background: var(--uj-primary);
+  background: var(--uj-accent);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 0.85rem;
 }
 
+.send-rest-btn:hover {
+  background: var(--uj-primary);
+}
+
+/* Rest Chat Card */
+.rest-choices {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.rest-choice-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 4px;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rest-choice-row .actor-name {
+  flex: 1 1 auto;
+  min-width: 80px;
+}
+
+.rest-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.rest-btn, .stay-up-btn {
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.rest-btn {
+  background: #228b22;
+  color: white;
+}
+
+.rest-btn:hover {
+  background: #1a6b1a;
+}
+
+.stay-up-btn {
+  background: #b8860b;
+  color: white;
+}
+
+.stay-up-btn:hover {
+  background: #8b6508;
+}
+
+.rest-chosen {
+  color: #228b22;
+  font-weight: bold;
+}
+
+.stay-up-chosen {
+  color: #b8860b;
+  font-weight: bold;
+}
+
+/* Group Checks */
 .group-check-results {
   display: grid;
   gap: 0.5rem;
@@ -742,37 +888,81 @@
 
 .check-result-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem;
   background: white;
   border: 1px solid var(--uj-border);
   border-radius: 4px;
 }
 
-.check-buttons {
-  display: flex;
-  gap: 0.5rem;
+.check-actor-info {
+  flex: 0 0 120px;
+  font-weight: bold;
 }
 
-.check-buttons button {
-  width: 32px;
-  height: 32px;
+.check-skill-buttons {
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.skill-check-btn {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  background: var(--uj-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+.skill-check-btn:hover:not(:disabled) {
+  background: var(--uj-secondary);
+}
+
+.skill-check-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.skill-check-btn.alt {
+  background: var(--uj-secondary);
+}
+
+.skill-check-btn.alt:hover:not(:disabled) {
+  background: var(--uj-accent);
+}
+
+.check-result-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.check-result-buttons button {
+  width: 28px;
+  height: 28px;
   border: 2px solid #ccc;
   border-radius: 50%;
   background: white;
   cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.check-buttons .success-btn:hover,
-.check-buttons .success-btn.active {
+.check-result-buttons .success-btn:hover,
+.check-result-buttons .success-btn.active {
   background: var(--uj-success);
   border-color: var(--uj-success);
   color: white;
 }
 
-.check-buttons .failure-btn:hover,
-.check-buttons .failure-btn.active {
+.check-result-buttons .failure-btn:hover,
+.check-result-buttons .failure-btn.active {
   background: var(--uj-failure);
   border-color: var(--uj-failure);
   color: white;
@@ -796,13 +986,14 @@
 
 .pace-btn {
   flex: 1;
-  padding: 0.75rem;
+  padding: 0.5rem;
   background: white;
   border: 2px solid var(--uj-border);
   border-radius: 6px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
+  min-width: 0; /* Allow shrinking */
 }
 
 .pace-btn:hover {
@@ -818,23 +1009,59 @@
 .pace-label {
   display: block;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .pace-effect {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   opacity: 0.8;
+  line-height: 1.2;
+  max-height: 2.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Encounter Progress */
 .encounter-progress {
   margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.encounter-adjust-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--uj-border);
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--uj-text);
+  font-size: 0.75rem;
+  transition: all 0.15s ease;
+}
+
+.encounter-adjust-btn:hover:not(:disabled) {
+  background: var(--uj-accent);
+  border-color: var(--uj-primary);
+}
+
+.encounter-adjust-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .progress-bar {
   display: flex;
   gap: 4px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .progress-pip {
@@ -914,11 +1141,17 @@
 .encounter-title {
   margin: 0 0 0.5rem;
   color: var(--uj-primary);
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 .encounter-description {
   margin-bottom: 0.75rem;
   line-height: 1.5;
+  font-size: 0.9rem;
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }
 
 .encounter-actions {
@@ -1200,16 +1433,23 @@
 
 .uncharted-journeys.chat-card .outcome-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin: 0.75rem 0;
 }
 
 .uncharted-journeys.chat-card .outcome-buttons button {
-  flex: 1;
-  padding: 0.5rem;
+  flex: 1 1 auto;
+  min-width: fit-content;
+  padding: 0.5rem 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
 .uncharted-journeys.chat-card .success-btn {
@@ -1230,9 +1470,92 @@
 
 .uncharted-journeys.chat-card .result-success {
   color: #228b22;
+  background: rgba(34, 139, 34, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(34, 139, 34, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
 }
 
 .uncharted-journeys.chat-card .result-failure {
+  color: #b22222;
+  background: rgba(178, 34, 34, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(178, 34, 34, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+.uncharted-journeys.chat-card .skill-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.uncharted-journeys.chat-card .skill-options p {
+  margin: 0;
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Rally the Party dropdown */
+.uncharted-journeys.chat-card .rally-selection {
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  background: rgba(218, 165, 32, 0.1);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: 4px;
+}
+
+.uncharted-journeys.chat-card .rally-selection label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #8b4513;
+}
+
+.uncharted-journeys.chat-card .rally-option-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #daa520;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: white;
+}
+
+.uncharted-journeys.chat-card .dc-info {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.uncharted-journeys.chat-card .description {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 0.5rem 0;
+}
+
+.uncharted-journeys.chat-card .effects {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(139, 69, 19, 0.2);
+  font-size: 0.85rem;
+}
+
+.uncharted-journeys.chat-card .effects p {
+  margin: 0.25rem 0;
+}
+
+.uncharted-journeys.chat-card .success-effect {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card .failure-effect {
   color: #b22222;
 }
 
@@ -1252,4 +1575,641 @@
 .uncharted-journeys-exhaustion .exhaustion-effect {
   font-style: italic;
   color: #666;
+}
+
+/* Compact version for less intrusive messages */
+.uncharted-journeys-exhaustion.compact {
+  padding: 0.4rem 0.6rem;
+  background: rgba(255, 245, 245, 0.7);
+  border: 1px solid rgba(178, 34, 34, 0.4);
+}
+
+.uncharted-journeys-exhaustion.compact p {
+  margin: 0.15rem 0;
+  font-size: 0.9rem;
+}
+
+.uncharted-journeys-exhaustion.compact .exhaustion-effect {
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+/* ===================================
+   Encounter Resolution Styles
+   =================================== */
+
+/* Resolution Check Chat Cards */
+.uncharted-journeys.chat-card.resolution-check {
+  background: linear-gradient(to bottom, #f5f5ff, #ebebff);
+  border-color: #4a4a8a;
+}
+
+.uncharted-journeys.chat-card.resolution-check h3 {
+  color: #4a4a8a;
+}
+
+.uncharted-journeys.chat-card.resolution-check h3 i {
+  color: #6a6aaa;
+}
+
+/* Key Role Check Specific */
+.uncharted-journeys.chat-card.key-role-check {
+  background: linear-gradient(to bottom, #fffef5, #fff8e0);
+  border-color: #b8860b;
+}
+
+.uncharted-journeys.chat-card.key-role-check h3 {
+  color: #b8860b;
+}
+
+.uncharted-journeys.chat-card.key-role-check .gm-only {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.uncharted-journeys.chat-card.key-role-check .actor-name {
+  margin: 0.5rem 0;
+}
+
+.uncharted-journeys.chat-card.key-role-check .effects-preview {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.uncharted-journeys.chat-card.key-role-check .effects-preview p {
+  margin: 0.25rem 0;
+}
+
+.uncharted-journeys.chat-card.key-role-check .effect-success {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card.key-role-check .effect-critSuccess {
+  color: #1a6b1a;
+  font-weight: bold;
+}
+
+.uncharted-journeys.chat-card.key-role-check .effect-failure {
+  color: #b22222;
+}
+
+/* Critical Success Button */
+.uncharted-journeys.chat-card .crit-success-btn {
+  background: linear-gradient(to bottom, #ffd700, #b8860b);
+  color: #1a1008;
+  border: 1px solid #996600;
+}
+
+.uncharted-journeys.chat-card .crit-success-btn:hover {
+  background: linear-gradient(to bottom, #ffe740, #c99700);
+}
+
+/* Group Check Specific */
+.uncharted-journeys.chat-card.group-check {
+  background: linear-gradient(to bottom, #f5fff5, #e8ffe8);
+  border-color: #228b22;
+}
+
+.uncharted-journeys.chat-card.group-check h3 {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card.group-check .dc-modifier {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.uncharted-journeys.chat-card.group-check .advantage-note {
+  padding: 0.5rem;
+  background: rgba(34, 139, 34, 0.1);
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.uncharted-journeys.chat-card.group-check .advantage-note .fa-arrow-up {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card.group-check .advantage-note .fa-arrow-down {
+  color: #b22222;
+}
+
+/* Individual Saves Specific */
+.uncharted-journeys.chat-card.individual-saves {
+  background: linear-gradient(to bottom, #fff5f5, #ffe8e8);
+  border-color: #8b4513;
+}
+
+.uncharted-journeys.chat-card.individual-saves h3 {
+  color: #8b4513;
+}
+
+/* Group/Saves Results Container */
+.group-results,
+.saves-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+}
+
+/* Member Result Row */
+.member-result-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.member-result-row .member-name {
+  flex: 1 1 auto;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 80px;
+}
+
+.member-result-row .member-role {
+  color: #666;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.member-result-row .result-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.member-result-row .result-buttons button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.member-result-row .result-buttons .success-btn:hover {
+  background: #228b22;
+  border-color: #228b22;
+  color: white;
+}
+
+.member-result-row .result-buttons .failure-btn:hover {
+  background: #b22222;
+  border-color: #b22222;
+  color: white;
+}
+
+.member-result-row .result-display {
+  min-width: 80px;
+  text-align: right;
+}
+
+.member-result-row .result-display .result-success {
+  color: #228b22;
+}
+
+.member-result-row .result-display .result-failure {
+  color: #b22222;
+}
+
+/* Replacement Option */
+.replacement-option {
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  background: rgba(218, 165, 32, 0.1);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: 4px;
+}
+
+.replacement-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.replacement-target {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.replacement-target:hover {
+  border-color: #b8860b;
+}
+
+.replacement-target input[type="checkbox"] {
+  margin: 0;
+}
+
+/* Group/Saves Tally */
+.group-tally, .saves-tally {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.group-tally .success-count, .saves-tally .success-count {
+  color: #228b22;
+  font-size: 1.25rem;
+}
+
+.finalize-btn {
+  padding: 0.5rem 1rem;
+  background: #4a4a8a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.finalize-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.finalize-btn:hover:not(:disabled) {
+  background: #5a5a9a;
+}
+
+/* Outcome Preview (GM only) */
+.outcome-preview {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.outcome-preview .outcome-tier {
+  margin: 0.25rem 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+}
+
+.outcome-preview .outcome-all {
+  background: rgba(34, 139, 34, 0.1);
+  color: #1a6b1a;
+}
+
+.outcome-preview .outcome-majority {
+  background: rgba(34, 139, 34, 0.05);
+  color: #228b22;
+}
+
+.outcome-preview .outcome-minority {
+  background: rgba(178, 34, 34, 0.05);
+  color: #b22222;
+}
+
+.outcome-preview .outcome-none {
+  background: rgba(178, 34, 34, 0.1);
+  color: #8b1a1a;
+}
+
+/* Choice Card */
+.uncharted-journeys.chat-card.encounter-choice {
+  background: linear-gradient(to bottom, #f5f0ff, #e8e0ff);
+  border-color: #6a4a8a;
+}
+
+.uncharted-journeys.chat-card.encounter-choice h3 {
+  color: #6a4a8a;
+}
+
+.choice-prompt {
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.choice-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.choice-btn {
+  flex: 1;
+  padding: 0.75rem;
+  background: white;
+  border: 2px solid #6a4a8a;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.choice-btn:hover {
+  background: rgba(106, 74, 138, 0.1);
+  transform: translateY(-2px);
+}
+
+.choice-details {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.75rem;
+}
+
+.choice-detail {
+  margin-bottom: 0.5rem;
+}
+
+.choice-made {
+  font-weight: bold;
+  color: #6a4a8a;
+}
+
+/* Resolution Outcome Card */
+.uncharted-journeys.chat-card.resolution-outcome {
+  text-align: center;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-all {
+  background: linear-gradient(to bottom, #e8ffe8, #d0ffd0);
+  border-color: #228b22;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-all h3 {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-majority {
+  background: linear-gradient(to bottom, #f0fff0, #e8ffe8);
+  border-color: #3cb371;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-majority h3 {
+  color: #3cb371;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-minority {
+  background: linear-gradient(to bottom, #fff5f0, #ffe8e0);
+  border-color: #cd853f;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-minority h3 {
+  color: #cd853f;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-none {
+  background: linear-gradient(to bottom, #fff0f0, #ffe0e0);
+  border-color: #b22222;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-none h3 {
+  color: #b22222;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-combat {
+  background: linear-gradient(to bottom, #fff5e0, #ffe8c0);
+  border-color: #cd853f;
+}
+
+.uncharted-journeys.chat-card.resolution-outcome.outcome-combat h3 {
+  color: #cd853f;
+}
+
+/* Individual saves outcome chat card */
+.uncharted-journeys.chat-card.individual-saves-outcome {
+  border-color: #4a4a8a;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome h3 {
+  color: #4a4a8a;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .outcome-summary {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 1rem;
+  color: #666;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .individual-results {
+  text-align: left;
+  margin: 0.75rem 0;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .individual-results p {
+  margin: 0.3rem 0;
+  padding: 0.4rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .individual-results p i {
+  margin-top: 0.2rem;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .result-success {
+  border-left: 3px solid #228b22;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .result-failure {
+  border-left: 3px solid #b22222;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .result-success i {
+  color: #228b22;
+}
+
+.uncharted-journeys.chat-card.individual-saves-outcome .result-failure i {
+  color: #b22222;
+}
+
+/* Individual outcome preview in GM chat */
+.outcome-preview.individual-outcomes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(139, 69, 19, 0.2);
+}
+
+.outcome-preview.individual-outcomes .outcome-tier {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.outcome-preview.individual-outcomes .outcome-success {
+  background: rgba(34, 139, 34, 0.1);
+  color: #1a6b1a;
+}
+
+.outcome-preview.individual-outcomes .outcome-failure {
+  background: rgba(178, 34, 34, 0.1);
+  color: #8b1a1a;
+}
+
+.result-summary {
+  font-size: 1.25rem;
+  margin: 0.75rem 0;
+}
+
+.outcome-effect {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.combat-reminder {
+  color: #cd853f;
+  margin-bottom: 0.5rem;
+}
+
+.combat-note {
+  font-style: italic;
+  color: #666;
+}
+
+.applied-effects {
+  text-align: left;
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.applied-effects .effects-header {
+  margin-bottom: 0.25rem;
+}
+
+.applied-effects ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.gm-controls {
+  margin-top: 1rem;
+}
+
+.resolve-btn.success {
+  background: #228b22;
+}
+
+/* Resolution Progress in Journey App */
+.resolution-in-progress {
+  padding: 0.5rem;
+  background: rgba(74, 74, 138, 0.1);
+  border-radius: 4px;
+  flex: 1;
+}
+
+.resolution-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a4a8a;
+  font-size: 0.9rem;
+}
+
+.resolution-progress {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.resolution-progress h5 {
+  margin: 0 0 0.5rem;
+  color: #4a4a8a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resolution-steps p {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+.resolution-steps .step-complete {
+  color: #228b22;
+}
+
+.resolution-steps .step-info {
+  color: #666;
+}
+
+.resolution-steps .outcome-all {
+  color: #1a6b1a;
+  font-weight: bold;
+}
+
+.resolution-steps .outcome-majority {
+  color: #3cb371;
+}
+
+.resolution-steps .outcome-minority {
+  color: #cd853f;
+}
+
+.resolution-steps .outcome-none {
+  color: #b22222;
+}
+
+/* Exhaustion Applied in Resolution Outcome */
+.exhaustion-applied {
+  text-align: left;
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  background: rgba(178, 34, 34, 0.1);
+  border: 1px solid rgba(178, 34, 34, 0.3);
+  border-radius: 4px;
+}
+
+.exhaustion-applied .exhaustion-header {
+  margin: 0 0 0.25rem;
+  color: #b22222;
+}
+
+.exhaustion-applied ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.exhaustion-applied li {
+  color: #8b1a1a;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
 }
