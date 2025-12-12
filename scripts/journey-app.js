@@ -32,8 +32,8 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       resizable: true
     },
     position: {
-      width: 620,
-      height: 750
+      width: 800,
+      height: 900
     },
     form: {
       submitOnChange: false,
@@ -74,6 +74,9 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       nextEncounter: JourneyManagerApp.#onNextEncounter,
       useRoleAbility: JourneyManagerApp.#onUseRoleAbility,
       completeJourney: JourneyManagerApp.#onCompleteJourney,
+      copyResearchPrompt: JourneyManagerApp.#onCopyResearchPrompt,
+      copyEncounterPrompt: JourneyManagerApp.#onCopyEncounterPrompt,
+      copyDungeonPrompt: JourneyManagerApp.#onCopyDungeonPrompt,
 
       // Stage 4: Journey's End
       rollArrival: JourneyManagerApp.#onRollArrival,
@@ -127,12 +130,10 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
 
   /** @override */
   async _prepareContext(options = {}) {
-    console.log('UJ DEBUG: _prepareContext called');
     const context = await super._prepareContext(options);
 
     // Ensure session exists and is saved before rendering
     let session = JourneySessionManager.getCurrent();
-    console.log('UJ DEBUG: session in _prepareContext:', session ? { weather: session.weather, terrain: session.terrain } : 'null');
     if (!session) {
       session = JourneySessionManager.createNew();
       await JourneySessionManager.save(session);
@@ -174,6 +175,23 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       };
     });
 
+    // Convert currentEncounter description from Markdown to HTML
+    let enrichedCurrentEncounter = session.currentEncounter;
+
+    if (session.currentEncounter?.description) {
+      const htmlDescription = JourneyManagerApp.markdownToHtml(session.currentEncounter.description);
+      enrichedCurrentEncounter = {
+        ...session.currentEncounter,
+        descriptionHTML: htmlDescription,
+        // Pass through researchPrompt if present (for Old Memories Research encounters)
+        researchPrompt: session.currentEncounter.researchPrompt || null,
+        // Pass through encounterPrompt if present (for Monster Hunt / Deadly Fight encounters)
+        encounterPrompt: session.currentEncounter.encounterPrompt || null,
+        // Pass through dungeonPrompt if present (for LAIR / DUNGEON encounters)
+        dungeonPrompt: session.currentEncounter.dungeonPrompt || null
+      };
+    }
+
     return foundry.utils.mergeObject(context, {
       session,
       activeTab,
@@ -202,7 +220,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       difficulty: session.difficulty,
       baseEncounters: session.baseEncounterCount,
       totalEncounters: session.encounters.length,  // Use actual array length for manual adjustments
-      currentEncounter: session.currentEncounter,
+      currentEncounter: enrichedCurrentEncounter,
       allPrepsComplete: session.allPreparationsComplete,
       allGroupChecksComplete: session.allGroupChecksComplete,
       allEncountersResolved: session.allEncountersResolved,
@@ -227,7 +245,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     return {
       route: {
         id: 'route',
-        label: '1. Set Route',
+        label: 'Route',
         icon: 'fa-map-marked-alt',
         active: this.tabGroups.primary === 'route',
         enabled: true,
@@ -235,7 +253,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       },
       prepare: {
         id: 'prepare',
-        label: '2. Prepare',
+        label: 'Prepare',
         icon: 'fa-tasks',
         active: this.tabGroups.primary === 'prepare',
         enabled: session.currentStage >= 2,
@@ -243,7 +261,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       },
       journey: {
         id: 'journey',
-        label: '3. Journey',
+        label: 'Journey',
         icon: 'fa-hiking',
         active: this.tabGroups.primary === 'journey',
         enabled: session.currentStage >= 3,
@@ -251,7 +269,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       },
       journeyEnd: {
         id: 'journeyEnd',
-        label: '4. Journey\'s End',
+        label: 'Arrival',
         icon: 'fa-flag-checkered',
         active: this.tabGroups.primary === 'journeyEnd',
         enabled: session.currentStage >= 4,
@@ -395,6 +413,63 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   // ============================================
 
   /**
+   * Convert simple Markdown to HTML
+   * Supports: **bold**, *italic*, - lists, line breaks
+   * @param {string} markdown - Markdown text
+   * @returns {string} HTML string
+   */
+  static markdownToHtml(markdown) {
+    if (!markdown) return '';
+
+    let html = markdown;
+
+    // Escape HTML entities first
+    html = html.replace(/&/g, '&amp;')
+               .replace(/</g, '&lt;')
+               .replace(/>/g, '&gt;');
+
+    // Bold: **text** → <strong>text</strong>
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+    // Italic: *text* → <em>text</em> (but not inside **)
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+    // Headers: ### text → <h4>text</h4>
+    html = html.replace(/^### (.+)$/gm, '<h4>$1</h4>');
+    html = html.replace(/^## (.+)$/gm, '<h3>$1</h3>');
+
+    // List items: - text → <li>text</li>
+    // First, wrap consecutive list items in <ul>
+    const lines = html.split('\n');
+    const processedLines = [];
+    let inList = false;
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('- ')) {
+        if (!inList) {
+          processedLines.push('<ul>');
+          inList = true;
+        }
+        processedLines.push(`<li>${trimmed.slice(2)}</li>`);
+      } else {
+        if (inList) {
+          processedLines.push('</ul>');
+          inList = false;
+        }
+        if (trimmed) {
+          processedLines.push(`<p>${trimmed}</p>`);
+        }
+      }
+    }
+    if (inList) {
+      processedLines.push('</ul>');
+    }
+
+    return processedLines.join('\n');
+  }
+
+  /**
    * Save current form values to session before re-rendering
    * This prevents loss of unsaved form data on re-render
    */
@@ -446,7 +521,6 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   // ============================================
 
   static async #onSetDistance(event, target) {
-    console.log('UJ DEBUG: onSetDistance called', { event, target });
     await this._saveFormValues();
     const distance = target.dataset.distance;
     await JourneySessionManager.updateField('distance', distance);
@@ -454,15 +528,11 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   static async #onAdjustWeather(event, target) {
-    console.log('UJ DEBUG: onAdjustWeather called');
     await this._saveFormValues();
     const delta = parseInt(target.dataset.delta, 10);
     const session = this.session;
-    console.log('UJ DEBUG: weather before:', session.weather, 'delta:', delta);
     const newValue = Math.max(1, Math.min(10, session.weather + delta));
-    console.log('UJ DEBUG: weather after:', newValue);
     await JourneySessionManager.updateField('weather', newValue);
-    console.log('UJ DEBUG: saved, rendering...');
     this.render();
   }
 
@@ -1071,7 +1141,13 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
           ...e,
           encounterRoll: roll.total,
           title: encounterData.title,
-          description: encounterData.description
+          description: encounterData.description,
+          // Include researchPrompt if present (for Old Memories Research encounters)
+          researchPrompt: encounterData.researchPrompt || null,
+          // Include encounterPrompt if present (for Monster Hunt / Deadly Fight encounters)
+          encounterPrompt: encounterData.encounterPrompt || null,
+          // Include dungeonPrompt if present (for LAIR / DUNGEON encounters)
+          dungeonPrompt: encounterData.dungeonPrompt || null
         };
       }
       return { ...e };
@@ -1603,6 +1679,70 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
 
     ui.notifications.info('Encounter resolved!');
     this.render();
+  }
+
+  /**
+   * Copy the research prompt to clipboard for use in Encounter Builder
+   */
+  static async #onCopyResearchPrompt(event, target) {
+    const session = JourneySessionManager.getCurrent();
+    const encounter = session.currentEncounter;
+
+    if (!encounter?.researchPrompt) {
+      ui.notifications.warn('No research prompt available for this encounter.');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(encounter.researchPrompt);
+      ui.notifications.info('Research prompt copied to clipboard!');
+    } catch (err) {
+      // Fallback for browsers that don't support clipboard API
+      console.error('Failed to copy to clipboard:', err);
+      ui.notifications.error('Failed to copy. Check console for details.');
+    }
+  }
+
+  /**
+   * Copy the encounter prompt to clipboard for use in Encounter Builder
+   */
+  static async #onCopyEncounterPrompt(event, target) {
+    const session = JourneySessionManager.getCurrent();
+    const encounter = session.currentEncounter;
+
+    if (!encounter?.encounterPrompt) {
+      ui.notifications.warn('No encounter prompt available for this encounter.');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(encounter.encounterPrompt);
+      ui.notifications.info('Encounter prompt copied to clipboard!');
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+      ui.notifications.error('Failed to copy. Check console for details.');
+    }
+  }
+
+  /**
+   * Copy the dungeon prompt to clipboard for use in Dungeon Generator
+   */
+  static async #onCopyDungeonPrompt(event, target) {
+    const session = JourneySessionManager.getCurrent();
+    const encounter = session.currentEncounter;
+
+    if (!encounter?.dungeonPrompt) {
+      ui.notifications.warn('No dungeon prompt available for this encounter.');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(encounter.dungeonPrompt);
+      ui.notifications.info('Dungeon prompt copied to clipboard!');
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+      ui.notifications.error('Failed to copy. Check console for details.');
+    }
   }
 
   static async #onNextEncounter(event, target) {

@@ -1,19 +1,39 @@
 /**
  * Uncharted Journeys - Styles
+ * PF2E Theme based on Encounter Builder
  */
+
+/* ===================================
+   PF2E Color Variables
+   =================================== */
+
+:root {
+  --pf2e-red: #5c0000;
+  --pf2e-brown-dark: #3a2318;
+  --pf2e-brown-medium: #5e3929;
+  --pf2e-brown-light: #7a4c3a;
+  --pf2e-tan: #c9b18a;
+  --pf2e-tan-light: #e8dcc4;
+  --pf2e-tan-dark: #a89672;
+  --pf2e-text: #1c1612;
+  --pf2e-text-light: #f5f0e6;
+  --pf2e-success: #2d5a27;
+  --pf2e-failure: #8b0000;
+}
 
 /* ===================================
    Application Window Styles
    =================================== */
 
 .uncharted-journeys.encounter-roller {
-  --uj-primary: #8b4513;
-  --uj-secondary: #d2691e;
-  --uj-accent: #daa520;
-  --uj-bg: #f5f0e6;
-  --uj-border: #a0522d;
-  --uj-text: #3d2914;
-  --uj-hint: #777;
+  /* PF2E Color Scheme */
+  --uj-primary: var(--pf2e-red);
+  --uj-secondary: var(--pf2e-brown-medium);
+  --uj-accent: #c9a227;
+  --uj-bg: var(--pf2e-tan-light);
+  --uj-border: var(--pf2e-brown-medium);
+  --uj-text: var(--pf2e-text);
+  --uj-hint: #555;
 }
 
 .uncharted-journeys .encounter-roller-content {
@@ -128,9 +148,7 @@
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--uj-text);
-  max-height: 200px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
+  /* Auto-size: grows with content, no max-height */
 }
 
 .uncharted-journeys .encounter-description p {
@@ -198,14 +216,14 @@
    =================================== */
 
 .uncharted-journeys-chat {
-  background: linear-gradient(to bottom, #f9f5eb, #f0e8d8);
-  border: 2px solid var(--uj-primary, #8b4513);
+  background: linear-gradient(to bottom, #f8f4e8, #f0e8d8);
+  border: 2px solid var(--uj-primary, #5e0000);
   border-radius: 6px;
   overflow: hidden;
 }
 
 .uncharted-journeys-chat .encounter-chat-header {
-  background: linear-gradient(to right, #8b4513, #a0522d);
+  background: linear-gradient(to right, #5e0000, #8b1a1a);
   padding: 0.4rem 0.6rem;
   color: white;
 }
@@ -236,7 +254,7 @@
 }
 
 .uncharted-journeys-chat .meta-item i {
-  color: #8b4513;
+  color: #5e0000;
 }
 
 .uncharted-journeys-chat .encounter-chat-content {
@@ -245,7 +263,7 @@
 
 .uncharted-journeys-chat .encounter-chat-title {
   margin: 0 0 0.4rem 0;
-  color: #8b4513;
+  color: #5e0000;
   font-size: 1rem;
 }
 
@@ -262,20 +280,20 @@
 /* Clickable Encounter Type Link */
 .uncharted-journeys-chat .meta-item.type .content-link,
 .uncharted-journeys-chat .meta-item.type .encounter-type-link {
-  color: #8b4513;
+  color: #5e0000;
   text-decoration: none;
   padding: 2px 6px;
   border-radius: 3px;
-  background: rgba(139, 69, 19, 0.1);
-  border: 1px solid rgba(139, 69, 19, 0.3);
+  background: rgba(94, 0, 0, 0.1);
+  border: 1px solid rgba(94, 0, 0, 0.3);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .uncharted-journeys-chat .meta-item.type .content-link:hover,
 .uncharted-journeys-chat .meta-item.type .encounter-type-link:hover {
-  background: rgba(139, 69, 19, 0.2);
-  border-color: #8b4513;
+  background: rgba(94, 0, 0, 0.2);
+  border-color: #5e0000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
@@ -289,25 +307,43 @@
    =================================== */
 
 .uncharted-journeys.journey-manager {
-  --uj-primary: #6b3410;
-  --uj-secondary: #a04a10;
-  --uj-accent: #b8860b;
-  --uj-bg: #f5f0e6;
-  --uj-border: #8b4513;
-  --uj-text: #1a1008;
-  --uj-hint: #444;
-  --uj-success: #1a6b1a;
-  --uj-failure: #8b1a1a;
+  /* PF2E Color Scheme */
+  --uj-primary: var(--pf2e-red);
+  --uj-secondary: var(--pf2e-brown-medium);
+  --uj-accent: #c9a227;
+  --uj-bg: var(--pf2e-tan-light);
+  --uj-border: var(--pf2e-brown-medium);
+  --uj-text: var(--pf2e-text);
+  --uj-hint: #666;
+  --uj-success: var(--pf2e-success);
+  --uj-failure: var(--pf2e-failure);
   --uj-warning: #996600;
+  background: linear-gradient(135deg, var(--pf2e-brown-dark) 0%, var(--pf2e-brown-medium) 100%);
+  border: 3px solid var(--pf2e-red);
+}
+
+.uncharted-journeys.journey-manager .window-header {
+  background: var(--pf2e-red);
+  border-bottom: 2px solid var(--pf2e-tan-dark);
+  color: var(--pf2e-tan-light);
+}
+
+/* CRITICAL: Window content must be flex to allow child resize */
+.uncharted-journeys.journey-manager .window-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
 }
 
 /* Tab Navigation */
 .journey-tabs {
   display: flex;
-  gap: 2px;
-  background: var(--uj-border);
-  padding: 2px 2px 0;
-  border-radius: 6px 6px 0 0;
+  gap: 3px;
+  background: var(--pf2e-brown-dark);
+  padding: 6px 6px 0;
+  border-radius: 0;
 }
 
 .journey-tabs .tab {
@@ -315,25 +351,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 0.5rem 0.25rem;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.75rem 0.5rem;
+  background: var(--pf2e-tan);
+  border: 2px solid var(--pf2e-brown-medium);
+  border-bottom: none;
   border-radius: 4px 4px 0 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--pf2e-brown-dark);
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.75rem;
+  min-height: 56px;
+  font-weight: bold;
 }
 
 .journey-tabs .tab:hover:not(.disabled) {
-  background: rgba(255, 255, 255, 0.5);
-  color: white;
+  background: var(--pf2e-tan-dark);
 }
 
 .journey-tabs .tab.active {
-  background: var(--uj-bg);
-  color: var(--uj-primary);
+  background: var(--pf2e-red);
+  color: var(--pf2e-tan-light);
+  border-color: var(--pf2e-red);
+}
+
+.journey-tabs .tab.active i {
+  color: var(--pf2e-tan-light);
 }
 
 .journey-tabs .tab.disabled {
@@ -342,25 +386,39 @@
 }
 
 .journey-tabs .tab.complete:not(.active) {
-  background: rgba(34, 139, 34, 0.2);
+  background: var(--pf2e-tan);
+  border-color: var(--pf2e-success);
 }
 
 .journey-tabs .tab i {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: block;
+  flex-shrink: 0;
+}
+
+.journey-tabs .tab span {
+  line-height: 1.1;
+  text-align: center;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Stage Sections */
 .journey-stage {
   padding: 1rem;
-  background: var(--uj-bg);
+  background: var(--pf2e-tan-light) !important;
   display: none; /* Hidden by default */
-  overflow-y: auto;
-  max-height: calc(100vh - 200px);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto; /* Allow scrolling */
 }
 
 /* Show only the active tab's content */
 .journey-stage.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 /* Ensure good text color throughout */
@@ -415,7 +473,7 @@
   color: var(--uj-primary);
 }
 
-/* Form Groups */
+/* Form Groups - PF2E Style */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -423,30 +481,50 @@
 .form-group label {
   display: block;
   font-weight: bold;
-  color: var(--uj-primary);
-  margin-bottom: 0.25rem;
+  color: var(--pf2e-brown-dark);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.4rem;
-  border: 1px solid var(--uj-border);
+  padding: 0.6rem 0.8rem;
+  border: 2px solid var(--pf2e-brown-medium);
   border-radius: 4px;
-  background: white;
-  color: #1a1008;
+  background: #fff;
+  color: var(--pf2e-text);
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--pf2e-red);
+  box-shadow: 0 0 4px rgba(92, 0, 0, 0.3);
 }
 
 /* Ensure all inputs have dark readable text */
 .uncharted-journeys.journey-manager input,
 .uncharted-journeys.journey-manager select,
 .uncharted-journeys.journey-manager textarea {
-  color: #1a1008;
-  background: white;
+  color: var(--pf2e-text);
+  background: #fff;
+  border: 2px solid var(--pf2e-brown-medium);
+}
+
+.uncharted-journeys.journey-manager input:focus,
+.uncharted-journeys.journey-manager select:focus,
+.uncharted-journeys.journey-manager textarea:focus {
+  outline: none;
+  border-color: var(--pf2e-red);
+  box-shadow: 0 0 4px rgba(92, 0, 0, 0.3);
 }
 
 .uncharted-journeys.journey-manager input::placeholder {
-  color: #888;
+  color: #999;
 }
 
 /* Locations Row */
@@ -465,7 +543,7 @@
   color: var(--uj-primary);
 }
 
-/* Distance Buttons */
+/* Distance Buttons - PF2E Style */
 .distance-buttons {
   display: flex;
   gap: 0.5rem;
@@ -473,29 +551,36 @@
 
 .distance-btn {
   flex: 1;
-  padding: 0.5rem;
-  background: white;
-  border: 2px solid var(--uj-border);
+  padding: 0.6rem 0.5rem;
+  background: var(--pf2e-tan);
+  border: 2px solid var(--pf2e-brown-medium);
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
+  color: var(--pf2e-brown-dark);
 }
 
 .distance-btn:hover {
-  border-color: var(--uj-secondary);
-  background: rgba(210, 105, 30, 0.1);
+  background: var(--pf2e-tan-dark);
 }
 
 .distance-btn.active {
-  background: var(--uj-primary);
-  border-color: var(--uj-primary);
-  color: white;
+  background: var(--pf2e-red);
+  border-color: var(--pf2e-red);
+  color: var(--pf2e-tan-light) !important;
+}
+
+.distance-btn.active .distance-label,
+.distance-btn.active .distance-days {
+  color: var(--pf2e-tan-light) !important;
 }
 
 .distance-btn .distance-label {
   display: block;
   font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
 
 .distance-btn .distance-days {
@@ -978,7 +1063,7 @@
   margin-left: 0.5rem;
 }
 
-/* Pace Selection */
+/* Pace Selection - PF2E Style */
 .pace-buttons {
   display: flex;
   gap: 0.5rem;
@@ -986,30 +1071,38 @@
 
 .pace-btn {
   flex: 1;
-  padding: 0.5rem;
-  background: white;
-  border: 2px solid var(--uj-border);
-  border-radius: 6px;
+  padding: 0.6rem 0.5rem;
+  background: var(--pf2e-tan);
+  border: 2px solid var(--pf2e-brown-medium);
+  border-radius: 4px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
-  min-width: 0; /* Allow shrinking */
+  min-width: 0;
+  color: var(--pf2e-brown-dark);
 }
 
 .pace-btn:hover {
-  border-color: var(--uj-secondary);
+  background: var(--pf2e-tan-dark);
 }
 
 .pace-btn.active {
-  background: var(--uj-primary);
-  border-color: var(--uj-primary);
-  color: white;
+  background: var(--pf2e-red);
+  border-color: var(--pf2e-red);
+  color: var(--pf2e-tan-light) !important;
+}
+
+.pace-btn.active .pace-label,
+.pace-btn.active .pace-effect,
+.pace-btn.active i {
+  color: var(--pf2e-tan-light) !important;
 }
 
 .pace-label {
   display: block;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 
 .pace-effect {
@@ -1090,16 +1183,27 @@
   box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.4);
 }
 
+/* Current Encounter Section - Large and prominent */
+.current-encounter-section {
+  margin-bottom: 1rem;
+}
+
+.current-encounter-section h3 {
+  margin: 0 0 0.5rem;
+  color: var(--uj-primary);
+}
+
 /* Encounter Card */
 .encounter-card {
-  background: white;
-  border: 2px solid var(--uj-border);
-  border-radius: 6px;
+  background: #fff;
+  border: 2px solid var(--pf2e-brown-medium);
+  border-radius: 4px;
   padding: 1rem;
 }
 
 .encounter-region {
   margin-bottom: 0.75rem;
+  flex-shrink: 0;
 }
 
 .encounter-roll-controls {
@@ -1116,16 +1220,22 @@
 }
 
 .roll-btn {
-  padding: 0.4rem 0.75rem;
-  background: var(--uj-primary);
-  color: white;
+  padding: 0.5rem 1rem;
+  background: var(--pf2e-red);
+  color: var(--pf2e-tan-light);
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
 }
 
 .roll-btn:hover:not(:disabled) {
-  background: var(--uj-secondary);
+  background: #7a0000;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
 .roll-btn:disabled {
@@ -1134,36 +1244,78 @@
 }
 
 .encounter-details {
+  margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--uj-border);
+  border-top: 2px solid var(--pf2e-brown-medium);
 }
 
 .encounter-title {
   margin: 0 0 0.5rem;
-  color: var(--uj-primary);
-  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--pf2e-brown-medium);
+  color: var(--pf2e-tan-light) !important;
+  font-size: 1.1rem;
+  font-weight: bold;
   text-transform: uppercase;
+  border-radius: 4px;
+  flex-shrink: 0;
 }
 
+/* Encounter Description - Markdown Support - AUTO-SIZE */
 .encounter-description {
   margin-bottom: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 0.9rem;
-  max-height: 150px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
+  padding: 0.75rem;
+  background: var(--pf2e-tan-light);
+  border-radius: 4px;
+  border: 2px solid var(--pf2e-brown-medium);
+  /* Auto-size: no max-height, container grows with content */
+  /* Parent .journey-stage handles scrolling */
+}
+
+.encounter-description strong {
+  font-weight: bold;
+  color: var(--uj-primary);
+}
+
+.encounter-description em {
+  font-style: italic;
+}
+
+.encounter-description ul,
+.encounter-description ol {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.encounter-description li {
+  margin-bottom: 0.25rem;
+}
+
+.encounter-description p {
+  margin-bottom: 0.5rem;
 }
 
 .encounter-actions {
   display: flex;
   gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .send-btn, .resolve-btn {
-  padding: 0.4rem 0.75rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  background: var(--pf2e-red);
+  color: var(--pf2e-tan-light);
+  transition: all 0.2s;
+}
+
+.send-btn:hover, .resolve-btn:hover {
+  background: #7a0000;
 }
 
 .send-btn {
@@ -1224,33 +1376,40 @@
   cursor: not-allowed;
 }
 
-/* Stage Footer */
+/* Stage Footer - PF2E Style */
 .stage-footer {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 2px solid var(--uj-primary);
+  border-top: 2px solid var(--pf2e-brown-medium);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .confirm-btn {
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(to bottom, var(--uj-success), #1a6b1a);
-  color: white;
+  padding: 0.6rem 1.2rem;
+  background: var(--pf2e-red);
+  color: var(--pf2e-tan-light);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.2s;
 }
 
 .confirm-btn:hover:not(:disabled) {
-  box-shadow: 0 2px 8px rgba(34, 139, 34, 0.4);
+  background: #7a0000;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
 .confirm-btn:disabled {
@@ -1260,20 +1419,32 @@
 
 .abandon-btn, .danger {
   padding: 0.5rem 1rem;
-  background: var(--uj-failure);
-  color: white;
-  border: none;
+  background: var(--pf2e-tan);
+  color: var(--pf2e-brown-dark);
+  border: 2px solid var(--pf2e-brown-medium);
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.abandon-btn:hover, .danger:hover {
+  background: var(--pf2e-tan-dark);
 }
 
 .next-btn {
   padding: 0.5rem 1rem;
-  background: var(--uj-secondary);
-  color: white;
+  background: var(--pf2e-red);
+  color: var(--pf2e-tan-light);
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.next-btn:hover {
+  background: #7a0000;
 }
 
 .footer-hint {
@@ -1418,14 +1589,14 @@
 /* Chat Cards */
 .uncharted-journeys.chat-card {
   padding: 0.75rem;
-  background: linear-gradient(to bottom, #f9f5eb, #f0e8d8);
-  border: 2px solid var(--uj-primary, #8b4513);
+  background: linear-gradient(to bottom, #f8f4e8, #f0e8d8);
+  border: 2px solid var(--uj-primary, #5e0000);
   border-radius: 6px;
 }
 
 .uncharted-journeys.chat-card h3 {
   margin: 0 0 0.5rem;
-  color: #8b4513;
+  color: #5e0000;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -2212,4 +2383,89 @@
   color: #8b1a1a;
   font-size: 0.9rem;
   margin: 0.25rem 0;
+}
+
+/* ===================================
+   PF2E Scrollbar Styling
+   =================================== */
+
+.uncharted-journeys.journey-manager ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.uncharted-journeys.journey-manager ::-webkit-scrollbar-track {
+  background: var(--pf2e-tan);
+  border-radius: 4px;
+}
+
+.uncharted-journeys.journey-manager ::-webkit-scrollbar-thumb {
+  background: var(--pf2e-brown-medium);
+  border-radius: 4px;
+}
+
+.uncharted-journeys.journey-manager ::-webkit-scrollbar-thumb:hover {
+  background: var(--pf2e-brown-dark);
+}
+
+/* ===================================
+   Research Prompt Section
+   =================================== */
+
+.research-prompt-section {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #4a1c6b, #6b3fa0);
+  border-radius: 6px;
+  border: 2px solid #9b6dc6;
+}
+
+.research-prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.research-prompt-header h5 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-prompt-btn {
+  background: #d4af37;
+  color: #000;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.copy-prompt-btn:hover {
+  background: #e8c547;
+  transform: scale(1.05);
+}
+
+.research-prompt-text {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  color: #333;
+  font-family: 'Courier New', monospace;
 }

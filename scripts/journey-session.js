@@ -117,6 +117,12 @@ class EncounterSchema extends SchemaField {
       encounterRoll: new NumberField({ nullable: true }),
       title: new StringField({ blank: true }),
       description: new StringField({ blank: true }),
+      // Research prompt for Old Memories encounters
+      researchPrompt: new StringField({ blank: true, nullable: true }),
+      // Encounter prompt for Monster Hunt / Deadly Fight encounters
+      encounterPrompt: new StringField({ blank: true, nullable: true }),
+      // Dungeon prompt for LAIR / DUNGEON encounters
+      dungeonPrompt: new StringField({ blank: true, nullable: true }),
       status: new StringField({
         choices: ['pending', 'active', 'resolved'],
         initial: 'pending'

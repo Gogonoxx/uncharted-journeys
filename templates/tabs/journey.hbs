@@ -100,12 +100,48 @@
       {{#if title}}
       <div class="encounter-details">
         <h4 class="encounter-title">{{title}}</h4>
-        <p class="encounter-description">{{description}}</p>
+        <div class="encounter-description">{{{descriptionHTML}}}</div>
+
+        {{!-- Research Prompt (for Old Memories encounters) --}}
+        {{#if researchPrompt}}
+        <div class="research-prompt-section">
+          <div class="research-prompt-header">
+            <h5><i class="fas fa-book-reader"></i> Research Prompt</h5>
+            <button type="button" class="copy-prompt-btn" data-action="copyResearchPrompt" data-tooltip="Copy to clipboard">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+          </div>
+          <pre class="research-prompt-text">{{researchPrompt}}</pre>
+        </div>
+        {{/if}}
+
+        {{!-- Encounter Prompt (for Monster Hunt / Deadly Fight encounters) --}}
+        {{#if encounterPrompt}}
+        <div class="research-prompt-section">
+          <div class="research-prompt-header">
+            <h5><i class="fas fa-swords"></i> Encounter Prompt</h5>
+            <button type="button" class="copy-prompt-btn" data-action="copyEncounterPrompt" data-tooltip="Copy to clipboard">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+          </div>
+          <pre class="research-prompt-text">{{encounterPrompt}}</pre>
+        </div>
+        {{/if}}
+
+        {{!-- Dungeon Prompt (for LAIR / DUNGEON encounters) --}}
+        {{#if dungeonPrompt}}
+        <div class="research-prompt-section">
+          <div class="research-prompt-header">
+            <h5><i class="fas fa-dungeon"></i> Dungeon Prompt</h5>
+            <button type="button" class="copy-prompt-btn" data-action="copyDungeonPrompt" data-tooltip="Copy to clipboard">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+          </div>
+          <pre class="research-prompt-text">{{dungeonPrompt}}</pre>
+        </div>
+        {{/if}}
 
         <div class="encounter-actions">
-          <button type="button" class="send-btn" data-action="sendEncounterToChat">
-            <i class="fas fa-paper-plane"></i> Send to Chat
-          </button>
 
           {{!-- Resolution Flow Controls --}}
           {{#if (eq resolution.step "pending")}}

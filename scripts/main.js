@@ -501,9 +501,6 @@ async function handleSetKeyRoleResult(element, message) {
 
   const dc = session.difficulty;
 
-  console.log('UJ DEBUG handleSetKeyRoleResult: pattern =', config.pattern, 'result =', result);
-  console.log('UJ DEBUG config:', JSON.stringify(config, null, 2));
-
   if (config.pattern === 'keyRole-then-group') {
     await JourneySessionManager.updateEncounterResolution({ step: 'group' });
     if (journeyApp) {
@@ -516,10 +513,7 @@ async function handleSetKeyRoleResult(element, message) {
     }
   } else if (config.pattern === 'keyRole-then-group-conditional') {
     // Conditional pattern: success proceeds to group, failure skips to outcome
-    console.log('UJ DEBUG: Matched keyRole-then-group-conditional pattern');
-    console.log('UJ DEBUG: failureEffect =', config.keyRoleCheck?.failureEffect);
     if (result === 'failure' && config.keyRoleCheck?.failureEffect?.skipToResult) {
-      console.log('UJ DEBUG: Taking failure path - skipToResult');
       // Skip directly to outcome
       const skipOutcome = config.keyRoleCheck.failureEffect.skipToResult;
       await JourneySessionManager.updateEncounterResolution({
@@ -532,17 +526,11 @@ async function handleSetKeyRoleResult(element, message) {
       }
     } else {
       // Success or critical success - proceed to group check
-      console.log('UJ DEBUG: Taking success path - proceed to group check');
       await JourneySessionManager.updateEncounterResolution({ step: 'group' });
-      console.log('UJ DEBUG: journeyApp =', journeyApp);
       if (journeyApp) {
-        console.log('UJ DEBUG: Calling _sendGroupCheckChat');
         await journeyApp._sendGroupCheckChat(config, session, dc, dcModifier, advantageState);
-        console.log('UJ DEBUG: _sendGroupCheckChat completed');
       }
     }
-  } else {
-    console.log('UJ DEBUG: No pattern matched! config.pattern =', config.pattern);
   }
 
   if (journeyApp?.rendered) {
