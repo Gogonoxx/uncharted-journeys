@@ -1,211 +1,109 @@
 <section class="journey-stage stage-journey {{#if (eq tab "journey")}}active{{/if}}" data-tab="journey">
   <header class="stage-header">
-    <h2><i class="fas fa-hiking"></i> The Journey</h2>
+    <h2><i class="fas fa-hiking"></i> Die Reise</h2>
     <p class="stage-description">
-      From <strong>{{session.origin}}</strong> to <strong>{{session.destination}}</strong>
+      Von <strong>{{session.origin}}</strong> nach <strong>{{session.destination}}</strong>
     </p>
     <div class="journey-stats">
       <span class="stat"><i class="fas fa-bullseye"></i> DC {{difficulty}}</span>
-      <span class="stat"><i class="fas fa-map-marker-alt"></i> Encounter {{add session.currentEncounterIndex 1}}/{{totalEncounters}}</span>
+      <span class="stat"><i class="fas fa-route"></i> {{session.distance}}</span>
+      <span class="stat highlight"><i class="fas fa-map-marker-alt"></i> {{encounterCount}} Encounters</span>
     </div>
   </header>
 
-  {{!-- Pace Selection --}}
-  <div class="pace-selection">
-    <h3><i class="fas fa-tachometer-alt"></i> Travel Pace</h3>
-    <div class="pace-buttons">
-      {{#each paceOptions}}
-      <button type="button"
-              class="pace-btn {{#if (eq @key ../session.pace)}}active{{/if}}"
-              data-action="setPace"
-              data-pace="{{@key}}"
-              data-tooltip="{{description}}">
-        <i class="fas fa-walking"></i>
-        <span class="pace-label">{{name}}</span>
-        <span class="pace-effect">{{description}}</span>
-      </button>
-      {{/each}}
+  {{!-- ===================== --}}
+  {{!-- BIOME NODES SECTION --}}
+  {{!-- ===================== --}}
+  <div class="biome-nodes-section">
+    <h3><i class="fas fa-map-marker-alt"></i> Reise-Orte</h3>
+
+    <p class="section-hint">
+      Füge für jedes Biom die gewünschten Orte hinzu. Die Farbe bestimmt den Encounter-Pool:
+    </p>
+
+    <div class="biome-legend">
+      <span class="legend-item green"><i class="fas fa-shield-alt"></i> Sicher (Social)</span>
+      <span class="legend-item yellow"><i class="fas fa-random"></i> Gemischt (Alle)</span>
+      <span class="legend-item red"><i class="fas fa-skull"></i> Gefährlich (Combat)</span>
     </div>
-  </div>
 
-  {{!-- Encounter Progress --}}
-  <div class="encounter-progress">
-    <button type="button"
-            class="encounter-adjust-btn"
-            data-action="removeEncounter"
-            data-tooltip="Remove an encounter"
-            {{#if (lte totalEncounters 1)}}disabled{{/if}}>
-      <i class="fas fa-minus"></i>
-    </button>
-    <div class="progress-bar">
-      {{#each session.encounters}}
-      <div class="progress-pip {{status}} {{#if (eq ../session.currentEncounterIndex @index)}}current{{/if}}"
-           data-tooltip="Encounter {{add @index 1}}: {{status}}">
-      </div>
-      {{/each}}
-    </div>
-    <button type="button"
-            class="encounter-adjust-btn"
-            data-action="addEncounter"
-            data-tooltip="Add an encounter">
-      <i class="fas fa-plus"></i>
-    </button>
-  </div>
-
-  {{!-- Current Encounter --}}
-  <div class="current-encounter-section">
-    <h3><i class="fas fa-exclamation-circle"></i> Current Encounter</h3>
-
-    {{#with currentEncounter}}
-    <div class="encounter-card">
-      {{!-- Region Selection --}}
-      <div class="encounter-region">
-        <label for="encounterRegion">Region:</label>
-        <select id="encounterRegion" name="encounterRegion">
-          {{#each ../regions}}
-          <option value="{{this}}" {{#if (eq this ../region)}}selected{{/if}}>{{this}}</option>
-          {{/each}}
-        </select>
-      </div>
-
-      {{!-- Roll Controls --}}
-      <div class="encounter-roll-controls">
-        <div class="roll-group">
-          <button type="button" class="roll-btn" data-action="rollEncounterType">
-            <i class="fas fa-dice-d20"></i> Roll Type (d12)
-          </button>
-          {{#if typeRoll}}
-          <span class="roll-result">
-            <strong>{{typeRoll}}</strong>: {{encounterType}}
+    {{!-- Biome list with nodes --}}
+    <div class="biome-list">
+      {{#each biomeNodes as |biome|}}
+      <div class="biome-section" data-biome-id="{{biome.id}}">
+        <div class="biome-header">
+          <span class="biome-name">
+            <i class="fas fa-mountain"></i> {{biome.name}}
           </span>
-          {{/if}}
-        </div>
-
-        <div class="roll-group">
-          <button type="button"
-                  class="roll-btn"
-                  data-action="rollEncounter"
-                  {{#unless encounterType}}disabled{{/unless}}>
-            <i class="fas fa-dice-d20"></i> Roll Encounter (d10)
-          </button>
-          {{#if encounterRoll}}
-          <span class="roll-result">
-            <strong>{{encounterRoll}}</strong>
-          </span>
-          {{/if}}
-        </div>
-      </div>
-
-      {{!-- Encounter Details --}}
-      {{#if title}}
-      <div class="encounter-details">
-        <h4 class="encounter-title">{{title}}</h4>
-        <div class="encounter-description">{{{descriptionHTML}}}</div>
-
-        {{!-- Research Prompt (for Old Memories encounters) --}}
-        {{#if researchPrompt}}
-        <div class="research-prompt-section">
-          <div class="research-prompt-header">
-            <h5><i class="fas fa-book-reader"></i> Research Prompt</h5>
-            <button type="button" class="copy-prompt-btn" data-action="copyResearchPrompt" data-tooltip="Copy to clipboard">
-              <i class="fas fa-copy"></i> Copy
+          <div class="biome-add-buttons">
+            <button type="button" class="add-node-btn green" data-action="addBiomeNode" data-biome="{{biome.id}}" data-node-type="green" title="Sicheren Ort hinzufügen">
+              <i class="fas fa-plus"></i> 🟢
+            </button>
+            <button type="button" class="add-node-btn yellow" data-action="addBiomeNode" data-biome="{{biome.id}}" data-node-type="yellow" title="Gemischten Ort hinzufügen">
+              <i class="fas fa-plus"></i> 🟡
+            </button>
+            <button type="button" class="add-node-btn red" data-action="addBiomeNode" data-biome="{{biome.id}}" data-node-type="red" title="Gefährlichen Ort hinzufügen">
+              <i class="fas fa-plus"></i> 🔴
             </button>
           </div>
-          <pre class="research-prompt-text">{{researchPrompt}}</pre>
         </div>
-        {{/if}}
 
-        {{!-- Encounter Prompt (for Monster Hunt / Deadly Fight encounters) --}}
-        {{#if encounterPrompt}}
-        <div class="research-prompt-section">
-          <div class="research-prompt-header">
-            <h5><i class="fas fa-swords"></i> Encounter Prompt</h5>
-            <button type="button" class="copy-prompt-btn" data-action="copyEncounterPrompt" data-tooltip="Copy to clipboard">
-              <i class="fas fa-copy"></i> Copy
-            </button>
-          </div>
-          <pre class="research-prompt-text">{{encounterPrompt}}</pre>
-        </div>
-        {{/if}}
-
-        {{!-- Dungeon Prompt (for LAIR / DUNGEON encounters) --}}
-        {{#if dungeonPrompt}}
-        <div class="research-prompt-section">
-          <div class="research-prompt-header">
-            <h5><i class="fas fa-dungeon"></i> Dungeon Prompt</h5>
-            <button type="button" class="copy-prompt-btn" data-action="copyDungeonPrompt" data-tooltip="Copy to clipboard">
-              <i class="fas fa-copy"></i> Copy
-            </button>
-          </div>
-          <pre class="research-prompt-text">{{dungeonPrompt}}</pre>
-        </div>
-        {{/if}}
-
-        <div class="encounter-actions">
-
-          {{!-- Resolution Flow Controls --}}
-          {{#if (eq resolution.step "pending")}}
-            {{#if ../hasResolutionConfig}}
-            <button type="button" class="resolve-btn" data-action="beginResolution">
-              <i class="fas fa-play"></i> Begin Resolution
-            </button>
-            {{else}}
-            <button type="button" class="resolve-btn" data-action="resolveEncounter">
-              <i class="fas fa-check"></i> Resolve Encounter
-            </button>
-            {{/if}}
-          {{else if (eq resolution.step "complete")}}
-            <button type="button" class="resolve-btn success" data-action="finalizeEncounter">
-              <i class="fas fa-flag-checkered"></i> Finalize & Continue
-            </button>
-          {{else}}
-            <div class="resolution-in-progress">
-              <span class="resolution-status">
-                <i class="fas fa-sync-alt fa-spin"></i>
-                {{#if (eq resolution.step "choice")}}Awaiting party decision...{{/if}}
-                {{#if (eq resolution.step "keyRole")}}Awaiting key role check...{{/if}}
-                {{#if (eq resolution.step "group")}}Awaiting group checks...{{/if}}
-                {{#if (eq resolution.step "saves")}}Awaiting saving throws...{{/if}}
-              </span>
+        {{#if biome.nodes.length}}
+        <div class="biome-nodes">
+          {{#each biome.nodes as |node|}}
+          <div class="biome-node {{node.type}} {{#if node.resolved}}resolved{{/if}}" data-node-id="{{node.id}}">
+            <span class="node-color-indicator {{node.type}}">
+              {{#if (eq node.type "green")}}🟢{{/if}}
+              {{#if (eq node.type "yellow")}}🟡{{/if}}
+              {{#if (eq node.type "red")}}🔴{{/if}}
+            </span>
+            <input type="text"
+                   class="node-name-input"
+                   value="{{node.name}}"
+                   data-action="renameBiomeNode"
+                   data-node-id="{{node.id}}"
+                   placeholder="Ortsname eingeben..."
+                   {{#if node.resolved}}disabled{{/if}}>
+            <div class="node-actions">
+              {{#unless node.resolved}}
+              <button type="button" class="roll-encounter-btn" data-action="rollBiomeNodeEncounter" data-node-id="{{node.id}}" title="Encounter würfeln">
+                <i class="fas fa-dice-d20"></i>
+              </button>
+              <button type="button" class="remove-node-btn" data-action="removeBiomeNode" data-node-id="{{node.id}}" title="Ort entfernen">
+                <i class="fas fa-times"></i>
+              </button>
+              {{else}}
+              <span class="resolved-badge"><i class="fas fa-check-circle"></i></span>
+              {{/unless}}
             </div>
-          {{/if}}
-        </div>
-
-        {{!-- Resolution Progress (GM only) --}}
-        {{#if ../isGM}}
-        {{#unless (eq resolution.step "pending")}}
-        <div class="resolution-progress">
-          <h5><i class="fas fa-clipboard-list"></i> Resolution Progress</h5>
-          <div class="resolution-steps">
-            {{#if resolution.choiceMade}}
-            <p class="step-complete"><i class="fas fa-check"></i> Choice: <strong>{{resolution.choiceMade}}</strong></p>
-            {{/if}}
-            {{#if resolution.keyRoleResult}}
-            <p class="step-complete"><i class="fas fa-check"></i> Key Role: <strong>{{resolution.keyRoleResult}}</strong>
-              {{#if resolution.dcModifier}}(DC {{#if (gt resolution.dcModifier 0)}}+{{/if}}{{resolution.dcModifier}}){{/if}}
-            </p>
-            {{/if}}
-            {{#if resolution.memberResults.length}}
-            <p class="step-info"><i class="fas fa-users"></i> Results: {{../resolutionSuccessCount}}/{{resolution.memberResults.length}} succeeded</p>
-            {{/if}}
-            {{#if resolution.outcome}}
-            <p class="step-complete outcome-{{resolution.outcome}}"><i class="fas fa-trophy"></i> Outcome: <strong>{{resolution.outcome}}</strong></p>
-            {{/if}}
           </div>
+          {{/each}}
         </div>
-        {{/unless}}
+        {{else}}
+        <p class="no-nodes-hint">Noch keine Orte in diesem Biom. Klicke auf +🟢/🟡/🔴 um einen hinzuzufügen.</p>
         {{/if}}
       </div>
-      {{/if}}
+      {{/each}}
     </div>
-    {{else}}
-    <p class="no-encounter">No active encounter. All encounters have been resolved!</p>
-    {{/with}}
+
+    {{!-- Summary --}}
+    {{#if totalBiomeNodeCount}}
+    <div class="nodes-summary">
+      <span class="summary-count">
+        <strong>{{resolvedBiomeNodeCount}}</strong> / <strong>{{totalBiomeNodeCount}}</strong> Orte abgeschlossen
+      </span>
+      <span class="summary-target">
+        (Ziel: {{encounterCount}} Encounters)
+      </span>
+    </div>
+    {{/if}}
   </div>
 
-  {{!-- Role Abilities --}}
+  {{!-- ========================= --}}
+  {{!-- ROLE ABILITIES (behalten) --}}
+  {{!-- ========================= --}}
   <div class="role-abilities-section">
-    <h3><i class="fas fa-star"></i> Role Abilities</h3>
+    <h3><i class="fas fa-star"></i> Rollen-Fähigkeiten</h3>
     <div class="role-ability-grid">
       {{#each session.partyMembers}}
       {{#with (lookup ../roles role)}}
@@ -221,9 +119,9 @@
                 data-role="{{../role}}"
                 {{#if ../roleAbilityUsed}}disabled{{/if}}>
           {{#if ../roleAbilityUsed}}
-          <i class="fas fa-check"></i> Used
+          <i class="fas fa-check"></i> Verwendet
           {{else}}
-          <i class="fas fa-bolt"></i> Use Ability
+          <i class="fas fa-bolt"></i> Fähigkeit nutzen
           {{/if}}
         </button>
       </div>
@@ -232,24 +130,17 @@
     </div>
   </div>
 
-  {{!-- Navigation --}}
+  {{!-- ==================== --}}
+  {{!-- NAVIGATION (behalten) --}}
+  {{!-- ==================== --}}
   <footer class="stage-footer">
-    {{#if (and currentEncounter (eq currentEncounter.status "resolved"))}}
-    {{#if (lt session.currentEncounterIndex (sub totalEncounters 1))}}
-    <button type="button" class="next-btn" data-action="nextEncounter">
-      <i class="fas fa-arrow-right"></i> Next Encounter
-    </button>
-    {{/if}}
-    {{/if}}
-
-    {{#if allEncountersResolved}}
+    {{!-- Complete Journey - always visible, GM decides when journey is done --}}
     <button type="button" class="confirm-btn" data-action="completeJourney">
-      <i class="fas fa-flag-checkered"></i> Complete Journey
+      <i class="fas fa-flag-checkered"></i> Reise abschließen
     </button>
-    {{/if}}
 
     <button type="button" class="abandon-btn danger" data-action="abandonJourney">
-      <i class="fas fa-times"></i> Abandon Journey
+      <i class="fas fa-times"></i> Reise abbrechen
     </button>
   </footer>
 </section>

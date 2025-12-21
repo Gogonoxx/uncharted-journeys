@@ -5,11 +5,12 @@
 
 import { REGIONS, ENCOUNTER_TYPES, ENCOUNTERS } from './data/encounters.js';
 import { ROLES, getRoleById } from './data/roles.js';
-import { PREPARATIONS, getPreparation, PREPARATION_BASE_DC, PREPARATION_ICONS, RALLY_OPTIONS } from './data/preparations.js';
-import { DISTANCES, PACE_OPTIONS, calculateDifficulty, getBaseEncounters, getArrivalResult } from './data/journey-tables.js';
+import { PREPARATIONS, getPreparation, PREPARATION_BASE_DC, PREPARATION_ICONS } from './data/preparations.js';
+import { DISTANCES, PACE_OPTIONS, calculateDifficulty, getBaseEncounters, getArrivalResult, BIOMES, ENCOUNTER_POOLS } from './data/journey-tables.js';
 import { JourneySessionManager, JourneySessionModel } from './journey-session.js';
 import { ExhaustionManager } from './exhaustion-manager.js';
 import { getResolutionConfig } from './data/encounter-type-rules.js';
+import { BIOME_LOCATIONS, getBiomeList, getRandomEncounterType, LOCATION_ENCOUNTER_POOLS } from './data/biome-locations.js';
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -32,7 +33,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       resizable: true
     },
     position: {
-      width: 800,
+      width: 500,
       height: 900
     },
     form: {
@@ -49,6 +50,9 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       adjustTerrain: JourneyManagerApp.#onAdjustTerrain,
       adjustNemesis: JourneyManagerApp.#onAdjustNemesis,
       toggleNemesis: JourneyManagerApp.#onToggleNemesis,
+      setBiome: JourneyManagerApp.#onSetBiome,
+      addBiome: JourneyManagerApp.#onAddBiome,
+      removeBiome: JourneyManagerApp.#onRemoveBiome,
       confirmRoute: JourneyManagerApp.#onConfirmRoute,
 
       // Stage 2: Prepare
@@ -77,6 +81,17 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       copyResearchPrompt: JourneyManagerApp.#onCopyResearchPrompt,
       copyEncounterPrompt: JourneyManagerApp.#onCopyEncounterPrompt,
       copyDungeonPrompt: JourneyManagerApp.#onCopyDungeonPrompt,
+
+      // Journey Map Markers
+      generateMarkers: JourneyManagerApp.#onGenerateMarkers,
+      revealMarker: JourneyManagerApp.#onRevealMarker,
+      resolveMarker: JourneyManagerApp.#onResolveMarker,
+      clearMarkers: JourneyManagerApp.#onClearMarkers,
+
+      // Biome Nodes
+      addBiomeNode: JourneyManagerApp.#onAddBiomeNode,
+      removeBiomeNode: JourneyManagerApp.#onRemoveBiomeNode,
+      rollBiomeNodeEncounter: JourneyManagerApp.#onRollBiomeNodeEncounter,
 
       // Stage 4: Journey's End
       rollArrival: JourneyManagerApp.#onRollArrival,
@@ -137,6 +152,9 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     if (!session) {
       session = JourneySessionManager.createNew();
       await JourneySessionManager.save(session);
+      // Auto-assign known party members to roles
+      await JourneySessionManager.autoAssignDefaultRoles();
+      session = JourneySessionManager.getCurrent();
     }
 
     // Determine which tab should be active based on session stage
@@ -152,14 +170,39 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     // Build actors array and lookup object
     const actorsList = game.actors.filter(a => a.type === 'character' && a.hasPlayerOwner);
     const actorsById = {};
+    const actorsByName = {};
     for (const actor of actorsList) {
       actorsById[actor.id] = { id: actor.id, name: actor.name };
+      actorsByName[actor.name.toLowerCase()] = { id: actor.id, name: actor.name };
     }
+
+    // Default actor assignments by role (pre-select common party members)
+    const defaultActorsByRole = {
+      leader: 'ignatius',
+      quartermaster: 'dante',
+      sentry: 'finn',
+      outrider: 'rey'
+    };
 
     // Build party members lookup by role for easier template access
     const partyMembersByRole = {};
     for (const member of session.partyMembers) {
       partyMembersByRole[member.role] = member;
+    }
+
+    // Apply default selections for roles that don't have assignments yet
+    for (const [role, actorName] of Object.entries(defaultActorsByRole)) {
+      if (!partyMembersByRole[role]) {
+        const actor = actorsByName[actorName.toLowerCase()];
+        if (actor) {
+          // Create a temporary entry for template rendering (not saved to session)
+          partyMembersByRole[role] = {
+            role,
+            actorId: actor.id,
+            isDefault: true  // Flag to indicate this is a default, not saved
+          };
+        }
+      }
     }
 
     // Build enriched party members with actor names and skill data for display
@@ -192,6 +235,64 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       };
     }
 
+    // ============================================
+    // JOURNEY MARKER DATA
+    // ============================================
+
+    // Get marker counts based on encounter count (shortest path)
+    const encounterCount = session.totalEncounterCount;
+    const markerCounts = JourneySessionManager.getMarkerCounts(encounterCount);
+
+    // Get journey markers from session (stored in session.journeyMarkers)
+    const journeyMarkers = session.journeyMarkers || [];
+    const hasMarkers = journeyMarkers.length > 0;
+
+    // Calculate marker statistics
+    const totalMarkerCount = journeyMarkers.length;
+    const resolvedMarkerCount = journeyMarkers.filter(m => m.status === 'resolved').length;
+    const allMarkersResolved = hasMarkers && resolvedMarkerCount === totalMarkerCount;
+
+    // ============================================
+    // BIOME NODES DATA
+    // ============================================
+
+    // Get biome list from session's biome route
+    const biomeIds = session.biomeRoute?.biomes || [];
+    const biomeNodesGrouped = JourneySessionManager.getBiomeNodesGrouped();
+
+    // Build biomeSequence for template (with icon and name from BIOME_LOCATIONS)
+    const biomeSequence = biomeIds.map(biomeId => {
+      const biomeLocationConfig = BIOME_LOCATIONS[biomeId];
+      const biomeConfig = BIOMES[biomeId] || {};
+      return {
+        id: biomeId,
+        name: biomeLocationConfig?.name || biomeConfig.name || biomeId,
+        icon: biomeLocationConfig?.icon || 'fa-map-marker-alt'
+      };
+    });
+
+    // Build biomeNodes array for template
+    const biomeNodes = biomeIds.map(biomeId => {
+      const biomeConfig = BIOMES[biomeId] || { name: biomeId };
+      return {
+        id: biomeId,
+        name: biomeConfig.name || biomeId,
+        nodes: (biomeNodesGrouped[biomeId] || []).map(node => ({
+          ...node,
+          // Ensure all node properties are available
+          id: node.id,
+          name: node.name || '',
+          type: node.type,
+          resolved: node.resolved || false
+        }))
+      };
+    });
+
+    // Calculate biome node statistics
+    const totalBiomeNodeCount = JourneySessionManager.getTotalBiomeNodeCount();
+    const resolvedBiomeNodeCount = JourneySessionManager.getResolvedBiomeNodeCount();
+    const allBiomeNodesResolved = JourneySessionManager.allBiomeNodesResolved();
+
     return foundry.utils.mergeObject(context, {
       session,
       activeTab,
@@ -211,6 +312,22 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       regions: REGIONS,
       encounterTypes: ENCOUNTER_TYPES,
       paceOptions: PACE_OPTIONS,
+
+      // Journey marker data
+      hasMarkers,
+      journeyMarkers,
+      markerCounts,
+      encounterCount,  // For displaying "X Encounters = Y markers"
+      totalMarkerCount,
+      resolvedMarkerCount,
+      allMarkersResolved,
+
+      // Biome nodes data
+      biomeSequence,
+      biomeNodes,
+      totalBiomeNodeCount,
+      resolvedBiomeNodeCount,
+      allBiomeNodesResolved,
 
       // Actors for assignment (both array and lookup)
       actors: actorsList,
@@ -305,6 +422,11 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       regionSelect.addEventListener('change', this._onRegionSelectChange.bind(this));
     }
 
+    // Add blur event listener for biome node name inputs
+    this.element.querySelectorAll('.node-name-input').forEach(input => {
+      input.addEventListener('blur', this._onBiomeNodeNameChange.bind(this));
+    });
+
     // Restore scroll position if saved
     if (this._scrollPosition > 0) {
       const savedPosition = this._scrollPosition;
@@ -396,6 +518,21 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     await JourneySessionManager.save(session);
 
     // No need to re-render, just update the data
+  }
+
+  /**
+   * Handle biome node name change
+   * @param {Event} event - Blur event from input
+   */
+  async _onBiomeNodeNameChange(event) {
+    const input = event.currentTarget;
+    const nodeId = input.dataset.nodeId;
+    const newName = input.value;
+
+    if (!nodeId) return;
+
+    await JourneySessionManager.renameBiomeNode(nodeId, newName);
+    // No need to re-render, the input already shows the new value
   }
 
   /**
@@ -561,6 +698,84 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     this.render();
   }
 
+  static async #onSetBiome(event, target) {
+    const slot = target.dataset.biomeSlot; // 'start', 'middle', or 'end'
+    const value = target.value;
+
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    // Build updated biomeRoute
+    const biomeRoute = {
+      start: session.biomeRoute?.start || 'steppe',
+      middle: session.biomeRoute?.middle || null,
+      end: session.biomeRoute?.end || 'city'
+    };
+
+    // Update the specific slot
+    if (slot === 'middle') {
+      biomeRoute.middle = value || null; // Empty string becomes null
+    } else {
+      biomeRoute[slot] = value;
+    }
+
+    await JourneySessionManager.setBiomeRoute(biomeRoute);
+    this.render();
+  }
+
+  /**
+   * Add a biome to the route sequence
+   */
+  static async #onAddBiome(event, target) {
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    // Get the selected biome from the dropdown
+    const select = this.element.querySelector('#add-biome-select');
+    const biomeId = select?.value;
+
+    if (!biomeId) {
+      ui.notifications.warn('Bitte wähle ein Biom aus.');
+      return;
+    }
+
+    // Get current biomes and add the new one
+    const currentBiomes = session.biomeRoute?.biomes || ['grassland'];
+    const newBiomes = [...currentBiomes, biomeId];
+
+    await JourneySessionManager.setBiomeRoute(newBiomes);
+
+    // Reset the select
+    if (select) select.value = '';
+
+    this.render();
+  }
+
+  /**
+   * Remove a biome from the route sequence
+   */
+  static async #onRemoveBiome(event, target) {
+    const index = parseInt(target.dataset.index, 10);
+    if (isNaN(index)) return;
+
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    const currentBiomes = session.biomeRoute?.biomes || ['grassland'];
+
+    // Don't allow removing if only one biome left
+    if (currentBiomes.length <= 1) {
+      ui.notifications.warn('Mindestens ein Biom muss ausgewählt sein.');
+      return;
+    }
+
+    // Remove the biome at the specified index
+    const newBiomes = currentBiomes.filter((_, i) => i !== index);
+
+    await JourneySessionManager.setBiomeRoute(newBiomes);
+    this.render();
+  }
+
   static async #onConfirmRoute(event, target) {
     const session = this.session;
 
@@ -585,8 +800,12 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     currentSession.updateSource(updates);
     await JourneySessionManager.save(currentSession);
 
+    // Generate the route map based on biome selection
+    await JourneySessionManager.initializeRouteMap();
+
     // Send route summary to chat
-    await this._sendRouteSummaryToChat(currentSession);
+    const updatedSession = JourneySessionManager.getCurrent();
+    await this._sendRouteSummaryToChat(updatedSession);
 
     ui.notifications.info('Route confirmed! Proceeding to preparation phase.');
     this.tabGroups.primary = 'prepare';
@@ -702,6 +921,21 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
         await effect.delete();
       }
 
+      // Get the ability description - handle both single ability and multiple abilities
+      let abilityName, abilityDescription;
+      if (roleData.ability) {
+        abilityName = roleData.ability.name;
+        abilityDescription = roleData.ability.shortDescription || roleData.ability.description;
+      } else if (roleData.abilities) {
+        // For roles with multiple abilities (like Outrider), list them all
+        const abilityList = Object.values(roleData.abilities);
+        abilityName = abilityList.map(a => a.name).join(' / ');
+        abilityDescription = abilityList.map(a => a.shortDescription || a.description).join('<br>');
+      } else {
+        abilityName = roleData.name;
+        abilityDescription = roleData.description;
+      }
+
       // Create the new role effect
       const effectData = {
         type: 'effect',
@@ -709,7 +943,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
         img: `icons/svg/${roleData.icon.replace('fa-', '')}.svg`,
         system: {
           description: {
-            value: `<p><strong>${roleData.ability.name}</strong></p><p>${roleData.ability.description}</p>`
+            value: `<p><strong>${abilityName}</strong></p><p>${abilityDescription}</p>`
           },
           duration: {
             unit: 'unlimited',
@@ -850,44 +1084,63 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       return `<p>@Check[${skill}|dc:${dc}${traits ? '|traits:' + traits : ''}]{${skillDisplay} Check}</p>`;
     }).join('');
 
-    // Build Rally the Party dropdown if applicable
-    let rallyDropdown = '';
-    if (member.preparationId === 'rallyTheParty') {
-      const options = Object.values(RALLY_OPTIONS).map(opt =>
-        `<option value="${opt.id}">${opt.name} - ${opt.shortDescription}</option>`
-      ).join('');
-      rallyDropdown = `
-        <div class="rally-selection">
-          <label><strong>Choose Rally Type:</strong></label>
-          <select class="rally-option-select" data-role="${role}">
-            ${options}
-          </select>
+    // Rally the Party no longer needs a dropdown - it simply provides Will save bonuses
+
+    // Get outcome descriptions from the new structure
+    const successDesc = prep.outcomes?.success?.description || 'Kein spezieller Effekt.';
+    const failureDesc = prep.outcomes?.failure?.description || 'Kein spezieller Effekt.';
+
+    // Check if this preparation uses only 2 outcome levels
+    const isTwoLevel = prep.twoLevelOutcome === true;
+
+    let outcomeSection;
+    let buttonsSection;
+
+    if (isTwoLevel) {
+      // Two-level outcome - only show Success/Failure
+      outcomeSection = `
+        <p><strong>Success</strong> ${successDesc}</p>
+        <p><strong>Failure</strong> ${failureDesc}</p>
+      `;
+      buttonsSection = `
+        <div class="outcome-buttons" data-role="${role}">
+          <button type="button" data-action="setPreparationResult" data-role="${role}" data-result="success">Success</button>
+          <button type="button" data-action="setPreparationResult" data-role="${role}" data-result="failure">Failure</button>
+        </div>
+      `;
+    } else {
+      // Four-level outcome - show all degrees of success
+      const critSuccessDesc = prep.outcomes?.criticalSuccess?.description || 'Kein spezieller Effekt.';
+      const critFailureDesc = prep.outcomes?.criticalFailure?.description || 'Kein spezieller Effekt.';
+      outcomeSection = `
+        <p><strong>Critical Success</strong> ${critSuccessDesc}</p>
+        <p><strong>Success</strong> ${successDesc}</p>
+        <p><strong>Failure</strong> ${failureDesc}</p>
+        <p><strong>Critical Failure</strong> ${critFailureDesc}</p>
+      `;
+      buttonsSection = `
+        <div class="outcome-buttons" data-role="${role}">
+          <button type="button" data-action="setPreparationResult" data-role="${role}" data-result="criticalSuccess">Critical Success</button>
+          <button type="button" data-action="setPreparationResult" data-role="${role}" data-result="success">Success</button>
+          <button type="button" data-action="setPreparationResult" data-role="${role}" data-result="failure">Failure</button>
+          <button type="button" data-action="setPreparationResult" data-role="${role}" data-result="criticalFailure">Critical Failure</button>
         </div>
       `;
     }
 
     const content = `
       <div class="uncharted-journeys chat-card preparation-check">
-        <h3><i class="fas fa-clipboard-check"></i> ${prep.name}</h3>
-        <p class="actor-name"><strong>${actor.name}</strong> attempts to ${prep.name.toLowerCase()}.</p>
-        <p class="description">${prep.description}</p>
-        <p class="dc-info"><strong>DC:</strong> ${dc}</p>
+        <h3>${prep.name}</h3>
+        <p><strong>${actor.name}</strong> versucht ${prep.name}.</p>
+        <p>${prep.description}</p>
+        <p><strong>DC</strong> ${dc}</p>
         <div class="check-prompt skill-options">
           ${skillChecks}
         </div>
-        ${rallyDropdown}
-        <div class="outcome-buttons" data-role="${role}">
-          <button type="button" class="success-btn" data-action="setPreparationResult" data-role="${role}" data-result="success">
-            <i class="fas fa-check"></i> Success
-          </button>
-          <button type="button" class="failure-btn" data-action="setPreparationResult" data-role="${role}" data-result="failure">
-            <i class="fas fa-times"></i> Failure
-          </button>
-        </div>
-        <div class="effects">
-          <p class="success-effect"><strong>Success:</strong> ${prep.successEffect}</p>
-          <p class="failure-effect"><strong>Failure:</strong> ${prep.failureEffect}</p>
-        </div>
+        <hr>
+        ${outcomeSection}
+        <hr>
+        ${buttonsSection}
       </div>
     `;
 
@@ -1745,6 +1998,293 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
     }
   }
 
+  // ============================================
+  // JOURNEY MAP MARKER ACTIONS
+  // ============================================
+
+  /**
+   * Generate journey markers and create Drawings on the scene
+   * Creates colored circles that start hidden (gray) for players
+   */
+  static async #onGenerateMarkers(event, target) {
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    // Check if canvas is available
+    if (!canvas?.scene) {
+      ui.notifications.error('Keine aktive Szene gefunden. Bitte öffne eine Karte.');
+      return;
+    }
+
+    // Generate markers via session manager
+    const markers = await JourneySessionManager.generateJourneyMarkers();
+    if (!markers || markers.length === 0) {
+      ui.notifications.error('Keine Marker generiert.');
+      return;
+    }
+
+    // Create Foundry Drawings on the scene
+    await JourneySessionManager.createSceneMarkers(markers);
+
+    ui.notifications.info(`${markers.length} Marker auf der Karte erstellt.`);
+    this.render();
+  }
+
+  /**
+   * Reveal a marker - changes it from hidden (gray) to its actual color
+   */
+  static async #onRevealMarker(event, target) {
+    const drawingId = target.dataset.drawingId;
+    if (!drawingId) {
+      ui.notifications.warn('Kein Marker ausgewählt.');
+      return;
+    }
+
+    await JourneySessionManager.revealMarker(drawingId);
+    ui.notifications.info('Marker aufgedeckt!');
+    this.render();
+  }
+
+  /**
+   * Resolve/complete a marker - marks it as finished
+   */
+  static async #onResolveMarker(event, target) {
+    const drawingId = target.dataset.drawingId;
+    if (!drawingId) {
+      ui.notifications.warn('Kein Marker ausgewählt.');
+      return;
+    }
+
+    await JourneySessionManager.resolveMarker(drawingId);
+    ui.notifications.info('Marker als erledigt markiert.');
+    this.render();
+  }
+
+  /**
+   * Clear all journey markers from the scene and session
+   */
+  static async #onClearMarkers(event, target) {
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    // Confirm deletion
+    const confirmed = await Dialog.confirm({
+      title: 'Alle Marker entfernen?',
+      content: '<p>Sollen wirklich alle Reise-Marker von der Karte entfernt werden?</p>',
+      yes: () => true,
+      no: () => false,
+      defaultYes: false
+    });
+
+    if (!confirmed) return;
+
+    await JourneySessionManager.clearAllMarkers();
+    ui.notifications.info('Alle Marker wurden entfernt.');
+    this.render();
+  }
+
+  // ============================================
+  // BIOME NODE ACTIONS
+  // ============================================
+
+  /**
+   * Add a new biome node
+   */
+  static async #onAddBiomeNode(event, target) {
+    const biomeId = target.dataset.biome;
+    const nodeType = target.dataset.nodeType;
+
+    if (!biomeId || !nodeType) {
+      ui.notifications.warn('Biom oder Node-Typ fehlt.');
+      return;
+    }
+
+    await JourneySessionManager.addBiomeNode(biomeId, nodeType);
+    this.render();
+  }
+
+  /**
+   * Remove a biome node
+   */
+  static async #onRemoveBiomeNode(event, target) {
+    const nodeId = target.dataset.nodeId;
+    if (!nodeId) return;
+
+    await JourneySessionManager.removeBiomeNode(nodeId);
+    this.render();
+  }
+
+  /**
+   * Roll an encounter for a biome node using the Encounter Builder
+   * Opens a dialog with options for Fronten, Spieler, and Comedic Relief
+   * The encounter type is determined by the node's color (pool)
+   */
+  static async #onRollBiomeNodeEncounter(event, target) {
+    const nodeId = target.dataset.nodeId;
+    if (!nodeId) return;
+
+    const node = JourneySessionManager.getBiomeNode(nodeId);
+    if (!node) {
+      ui.notifications.error('Node nicht gefunden.');
+      return;
+    }
+
+    const session = JourneySessionManager.getCurrent();
+    if (!session) return;
+
+    // Determine encounter pool based on node type
+    const poolMap = {
+      'green': 'social',
+      'yellow': 'mixed',
+      'red': 'combat'
+    };
+    const poolType = poolMap[node.type] || 'mixed';
+    const pool = ENCOUNTER_POOLS[poolType];
+
+    if (!pool || pool.length === 0) {
+      ui.notifications.error(`Kein Encounter-Pool für Typ "${node.type}" gefunden.`);
+      return;
+    }
+
+    // Get biome name for display
+    const biomeConfig = BIOMES[node.biomeId];
+    const biomeName = biomeConfig?.name || node.biomeId;
+    const locationName = node.name || biomeName;
+
+    // Prepare dialog data
+    const fronts = [
+      { id: 'etwas_erwacht_in_der_tiefe', name: 'Etwas erwacht in der Tiefe', icon: '🌊', checked: false },
+      { id: 'die_ostfront', name: 'Die Ostfront', icon: '⚔️', checked: false },
+      { id: 'der_mochtegern_erzmagier', name: 'Der Möchtegern Erzmagier', icon: '🧙', checked: false },
+      { id: 'die_stimmen_der_steppe', name: 'Die Stimmen der Steppe', icon: '🏜️', checked: false }
+    ];
+
+    const players = [
+      { id: 'finn', name: 'Finn', class: 'Dragon Disciple', icon: '🐉', checked: true },
+      { id: 'ignatius', name: 'Ignatius', class: 'Magier', icon: '🔥', checked: true },
+      { id: 'dante', name: 'Dante', class: 'Krieger', icon: '⚔️', checked: true },
+      { id: 'snaf', name: 'Snaf', class: 'Barde', icon: '🎭', checked: false },
+      { id: 'bernard', name: 'Bernard', class: 'Zentaur', icon: '🐴', checked: false }
+    ];
+
+    // Render the dialog content
+    const dialogContent = await renderTemplate(
+      'modules/uncharted-journeys/templates/dialogs/encounter-options.hbs',
+      {
+        locationName,
+        nodeType: node.type,
+        biomeName,
+        fronts,
+        players
+      }
+    );
+
+    // Show the dialog
+    const result = await Dialog.wait({
+      title: `Encounter generieren: ${locationName}`,
+      content: dialogContent,
+      buttons: {
+        generate: {
+          icon: '<i class="fas fa-magic"></i>',
+          label: 'Encounter generieren',
+          callback: (html) => {
+            const form = html[0].querySelector('form');
+            const formData = new FormData(form);
+
+            // Collect selected fronts
+            const selectedFronts = [];
+            form.querySelectorAll('input[name="selectedFronts"]:checked').forEach(cb => {
+              selectedFronts.push(cb.value);
+            });
+
+            // Collect active players
+            const activePlayers = [];
+            form.querySelectorAll('input[name="activePlayers"]:checked').forEach(cb => {
+              activePlayers.push(cb.value);
+            });
+
+            // Comedic relief
+            const comedicRelief = form.querySelector('input[name="comedicRelief"]')?.checked || false;
+
+            return { selectedFronts, activePlayers, comedicRelief };
+          }
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: 'Abbrechen',
+          callback: () => null
+        }
+      },
+      default: 'generate',
+      close: () => null
+    }, { width: 450, classes: ['uncharted-journeys', 'encounter-options'] });
+
+    // User cancelled
+    if (!result) return;
+
+    // Roll a random encounter type from the pool
+    const encounterTypeName = pool[Math.floor(Math.random() * pool.length)];
+
+    // Convert encounter type name to API format (e.g., "A Chance Meeting" -> "a_chance_meeting")
+    const encounterTypeId = encounterTypeName.toLowerCase().replace(/\s+/g, '_');
+
+    // Check if Encounter Builder is available
+    if (!globalThis.EncounterBuilder?.generate) {
+      ui.notifications.error('Encounter Builder Modul ist nicht geladen!');
+      return;
+    }
+
+    // Get party level from the game (average of party members)
+    let partyLevel = 9; // Default
+    try {
+      const partyActors = game.actors.filter(a => a.type === 'character' && a.hasPlayerOwner);
+      if (partyActors.length > 0) {
+        const totalLevel = partyActors.reduce((sum, a) => sum + (a.system.details?.level?.value || 1), 0);
+        partyLevel = Math.round(totalLevel / partyActors.length);
+      }
+    } catch (e) {
+      console.warn('Could not determine party level, using default:', e);
+    }
+
+    // Prepare the request for Encounter Builder
+    // travelBiome = actual biome (e.g., "forest", "swamp")
+    // travelContext = location name (e.g., "Ruinen von Aldrath")
+    const request = {
+      encounterType: 'travel',
+      partyLevel: partyLevel,
+      travelEncounterType: encounterTypeId,
+      travelBiome: node.biomeId,  // The actual biome ID
+      travelContext: locationName,  // The location name as context
+      campaignSpecific: true,
+      comedicRelief: result.comedicRelief,
+      activePlayers: result.activePlayers,
+      selectedFronts: result.selectedFronts.length > 0 ? result.selectedFronts : null
+    };
+
+    // Show notification that generation is starting
+    ui.notifications.info(`Generiere Encounter für "${locationName}"... (Pool: ${poolType}, Typ: ${encounterTypeName})`);
+
+    try {
+      // Call the Encounter Builder API
+      const encounter = await globalThis.EncounterBuilder.generate(request);
+
+      if (!encounter) {
+        ui.notifications.error('Encounter-Generierung fehlgeschlagen.');
+        return;
+      }
+
+      // Mark the node as resolved
+      await JourneySessionManager.resolveBiomeNode(nodeId);
+
+      ui.notifications.info(`Encounter für "${locationName}" generiert!`);
+      this.render();
+
+    } catch (error) {
+      console.error('Encounter generation failed:', error);
+      ui.notifications.error(`Fehler bei der Encounter-Generierung: ${error.message}`);
+    }
+  }
+
   static async #onNextEncounter(event, target) {
     const session = JourneySessionManager.getCurrent();
 
@@ -1812,22 +2352,60 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   static async #onCompleteJourney(event, target) {
-    const session = this.session;
+    // Journey can now be completed at any time - no need to resolve all encounters
+    // The GM manages encounters via map markers and can end the journey when ready
 
-    if (!session.allEncountersResolved) {
-      ui.notifications.warn('Please resolve all encounters before completing the journey.');
-      return;
+    const currentSession = JourneySessionManager.getCurrent();
+
+    // ============================================
+    // CLEANUP: Remove all journey effects from party members
+    // ============================================
+    for (const member of currentSession.partyMembers) {
+      const actor = game.actors.get(member.actorId);
+      if (!actor) continue;
+
+      // Find all effects from this module
+      const journeyEffects = actor.items.filter(i =>
+        i.type === 'effect' &&
+        i.flags?.['uncharted-journeys']?.isPreparationEffect
+      );
+
+      // Delete all journey effects
+      if (journeyEffects.length > 0) {
+        const effectIds = journeyEffects.map(e => e.id);
+        await actor.deleteEmbeddedDocuments('Item', effectIds);
+        console.log(`Uncharted Journeys: Removed ${effectIds.length} effects from ${actor.name}`);
+      }
+
+      // Reset bonus hit dice
+      const bonusHitDice = actor.getFlag('uncharted-journeys', 'bonusHitDice') ?? 0;
+      if (bonusHitDice > 0) {
+        // Get current values
+        const level = actor.system?.details?.level?.value ?? 1;
+        const baseMaxHitDice = level + 1;
+        const currentHD = actor.getFlag('hit-dice-healing', 'current') ?? baseMaxHitDice;
+
+        // Calculate new values (subtract the bonus)
+        const newMaxHitDice = baseMaxHitDice; // Reset to base max
+        const newCurrentHD = Math.max(0, currentHD - bonusHitDice);
+
+        // Update flags
+        await actor.setFlag('hit-dice-healing', 'current', newCurrentHD);
+        await actor.setFlag('hit-dice-healing', 'max', newMaxHitDice);
+        await actor.unsetFlag('uncharted-journeys', 'bonusHitDice');
+
+        console.log(`Uncharted Journeys: Reset hit dice for ${actor.name} (removed ${bonusHitDice} bonus)`);
+      }
     }
 
     // Advance to stage 4 (DataModel immutability)
-    const currentSession = JourneySessionManager.getCurrent();
     currentSession.updateSource({
       currentStage: 4,
       outcome: 'arrived'
     });
     await JourneySessionManager.save(currentSession);
 
-    ui.notifications.info('Journey complete! Proceeding to Journey\'s End.');
+    ui.notifications.info('Reise beendet! Alle Reise-Effekte wurden entfernt.');
     this.tabGroups.primary = 'journeyEnd';
     this.render();
   }
@@ -2013,6 +2591,49 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
 
     if (confirmed) {
       const session = JourneySessionManager.getCurrent();
+
+      // ============================================
+      // CLEANUP: Remove all journey effects from party members
+      // (Same cleanup as completeJourney)
+      // ============================================
+      for (const member of session.partyMembers) {
+        const actor = game.actors.get(member.actorId);
+        if (!actor) continue;
+
+        // Find all effects from this module
+        const journeyEffects = actor.items.filter(i =>
+          i.type === 'effect' &&
+          i.flags?.['uncharted-journeys']?.isPreparationEffect
+        );
+
+        // Delete all journey effects
+        if (journeyEffects.length > 0) {
+          const effectIds = journeyEffects.map(e => e.id);
+          await actor.deleteEmbeddedDocuments('Item', effectIds);
+          console.log(`Uncharted Journeys: Removed ${effectIds.length} effects from ${actor.name}`);
+        }
+
+        // Reset bonus hit dice
+        const bonusHitDice = actor.getFlag('uncharted-journeys', 'bonusHitDice') ?? 0;
+        if (bonusHitDice > 0) {
+          // Get current values
+          const level = actor.system?.details?.level?.value ?? 1;
+          const baseMaxHitDice = level + 1;
+          const currentHD = actor.getFlag('hit-dice-healing', 'current') ?? baseMaxHitDice;
+
+          // Calculate new values (subtract the bonus)
+          const newMaxHitDice = baseMaxHitDice; // Reset to base max
+          const newCurrentHD = Math.max(0, currentHD - bonusHitDice);
+
+          // Update flags
+          await actor.setFlag('hit-dice-healing', 'current', newCurrentHD);
+          await actor.setFlag('hit-dice-healing', 'max', newMaxHitDice);
+          await actor.unsetFlag('uncharted-journeys', 'bonusHitDice');
+
+          console.log(`Uncharted Journeys: Reset hit dice for ${actor.name} (removed ${bonusHitDice} bonus)`);
+        }
+      }
+
       // Update using updateSource (DataModel immutability)
       session.updateSource({
         outcome: 'abandoned',
@@ -2020,7 +2641,7 @@ export class JourneyManagerApp extends HandlebarsApplicationMixin(ApplicationV2)
       });
       await JourneySessionManager.save(session);
 
-      ui.notifications.warn('Journey abandoned.');
+      ui.notifications.warn('Reise abgebrochen! Alle Reise-Effekte wurden entfernt.');
       this.tabGroups.primary = 'journeyEnd';
       this.render();
     }

@@ -11,28 +11,28 @@ export const DISTANCES = {
     id: 'short',
     name: 'Short',
     description: 'Less than 150 miles (~1 week)',
-    baseEncounters: 1,
+    baseEncounters: 2,
     miles: '< 150 miles'
   },
   medium: {
     id: 'medium',
     name: 'Medium',
     description: '150-500 miles (~2-3 weeks)',
-    baseEncounters: 2,
+    baseEncounters: 3,
     miles: '150-500 miles'
   },
   long: {
     id: 'long',
     name: 'Long',
     description: '500-1000 miles (~1-2 months)',
-    baseEncounters: 3,
+    baseEncounters: 4,
     miles: '500-1000 miles'
   },
   veryLong: {
     id: 'veryLong',
     name: 'Very Long',
     description: 'Over 1000 miles (~2+ months)',
-    baseEncounters: 4,
+    baseEncounters: 5,
     miles: '1000+ miles'
   }
 };
@@ -203,4 +203,101 @@ export function getBaseEncounters(distanceId) {
 export function getArrivalResult(roll) {
   const clampedRoll = Math.max(1, Math.min(12, roll));
   return ARRIVAL_TABLE[clampedRoll];
+}
+
+/**
+ * Encounter Pools by danger level
+ * 🔴 combat: Dangerous areas (but Hidden Reserves & Fateful Encounter = lucky breaks!)
+ * 🟢 social: Safe/social areas
+ * 🟡 mixed: All encounter types possible (includes Natural Wonders - ONLY here!)
+ *
+ * Note: "Danger Afoot" appears in ALL THREE pools (warnings can happen anywhere)
+ */
+export const ENCOUNTER_POOLS = {
+  // 🔴 Red - Dangerous (6 types)
+  combat: [
+    'Deadly Fight',      // Obviously dangerous
+    'Monster Hunt',      // Active hunting
+    'A Dark Place',      // Dark/dangerous location
+    'Danger Afoot',      // Warning (in ALL pools!)
+    'Hidden Reserves',   // 🎲 LUCKY: Treasure in dangerous area!
+    'Fateful Encounter'  // 🎲 LUCKY: Fate can be good too
+  ],
+
+  // 🟢 Green - Safe/Social (6 types)
+  social: [
+    'A Chance Meeting',    // Meet travelers
+    'Needing Assistance',  // Help someone
+    'Old Memories',        // Connection to the past
+    'A Place to Rest',     // Rest spot
+    'A Bump in the Road',  // Minor obstacle
+    'Danger Afoot'         // Warning (in ALL pools!)
+  ],
+
+  // 🟡 Yellow - Mixed (all 12 types, including Natural Wonders - ONLY HERE!)
+  mixed: [
+    'Deadly Fight',
+    'Monster Hunt',
+    'A Dark Place',
+    'Danger Afoot',
+    'Hidden Reserves',
+    'Fateful Encounter',
+    'A Chance Meeting',
+    'Needing Assistance',
+    'Old Memories',
+    'A Place to Rest',
+    'A Bump in the Road',
+    'Natural Wonders'      // ONLY in mixed/yellow!
+  ]
+};
+
+/**
+ * Biome configurations
+ * Each biome defines:
+ * - pool: Which ENCOUNTER_POOL to use
+ * - color: Visual indicator (red/yellow/green)
+ * - lengthMod: Modifier to encounter count (-1 = shorter, +1 = longer)
+ * - name: German display name
+ * - canRest: Whether party can take a proper rest here
+ */
+export const BIOMES = {
+  // 🔴 Dangerous - Pool: combat - SHORTER (lengthMod: -1)
+  swamp:      { pool: 'combat', color: 'red',    lengthMod: -1, name: 'Sumpf' },
+  ruins:      { pool: 'combat', color: 'red',    lengthMod: -1, name: 'Ruinen' },
+  blighted:   { pool: 'combat', color: 'red',    lengthMod: -1, name: 'Verseuchtes Land' },
+  clanlands:  { pool: 'combat', color: 'red',    lengthMod: -1, name: 'Clan-Gebiet' },
+
+  // 🟢 Safe - Pool: social - Bonus: canRest
+  city:       { pool: 'social', color: 'green',  lengthMod: 0,  name: 'Stadt', canRest: true },
+  village:    { pool: 'social', color: 'green',  lengthMod: 0,  name: 'Dorf', canRest: true },
+  inn:        { pool: 'social', color: 'green',  lengthMod: 0,  name: 'Gasthaus', canRest: true },
+
+  // 🟡 Neutral - Pool: mixed - Standard
+  steppe:     { pool: 'mixed', color: 'yellow', lengthMod: 0,  name: 'Steppe' },
+  forest:     { pool: 'mixed', color: 'yellow', lengthMod: 0,  name: 'Wald' },
+  hills:      { pool: 'mixed', color: 'yellow', lengthMod: 0,  name: 'Hügelland' },
+  coast:      { pool: 'mixed', color: 'yellow', lengthMod: 0,  name: 'Küste' },
+  mountains:  { pool: 'mixed', color: 'yellow', lengthMod: +1, name: 'Gebirge' }
+};
+
+/**
+ * Get a random encounter type from a biome's pool
+ * @param {string} biomeId - Biome ID
+ * @returns {string} Random encounter type
+ */
+export function getRandomEncounterType(biomeId) {
+  const biome = BIOMES[biomeId];
+  if (!biome) return ENCOUNTER_POOLS.mixed[Math.floor(Math.random() * ENCOUNTER_POOLS.mixed.length)];
+
+  const pool = ENCOUNTER_POOLS[biome.pool];
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/**
+ * Get biome configuration
+ * @param {string} biomeId - Biome ID
+ * @returns {Object} Biome configuration
+ */
+export function getBiomeConfig(biomeId) {
+  return BIOMES[biomeId] || BIOMES.steppe;
 }

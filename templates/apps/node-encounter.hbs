@@ -1,0 +1,328 @@
+<form class="node-encounter-form">
+  {{#if error}}
+  <div class="error-message">
+    <i class="fas fa-exclamation-triangle"></i>
+    <p>Ort nicht gefunden oder Session nicht aktiv.</p>
+  </div>
+  {{else}}
+
+  {{!-- Location Header --}}
+  <header class="node-header">
+    <div class="location-icon node-type-{{node.type}}">
+      <i class="fas {{node.biomeIcon}}"></i>
+    </div>
+    <div class="location-info">
+      <div class="location-name-wrapper">
+        <input type="text"
+               class="location-name-input"
+               name="locationName"
+               value="{{node.name}}"
+               data-action="updateNodeName"
+               placeholder="Ortsname eingeben...">
+        <button type="button" class="regenerate-name-btn" data-action="regenerateNodeName" title="Neuen Namen generieren">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+      <div class="location-meta">
+        <span class="node-type-badge {{node.type}}">{{node.typeLabel}}</span>
+        <span class="biome-badge"><i class="fas {{node.biomeIcon}}"></i> {{node.biomeName}}</span>
+      </div>
+    </div>
+    {{#if node.resolved}}
+    <div class="resolved-badge">
+      <i class="fas fa-check-circle"></i> Erledigt
+    </div>
+    {{/if}}
+  </header>
+
+  {{!-- Fog of War Section (GM Only) --}}
+  <section class="fog-of-war-section">
+    <h3><i class="fas fa-eye-slash"></i> Sichtbarkeit (GM)</h3>
+
+    {{!-- Current visibility state - 4 possible states --}}
+    <div class="visibility-status">
+      {{#if node.revealed}}
+        {{!-- REVEALED states --}}
+        {{#if node.hasDeception}}
+        <div class="status-indicator deception">
+          <i class="fas fa-mask"></i>
+          <span>Täuschung aktiv: Erscheint als <strong class="{{node.displayedType}}">{{node.displayedTypeLabel}}</strong></span>
+          {{#if node.displayedName}}
+          <span class="deception-name">als "{{node.displayedName}}"</span>
+          {{/if}}
+        </div>
+        <div class="true-type-hint">
+          <i class="fas fa-info-circle"></i> Wahrer Typ: <strong class="{{node.type}}">{{node.typeLabel}}</strong>
+        </div>
+        {{else}}
+        <div class="status-indicator revealed">
+          <i class="fas fa-eye"></i>
+          <span>Aufgedeckt: <strong class="{{node.type}}">{{node.typeLabel}}</strong></span>
+        </div>
+        {{/if}}
+      {{else}}
+        {{!-- HIDDEN states --}}
+        {{#if node.hasDeception}}
+        <div class="status-indicator hidden-deception">
+          <i class="fas fa-mask"></i>
+          <span>Verborgen + Täuschung vorbereitet</span>
+        </div>
+        <div class="deception-preview">
+          <i class="fas fa-arrow-right"></i> Wird als <strong class="{{node.displayedType}}">{{node.displayedTypeLabel}}</strong> erscheinen
+          {{#if node.displayedName}}
+          <span class="deception-name">als "{{node.displayedName}}"</span>
+          {{/if}}
+        </div>
+        <div class="true-type-hint">
+          <i class="fas fa-info-circle"></i> Wahrer Typ: <strong class="{{node.type}}">{{node.typeLabel}}</strong>
+        </div>
+        {{else}}
+        <div class="status-indicator hidden">
+          <i class="fas fa-question-circle"></i>
+          <span>Verborgen (Spieler sehen grau)</span>
+        </div>
+        <div class="true-type-hint">
+          <i class="fas fa-info-circle"></i> Wahrer Typ: <strong class="{{node.type}}">{{node.typeLabel}}</strong>
+        </div>
+        {{/if}}
+      {{/if}}
+    </div>
+
+    {{!-- Actions --}}
+    <div class="visibility-actions">
+      {{#unless node.revealed}}
+      <button type="button" class="reveal-btn" data-action="revealNode" title="Wahre Farbe aufdecken">
+        <i class="fas fa-eye"></i> Aufdecken
+      </button>
+      {{/unless}}
+
+      {{#if node.hasDeception}}
+      <button type="button" class="clear-deception-btn" data-action="clearDeception" title="Täuschung entfernen">
+        <i class="fas fa-times"></i> Täuschung entfernen
+      </button>
+      {{/if}}
+    </div>
+
+    {{!-- Deception Setup --}}
+    <details class="deception-setup">
+      <summary><i class="fas fa-mask"></i> Täuschung einrichten</summary>
+      <div class="deception-form">
+        <div class="form-group">
+          <label for="deceptionType">Täuschungsfarbe:</label>
+          <select name="deceptionType" id="deceptionType">
+            <option value="">-- Auswählen --</option>
+            {{#each deceptionOptions}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="deceptionName">Täuschungsname (optional):</label>
+          <input type="text"
+                 name="deceptionName"
+                 id="deceptionName"
+                 value="{{node.displayedName}}"
+                 placeholder="z.B. Tal des Friedens">
+          <p class="hint-text">Falscher Name, den die Spieler sehen</p>
+        </div>
+        <button type="button" class="set-deception-btn" data-action="setDeception">
+          <i class="fas fa-mask"></i> Täuschung setzen
+        </button>
+      </div>
+    </details>
+  </section>
+
+  <hr>
+
+  {{!-- Pre-rolled Encounter Type Section --}}
+  <section class="encounter-type-section">
+    <h3><i class="fas fa-dice"></i> Encounter-Typ</h3>
+
+    {{#if hasPrerolledType}}
+    <div class="prerolled-type">
+      <span class="type-label">Vorgerollt:</span>
+      <span class="type-name">{{prerolledEncounterType}}</span>
+    </div>
+    {{else}}
+    <div class="no-preroll">
+      <p class="hint-text">Noch kein Typ vorgerollt. Verwende den Wuerfel um den Encountertyp vorher zu bestimmen (fuer Seher-Rolle).</p>
+    </div>
+    {{/if}}
+
+    {{#unless node.resolved}}
+    {{#unless hasCachedEncounter}}
+    <button type="button" class="preroll-btn" data-action="prerollEncounterType">
+      <i class="fas fa-dice-d20"></i> Typ vorab wuerfeln
+    </button>
+    {{/unless}}
+    {{/unless}}
+
+    <div class="encounter-pool-info">
+      <p class="pool-label">Moegliche Typen ({{poolType}}):</p>
+      <ul class="pool-list">
+        {{#each encounterPool}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+
+  <hr>
+
+  {{!-- Show cached encounter or generation options --}}
+  {{#if hasCachedEncounter}}
+
+  {{!-- Display cached encounter --}}
+  <section class="cached-encounter">
+    <h3><i class="fas fa-scroll"></i> Generierter Encounter</h3>
+
+    <div class="encounter-content">
+      {{#if cachedEncounter.title}}
+      <h4 class="encounter-title">{{cachedEncounter.title}}</h4>
+      {{/if}}
+
+      {{#if cachedEncounter.encounterType}}
+      <p class="encounter-type-display"><strong>Typ:</strong> {{cachedEncounter.encounterType}}</p>
+      {{/if}}
+
+      {{!-- Campaign-specific details --}}
+      <div class="campaign-details">
+        {{#if cachedEncounter.danger}}
+        <div class="detail-item danger-detail">
+          <span class="detail-icon">⚠️</span>
+          <span class="detail-label">Danger:</span>
+          <span class="detail-value">{{cachedEncounter.danger}}</span>
+        </div>
+        {{/if}}
+
+        {{#if cachedEncounter.secret}}
+        <div class="detail-item secret-detail">
+          <span class="detail-icon">🔮</span>
+          <span class="detail-label">Geheimnis:</span>
+          <span class="detail-value">{{cachedEncounter.secret}}</span>
+        </div>
+        {{/if}}
+
+        {{#if cachedEncounter.playerHook}}
+        <div class="detail-item hook-detail">
+          <span class="detail-icon">🎣</span>
+          <span class="detail-label">Spieler-Hook:</span>
+          <span class="detail-value">{{cachedEncounter.playerHook}}</span>
+        </div>
+        {{/if}}
+
+        {{#if cachedEncounter.stringToPull}}
+        <div class="detail-item string-detail">
+          <span class="detail-icon">🧵</span>
+          <span class="detail-label">String to Pull:</span>
+          <span class="detail-value">{{cachedEncounter.stringToPull}}</span>
+        </div>
+        {{/if}}
+
+        {{#if cachedEncounter.front}}
+        <div class="detail-item front-detail">
+          <span class="detail-icon">📜</span>
+          <span class="detail-label">Front:</span>
+          <span class="detail-value">{{cachedEncounter.front}}</span>
+        </div>
+        {{/if}}
+      </div>
+
+      {{#if cachedEncounter.description}}
+      <div class="encounter-description">
+        {{{cachedEncounter.description}}}
+      </div>
+      {{/if}}
+
+      {{#if cachedEncounter.fullText}}
+      <div class="encounter-full-text">
+        {{{cachedEncounter.fullText}}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="encounter-actions">
+      {{#unless node.resolved}}
+      <button type="button" class="start-resolution-btn" data-action="startResolution">
+        <i class="fas fa-dice-d20"></i> Resolution starten
+      </button>
+      {{/unless}}
+
+      <button type="button" class="copy-btn" data-action="copyEncounterText">
+        <i class="fas fa-copy"></i> Text kopieren
+      </button>
+
+      {{#unless node.resolved}}
+      <button type="button" class="resolve-btn" data-action="resolveNode">
+        <i class="fas fa-check-double"></i> Als erledigt markieren
+      </button>
+      {{/unless}}
+    </div>
+  </section>
+
+  {{else}}
+
+  {{!-- Encounter Generation Options --}}
+  {{#unless node.resolved}}
+  <section class="generation-options">
+    <h3><i class="fas fa-cogs"></i> Encounter generieren</h3>
+
+    {{!-- Fronten --}}
+    <div class="fronts-section">
+      <h4>Fronten (Optional)</h4>
+      <div class="fronts-list">
+        {{#each fronts}}
+        <label class="front-option">
+          <input type="checkbox" name="selectedFronts" value="{{id}}" {{#if checked}}checked{{/if}}>
+          <span class="front-icon">{{{icon}}}</span>
+          <span class="front-name">{{name}}</span>
+        </label>
+        {{/each}}
+      </div>
+      <p class="hint-text">Keine Auswahl = alle Fronten moeglich</p>
+    </div>
+
+    {{!-- Spieler --}}
+    <div class="players-section">
+      <h4>Anwesende Spieler</h4>
+      <div class="players-list">
+        {{#each players}}
+        <label class="player-option">
+          <input type="checkbox" name="activePlayers" value="{{id}}" {{#if checked}}checked{{/if}}>
+          <span class="player-icon">{{{icon}}}</span>
+          <span class="player-name">{{name}} ({{class}})</span>
+        </label>
+        {{/each}}
+      </div>
+      <p class="hint-text">Gruppen-Hooks werden immer einbezogen.</p>
+    </div>
+
+    {{!-- Comedic Relief --}}
+    <div class="comedic-section">
+      <label class="comedic-option">
+        <input type="checkbox" name="comedicRelief" value="true">
+        <span class="comedic-icon">😎</span>
+        <span class="comedic-label">Comedic Relief</span>
+      </label>
+      <p class="hint-text">Humorvoller Encounter - leichte Pause vom Abenteuer</p>
+    </div>
+
+    <button type="button" class="generate-btn" data-action="generateEncounter">
+      <i class="fas fa-magic"></i> Encounter generieren
+    </button>
+  </section>
+  {{/unless}}
+
+  {{#if node.resolved}}
+  <section class="resolved-section">
+    <div class="resolved-message">
+      <i class="fas fa-check-circle"></i>
+      <p>Dieser Ort wurde bereits abgeschlossen.</p>
+    </div>
+  </section>
+  {{/if}}
+
+  {{/if}}
+
+  {{/if}}
+</form>

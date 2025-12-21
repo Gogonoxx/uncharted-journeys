@@ -27,9 +27,8 @@
                 class="distance-btn {{#if (eq ../session.distance @key)}}active{{/if}}"
                 data-action="setDistance"
                 data-distance="{{@key}}"
-                data-tooltip="{{baseEncounters}} base encounter(s)">
+                title="{{miles}} • {{baseEncounters}} Encounter(s)">
           <span class="distance-label">{{name}}</span>
-          <span class="distance-days">{{miles}}</span>
         </button>
         {{/each}}
       </div>
@@ -104,6 +103,88 @@
         <div class="encounter-count">
           <span class="enc-label">Base Encounters</span>
           <span class="enc-number">{{baseEncounters}}</span>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Biome Route Selection --}}
+    <div class="form-group biome-route-selection">
+      <h3><i class="fas fa-map"></i> Reiseroute (Biome)</h3>
+      <p class="biome-hint">Wähle die geografischen Biome deiner Route. Das bestimmt die Orte, Encounter-Pools und Gefahrenstufen.</p>
+
+      {{!-- Current Biome Sequence --}}
+      <div class="biome-sequence">
+        <label><i class="fas fa-route"></i> Biom-Sequenz</label>
+        <div class="biome-tags">
+          {{#each biomeSequence}}
+          <span class="biome-tag" data-biome-index="{{@index}}">
+            <i class="fas {{icon}}"></i> {{name}}
+            {{#if (gt ../biomeSequence.length 1)}}
+            <button type="button" class="remove-biome-btn" data-action="removeBiome" data-index="{{@index}}">
+              <i class="fas fa-times"></i>
+            </button>
+            {{/if}}
+          </span>
+          {{#unless @last}}<i class="fas fa-arrow-right biome-arrow-inline"></i>{{/unless}}
+          {{/each}}
+        </div>
+      </div>
+
+      {{!-- Add Biome --}}
+      <div class="add-biome-section">
+        <label><i class="fas fa-plus"></i> Biom hinzufügen</label>
+        <div class="biome-add-row">
+          <select id="add-biome-select" class="add-biome-select">
+            <option value="">-- Biom wählen --</option>
+            <optgroup label="Offene Landschaften">
+              <option value="grassland">🌾 Grasland</option>
+              <option value="steppe">🌬️ Steppe</option>
+              <option value="desert">☀️ Wüste</option>
+            </optgroup>
+            <optgroup label="Bewaldete Gebiete">
+              <option value="forest">🌲 Wald</option>
+              <option value="swamp">💧 Sumpf</option>
+            </optgroup>
+            <optgroup label="Bergige Regionen">
+              <option value="mountains">⛰️ Gebirge</option>
+              <option value="underground">🕳️ Untergrund</option>
+              <option value="volcanic">🌋 Vulkanland</option>
+            </optgroup>
+            <optgroup label="Wasser & Küste">
+              <option value="coast">🌊 Küste</option>
+            </optgroup>
+            <optgroup label="Besondere Regionen">
+              <option value="magical">✨ Magische Lande</option>
+              <option value="tundra">❄️ Eislandschaft</option>
+              <option value="deadlands">💀 Totes Land</option>
+            </optgroup>
+          </select>
+          <button type="button" class="add-biome-btn" data-action="addBiome">
+            <i class="fas fa-plus"></i> Hinzufügen
+          </button>
+        </div>
+      </div>
+
+      {{!-- Biome Info --}}
+      <div class="biome-info-section">
+        <h4><i class="fas fa-info-circle"></i> Biom-Informationen</h4>
+        <div class="biome-info-grid">
+          <div class="biome-info-card">
+            <span class="biome-info-icon">🟢</span>
+            <span class="biome-info-text"><strong>Grüne Orte:</strong> Sichere Orte mit sozialen Encounters und Rastmöglichkeiten</span>
+          </div>
+          <div class="biome-info-card">
+            <span class="biome-info-icon">🟡</span>
+            <span class="biome-info-text"><strong>Gelbe Orte:</strong> Neutrale Orte mit allen Encounter-Typen möglich</span>
+          </div>
+          <div class="biome-info-card">
+            <span class="biome-info-icon">🔴</span>
+            <span class="biome-info-text"><strong>Rote Orte:</strong> Gefährliche Orte mit Kampf-Encounters (kürzerer Weg!)</span>
+          </div>
+          <div class="biome-info-card">
+            <span class="biome-info-icon">💎</span>
+            <span class="biome-info-text"><strong>Schatz-Orte:</strong> Versteckte Abzweigungen mit besonderen Belohnungen</span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,19 @@
 /**
- * Encounter Type Rules for Uncharted Journeys
+ * Encounter Type Rules for Uncharted Journeys (PF2E Edition)
  * Contains the resolution rules for each of the 12 encounter types
+ *
+ * NOTE: Resolution mechanics (ENCOUNTER_RESOLUTION_CONFIG) remain UNCHANGED.
+ * Only the descriptive text has been updated for PF2E terminology.
+ *
+ * D&D → PF2E Terminology:
+ * - Perception → Society/Perception
+ * - Diplomacy → Diplomacy
+ * - Perception → Perception
+ * - Survival → Survival
+ * - Stealth → Stealth
+ * - Fortitude save → Fortitude save
+ * - Will save → Will save
+ * - Advantage/Disadvantage → Fortune/Misfortune
  */
 
 export const ENCOUNTER_TYPE_RULES = {
@@ -17,14 +30,14 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>A Chance Meeting has two steps: the Leader Check and the Group Check.</p>
 
 <h4>Leader Check</h4>
-<p>The Leader makes a <strong>Wisdom (Insight)</strong> check to evaluate the mood of the newcomers and gauge their intentions. This represents the Leader making introductions for the group while trying to get a feel for how best to approach the situation.</p>
+<p>The Leader makes a <strong>Society</strong> check to evaluate the mood of the newcomers and gauge their intentions. This represents the Leader making introductions for the group while trying to get a feel for how best to approach the situation.</p>
 <ul>
 <li><strong>On a success:</strong> Reduce the DC of the Group Check by 2.</li>
 <li><strong>On a failure:</strong> Increase the DC of the Group Check DC by 2.</li>
 </ul>
 
 <h4>Group Check</h4>
-<p>Once the Leader has made the introductions, each party member then makes a <strong>Charisma (Persuasion)</strong> or <strong>Wisdom (Insight)</strong> check, representing their contributions to the conversation, their demeanour, and their intuition about how the meeting is going. If one or more party members is lying or misleading the other group, they can make a <strong>Charisma (Deception)</strong> check instead.</p>
+<p>Once the Leader has made the introductions, each party member then makes a <strong>Diplomacy</strong> or <strong>Perception</strong> check, representing their contributions to the conversation, their demeanour, and their intuition about how the meeting is going. If one or more party members is lying or misleading the other group, they can make a <strong>Deception</strong> check instead.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party leaves a good impression and may be given helpful directions to a sheltered spot or interesting landmark on the road ahead. The GM rolls 1d6, replacing the next Encounter with one of the following: on a 1–3, the travellers direct the party to a nearby Natural Wonder; on a 4, they whisper of Old Memories the party may wish to discover; on a 5, they tell the party of a safe Place to Rest; and on a 6, they disclose that there are Hidden Reserves secreted away close by.</li>
 <li><strong>If more than half of the party succeed:</strong> The two groups part amicably and share knowledge of what they have seen, such as potential hazards and how to overcome them. Each character makes their next ability check with Advantage.</li>
@@ -46,7 +59,7 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>To resolve a Hidden Reserves Encounter, the party must make a Group Check to search through an area to find the hidden cache of supplies.</p>
 
 <h4>Group Check</h4>
-<p>Each party member must make either an <strong>Intelligence (Investigation)</strong>, <strong>Dexterity (Sleight of Hand)</strong>, or <strong>Wisdom (Survival)</strong> check. The Quartermaster may replace another party member's result with their own.</p>
+<p>Each party member must make either an <strong>Perception</strong>, <strong>Thievery</strong>, or <strong>Survival</strong> check. The Quartermaster may replace another party member's result with their own.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party find more supplies than they expected and are filled with hope after this successful haul. Each party member gains Inspiration or removes one level of Exhaustion (player's choice), and the Quartermaster recovers 1 Supply Die.</li>
 <li><strong>If more than half of the party succeed:</strong> The extra supplies lessen the party's burden. Each party member removes one level of Exhaustion.</li>
@@ -70,13 +83,13 @@ export const ENCOUNTER_TYPE_RULES = {
 <h4>Outrider Check</h4>
 <p>The Outrider must make an ability check as determined by the entry on the Encounter table. The result of this check affects the Constitution Save.</p>
 <ul>
-<li><strong>On a success by 5 or more:</strong> The Outrider advises the group on how best to prepare for the challenge ahead. Each party member makes the Constitution saving throw for this Encounter with Advantage.</li>
-<li><strong>On a success:</strong> The Outrider is unsure how to approach the obstacle, but does their best to guide the party. Each party member makes the Constitution saving throw as normal.</li>
-<li><strong>On a failure:</strong> The Outrider directs the party to approach it in the wrong way. Each party member makes the Constitution saving throw for this Encounter with Disadvantage.</li>
+<li><strong>On a success by 5 or more:</strong> The Outrider advises the group on how best to prepare for the challenge ahead. Each party member makes the Fortitude save for this Encounter with Advantage.</li>
+<li><strong>On a success:</strong> The Outrider is unsure how to approach the obstacle, but does their best to guide the party. Each party member makes the Fortitude save as normal.</li>
+<li><strong>On a failure:</strong> The Outrider directs the party to approach it in the wrong way. Each party member makes the Fortitude save for this Encounter with Disadvantage.</li>
 </ul>
 
 <h4>Constitution Save</h4>
-<p>After determining the result of the Outrider's check, each party member must make a <strong>Constitution saving throw</strong>. This represents the party having to cover more ground to push through an obstacle or travelling far out of their way to avoid it. The result of each character's individual saving throw determines the effects applied to that specific character; this is not a group check.</p>
+<p>After determining the result of the Outrider's check, each party member must make a <strong>Fortitude save</strong>. This represents the party having to cover more ground to push through an obstacle or travelling far out of their way to avoid it. The result of each character's individual saving throw determines the effects applied to that specific character; this is not a group check.</p>
 <ul>
 <li><strong>On a success:</strong> The character endures the trials without any negative consequence.</li>
 <li><strong>On a failure:</strong> The character has pushed themself further than their resolve could handle. They gain 1 level of exhaustion.</li>
@@ -118,7 +131,7 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>To resolve a Danger Afoot Encounter, the party must make a Group Check to determine how prepared they are for trouble.</p>
 
 <h4>Group Check</h4>
-<p>Each party member must make a <strong>Wisdom (Insight)</strong>, <strong>Wisdom (Perception)</strong>, or <strong>Dexterity (Stealth)</strong> check. The Sentry may replace another party member's result with their own.</p>
+<p>Each party member must make a <strong>Perception</strong>, <strong>Perception</strong>, or <strong>Stealth</strong> check. The Sentry may replace another party member's result with their own.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party notices the danger ahead and has ample time to prepare. If and when combat begins, the enemy is Surprised.</li>
 <li><strong>If more than half of the party succeed:</strong> The more observant of the party notice the incoming threats and warn the rest of the party. If and when combat begins, neither side is Surprised.</li>
@@ -140,7 +153,7 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>To resolve a Natural Wonders Encounter, the party must make a Group Check to determine if they are overwhelmed by the awesome presence of this feature.</p>
 
 <h4>Group Check</h4>
-<p>Each party member makes a <strong>Wisdom saving throw</strong> to determine how the sight of such an awesome wonder affects them. The Leader may replace another party member's result with their own.</p>
+<p>Each party member makes a <strong>Will save</strong> to determine how the sight of such an awesome wonder affects them. The Leader may replace another party member's result with their own.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party takes a quiet moment to admire this natural wonder, perhaps feeling their burdens lifted or a new sense of purpose. Each party member gains Inspiration. The GM may grant additional rewards, such as gaining Advantage on checks to navigate the region as the party use a towering mountain to orient themselves, or recovering a Hit Die after drinking from a crystalline lake.</li>
 <li><strong>If more than half of the party succeed:</strong> The party are invigorated by the beauty before them and excited to face the challenges ahead. Each party member gains Advantage on their next ability check or saving throw.</li>
@@ -162,14 +175,14 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>To resolve a Monster Hunt Encounter, the party must first decide if they want to try and track the creature, or to avoid it.</p>
 
 <h4>Tracking the Monster</h4>
-<p>If the party chooses to track the creature, each party member must make a <strong>Wisdom (Survival)</strong> or <strong>Intelligence (Nature)</strong> check to see how well they follow the creature's trail. The Outrider may replace another party member's result with their own.</p>
+<p>If the party chooses to track the creature, each party member must make a <strong>Survival</strong> or <strong>Nature</strong> check to see how well they follow the creature's trail. The Outrider may replace another party member's result with their own.</p>
 <ul>
 <li><strong>If more than half of the party succeed:</strong> The party's efforts have led them to the creature's exact location, and it has not noticed their approach. When combat begins, the creature is Surprised.</li>
 <li><strong>If half or fewer of the party succeed:</strong> It has taken longer than expected, but the party has successfully tracked the creature to its lair. However, their presence has not gone unnoticed, and combat begins immediately.</li>
 </ul>
 
 <h4>Avoiding the Monster</h4>
-<p>If the party chooses to avoid the creature, each party member must make a <strong>Dexterity (Stealth)</strong> or <strong>Wisdom (Perception)</strong> check to avoid the creature's notice. The Sentry may replace one other party member's result with their own.</p>
+<p>If the party chooses to avoid the creature, each party member must make a <strong>Stealth</strong> or <strong>Perception</strong> check to avoid the creature's notice. The Sentry may replace one other party member's result with their own.</p>
 <ul>
 <li><strong>If more than half of the party succeed:</strong> The party escapes from the monster without notice or interference. No combat occurs and there are no further effects.</li>
 <li><strong>If half or fewer of the party succeed:</strong> The party inadvertently stumble into the monster's lair, or the creature has actually been hunting the party all along. Combat begins immediately and the party are Surprised.</li>
@@ -189,7 +202,7 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>A Place to Rest has two steps: the Quartermaster Check, and the Group Check.</p>
 
 <h4>Quartermaster Check</h4>
-<p>The Quartermaster makes a <strong>Wisdom (Survival)</strong> check to determine how safe the location is, directs the party how best to set up camp, and prepares the evening meal. The result of this check affects the Group Check.</p>
+<p>The Quartermaster makes a <strong>Survival</strong> check to determine how safe the location is, directs the party how best to set up camp, and prepares the evening meal. The result of this check affects the Group Check.</p>
 <ul>
 <li><strong>On a success by 5 or more:</strong> The Quartermaster has prepared an ideal campsite and made the site as safe and comfortable as possible. The party makes the Group Check with Advantage.</li>
 <li><strong>On a success:</strong> The Quartermaster has adequately prepared the camp for a good night's rest. The party makes the Group Check as normal.</li>
@@ -197,7 +210,7 @@ export const ENCOUNTER_TYPE_RULES = {
 </ul>
 
 <h4>Group Check</h4>
-<p>After determining the result of the Quartermaster's check, each party member must make a <strong>Constitution (Perception)</strong> check to ensure those on duty stay alert and awake through their shift.</p>
+<p>After determining the result of the Quartermaster's check, each party member must make a <strong>Perception</strong> check to ensure those on duty stay alert and awake through their shift.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party have a peaceful and refreshing night's sleep. They gain the benefits of a Long Rest.</li>
 <li><strong>If more than half of the party succeed:</strong> The party have a relatively comfortable night's sleep. They gain the benefits of a Short Rest.</li>
@@ -219,7 +232,7 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>To resolve an Old Memories Encounter, the party must make a Group Check to glean more information about the location.</p>
 
 <h4>Group Check</h4>
-<p>Each party member must make an <strong>Intelligence (History)</strong> check to recall or glean what information they know about this place, attempting to appreciate and understand the purpose of these structures. If it is appropriate, a character may make an <strong>Intelligence (Religion)</strong> or <strong>Intelligence (Arcana)</strong> check instead. The Leader may replace another party member's result with their own.</p>
+<p>Each party member must make an <strong>Society</strong> check to recall or glean what information they know about this place, attempting to appreciate and understand the purpose of these structures. If it is appropriate, a character may make an <strong>Religion</strong> or <strong>Arcana</strong> check instead. The Leader may replace another party member's result with their own.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party is inspired by the history and importance of the location, perhaps recalling stories of heroic last stands or great scientific or arcane achievements. In addition to any rewards noted in the Encounter table entry, each party member may add 1d4 to all ability checks, saving throws, and attack rolls they make in their next Encounter.</li>
 <li><strong>If more than half of the party succeed:</strong> The party gains a new appreciation for the history of this place, noting this location on their maps and moving onwards to continue their journey.</li>
@@ -243,15 +256,15 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>A Dark Place has two steps: the Outrider Check and the Wisdom Save.</p>
 
 <h4>Outrider Check</h4>
-<p>The Outrider makes a <strong>Wisdom (Survival)</strong> check to scout the Dark Place. The result of this check affects the Wisdom Save.</p>
+<p>The Outrider makes a <strong>Survival</strong> check to scout the Dark Place. The result of this check affects the Wisdom Save.</p>
 <ul>
-<li><strong>On a success by 5 or more:</strong> The Outrider has identified any potential hazards the location holds. Though the place is unsettling, there is little else to fear. Each party member makes the Wisdom saving throw for this Encounter with Advantage.</li>
-<li><strong>On a success:</strong> The Outrider surveys the location and has a bad feeling about it. They advise the party to be wary as they approach. Each party member makes the Wisdom saving throw as normal.</li>
-<li><strong>On a failure:</strong> The Outrider attempts to scout the location but is completely unnerved and must return to the party. Each party member makes the Wisdom saving throw for this Encounter with Disadvantage.</li>
+<li><strong>On a success by 5 or more:</strong> The Outrider has identified any potential hazards the location holds. Though the place is unsettling, there is little else to fear. Each party member makes the Will save for this Encounter with Advantage.</li>
+<li><strong>On a success:</strong> The Outrider surveys the location and has a bad feeling about it. They advise the party to be wary as they approach. Each party member makes the Will save as normal.</li>
+<li><strong>On a failure:</strong> The Outrider attempts to scout the location but is completely unnerved and must return to the party. Each party member makes the Will save for this Encounter with Disadvantage.</li>
 </ul>
 
 <h4>Wisdom Save</h4>
-<p>After determining the result of the Outrider's check, each party member must make a <strong>Wisdom saving throw</strong>. This determines if the party can overcome the oppressive dread of the encounter and find an inner tenacity. The Leader may replace another player's result with their own result.</p>
+<p>After determining the result of the Outrider's check, each party member must make a <strong>Will save</strong>. This determines if the party can overcome the oppressive dread of the encounter and find an inner tenacity. The Leader may replace another player's result with their own result.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party musters an inner strength and finds the resolve to persevere, insisting such crimes will never happen again. Each party member regains a Hit Die.</li>
 <li><strong>If more than half of the party succeed:</strong> The party resists the grim aura that this place exudes, keeping their heads down and marching through unperturbed. They suffer no adverse effects.</li>
@@ -273,14 +286,14 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>A Deadly Fight has two steps: the Sentry Check and the Group Check.</p>
 
 <h4>Sentry Check</h4>
-<p>The Sentry must make a <strong>Wisdom (Perception)</strong> check to spot the threat before combat starts, giving them a chance to warn their allies.</p>
+<p>The Sentry must make a <strong>Perception</strong> check to spot the threat before combat starts, giving them a chance to warn their allies.</p>
 <ul>
 <li><strong>On a success:</strong> The Sentry notices the approaching danger and the party has time to prepare. See Group Check for next steps.</li>
 <li><strong>On a failure:</strong> The Sentry doesn't notice the enemies and the party are ambushed. Combat begins immediately and the party are Surprised.</li>
 </ul>
 
 <h4>Group Check</h4>
-<p>If the Sentry is successful, the party has a chance to prepare and can set an ambush for the approaching enemies. Each party member makes a <strong>Dexterity (Stealth)</strong> or <strong>Charisma (Deception)</strong> check to hide or lure the enemies in.</p>
+<p>If the Sentry is successful, the party has a chance to prepare and can set an ambush for the approaching enemies. Each party member makes a <strong>Stealth</strong> or <strong>Deception</strong> check to hide or lure the enemies in.</p>
 <ul>
 <li><strong>If the whole party succeeds:</strong> The party lays an ambush for the enemies. When combat starts, the enemies are Surprised. The GM may award additional effects based on preparations that were made, such as snares knocking the opponents Prone, or traps dealing additional damage.</li>
 <li><strong>If more than half the party succeed:</strong> The party is prepared for the attack. When combat starts, the other group is Surprised.</li>
@@ -304,10 +317,70 @@ export const ENCOUNTER_TYPE_RULES = {
 <p>To resolve a Fateful Encounter, the party must make a Group Check to gauge the intent of their new companion and what they might be hiding.</p>
 
 <h4>Group Check</h4>
-<p>Each party member must make a <strong>Charisma (Persuasion)</strong>, <strong>Intelligence (Investigation)</strong>, or <strong>Wisdom (Insight)</strong> check to try to make a good impression on the traveller, deduce hidden clues about them, and gauge their intent. The Sentry may replace another party member's result with their own.</p>
+<p>Each party member must make a <strong>Diplomacy</strong>, <strong>Perception</strong>, or <strong>Perception</strong> check to try to make a good impression on the traveller, deduce hidden clues about them, and gauge their intent. The Sentry may replace another party member's result with their own.</p>
 <ul>
 <li><strong>If more than half of the party succeed:</strong> Through amicable discussions, keen insight, or quick wits, the party learns the secret information this person is hiding.</li>
 <li><strong>If half or fewer of the party succeed:</strong> Despite their best efforts, the party is unable to uncover the travellers' true intent and what secrets they may be hiding.</li>
+</ul>`
+  },
+
+  "Dungeon": {
+    name: "Dungeon",
+    summary: "Ein verlassener Komplex voller Gefahren und Schätze - ideal für mutige Abenteurer.",
+    keyRole: "Sentry",
+    content: `<h2>Dungeon</h2>
+<p>Die Gruppe entdeckt einen verlassenen Komplex - vielleicht eine alte Mine, ein vergessenes Gewölbe, oder die Ruinen einer untergegangenen Zivilisation. Solche Orte bergen große Gefahren, aber auch großartige Schätze für jene, die mutig genug sind, sie zu erkunden.</p>
+
+<p>Ein Dungeon-Encounter beschreibt den Eingang zum Komplex, die sichtbaren Gefahren und die potenziellen Belohnungen. Der <strong>Sentry</strong> ist entscheidend für die sichere Erkundung, da er Fallen und versteckte Gefahren aufspüren kann, bevor sie zur Bedrohung werden.</p>
+
+<h3>Resolution</h3>
+<p>Ein Dungeon-Encounter hat zwei Schritte: die Sentry-Prüfung und den Gruppen-Check.</p>
+
+<h4>Sentry-Prüfung</h4>
+<p>Der Sentry macht einen <strong>Wahrnehmungs-Check</strong>, um den Eingang auf Fallen und versteckte Gefahren zu untersuchen.</p>
+<ul>
+<li><strong>Kritischer Erfolg (DC+10):</strong> Der Sentry entdeckt alle Fallen und kennt den sichersten Weg. Der Gruppen-Check wird mit Vorteil gewürfelt.</li>
+<li><strong>Erfolg:</strong> Der Sentry findet einen brauchbaren Weg. Der Gruppen-Check wird normal gewürfelt.</li>
+<li><strong>Fehlschlag:</strong> Der Sentry übersieht wichtige Gefahren. Der Gruppen-Check wird mit Nachteil gewürfelt.</li>
+</ul>
+
+<h4>Gruppen-Check</h4>
+<p>Jedes Gruppenmitglied macht einen <strong>Stealth</strong>, <strong>Athletics</strong>, oder <strong>Perception</strong> Check, um durch den Dungeon zu navigieren.</p>
+<ul>
+<li><strong>Alle erfolgreich:</strong> Perfekte Erkundung! Alle Schätze gefunden, keine Fallen ausgelöst. Die Gruppe erhält großartige Beute.</li>
+<li><strong>Mehr als die Hälfte erfolgreich:</strong> Erfolgreiche Erkundung. Hauptschatz gefunden, einige Fallen umgangen. Standard-Beute.</li>
+<li><strong>Hälfte oder weniger erfolgreich:</strong> Mühsame Erkundung. Teilweise Beute, mehrere Fallen ausgelöst. Geringe Beute, jeder der fehlgeschlagen hat erleidet Schaden.</li>
+<li><strong>Niemand erfolgreich:</strong> Katastrophe! Die Gruppe muss fliehen. Keine Beute, alle erleiden Schaden und einen Grad Erschöpfung.</li>
+</ul>`
+  },
+
+  "Lost Knowledge": {
+    name: "Verschollenes Wissen",
+    summary: "Uraltes Wissen wartet darauf, entdeckt zu werden - Geheimnisse der Vergangenheit.",
+    keyRole: "Leader",
+    content: `<h2>Verschollenes Wissen</h2>
+<p>Die Gruppe stößt auf Überreste vergessener Gelehrsamkeit - vielleicht eine versteckte Bibliothek, uralte Inschriften, oder die Aufzeichnungen eines längst verstorbenen Magiers. Solches Wissen kann Geheimnisse der Vergangenheit enthüllen, mächtige Rituale offenbaren, oder Hinweise auf verborgene Schätze geben.</p>
+
+<p>Ein Verschollenes-Wissen-Encounter beschreibt die Art des gefundenen Wissens, seinen Ursprung und seinen potenziellen Nutzen. Der <strong>Leader</strong> spielt eine entscheidende Rolle, da er die Bedeutung der Entdeckung einordnen und das Team bei der Entschlüsselung anleiten kann.</p>
+
+<h3>Resolution</h3>
+<p>Ein Verschollenes-Wissen-Encounter hat zwei Schritte: die Leader-Prüfung und den Forschungs-Check.</p>
+
+<h4>Leader-Prüfung</h4>
+<p>Der Leader macht einen <strong>Society</strong> oder <strong>Arcana</strong> Check, um die Bedeutung der Entdeckung einzuordnen.</p>
+<ul>
+<li><strong>Kritischer Erfolg (DC+10):</strong> Der Leader erkennt sofort den Wert des Wissens. Der Forschungs-Check wird mit Vorteil gewürfelt.</li>
+<li><strong>Erfolg:</strong> Der Leader versteht die Grundlagen. Der Forschungs-Check wird normal gewürfelt.</li>
+<li><strong>Fehlschlag:</strong> Der Leader unterschätzt die Komplexität. Der Forschungs-Check wird mit Nachteil gewürfelt.</li>
+</ul>
+
+<h4>Forschungs-Check (Research)</h4>
+<p>Jedes Gruppenmitglied macht einen <strong>Arcana</strong>, <strong>Occultism</strong>, <strong>Religion</strong>, <strong>Nature</strong>, oder <strong>Society</strong> Check, um das Wissen zu studieren und zu entschlüsseln.</p>
+<ul>
+<li><strong>Alle erfolgreich:</strong> Vollständige Entschlüsselung! Die Gruppe enthüllt ein großes Geheimnis UND erhält einen praktischen Nutzen (z.B. permanenten Bonus, neuen Zauber, etc.).</li>
+<li><strong>Mehr als die Hälfte erfolgreich:</strong> Teilweise Entschlüsselung. Ein wichtiges Geheimnis wird enthüllt.</li>
+<li><strong>Hälfte oder weniger erfolgreich:</strong> Bruchstückhafte Erkenntnisse. Die Gruppe erhält Hinweise auf ein größeres Geheimnis.</li>
+<li><strong>Niemand erfolgreich:</strong> Das Wissen bleibt verschlossen. Die Gruppe versteht nur Fragmente ohne Zusammenhang.</li>
 </ul>`
   }
 };
@@ -564,7 +637,7 @@ export const ENCOUNTER_RESOLUTION_CONFIG = {
     pattern: "group-only",
     keyRole: "leader",
     groupCheck: {
-      skills: [],  // Wisdom saving throw, not a skill check
+      skills: [],  // Will save, not a skill check
       saveType: "will",  // PF2E Will save (Wisdom)
       description: "Steel yourself against being overwhelmed by the awesome presence of this natural wonder.",
       canReplace: "leader",
@@ -604,7 +677,7 @@ export const ENCOUNTER_RESOLUTION_CONFIG = {
       failureEffect: { groupDisadvantage: true }
     },
     groupCheck: {
-      skills: ["perception"],  // Constitution (Perception) check to stay alert
+      skills: ["perception"],  // Perception check to stay alert
       saveType: "fortitude",  // Can use Fortitude as alternative
       description: "Stay alert and awake through your watch shift.",
       canReplace: null,
@@ -769,6 +842,96 @@ export const ENCOUNTER_RESOLUTION_CONFIG = {
           label: "Critical Failure",
           description: "The party fails to learn anything and may have made a poor impression.",
           effect: "noEffect"
+        }
+      }
+    }
+  },
+
+  "Dungeon": {
+    pattern: "keyRole-then-group",
+    keyRole: "sentry",
+    keyRoleCheck: {
+      skill: "perception",
+      description: "Untersuche den Eingang auf Fallen und versteckte Gefahren.",
+      successBy5Effect: { groupAdvantage: true },
+      successEffect: {},
+      failureEffect: { groupDisadvantage: true }
+    },
+    groupCheck: {
+      skills: ["stealth", "athletics", "perception"],
+      description: "Navigiere durch den Dungeon und meide Gefahren.",
+      canReplace: null,
+      outcomes: {
+        all: {
+          label: "Perfekte Erkundung",
+          description: "Alle Schätze gefunden, keine Fallen ausgelöst. Die Gruppe erhält großartige Beute.",
+          effect: "majorLoot",
+          loot: "major"
+        },
+        majority: {
+          label: "Erfolgreiche Erkundung",
+          description: "Hauptschatz gefunden, einige Fallen umgangen. Standard-Beute.",
+          effect: "standardLoot",
+          loot: "standard"
+        },
+        minority: {
+          label: "Mühsame Erkundung",
+          description: "Teilweise Beute, mehrere Fallen ausgelöst. Geringe Beute + Schaden für Fehlschläge.",
+          effect: "minorLootWithDamage",
+          loot: "minor",
+          damage: true
+        },
+        none: {
+          label: "Katastrophe",
+          description: "Flucht ohne Beute! Alle erleiden Schaden und einen Grad Erschöpfung.",
+          effect: "noLootWithDamageAndExhaustion",
+          loot: "none",
+          damage: true,
+          exhaustion: true
+        }
+      }
+    }
+  },
+
+  "Lost Knowledge": {
+    pattern: "keyRole-then-group",
+    keyRole: "leader",
+    keyRoleCheck: {
+      skill: "society",
+      alternativeSkill: "arcana",
+      description: "Erkenne die Bedeutung und den Wert der Entdeckung.",
+      successBy5Effect: { groupAdvantage: true },
+      successEffect: {},
+      failureEffect: { groupDisadvantage: true }
+    },
+    groupCheck: {
+      skills: ["arcana", "occultism", "religion", "nature", "society"],
+      description: "Studiere und entschlüssle das uralte Wissen.",
+      canReplace: "leader",
+      outcomes: {
+        all: {
+          label: "Vollständige Entschlüsselung",
+          description: "Geheimes Wissen enthüllt + praktischer Nutzen (Bonus, Zauber, etc.).",
+          effect: "secretAndMechanicalBenefit",
+          reward: "secret+benefit"
+        },
+        majority: {
+          label: "Teilweise Entschlüsselung",
+          description: "Ein wichtiges Geheimnis wird enthüllt.",
+          effect: "revealSecret",
+          reward: "secret"
+        },
+        minority: {
+          label: "Bruchstückhafte Erkenntnisse",
+          description: "Hinweise auf ein größeres Geheimnis werden entdeckt.",
+          effect: "revealHint",
+          reward: "hint"
+        },
+        none: {
+          label: "Unverständlich",
+          description: "Das Wissen bleibt verschlossen. Nur Fragmente ohne Zusammenhang.",
+          effect: "noEffect",
+          reward: "none"
         }
       }
     }

@@ -1,266 +1,728 @@
 /**
- * Uncharted Journeys - Preparations
- * Preparations from the Uncharted Journeys book (converted to PF2E skills)
+ * Uncharted Journeys - Preparations (PF2E Redesign)
+ * All preparations with 4 success levels and German names
  */
 
 /**
- * Base DC for preparation checks (book default is 13, but we use journey DC)
+ * Base DC for preparation checks (uses journey DC)
  */
 export const PREPARATION_BASE_DC = 13;
 
 /**
  * Icon mapping for preparation effects
+ * Uses standard Foundry VTT icons that are guaranteed to exist
  */
 export const PREPARATION_ICONS = {
-  assistAlly: 'icons/skills/social/diplomacy-handshake-yellow.webp',
+  // Verbündeten Unterstützen - Helping hands (PF2E aid icon)
+  assistAlly: 'systems/pf2e/icons/spells/guidance.webp',
+  // Tränke Brauen - Potion flask (Foundry core icon)
   brewTonics: 'icons/consumables/potions/potion-flask-corked-orange.webp',
-  carouse: 'icons/consumables/drinks/alcohol-beer-mug-brown.webp',
-  chartCourse: 'icons/sundries/documents/document-sealed-brown-red.webp',
-  consultTheOccult: 'icons/magic/symbols/runes-star-pentagon-orange.webp',
-  packUp: 'icons/svg/chest.svg',  // V13-compatible icon
-  prepareAFeast: 'icons/consumables/food/turkey-leg-cooked-brown.webp',
-  procureBeastsOfBurden: 'icons/creatures/mammals/ox-buffalo-horned-brown.webp',
-  procureMounts: 'icons/creatures/mammals/horse-brown.webp',
-  procureSupplies: 'icons/commodities/treasure/chest-simple-wooden.webp',
-  rallyTheParty: 'icons/magic/sonic/bell-alarm-ringing-gold.webp',
-  research: 'icons/sundries/documents/book-worn-brown.webp',
-  seekAdvice: 'icons/skills/social/diplomacy-handshake.webp',
-  studyTheWeather: 'icons/magic/air/fog-gas-smoke-swirling-gray.webp'
+  // Feiern - Celebration/party (Foundry core icon)
+  carouse: 'icons/consumables/drinks/alcohol-jug-spirits-brown.webp',
+  // Route Planen - Map/scroll
+  chartCourse: 'systems/pf2e/icons/equipment/adventuring-gear/map.webp',
+  // Das Okkulte Befragen - Crystal ball/divination
+  consultTheOccult: 'systems/pf2e/icons/spells/augury.webp',
+  // Gepäck Packen - Backpack
+  packUp: 'systems/pf2e/icons/equipment/adventuring-gear/backpack.webp',
+  // Festmahl Bereiten - Feast/food
+  prepareAFeast: 'systems/pf2e/icons/equipment/consumables/other-consumables/rations.webp',
+  // Gruppe Vorbereiten - Leadership/group
+  prepareTheParty: 'systems/pf2e/icons/spells/inspire-courage.webp',
+  // Reittiere Beschaffen - Horse (Foundry core icon)
+  procureMounts: 'icons/environment/creatures/horse-brown.webp',
+  // Vorräte Beschaffen - Supplies/crate
+  procureSupplies: 'systems/pf2e/icons/equipment/adventuring-gear/adventurers-pack.webp',
+  // Gruppe Motivieren - Rally/inspiration
+  rallyTheParty: 'systems/pf2e/icons/spells/inspire-heroics.webp',
+  // Nachforschungen - Book/research
+  research: 'systems/pf2e/icons/equipment/adventuring-gear/scholarly-journal.webp',
+  // Rat Einholen - Seeking advice
+  seekAdvice: 'systems/pf2e/icons/spells/read-omens.webp',
+  // Wetter Studieren - Weather/nature
+  studyTheWeather: 'systems/pf2e/icons/spells/control-weather.webp'
 };
 
 /**
- * Rally the Party options
+ * Legacy RALLY_OPTIONS for backwards compatibility with main.js
+ * The new PF2E design uses simple Will save bonuses instead of dropdown options
  */
-export const RALLY_OPTIONS = {
-  encouraging: {
-    id: 'encouraging',
-    name: 'Encouraging',
-    description: 'Each party member begins the Journey with Inspiration.',
-    shortDescription: 'Party has Inspiration'
-  },
-  galvanising: {
-    id: 'galvanising',
-    name: 'Galvanising',
-    description: 'Each party member gains +1 to ability checks until the end of the Journey.',
-    shortDescription: '+1 status bonus to skill checks',
-    rules: [{
-      key: 'FlatModifier',
-      selector: 'skill-check',
-      value: 1,
-      type: 'status',
-      label: 'Rally the Party (Galvanising)'
-    }]
-  },
-  hopeful: {
-    id: 'hopeful',
-    name: 'Hopeful',
-    description: 'Each party member has advantage on ability checks and saving throws during the first Encounter.',
-    shortDescription: 'Advantage on first encounter checks/saves'
-  },
-  resolute: {
-    id: 'resolute',
-    name: 'Resolute',
-    description: 'Each party member gains temporary hit points equal to twice their Proficiency Bonus.',
-    shortDescription: 'Temp HP = 2x Proficiency'
-  },
-  solemn: {
-    id: 'solemn',
-    name: 'Solemn',
-    description: 'Each party member gains +1 to saving throws until the end of the Journey.',
-    shortDescription: '+1 status bonus to saving throws',
-    rules: [{
-      key: 'FlatModifier',
-      selector: 'saving-throw',
-      value: 1,
-      type: 'status',
-      label: 'Rally the Party (Solemn)'
-    }]
-  }
+export const RALLY_OPTIONS = {};
+
+/**
+ * Degree of success enumeration
+ */
+export const DEGREE_OF_SUCCESS = {
+  CRITICAL_SUCCESS: 'criticalSuccess',
+  SUCCESS: 'success',
+  FAILURE: 'failure',
+  CRITICAL_FAILURE: 'criticalFailure'
 };
 
 /**
- * All available preparations from the book
+ * Calculate degree of success from roll result
+ * @param {number} total - Roll total
+ * @param {number} dc - Difficulty class
+ * @returns {string} Degree of success
+ */
+export function calculateDegreeOfSuccess(total, dc) {
+  const difference = total - dc;
+  if (difference >= 10) return DEGREE_OF_SUCCESS.CRITICAL_SUCCESS;
+  if (difference >= 0) return DEGREE_OF_SUCCESS.SUCCESS;
+  if (difference >= -10) return DEGREE_OF_SUCCESS.FAILURE;
+  return DEGREE_OF_SUCCESS.CRITICAL_FAILURE;
+}
+
+/**
+ * All available preparations - PF2E Redesign with German names
+ * Each preparation has 4 success levels: criticalSuccess, success, failure, criticalFailure
  */
 export const PREPARATIONS = {
   assistAlly: {
     id: 'assistAlly',
-    name: 'Assist Ally',
+    name: 'Verbündeten Unterstützen',
+    nameEn: 'Assist Ally',
     skillSlug: 'diplomacy',
-    description: 'You assist an ally with their Preparations. One other character may make the ability check for their Preparation with advantage.',
-    successEffect: 'One ally gains advantage on their Preparation check.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 }
+    description: 'Du unterstützt einen Verbündeten bei seinen Vorbereitungen.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Ein Verbündeter würfelt seine Vorbereitung mit Fortune (2x würfeln, besser nehmen).',
+        effect: { type: 'fortune', target: 'ally' }
+      },
+      success: {
+        description: 'Ein Verbündeter würfelt seine Vorbereitung mit Fortune (2x würfeln, besser nehmen).',
+        effect: { type: 'fortune', target: 'ally' }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: 'Kein Effekt.',
+        effect: null
+      }
+    }
   },
+
   brewTonics: {
     id: 'brewTonics',
-    name: 'Brew Tonics',
+    name: 'Tränke Brauen',
+    nameEn: 'Brew Tonics',
     skillSlug: 'crafting',
-    description: 'You bolster your party with fortifying brews, potions, salves, or tinctures.',
-    successEffect: 'Each party member has advantage on Constitution checks and saving throws until the Journey ends. A character loses this benefit the first time they fail a Constitution check or saving throw.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Brew Tonics',
-      description: 'Advantage on Constitution checks and saving throws (lose on first failure).',
-      applyToAll: true
+    description: 'Du stärkst deine Gruppe mit kräftigenden Gebräuen, Tränken, Salben oder Tinkturen.',
+    outcomes: {
+      criticalSuccess: {
+        description: '+2 Status auf Reflex-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'reflex',
+            value: 2,
+            type: 'status',
+            label: 'Tränke Brauen (Krit)'
+          }]
+        }
+      },
+      success: {
+        description: '+1 Status auf Reflex-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'reflex',
+            value: 1,
+            type: 'status',
+            label: 'Tränke Brauen'
+          }]
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: '-1 Status auf Reflex-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'reflex',
+            value: -1,
+            type: 'status',
+            label: 'Tränke Brauen (Fehlschlag)'
+          }]
+        }
+      }
     }
   },
+
   carouse: {
     id: 'carouse',
-    name: 'Carouse',
+    name: 'Feiern',
+    nameEn: 'Carouse',
     skillSlug: 'athletics',
     altSkillSlug: 'performance',
-    description: 'You decide the best way to prepare for the road ahead is to enjoy life now — visiting bars, enjoying fine meals, and swapping stories with the locals.',
-    successEffect: 'Success: Advantage on all ability checks during the first Encounter. Success by 5+: Also reduce Journey Difficulty by 2.',
-    failureEffect: 'Failure: Disadvantage on all ability checks during the first Encounter. Failure by 5+: Also skip the Rest step and begin with half Hit Dice.',
-    difficultyModifier: { success: -2, failure: 0 },
-    effectOnSuccess: {
-      name: 'Carouse',
-      description: 'Advantage on all ability checks during the first Encounter.',
-      applyToAll: true
+    description: 'Du entscheidest, dass der beste Weg sich auf die Reise vorzubereiten ist, das Leben jetzt zu genießen — Bars besuchen, gutes Essen genießen und Geschichten mit den Einheimischen austauschen.',
+    outcomes: {
+      criticalSuccess: {
+        description: '+2 Status auf ALLE Saves (persönlich) + Reise DC -2.',
+        effect: {
+          type: 'combined',
+          effects: [
+            {
+              type: 'flatModifier',
+              target: 'self',
+              duration: 'journey',
+              rules: [
+                { key: 'FlatModifier', selector: 'fortitude', value: 2, type: 'status', label: 'Feiern (Krit)' },
+                { key: 'FlatModifier', selector: 'reflex', value: 2, type: 'status', label: 'Feiern (Krit)' },
+                { key: 'FlatModifier', selector: 'will', value: 2, type: 'status', label: 'Feiern (Krit)' }
+              ]
+            },
+            { type: 'dcModifier', value: -2 }
+          ]
+        }
+      },
+      success: {
+        description: '+1 Status auf ALLE Saves (persönlich).',
+        effect: {
+          type: 'flatModifier',
+          target: 'self',
+          duration: 'journey',
+          rules: [
+            { key: 'FlatModifier', selector: 'fortitude', value: 1, type: 'status', label: 'Feiern' },
+            { key: 'FlatModifier', selector: 'reflex', value: 1, type: 'status', label: 'Feiern' },
+            { key: 'FlatModifier', selector: 'will', value: 1, type: 'status', label: 'Feiern' }
+          ]
+        }
+      },
+      failure: {
+        description: '-1 Status auf ALLE Saves (persönlich).',
+        effect: {
+          type: 'flatModifier',
+          target: 'self',
+          duration: 'journey',
+          rules: [
+            { key: 'FlatModifier', selector: 'fortitude', value: -1, type: 'status', label: 'Feiern (Fehlschlag)' },
+            { key: 'FlatModifier', selector: 'reflex', value: -1, type: 'status', label: 'Feiern (Fehlschlag)' },
+            { key: 'FlatModifier', selector: 'will', value: -1, type: 'status', label: 'Feiern (Fehlschlag)' }
+          ]
+        }
+      },
+      criticalFailure: {
+        description: '-2 Status auf ALLE Saves (persönlich) + keine Rast vor Reisebeginn.',
+        effect: {
+          type: 'combined',
+          effects: [
+            {
+              type: 'flatModifier',
+              target: 'self',
+              duration: 'journey',
+              rules: [
+                { key: 'FlatModifier', selector: 'fortitude', value: -2, type: 'status', label: 'Feiern (Krit Fehlschlag)' },
+                { key: 'FlatModifier', selector: 'reflex', value: -2, type: 'status', label: 'Feiern (Krit Fehlschlag)' },
+                { key: 'FlatModifier', selector: 'will', value: -2, type: 'status', label: 'Feiern (Krit Fehlschlag)' }
+              ]
+            },
+            { type: 'noRest' }
+          ]
+        }
+      }
     }
   },
+
   chartCourse: {
     id: 'chartCourse',
-    name: 'Chart Course',
+    name: 'Route Planen',
+    nameEn: 'Chart Course',
     skillSlug: 'survival',
     altSkillSlug: 'crafting',
-    description: 'Using the information you have about your origin and destination, you lay out the best possible course to follow for your Journey.',
-    successEffect: 'Journey Difficulty reduced by 5.',
-    failureEffect: 'Journey Difficulty increased by 2.',
-    difficultyModifier: { success: -5, failure: 2 }
+    description: 'Mit den Informationen über Herkunft und Ziel legst du den bestmöglichen Kurs für eure Reise fest.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Decke 1-3 Orte auf (je nach Reiselänge) + erfahre exakten Encounter-Typ für EINEN davon.',
+        effect: {
+          type: 'revealNodes',
+          count: 'byJourneyLength', // 1-3 based on journey length
+          revealEncounterType: 1
+        }
+      },
+      success: {
+        description: 'Decke 1-3 Orte auf (je nach Reiselänge).',
+        effect: {
+          type: 'revealNodes',
+          count: 'byJourneyLength'
+        }
+      },
+      failure: {
+        description: 'Ein Ort bekommt eine falsche Farbe.',
+        effect: {
+          type: 'fakeColor',
+          count: 1
+        }
+      },
+      criticalFailure: {
+        description: 'Zwei Orte bekommen falsche Farben.',
+        effect: {
+          type: 'fakeColor',
+          count: 2
+        }
+      }
+    }
   },
+
   consultTheOccult: {
     id: 'consultTheOccult',
-    name: 'Consult the Occult',
+    name: 'Das Okkulte Befragen',
+    nameEn: 'Consult the Occult',
     skillSlug: 'arcana',
     altSkillSlug: 'occultism',
-    description: 'You spend a few hours practising esoteric traditions to search for signs and portents concerning the difficulties that lie ahead.',
-    successEffect: 'Each party member may reroll a failed saving throw once before the end of the Journey.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Consult the Occult',
-      description: 'May reroll a failed saving throw once during this Journey.',
-      applyToAll: true
+    description: 'Du verbringst einige Stunden damit, esoterische Traditionen zu praktizieren und nach Zeichen und Omen für die bevorstehenden Schwierigkeiten zu suchen.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Erhalte 2x die Fähigkeit, einen Encounter-Typ neu zu würfeln.',
+        effect: {
+          type: 'encounterReroll',
+          count: 2,
+          owner: 'player'
+        }
+      },
+      success: {
+        description: 'Erhalte 1x die Fähigkeit, einen Encounter-Typ neu zu würfeln.',
+        effect: {
+          type: 'encounterReroll',
+          count: 1,
+          owner: 'player'
+        }
+      },
+      failure: {
+        description: 'Der GM erhält 1x die Fähigkeit, einen Encounter-Typ neu zu würfeln.',
+        effect: {
+          type: 'encounterReroll',
+          count: 1,
+          owner: 'gm'
+        }
+      },
+      criticalFailure: {
+        description: 'Der GM erhält 2x die Fähigkeit, einen Encounter-Typ neu zu würfeln.',
+        effect: {
+          type: 'encounterReroll',
+          count: 2,
+          owner: 'gm'
+        }
+      }
     }
   },
+
   packUp: {
     id: 'packUp',
-    name: 'Pack Up',
+    name: 'Gepäck Packen',
+    nameEn: 'Pack Up',
     skillSlug: 'athletics',
-    description: 'You lug, haul, and consolidate the party\'s supplies, then painstakingly organise and pack them tightly to make them as easy to carry as possible.',
-    successEffect: 'Journey Difficulty reduced by 2.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: -2, failure: 0 }
+    description: 'Du schleppst, trägst und konsolidierst die Vorräte der Gruppe, dann organisierst und packst du sie sorgfältig, um sie so leicht wie möglich zu transportieren.',
+    outcomes: {
+      criticalSuccess: {
+        description: '+2 Status auf Fortitude-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'fortitude',
+            value: 2,
+            type: 'status',
+            label: 'Gepäck Packen (Krit)'
+          }]
+        }
+      },
+      success: {
+        description: '+1 Status auf Fortitude-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'fortitude',
+            value: 1,
+            type: 'status',
+            label: 'Gepäck Packen'
+          }]
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: '-1 Status auf Fortitude-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'fortitude',
+            value: -1,
+            type: 'status',
+            label: 'Gepäck Packen (Fehlschlag)'
+          }]
+        }
+      }
+    }
   },
+
   prepareAFeast: {
     id: 'prepareAFeast',
-    name: 'Prepare a Feast',
+    name: 'Festmahl Bereiten',
+    nameEn: 'Prepare a Feast',
     skillSlug: 'survival',
     altSkillSlug: 'crafting',
-    description: 'You prepare a feast, either simple and hearty or elaborate and decadent, lavishing your party with good food and company to lift their spirits before the Journey begins.',
-    successEffect: 'The first time each party member suffers an effect that would make them gain a level of Exhaustion during the Journey, they do not gain Exhaustion.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Feast Prepared',
-      description: 'Ignore the first level of Exhaustion you would gain during this Journey.',
-      applyToAll: true
+    description: 'Du bereitest ein Festmahl vor, einfach und herzhaft oder aufwendig und dekadent, und verwöhnst deine Gruppe mit gutem Essen und Gesellschaft, um ihre Stimmung vor Reisebeginn zu heben.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Ignoriere erstes Exhaustion (alle) + Reise DC -2.',
+        effect: {
+          type: 'combined',
+          effects: [
+            {
+              type: 'ignoreExhaustion',
+              target: 'all',
+              count: 1
+            },
+            { type: 'dcModifier', value: -2 }
+          ]
+        }
+      },
+      success: {
+        description: 'Ignoriere erstes Exhaustion (alle) + Reise DC -1.',
+        effect: {
+          type: 'combined',
+          effects: [
+            {
+              type: 'ignoreExhaustion',
+              target: 'all',
+              count: 1
+            },
+            { type: 'dcModifier', value: -1 }
+          ]
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: 'Alle Spieler starten mit 1 Stufe Exhaustion.',
+        effect: {
+          type: 'exhaustion',
+          target: 'all',
+          value: 1
+        }
+      }
     }
   },
-  procureBeastsOfBurden: {
-    id: 'procureBeastsOfBurden',
-    name: 'Procure Beasts of Burden',
+
+  prepareTheParty: {
+    id: 'prepareTheParty',
+    name: 'Gruppe Vorbereiten',
+    nameEn: 'Prepare the Party',
     skillSlug: 'diplomacy',
-    altSkillSlug: 'nature',
-    description: 'You take time to find capable creatures to bear your party\'s supplies on the Journey ahead.',
-    successEffect: 'Journey Difficulty reduced by 2.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: -2, failure: 0 }
+    description: 'Du koordinierst und organisierst die Gruppe, um die Reise effizienter zu gestalten.',
+    outcomes: {
+      criticalSuccess: {
+        description: '-1 Encounter insgesamt + +1 Status auf alle Saves.',
+        effect: {
+          type: 'combined',
+          effects: [
+            { type: 'encounterCount', value: -1 },
+            {
+              type: 'flatModifier',
+              target: 'all',
+              duration: 'journey',
+              rules: [
+                { key: 'FlatModifier', selector: 'fortitude', value: 1, type: 'status', label: 'Gruppe Vorbereiten (Krit)' },
+                { key: 'FlatModifier', selector: 'reflex', value: 1, type: 'status', label: 'Gruppe Vorbereiten (Krit)' },
+                { key: 'FlatModifier', selector: 'will', value: 1, type: 'status', label: 'Gruppe Vorbereiten (Krit)' }
+              ]
+            }
+          ]
+        }
+      },
+      success: {
+        description: '-1 Encounter insgesamt.',
+        effect: {
+          type: 'encounterCount',
+          value: -1
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: '+1 Encounter insgesamt.',
+        effect: {
+          type: 'encounterCount',
+          value: 1
+        }
+      }
+    }
   },
+
   procureMounts: {
     id: 'procureMounts',
-    name: 'Procure Mounts',
+    name: 'Reittiere Beschaffen',
+    nameEn: 'Procure Mounts',
     skillSlug: 'diplomacy',
     altSkillSlug: 'stealth',
-    description: 'You search for riding animals to carry your party throughout the Journey. You can purchase mounts or attempt to steal them.',
-    successEffect: 'The party acquires a mount for each character (Agile, Rugged, or Strong type as determined by GM).',
-    failureEffect: 'Failure when stealing: You are spotted and must abandon plans. Failure by 5+: Caught in the act with consequences.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Mounted',
-      description: 'You have a mount for this Journey (Agile, Rugged, or Strong type).',
-      applyToAll: true
+    description: 'Du suchst nach Reittieren, um eure Gruppe während der Reise zu transportieren. Du kannst Reittiere kaufen oder versuchen, sie zu stehlen.',
+    // Only 2 outcome levels - success effect is strong enough
+    twoLevelOutcome: true,
+    outcomes: {
+      criticalSuccess: {
+        description: 'Erhalte die Fähigkeit, EIN Ort komplett zu überspringen.',
+        effect: {
+          type: 'nodeSkip',
+          count: 1
+        }
+      },
+      success: {
+        description: 'Erhalte die Fähigkeit, EIN Ort komplett zu überspringen.',
+        effect: {
+          type: 'nodeSkip',
+          count: 1
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: 'Kein Effekt.',
+        effect: null
+      }
     }
   },
+
   procureSupplies: {
     id: 'procureSupplies',
-    name: 'Procure Supplies',
+    name: 'Vorräte Beschaffen',
+    nameEn: 'Procure Supplies',
     skillSlug: 'diplomacy',
     altSkillSlug: 'survival',
     thirdSkillSlug: 'stealth',
-    description: 'You spend time inventorying the party\'s supplies and procuring the proper provisions to outfit the group for the challenges ahead.',
-    successEffect: 'Each of the Quartermaster\'s Supply Dice increase from a d6 to a d8.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Supplies Procured',
-      description: 'Quartermaster\'s Supply Dice are upgraded to d8s.',
-      applyToQuartermaster: true
+    description: 'Du inventarisierst die Vorräte der Gruppe und beschaffst die richtigen Versorgungsgüter, um die Gruppe für die bevorstehenden Herausforderungen auszustatten.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Jeder Spieler erhält +4 zusätzliche Hit Dice.',
+        effect: {
+          type: 'hitDice',
+          target: 'all',
+          value: 4
+        }
+      },
+      success: {
+        description: 'Jeder Spieler erhält +2 zusätzliche Hit Dice.',
+        effect: {
+          type: 'hitDice',
+          target: 'all',
+          value: 2
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: 'Jeder Spieler verliert 2 Hit Dice.',
+        effect: {
+          type: 'hitDice',
+          target: 'all',
+          value: -2
+        }
+      }
     }
   },
+
   rallyTheParty: {
     id: 'rallyTheParty',
-    name: 'Rally the Party',
+    name: 'Gruppe Motivieren',
+    nameEn: 'Rally the Party',
     skillSlug: 'performance',
-    description: 'You speak to or perform for your party members, mentally and emotionally preparing them for the long road ahead. Choose: Encouraging (Inspiration), Galvanising (+1 to checks), Hopeful (advantage on first encounter), Resolute (temp HP), or Solemn (+1 to saves).',
-    successEffect: 'Party gains the chosen benefit until the end of the Journey.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      hasDropdown: true,
-      dropdownOptions: 'RALLY_OPTIONS',
-      applyToAll: true
+    description: 'Du sprichst zu oder trittst vor deinen Gruppenmitgliedern auf, um sie mental und emotional auf die lange Reise vorzubereiten.',
+    outcomes: {
+      criticalSuccess: {
+        description: '+2 Status auf Will-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'will',
+            value: 2,
+            type: 'status',
+            label: 'Gruppe Motivieren (Krit)'
+          }]
+        }
+      },
+      success: {
+        description: '+1 Status auf Will-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'will',
+            value: 1,
+            type: 'status',
+            label: 'Gruppe Motivieren'
+          }]
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: '-1 Status auf Will-Saves (alle, ganze Reise).',
+        effect: {
+          type: 'flatModifier',
+          target: 'all',
+          duration: 'journey',
+          rules: [{
+            key: 'FlatModifier',
+            selector: 'will',
+            value: -1,
+            type: 'status',
+            label: 'Gruppe Motivieren (Fehlschlag)'
+          }]
+        }
+      }
     }
   },
+
   research: {
     id: 'research',
-    name: 'Research',
+    name: 'Nachforschungen',
+    nameEn: 'Research',
     skillSlug: 'society',
-    description: 'Poring over the records available at your origin, you search for relevant maps and information specific to the Journey you are about to undertake.',
-    successEffect: 'Each party member may reroll a failed ability check once before the end of the Journey.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Research',
-      description: 'May reroll a failed ability check once during this Journey.',
-      applyToAll: true
+    description: 'Du wälzt die verfügbaren Aufzeichnungen an deinem Ausgangspunkt und suchst nach relevanten Karten und Informationen für die bevorstehende Reise.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Decke 2 Orte auf + erfahre exakten Encounter-Typ für BEIDE.',
+        effect: {
+          type: 'revealNodes',
+          count: 2,
+          revealEncounterType: 2
+        }
+      },
+      success: {
+        description: 'Decke 1 Ort auf + erfahre exakten Encounter-Typ.',
+        effect: {
+          type: 'revealNodes',
+          count: 1,
+          revealEncounterType: 1
+        }
+      },
+      failure: {
+        description: 'Ein Ort bekommt eine falsche Farbe.',
+        effect: {
+          type: 'fakeColor',
+          count: 1
+        }
+      },
+      criticalFailure: {
+        description: 'Zwei Orte bekommen falsche Farben.',
+        effect: {
+          type: 'fakeColor',
+          count: 2
+        }
+      }
     }
   },
+
   seekAdvice: {
     id: 'seekAdvice',
-    name: 'Seek Advice',
+    name: 'Rat Einholen',
+    nameEn: 'Seek Advice',
     skillSlug: 'perception',
     altSkillSlug: 'diplomacy',
-    description: 'You ask local inhabitants or travellers to provide advice about the Journey you are about to make.',
-    successEffect: 'Each party member has advantage on Wisdom checks and saving throws until the Journey ends. A character loses this benefit the first time they fail a Wisdom check or saving throw.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: 0, failure: 0 },
-    effectOnSuccess: {
-      name: 'Seek Advice',
-      description: 'Advantage on Wisdom checks and saving throws (lose on first failure).',
-      applyToAll: true
+    description: 'Du fragst Einheimische oder Reisende um Rat für die bevorstehende Reise.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Wähle eine Farbe und decke ZWEI Orte dieser Farbe auf.',
+        effect: {
+          type: 'revealByColor',
+          count: 2,
+          chooseColor: true
+        }
+      },
+      success: {
+        description: 'Wähle eine Farbe und decke EINEN Ort dieser Farbe auf.',
+        effect: {
+          type: 'revealByColor',
+          count: 1,
+          chooseColor: true
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: 'Ein Ort bekommt eine falsche Farbe.',
+        effect: {
+          type: 'fakeColor',
+          count: 1
+        }
+      }
     }
   },
+
   studyTheWeather: {
     id: 'studyTheWeather',
-    name: 'Study the Weather',
+    name: 'Wetter Studieren',
+    nameEn: 'Study the Weather',
     skillSlug: 'nature',
-    description: 'You survey the state of nature around you and do your best to forecast the weather, allowing you to prepare accordingly.',
-    successEffect: 'Journey Difficulty reduced by 2.',
-    failureEffect: 'No effect.',
-    difficultyModifier: { success: -2, failure: 0 }
+    description: 'Du beobachtest den Zustand der Natur um dich herum und versuchst das Wetter vorherzusagen, damit du dich entsprechend vorbereiten kannst.',
+    outcomes: {
+      criticalSuccess: {
+        description: 'Reise DC -4.',
+        effect: {
+          type: 'dcModifier',
+          value: -4
+        }
+      },
+      success: {
+        description: 'Reise DC -2.',
+        effect: {
+          type: 'dcModifier',
+          value: -2
+        }
+      },
+      failure: {
+        description: 'Kein Effekt.',
+        effect: null
+      },
+      criticalFailure: {
+        description: 'Reise DC +2.',
+        effect: {
+          type: 'dcModifier',
+          value: 2
+        }
+      }
+    }
   }
 };
 
@@ -293,4 +755,27 @@ export function getPreparationsBySkill() {
     grouped[skill].push(prep);
   }
   return grouped;
+}
+
+/**
+ * Get the outcome for a preparation based on degree of success
+ * @param {string} prepId - Preparation ID
+ * @param {string} degree - Degree of success (from DEGREE_OF_SUCCESS)
+ * @returns {Object|null} Outcome data or null
+ */
+export function getPreparationOutcome(prepId, degree) {
+  const prep = getPreparation(prepId);
+  if (!prep || !prep.outcomes) return null;
+  return prep.outcomes[degree] ?? null;
+}
+
+/**
+ * Calculate how many nodes to reveal based on journey length
+ * @param {number} journeyLength - Total number of nodes in journey
+ * @returns {number} Number of nodes to reveal (1-3)
+ */
+export function getRevealCountByJourneyLength(journeyLength) {
+  if (journeyLength <= 4) return 1;
+  if (journeyLength <= 8) return 2;
+  return 3;
 }

@@ -1,0 +1,60 @@
+<form class="encounter-options-dialog">
+  {{!-- Location Info --}}
+  <div class="location-info">
+    <h3><i class="fas fa-map-marker-alt"></i> {{locationName}}</h3>
+    <div class="location-meta">
+      <span class="node-type-badge {{nodeType}}">
+        {{#if (eq nodeType "green")}}Sicher{{/if}}
+        {{#if (eq nodeType "yellow")}}Gemischt{{/if}}
+        {{#if (eq nodeType "red")}}Gefaehrlich{{/if}}
+      </span>
+      <span class="biome-badge">{{biomeName}}</span>
+    </div>
+  </div>
+
+  <hr>
+
+  {{!-- Fronten --}}
+  <div class="fronts-section">
+    <h4>FRONTEN (Optional - keine Auswahl = alle)</h4>
+    <div class="fronts-list">
+      {{#each fronts}}
+      <label class="front-option">
+        <input type="checkbox" name="selectedFronts" value="{{id}}" {{#if checked}}checked{{/if}}>
+        <span class="front-icon">{{{icon}}}</span>
+        <span class="front-name">{{name}}</span>
+      </label>
+      {{/each}}
+    </div>
+    <p class="hint-text">Beschraenkt Dangers und Secrets auf ausgewaehlte Fronten.</p>
+  </div>
+
+  <hr>
+
+  {{!-- Spieler --}}
+  <div class="players-section">
+    <h4>ANWESENDE SPIELER (fuer Hook-Auswahl)</h4>
+    <div class="players-list">
+      {{#each players}}
+      <label class="player-option">
+        <input type="checkbox" name="activePlayers" value="{{id}}" {{#if checked}}checked{{/if}}>
+        <span class="player-icon">{{{icon}}}</span>
+        <span class="player-name">{{name}} ({{class}})</span>
+      </label>
+      {{/each}}
+    </div>
+    <p class="hint-text">Gruppen-Hooks (Beutelbart, Errtu, Vaelorn, etc.) werden immer einbezogen.</p>
+  </div>
+
+  <hr>
+
+  {{!-- Comedic Relief --}}
+  <div class="comedic-section">
+    <label class="comedic-option">
+      <input type="checkbox" name="comedicRelief" value="true">
+      <span class="comedic-icon">😎</span>
+      <span class="comedic-label">COMEDIC RELIEF (Humorvoller Encounter)</span>
+    </label>
+    <p class="hint-text">Der Encounter soll lustig und unterhaltsam sein - eine leichte Pause vom ernsten Abenteuer.</p>
+  </div>
+</form>
