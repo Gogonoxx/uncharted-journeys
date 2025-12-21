@@ -1,0 +1,7 @@
+2025/12/21-16:57:32.034 510c Recovering log #51
+2025/12/21-16:57:32.043 510c Delete type=0 #51
+2025/12/21-16:57:32.043 510c Delete type=3 #50
+2025/12/21-17:26:34.915 1b18 Level-0 table #55: started
+2025/12/21-17:26:34.915 1b18 Level-0 table #55: 0 bytes OK
+2025/12/21-17:26:34.920 1b18 Delete type=0 #53
+2025/12/21-17:26:34.933 1b18 Manual compaction at level-0 from '!journal!3l7kYfVoaVQ6veev' @ 72057594037927935 : 1 .. '!journal.pages!ipzAsnMNJtVHZ5zk.JsACHZeWc1sm712b' @ 0 : 0; will stop at (end)
