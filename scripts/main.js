@@ -7,6 +7,7 @@ import { JourneyManagerApp } from './journey-app.js';
 import { JourneySessionManager } from './journey-session.js';
 import { ExhaustionManager } from './exhaustion-manager.js';
 import { ENCOUNTER_TYPE_RULES } from './data/encounter-type-rules.js';
+import { NodeEncounterApp } from './node-encounter-app.js';
 
 // Store a reference to the app instance on the module
 let journeyApp = null;
@@ -197,7 +198,8 @@ Hooks.once('ready', async () => {
     open: () => journeyApp.render(true),
     encounterTypeUUIDs: ENCOUNTER_TYPE_UUIDS,
     ExhaustionManager: ExhaustionManager,
-    JourneySessionManager: JourneySessionManager
+    JourneySessionManager: JourneySessionManager,
+    NodeEncounterApp: NodeEncounterApp
   };
 
   // Set up delegated event handler for chat buttons
@@ -301,25 +303,32 @@ async function handleSetPreparationResult(element, message) {
   const prepId = message?.flags?.['uncharted-journeys']?.preparationId;
 
   if (role && result) {
-    const { getPreparation, PREPARATION_ICONS, RALLY_OPTIONS } = await import('./data/preparations.js');
+    const { getPreparation, PREPARATION_ICONS } = await import('./data/preparations.js');
     const prep = getPreparation(prepId);
     const diffMod = prep?.difficultyModifier?.[result] || 0;
 
     await JourneySessionManager.setPreparationResult(role, result, diffMod);
 
-    // Create effects on party members if preparation succeeded and has effectOnSuccess
-    if (result === 'success' && prep?.effectOnSuccess) {
+    // Create effects on party members based on the outcome
+    const outcomeEffect = prep?.outcomes?.[result]?.effect;
+    if (outcomeEffect) {
       const session = JourneySessionManager.getCurrent();
       if (session) {
-        const messageEl = element.closest('.chat-message');
-        await createPreparationEffects(prep, prepId, session, messageEl, PREPARATION_ICONS, RALLY_OPTIONS);
+        await applyPreparationOutcomeEffect(prep, prepId, result, session, role, PREPARATION_ICONS);
       }
     }
 
     // Update the message to show the result
     const buttons = element.closest('.outcome-buttons');
     if (buttons) {
-      buttons.innerHTML = `<span class="result-${result}"><i class="fas fa-${result === 'success' ? 'check' : 'times'}-circle"></i> ${result.charAt(0).toUpperCase() + result.slice(1)}</span>`;
+      const resultLabel = {
+        criticalSuccess: 'Critical Success',
+        success: 'Success',
+        failure: 'Failure',
+        criticalFailure: 'Critical Failure'
+      }[result] || result;
+      const isPositive = result === 'success' || result === 'criticalSuccess';
+      buttons.innerHTML = `<span class="result-${result}"><i class="fas fa-${isPositive ? 'check' : 'times'}-circle"></i> ${resultLabel}</span>`;
     }
   }
 }
@@ -898,66 +907,681 @@ Hooks.on('uncharted-journeys.journeyUpdated', (value) => {
 });
 
 /**
- * Create preparation success effects on party members
- * @param {Object} prep - The preparation data
- * @param {string} prepId - The preparation ID
- * @param {Object} session - The current journey session
- * @param {HTMLElement} element - The chat message element
- * @param {Object} PREPARATION_ICONS - Icon mapping
- * @param {Object} RALLY_OPTIONS - Rally the Party options
+ * Handle Drawing double-clicks to open node encounter windows
+ * Works from ANY tool (Token Controls, Drawing Tools, etc.)
+ * Only works for GM and only for Drawings with uncharted-journeys node flags
  */
-async function createPreparationEffects(prep, prepId, session, element, PREPARATION_ICONS, RALLY_OPTIONS) {
-  const effectConfig = prep.effectOnSuccess;
-  if (!effectConfig) return;
 
-  // Determine which actors to apply effects to
+// Track last click time and position for double-click detection
+let _lastCanvasClickTime = 0;
+let _lastCanvasClickPos = { x: 0, y: 0 };
+
+Hooks.on('canvasReady', () => {
+  if (!game.user.isGM) return;
+
+  // Remove old listener if exists
+  canvas.stage.off('pointerdown', onCanvasPointerDown);
+
+  // Add canvas-level click listener that works regardless of active tool
+  canvas.stage.on('pointerdown', onCanvasPointerDown);
+});
+
+/**
+ * Handle canvas pointer down - check if clicking on a journey marker
+ * @param {PIXI.InteractionEvent} event
+ */
+function onCanvasPointerDown(event) {
+  if (!game.user.isGM) return;
+
+  // Get canvas coordinates from the event
+  const pos = event.data.getLocalPosition(canvas.stage);
+  const now = Date.now();
+
+  // Check for double-click (same position within 400ms)
+  const distance = Math.hypot(pos.x - _lastCanvasClickPos.x, pos.y - _lastCanvasClickPos.y);
+  const isDoubleClick = (now - _lastCanvasClickTime < 400) && (distance < 50);
+
+  // Update last click tracking
+  _lastCanvasClickTime = now;
+  _lastCanvasClickPos = { x: pos.x, y: pos.y };
+
+  if (!isDoubleClick) return;
+
+  // Check if click position intersects with any journey marker Drawing
+  const journeyDrawing = findJourneyMarkerAtPosition(pos.x, pos.y);
+
+  if (journeyDrawing) {
+    event.stopPropagation();
+    NodeEncounterApp.openForDrawing(journeyDrawing);
+  }
+}
+
+/**
+ * Find a journey marker Drawing at the given canvas position
+ * @param {number} x - Canvas X coordinate
+ * @param {number} y - Canvas Y coordinate
+ * @returns {DrawingDocument|null}
+ */
+function findJourneyMarkerAtPosition(x, y) {
+  if (!canvas?.drawings?.placeables) return null;
+
+  for (const drawing of canvas.drawings.placeables) {
+    const flags = drawing.document?.flags?.['uncharted-journeys'];
+    if (!flags?.nodeId) continue;
+
+    // Get drawing bounds
+    const doc = drawing.document;
+    const bounds = {
+      left: doc.x,
+      right: doc.x + (doc.shape?.width || 60),
+      top: doc.y,
+      bottom: doc.y + (doc.shape?.height || 60)
+    };
+
+    // Check if point is inside drawing bounds
+    if (x >= bounds.left && x <= bounds.right && y >= bounds.top && y <= bounds.bottom) {
+      return drawing.document;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * When drawings are created, no special setup needed anymore
+ * The canvas-level handler will catch all clicks
+ */
+Hooks.on('createDrawing', (drawing, options, userId) => {
+  // Just log for debugging
+  if (drawing.flags?.['uncharted-journeys']?.nodeId) {
+    console.log('Uncharted Journeys: New journey marker created:', drawing.flags['uncharted-journeys'].nodeId);
+  }
+});
+
+/**
+ * Apply preparation outcome effects to party members
+ * Uses the new outcomes structure with 4 degrees of success
+ * @param {Object} prep - Preparation definition
+ * @param {string} prepId - Preparation ID
+ * @param {string} result - Degree of success (criticalSuccess, success, failure, criticalFailure)
+ * @param {Object} session - Current journey session
+ * @param {string} role - Role of the actor who performed the preparation
+ * @param {Object} PREPARATION_ICONS - Icon mapping
+ */
+async function applyPreparationOutcomeEffect(prep, prepId, result, session, role, PREPARATION_ICONS) {
+  console.log('=== applyPreparationOutcomeEffect CALLED ===');
+  console.log('Prep:', prep?.name, 'prepId:', prepId, 'result:', result);
+
+  const outcome = prep?.outcomes?.[result];
+  const effectConfig = outcome?.effect;
+
+  console.log('Outcome:', outcome);
+  console.log('Effect config:', effectConfig);
+
+  if (!effectConfig) {
+    console.log('No effect config found, returning early');
+    return;
+  }
+
+  // Handle DC modifiers (applied to session, not actors)
+  // NOTE: session.difficulty is a GETTER that calculates from difficultyModifiers array
+  // We must add to difficultyModifiers, not try to set difficulty directly!
+  if (effectConfig.type === 'dcModifier') {
+    console.log('=== DC MODIFIER HANDLER ===');
+    const currentDC = session.difficulty || 15;
+    console.log(`DC Change: ${currentDC} + ${effectConfig.value}`);
+
+    // Add to difficultyModifiers array (NOT session.difficulty which is a computed getter!)
+    const newModifiers = [...session.difficultyModifiers, {
+      source: `preparation-${prepId}`,
+      value: effectConfig.value
+    }];
+    session.updateSource({ difficultyModifiers: newModifiers });
+    await JourneySessionManager.save(session);
+
+    // Verify the save worked
+    const savedSession = JourneySessionManager.getCurrent();
+    const newDC = savedSession?.difficulty || currentDC;
+    console.log('After save, session.difficulty =', newDC);
+
+    ui.notifications.info(`Reise-DC geändert: ${currentDC} → ${newDC}`);
+    // Refresh Journey App to show new DC
+    if (journeyApp?.rendered) {
+      journeyApp.render();
+    }
+    return;
+  }
+
+  // Handle combined effects (multiple effects in one)
+  if (effectConfig.type === 'combined') {
+    console.log('=== COMBINED EFFECT HANDLER ===');
+    console.log('Sub-effects:', effectConfig.effects);
+    let dcChanged = false;
+    for (const subEffect of effectConfig.effects) {
+      console.log('Processing sub-effect:', subEffect.type);
+      if (subEffect.type === 'dcModifier') {
+        console.log('=== DC MODIFIER (in combined) ===');
+        const currentDC = session.difficulty || 15;
+        console.log(`DC Change: ${currentDC} + ${subEffect.value}`);
+        // Add to difficultyModifiers array (NOT session.difficulty which is a computed getter!)
+        const newModifiers = [...session.difficultyModifiers, {
+          source: `preparation-${prepId}-combined`,
+          value: subEffect.value
+        }];
+        session.updateSource({ difficultyModifiers: newModifiers });
+        await JourneySessionManager.save(session);
+        const savedSession = JourneySessionManager.getCurrent();
+        const newDC = savedSession?.difficulty || currentDC;
+        ui.notifications.info(`Reise-DC geändert: ${currentDC} → ${newDC}`);
+        dcChanged = true;
+      } else if (subEffect.type === 'flatModifier') {
+        await applyFlatModifierEffect(prep, prepId, result, session, role, subEffect, PREPARATION_ICONS);
+      } else if (subEffect.type === 'noRest') {
+        session.updateSource({ noRestBeforeJourney: true });
+        await JourneySessionManager.save(session);
+        ui.notifications.warn(`${prep.name}: Keine Rast vor Reisebeginn möglich!`);
+      } else if (subEffect.type === 'encounterModifier' || subEffect.type === 'encounterCount') {
+        const currentMod = session.encounterCountModifier || 0;
+        session.updateSource({ encounterCountModifier: currentMod + subEffect.value });
+        await JourneySessionManager.save(session);
+        const sign = subEffect.value > 0 ? '+' : '';
+        ui.notifications.info(`${prep.name}: Anzahl Encounters ${sign}${subEffect.value}`);
+      } else if (subEffect.type === 'exhaustionImmunity' || subEffect.type === 'ignoreExhaustion') {
+        session.updateSource({ ignoreFirstExhaustion: true });
+        await JourneySessionManager.save(session);
+        ui.notifications.info(`${prep.name}: Erstes Exhaustion wird ignoriert.`);
+      }
+    }
+    // Refresh Journey App if DC was changed
+    if (dcChanged && journeyApp?.rendered) {
+      journeyApp.render();
+    }
+    return;
+  }
+
+  // Handle flat modifier effects (save bonuses/penalties)
+  if (effectConfig.type === 'flatModifier') {
+    await applyFlatModifierEffect(prep, prepId, result, session, role, effectConfig, PREPARATION_ICONS);
+    return;
+  }
+
+  // Handle fortune effects (Assist Ally)
+  if (effectConfig.type === 'fortune') {
+    ui.notifications.info(`${prep.name}: Ein Verbündeter kann seine nächste Vorbereitung mit Fortune würfeln.`);
+    return;
+  }
+
+  // Handle node skip (Procure Mounts)
+  if (effectConfig.type === 'nodeSkip') {
+    const currentSkips = session.nodeSkipsAvailable || 0;
+    session.updateSource({ nodeSkipsAvailable: currentSkips + effectConfig.count });
+    await JourneySessionManager.save(session);
+    ui.notifications.info(`${prep.name}: ${effectConfig.count} Ort(e) können übersprungen werden.`);
+
+    // Create reminder effect on the actor who performed the preparation
+    const member = session.partyMembers.find(m => m.role === role);
+    if (member) {
+      const actor = game.actors.get(member.actorId);
+      if (actor) {
+        const outcome = prep.outcomes[result];
+        const resultLabel = {
+          criticalSuccess: 'Krit. Erfolg',
+          success: 'Erfolg',
+          failure: 'Fehlschlag',
+          criticalFailure: 'Krit. Fehlschlag'
+        }[result] || result;
+
+        // Remove any existing node skip effects from this preparation
+        const existingEffects = actor.items.filter(i =>
+          i.type === 'effect' &&
+          i.flags?.['uncharted-journeys']?.isPreparationEffect &&
+          i.flags?.['uncharted-journeys']?.preparationId === prepId
+        );
+        if (existingEffects.length > 0) {
+          await actor.deleteEmbeddedDocuments('Item', existingEffects.map(e => e.id));
+        }
+
+        // Create reminder effect
+        const effectData = {
+          type: 'effect',
+          name: `${prep.name} (${resultLabel})`,
+          img: PREPARATION_ICONS[prepId] || 'icons/svg/aura.svg',
+          system: {
+            description: {
+              value: `<p>${outcome.description}</p><p>Die Gruppe kann <strong>${effectConfig.count} Ort(e)</strong> überspringen.</p>`
+            },
+            duration: {
+              unit: 'unlimited',
+              value: -1
+            },
+            tokenIcon: {
+              show: true
+            },
+            rules: []
+          },
+          flags: {
+            'uncharted-journeys': {
+              isPreparationEffect: true,
+              preparationId: prepId,
+              result: result,
+              nodeSkips: effectConfig.count
+            }
+          }
+        };
+        await actor.createEmbeddedDocuments('Item', [effectData]);
+      }
+    }
+    return;
+  }
+
+  // Handle encounter rerolls (Consult the Occult)
+  if (effectConfig.type === 'encounterReroll') {
+    const isForGM = effectConfig.owner === 'gm' || effectConfig.forGM;
+    if (isForGM) {
+      const currentGMRerolls = session.gmEncounterRerolls || 0;
+      session.updateSource({ gmEncounterRerolls: currentGMRerolls + effectConfig.count });
+    } else {
+      const currentPlayerRerolls = session.playerEncounterRerolls || 0;
+      session.updateSource({ playerEncounterRerolls: currentPlayerRerolls + effectConfig.count });
+    }
+    await JourneySessionManager.save(session);
+    const who = isForGM ? 'Der GM' : 'Die Spieler';
+    ui.notifications.info(`${prep.name}: ${who} kann ${effectConfig.count}x einen Encounter-Typ neu würfeln.`);
+
+    // Create reminder effect on the actor who performed the preparation
+    const member = session.partyMembers.find(m => m.role === role);
+    if (member) {
+      const actor = game.actors.get(member.actorId);
+      if (actor) {
+        const outcome = prep.outcomes[result];
+        const resultLabel = {
+          criticalSuccess: 'Krit. Erfolg',
+          success: 'Erfolg',
+          failure: 'Fehlschlag',
+          criticalFailure: 'Krit. Fehlschlag'
+        }[result] || result;
+
+        // Remove any existing encounter reroll effects from this preparation
+        const existingEffects = actor.items.filter(i =>
+          i.type === 'effect' &&
+          i.flags?.['uncharted-journeys']?.isPreparationEffect &&
+          i.flags?.['uncharted-journeys']?.preparationId === prepId
+        );
+        if (existingEffects.length > 0) {
+          await actor.deleteEmbeddedDocuments('Item', existingEffects.map(e => e.id));
+        }
+
+        // Create reminder effect
+        const effectData = {
+          type: 'effect',
+          name: `${prep.name} (${resultLabel})`,
+          img: PREPARATION_ICONS[prepId] || 'icons/svg/aura.svg',
+          system: {
+            description: {
+              value: `<p>${outcome.description}</p><p><strong>${who}</strong> kann <strong>${effectConfig.count}x</strong> einen Encounter-Typ neu würfeln.</p>`
+            },
+            duration: {
+              unit: 'unlimited',
+              value: -1
+            },
+            tokenIcon: {
+              show: true
+            },
+            rules: []
+          },
+          flags: {
+            'uncharted-journeys': {
+              isPreparationEffect: true,
+              preparationId: prepId,
+              result: result,
+              encounterRerolls: effectConfig.count,
+              rerollOwner: isForGM ? 'gm' : 'player'
+            }
+          }
+        };
+        await actor.createEmbeddedDocuments('Item', [effectData]);
+      }
+    }
+    return;
+  }
+
+  // Handle encounter count modification (Prepare the Party)
+  if (effectConfig.type === 'encounterModifier') {
+    const currentMod = session.encounterCountModifier || 0;
+    session.updateSource({ encounterCountModifier: currentMod + effectConfig.value });
+    await JourneySessionManager.save(session);
+    const sign = effectConfig.value > 0 ? '+' : '';
+    ui.notifications.info(`${prep.name}: Anzahl Encounters ${sign}${effectConfig.value}`);
+    return;
+  }
+
+  // Handle exhaustion immunity (Prepare a Feast)
+  if (effectConfig.type === 'exhaustionImmunity') {
+    session.updateSource({ ignoreFirstExhaustion: true });
+    await JourneySessionManager.save(session);
+    ui.notifications.info(`${prep.name}: Erstes Exhaustion wird ignoriert.`);
+
+    // Create reminder effect on all party members
+    for (const member of session.partyMembers) {
+      const actor = game.actors.get(member.actorId);
+      if (actor) {
+        const outcome = prep.outcomes[result];
+        const resultLabel = {
+          criticalSuccess: 'Krit. Erfolg',
+          success: 'Erfolg',
+          failure: 'Fehlschlag',
+          criticalFailure: 'Krit. Fehlschlag'
+        }[result] || result;
+
+        // Remove any existing effects from this preparation
+        const existingEffects = actor.items.filter(i =>
+          i.type === 'effect' &&
+          i.flags?.['uncharted-journeys']?.isPreparationEffect &&
+          i.flags?.['uncharted-journeys']?.preparationId === prepId
+        );
+        if (existingEffects.length > 0) {
+          await actor.deleteEmbeddedDocuments('Item', existingEffects.map(e => e.id));
+        }
+
+        const effectData = {
+          type: 'effect',
+          name: `${prep.name} (${resultLabel})`,
+          img: PREPARATION_ICONS[prepId] || 'icons/svg/aura.svg',
+          system: {
+            description: {
+              value: `<p>${outcome.description}</p><p><strong>Erstes Exhaustion wird ignoriert!</strong></p>`
+            },
+            duration: {
+              unit: 'unlimited',
+              value: -1
+            },
+            tokenIcon: {
+              show: true
+            },
+            rules: []
+          },
+          flags: {
+            'uncharted-journeys': {
+              isPreparationEffect: true,
+              preparationId: prepId,
+              result: result,
+              ignoreFirstExhaustion: true
+            }
+          }
+        };
+        await actor.createEmbeddedDocuments('Item', [effectData]);
+      }
+    }
+    return;
+  }
+
+  // Handle starting exhaustion (Prepare a Feast critical failure)
+  if (effectConfig.type === 'startingExhaustion' || effectConfig.type === 'exhaustion') {
+    for (const member of session.partyMembers) {
+      const actor = game.actors.get(member.actorId);
+      if (actor) {
+        for (let i = 0; i < (effectConfig.value || 1); i++) {
+          await ExhaustionManager.increaseExhaustion(actor);
+        }
+      }
+    }
+    ui.notifications.warn(`${prep.name}: Alle Spieler erhalten ${effectConfig.value || 1} Stufe(n) Exhaustion!`);
+    return;
+  }
+
+  // Handle ignore exhaustion (Prepare a Feast success)
+  if (effectConfig.type === 'ignoreExhaustion') {
+    session.updateSource({ ignoreFirstExhaustion: true });
+    await JourneySessionManager.save(session);
+    ui.notifications.info(`${prep.name}: Erstes Exhaustion wird ignoriert.`);
+
+    // Create reminder effect on all party members
+    for (const member of session.partyMembers) {
+      const actor = game.actors.get(member.actorId);
+      if (actor) {
+        const outcome = prep.outcomes[result];
+        const resultLabel = {
+          criticalSuccess: 'Krit. Erfolg',
+          success: 'Erfolg',
+          failure: 'Fehlschlag',
+          criticalFailure: 'Krit. Fehlschlag'
+        }[result] || result;
+
+        // Remove any existing effects from this preparation
+        const existingEffects = actor.items.filter(i =>
+          i.type === 'effect' &&
+          i.flags?.['uncharted-journeys']?.isPreparationEffect &&
+          i.flags?.['uncharted-journeys']?.preparationId === prepId
+        );
+        if (existingEffects.length > 0) {
+          await actor.deleteEmbeddedDocuments('Item', existingEffects.map(e => e.id));
+        }
+
+        const effectData = {
+          type: 'effect',
+          name: `${prep.name} (${resultLabel})`,
+          img: PREPARATION_ICONS[prepId] || 'icons/svg/aura.svg',
+          system: {
+            description: {
+              value: `<p>${outcome.description}</p><p><strong>Erstes Exhaustion wird ignoriert!</strong></p>`
+            },
+            duration: {
+              unit: 'unlimited',
+              value: -1
+            },
+            tokenIcon: {
+              show: true
+            },
+            rules: []
+          },
+          flags: {
+            'uncharted-journeys': {
+              isPreparationEffect: true,
+              preparationId: prepId,
+              result: result,
+              ignoreFirstExhaustion: true
+            }
+          }
+        };
+        await actor.createEmbeddedDocuments('Item', [effectData]);
+      }
+    }
+    return;
+  }
+
+  // Handle encounter count modification (Prepare the Party)
+  if (effectConfig.type === 'encounterCount') {
+    const currentMod = session.encounterCountModifier || 0;
+    session.updateSource({ encounterCountModifier: currentMod + effectConfig.value });
+    await JourneySessionManager.save(session);
+    const sign = effectConfig.value > 0 ? '+' : '';
+    ui.notifications.info(`${prep.name}: Anzahl Encounters ${sign}${effectConfig.value}`);
+    return;
+  }
+
+  // Handle hit dice modification (Procure Supplies)
+  // Uses the hit-dice-healing module's flag system
+  // Increases BOTH maximum AND current hit dice
+  if (effectConfig.type === 'hitDice') {
+    console.log('=== HIT DICE HANDLER TRIGGERED ===');
+    console.log('Effect config:', effectConfig);
+    console.log('Party members:', session.partyMembers);
+
+    for (const member of session.partyMembers) {
+      const actor = game.actors.get(member.actorId);
+      console.log(`Processing member ${member.actorId}:`, actor?.name);
+
+      if (actor) {
+        // Get base max hit dice from level
+        const level = actor.system?.details?.level?.value ?? 1;
+        const baseMaxHitDice = level + 1;
+
+        // Get current bonus hit dice from preparations (if any)
+        const currentBonus = actor.getFlag('uncharted-journeys', 'bonusHitDice') ?? 0;
+        const newBonus = Math.max(0, currentBonus + effectConfig.value);
+
+        // Calculate the new enhanced maximum
+        const newMaxHitDice = baseMaxHitDice + newBonus;
+
+        // Get current hit dice and add the bonus value
+        const currentHD = actor.getFlag('hit-dice-healing', 'current') ?? baseMaxHitDice;
+        const newHD = Math.max(0, currentHD + effectConfig.value);
+
+        console.log(`${actor.name}: level=${level}, baseMax=${baseMaxHitDice}, currentBonus=${currentBonus}, newBonus=${newBonus}`);
+        console.log(`${actor.name}: currentHD=${currentHD}, newHD=${newHD}, newMaxHitDice=${newMaxHitDice}`);
+
+        // Update all flags:
+        // - Our bonus tracking flag
+        // - The hit-dice-healing module's current flag
+        // - The hit-dice-healing module's max flag (if supported)
+        await actor.setFlag('uncharted-journeys', 'bonusHitDice', newBonus);
+        await actor.setFlag('hit-dice-healing', 'current', newHD);
+        await actor.setFlag('hit-dice-healing', 'max', newMaxHitDice);
+
+        console.log(`${actor.name}: Flags set successfully`);
+
+        // Also log the actor's flags after setting
+        const checkBonus = actor.getFlag('uncharted-journeys', 'bonusHitDice');
+        const checkCurrent = actor.getFlag('hit-dice-healing', 'current');
+        const checkMax = actor.getFlag('hit-dice-healing', 'max');
+        console.log(`${actor.name}: VERIFY - bonusHitDice=${checkBonus}, current=${checkCurrent}, max=${checkMax}`);
+      }
+    }
+    const sign = effectConfig.value > 0 ? '+' : '';
+    ui.notifications.info(`${prep.name}: ${sign}${effectConfig.value} Hit Dice für alle Spieler (Max und Aktuell).`);
+    return;
+  }
+
+  // Handle reveal nodes (Chart Course)
+  if (effectConfig.type === 'revealNodes') {
+    // Calculate count based on journey length if needed
+    let count = effectConfig.count;
+    if (count === 'byJourneyLength') {
+      const totalNodes = session.biomeNodes?.length || 0;
+      count = totalNodes <= 3 ? 1 : totalNodes <= 6 ? 2 : 3;
+    }
+    const currentReveals = session.nodeRevealsAvailable || 0;
+    session.updateSource({
+      nodeRevealsAvailable: currentReveals + count,
+      encounterTypeReveals: (session.encounterTypeReveals || 0) + (effectConfig.revealEncounterType || 0)
+    });
+    await JourneySessionManager.save(session);
+    let msg = `${prep.name}: ${count} Ort(e) können aufgedeckt werden.`;
+    if (effectConfig.revealEncounterType) {
+      msg += ` + ${effectConfig.revealEncounterType} Encounter-Typ(en).`;
+    }
+    ui.notifications.info(msg);
+    return;
+  }
+
+  // Handle fake colors (Chart Course failure)
+  if (effectConfig.type === 'fakeColor') {
+    const currentFakes = session.fakeColorsToApply || 0;
+    session.updateSource({ fakeColorsToApply: currentFakes + effectConfig.count });
+    await JourneySessionManager.save(session);
+    ui.notifications.warn(`${prep.name}: ${effectConfig.count} Ort(e) bekommen falsche Farben!`);
+    return;
+  }
+
+  // Handle caught stealing (Procure Mounts critical failure)
+  if (effectConfig.type === 'caughtStealing') {
+    ui.notifications.warn(`${prep.name}: Beim Stehlen erwischt! Der GM entscheidet über die Konsequenzen.`);
+    return;
+  }
+
+  // Handle no rest effect (Carouse critical failure)
+  if (effectConfig.type === 'noRest') {
+    session.updateSource({ noRestBeforeJourney: true });
+    await JourneySessionManager.save(session);
+    ui.notifications.warn(`${prep.name}: Keine Rast vor Reisebeginn möglich!`);
+
+    // Create reminder effect on the actor who performed the preparation
+    const member = session.partyMembers.find(m => m.role === role);
+    if (member) {
+      const actor = game.actors.get(member.actorId);
+      if (actor) {
+        const outcome = prep.outcomes[result];
+        const resultLabel = {
+          criticalSuccess: 'Krit. Erfolg',
+          success: 'Erfolg',
+          failure: 'Fehlschlag',
+          criticalFailure: 'Krit. Fehlschlag'
+        }[result] || result;
+
+        // Remove any existing effects from this preparation
+        const existingEffects = actor.items.filter(i =>
+          i.type === 'effect' &&
+          i.flags?.['uncharted-journeys']?.isPreparationEffect &&
+          i.flags?.['uncharted-journeys']?.preparationId === prepId
+        );
+        if (existingEffects.length > 0) {
+          await actor.deleteEmbeddedDocuments('Item', existingEffects.map(e => e.id));
+        }
+
+        const effectData = {
+          type: 'effect',
+          name: `${prep.name} (${resultLabel})`,
+          img: PREPARATION_ICONS[prepId] || 'icons/svg/aura.svg',
+          system: {
+            description: {
+              value: `<p>${outcome.description}</p><p><strong>Keine Rast vor Reisebeginn möglich!</strong></p>`
+            },
+            duration: {
+              unit: 'unlimited',
+              value: -1
+            },
+            tokenIcon: {
+              show: true
+            },
+            rules: []
+          },
+          flags: {
+            'uncharted-journeys': {
+              isPreparationEffect: true,
+              preparationId: prepId,
+              result: result,
+              noRestBeforeJourney: true
+            }
+          }
+        };
+        await actor.createEmbeddedDocuments('Item', [effectData]);
+      }
+    }
+    return;
+  }
+}
+
+/**
+ * Apply a flat modifier effect (save bonus/penalty) to actors
+ */
+async function applyFlatModifierEffect(prep, prepId, result, session, role, effectConfig, PREPARATION_ICONS) {
+  // Determine target actors
   let targetActors = [];
 
-  if (effectConfig.applyToAll) {
-    // Apply to all party members
+  if (effectConfig.target === 'all') {
     for (const member of session.partyMembers) {
       const actor = game.actors.get(member.actorId);
       if (actor) targetActors.push(actor);
     }
-  } else if (effectConfig.applyToQuartermaster) {
-    // Apply only to the Quartermaster
-    const qmMember = session.partyMembers.find(m => m.role === 'quartermaster');
-    if (qmMember) {
-      const actor = game.actors.get(qmMember.actorId);
+  } else if (effectConfig.target === 'self') {
+    const member = session.partyMembers.find(m => m.role === role);
+    if (member) {
+      const actor = game.actors.get(member.actorId);
       if (actor) targetActors.push(actor);
     }
   }
 
   if (targetActors.length === 0) return;
 
-  // Handle Rally the Party with dropdown selection
-  let effectName = effectConfig.name || prep.name;
-  let effectDescription = effectConfig.description || prep.successEffect;
-  let rules = [];
+  const outcome = prep.outcomes[result];
+  const resultLabel = {
+    criticalSuccess: 'Krit. Erfolg',
+    success: 'Erfolg',
+    failure: 'Fehlschlag',
+    criticalFailure: 'Krit. Fehlschlag'
+  }[result] || result;
 
-  if (effectConfig.hasDropdown && prepId === 'rallyTheParty') {
-    // Read the selected Rally option from the chat card
-    const dropdown = element.querySelector('.rally-option-select');
-    const selectedOption = dropdown?.value || 'encouraging';
-    const rallyOption = RALLY_OPTIONS[selectedOption];
-
-    if (rallyOption) {
-      effectName = `Rally: ${rallyOption.name}`;
-      effectDescription = rallyOption.description;
-
-      // Add rule elements for mechanical bonuses
-      if (rallyOption.rules) {
-        rules = [...rallyOption.rules];
-      }
-
-      // Handle Resolute (temp HP)
-      if (selectedOption === 'resolute') {
-        // Will calculate per-actor below
-      }
-    }
-  }
-
-  // Create effects on each target actor
+  // Create effect on each target actor
   for (const actor of targetActors) {
     // Remove any existing preparation effects from this preparation type
     const existingEffects = actor.items.filter(i =>
@@ -966,20 +1590,19 @@ async function createPreparationEffects(prep, prepId, session, element, PREPARAT
       i.flags?.['uncharted-journeys']?.preparationId === prepId
     );
 
-    // Delete existing effects of the same type
     if (existingEffects.length > 0) {
       const idsToDelete = existingEffects.map(e => e.id);
       await actor.deleteEmbeddedDocuments('Item', idsToDelete);
     }
 
-    // Build effect data
+    // Build effect data with PF2E rule elements
     const effectData = {
       type: 'effect',
-      name: `Preparation: ${effectName}`,
+      name: `${prep.name} (${resultLabel})`,
       img: PREPARATION_ICONS[prepId] || 'icons/svg/aura.svg',
       system: {
         description: {
-          value: `<p>${effectDescription}</p>`
+          value: `<p>${outcome.description}</p>`
         },
         duration: {
           unit: 'unlimited',
@@ -987,48 +1610,23 @@ async function createPreparationEffects(prep, prepId, session, element, PREPARAT
         },
         tokenIcon: {
           show: true
-        }
+        },
+        rules: effectConfig.rules || []
       },
       flags: {
         'uncharted-journeys': {
           isPreparationEffect: true,
-          preparationId: prepId
+          preparationId: prepId,
+          result: result
         }
       }
     };
 
-    // Add rule elements if any
-    if (rules.length > 0) {
-      effectData.system.rules = rules;
-    }
-
-    // Handle Resolute - add temp HP directly
-    if (prepId === 'rallyTheParty') {
-      const dropdown = element.querySelector('.rally-option-select');
-      const selectedOption = dropdown?.value || 'encouraging';
-
-      if (selectedOption === 'resolute') {
-        // Get proficiency bonus (PF2E uses level-based proficiency)
-        const level = actor.system?.details?.level?.value || 1;
-        const profBonus = Math.floor(level / 2) + 2; // Simplified PF2E proficiency
-        const tempHP = profBonus * 2;
-
-        // Add temp HP via rule element
-        effectData.system.rules = [{
-          key: 'TempHP',
-          value: tempHP,
-          label: 'Rally the Party (Resolute)'
-        }];
-
-        effectData.system.description.value = `<p>Temporary HP: ${tempHP} (2x Proficiency Bonus)</p>`;
-      }
-    }
-
     await actor.createEmbeddedDocuments('Item', [effectData]);
   }
 
-  // Notify success
-  ui.notifications.info(`Preparation effect "${effectName}" applied to party!`);
+  const targetDesc = effectConfig.target === 'all' ? 'alle Gruppenmitglieder' : 'den Ausführenden';
+  ui.notifications.info(`${prep.name}: Effekt auf ${targetDesc} angewendet!`);
 }
 
 /**
@@ -1050,29 +1648,40 @@ Hooks.on('renderChatMessage', (message, html) => {
   // Handle preparation result buttons
   element.querySelectorAll('[data-action="setPreparationResult"]').forEach(btn => {
     addListenerOnce(btn, async (event) => {
-      const role = event.currentTarget.dataset.role;
-      const result = event.currentTarget.dataset.result;
+      // IMPORTANT: Capture currentTarget BEFORE any await calls
+      // After await, event.currentTarget becomes null (event lifecycle ends)
+      const currentTarget = event.currentTarget;
+      const role = currentTarget.dataset.role;
+      const result = currentTarget.dataset.result;
       const prepId = message.flags?.['uncharted-journeys']?.preparationId;
 
       if (role && result) {
-        const { getPreparation, PREPARATION_ICONS, RALLY_OPTIONS } = await import('./data/preparations.js');
+        const { getPreparation, PREPARATION_ICONS } = await import('./data/preparations.js');
         const prep = getPreparation(prepId);
         const diffMod = prep?.difficultyModifier?.[result] || 0;
 
         await JourneySessionManager.setPreparationResult(role, result, diffMod);
 
-        // Create effects on party members if preparation succeeded and has effectOnSuccess
-        if (result === 'success' && prep?.effectOnSuccess) {
+        // Apply outcome effects based on the result
+        const outcomeEffect = prep?.outcomes?.[result]?.effect;
+        if (outcomeEffect) {
           const session = JourneySessionManager.getCurrent();
           if (session) {
-            await createPreparationEffects(prep, prepId, session, element, PREPARATION_ICONS, RALLY_OPTIONS);
+            await applyPreparationOutcomeEffect(prep, prepId, result, session, role, PREPARATION_ICONS);
           }
         }
 
-        // Update the message to show the result
-        const buttons = event.currentTarget.closest('.outcome-buttons');
+        // Update the message to show the result (using captured currentTarget)
+        const buttons = currentTarget.closest('.outcome-buttons');
         if (buttons) {
-          buttons.innerHTML = `<span class="result-${result}"><i class="fas fa-${result === 'success' ? 'check' : 'times'}-circle"></i> ${result.charAt(0).toUpperCase() + result.slice(1)}</span>`;
+          const resultLabel = {
+            criticalSuccess: 'Critical Success',
+            success: 'Success',
+            failure: 'Failure',
+            criticalFailure: 'Critical Failure'
+          }[result] || result;
+          const isPositive = result === 'success' || result === 'criticalSuccess';
+          buttons.innerHTML = `<span class="result-${result}"><i class="fas fa-${isPositive ? 'check' : 'times'}-circle"></i> ${resultLabel}</span>`;
         }
       }
     });
@@ -1081,8 +1690,10 @@ Hooks.on('renderChatMessage', (message, html) => {
   // Handle exhaustion result buttons
   element.querySelectorAll('[data-action="applyExhaustionResult"]').forEach(btn => {
     addListenerOnce(btn, async (event) => {
-      const actorId = event.currentTarget.dataset.actorId;
-      const result = event.currentTarget.dataset.result;
+      // IMPORTANT: Capture currentTarget BEFORE any await calls
+      const currentTarget = event.currentTarget;
+      const actorId = currentTarget.dataset.actorId;
+      const result = currentTarget.dataset.result;
 
       if (actorId && result) {
         const actor = game.actors.get(actorId);
@@ -1102,8 +1713,8 @@ Hooks.on('renderChatMessage', (message, html) => {
           await JourneySessionManager.save(session);
         }
 
-        // Update the message
-        const buttons = event.currentTarget.closest('.outcome-buttons');
+        // Update the message (using captured currentTarget)
+        const buttons = currentTarget.closest('.outcome-buttons');
         if (buttons) {
           buttons.innerHTML = `<span class="result-${result}"><i class="fas fa-${result === 'success' ? 'check' : 'times'}-circle"></i> ${result.charAt(0).toUpperCase() + result.slice(1)}</span>`;
         }

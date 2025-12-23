@@ -1,81 +1,125 @@
 /**
- * Uncharted Journeys - Journey Roles
- * Defines the four journey roles and their abilities
+ * Uncharted Journeys - Journey Roles (PF2E Redesign)
+ * Defines the four journey roles and their abilities with German names
  */
 
 export const ROLES = {
   leader: {
     id: 'leader',
-    name: 'Leader',
+    name: 'Anführer',
+    nameEn: 'Leader',
     icon: 'fa-crown',
     emoji: '👑',
-    description: 'The Leader keeps spirits high and the group moving forward together.',
+    description: 'Der Anführer hält die Stimmung hoch und führt die Gruppe zusammen.',
     primarySkill: 'diplomacy',
-    alternativeSkill: 'perception',
-    groupCheckDescription: 'Rally the party and maintain morale.',
+    alternativeSkill: 'performance',
+    groupCheckDescription: 'Die Gruppe zusammenhalten und die Moral aufrechterhalten.',
     ability: {
-      name: 'Inspirational Resolve',
-      description: 'Once per Journey, as a Reaction when a party member fails a saving throw or ability check, you can allow them to reroll. You can use this ability once per party member per Journey.',
-      usesPerJourney: 1,
-      shortDescription: 'Reaction: Allow an ally to reroll a failed check (1/party member/journey)'
+      name: 'Inspirierende Worte',
+      nameEn: 'Inspiring Words',
+      description: 'Als Reaktion, wenn ein Verbündeter einen Check oder Save fehlschlägt, darf dieser neu würfeln. Du kannst dies einmal pro Verbündetem pro Reise einsetzen.',
+      trigger: 'allyFailsCheck',
+      usageLimit: 'perAllyPerJourney',
+      shortDescription: 'Reaktion: Verbündeter darf fehlgeschlagenen Wurf wiederholen (1x pro Verbündetem)'
     }
   },
+
   outrider: {
     id: 'outrider',
-    name: 'Outrider',
+    name: 'Späher',
+    nameEn: 'Outrider',
     icon: 'fa-horse',
     emoji: '🏇',
-    description: 'The Outrider scouts ahead, finding safe paths and avoiding danger.',
+    description: 'Der Späher erkundet voraus, findet sichere Wege und vermeidet Gefahren.',
     primarySkill: 'survival',
     alternativeSkill: 'nature',
-    groupCheckDescription: 'Scout ahead for safe passage.',
+    groupCheckDescription: 'Voraus spähen für sichere Passage.',
     ability: {
-      name: 'Find the Path',
-      description: 'Once per Journey when the GM rolls to determine the Encounter Type, you can also roll. The GM tells you both results, and you choose which Encounter type the group faces.',
-      usesPerJourney: 1,
-      shortDescription: 'Once/journey: Roll encounter type and choose between your roll or GM\'s'
+      name: 'Vorauskundschaft',
+      nameEn: 'Scout Ahead',
+      description: 'Zweimal pro Reise kannst du den nächsten Ort aufdecken UND den Encounter-Typ erfahren.',
+      trigger: 'onDemand',
+      usesPerJourney: 2,
+      effect: {
+        type: 'revealNextNodeAndEncounter'
+      },
+      shortDescription: '2x/Reise: Nächsten Ort + Encounter-Typ aufdecken'
     }
   },
+
   quartermaster: {
     id: 'quartermaster',
-    name: 'Quartermaster',
+    name: 'Versorgungsmeister',
+    nameEn: 'Quartermaster',
     icon: 'fa-backpack',
     emoji: '🎒',
-    description: 'The Quartermaster manages supplies and keeps the party provisioned.',
+    description: 'Der Versorgungsmeister verwaltet Vorräte und hält die Gruppe versorgt.',
     primarySkill: 'athletics',
     alternativeSkill: 'crafting',
-    groupCheckDescription: 'Manage supplies and maintain equipment.',
+    groupCheckDescription: 'Vorräte verwalten und Ausrüstung instand halten.',
     ability: {
-      name: 'Well Prepared',
-      description: 'At the start of Stage 3, gain Supply Dice equal to your Proficiency Bonus (d6s, or d8s with Procure Supplies). As a Reaction when an ally makes an ability check, spend a Supply Die to add it to their result.',
-      supplyDice: {
-        count: 3,
-        die: 'd6',
-        upgradedDie: 'd8'
+      name: 'Vorräte Teilen',
+      nameEn: 'Share Supplies',
+      description: 'Einmal pro Spieler pro Reise kannst du EINES wählen: Heile 1 Stufe Exhaustion bei diesem Spieler ODER stelle 1d6 Hit Dice für diesen Spieler wieder her.',
+      trigger: 'onDemand',
+      usageLimit: 'perPlayerPerJourney',
+      effect: {
+        type: 'choice',
+        options: [
+          {
+            id: 'healExhaustion',
+            name: 'Exhaustion heilen',
+            description: 'Heile 1 Stufe Exhaustion',
+            effect: { type: 'exhaustion', value: -1 }
+          },
+          {
+            id: 'restoreHitDice',
+            name: 'Hit Dice wiederherstellen',
+            description: 'Stelle 1d6 Hit Dice wieder her',
+            effect: { type: 'hitDice', value: '1d6' }
+          }
+        ]
       },
-      shortDescription: 'Supply Dice (d6): Reaction to add die to ally\'s ability check'
+      shortDescription: '1x/Spieler: Heile Exhaustion ODER stelle 1d6 Hit Dice wieder her'
     }
   },
+
   sentry: {
     id: 'sentry',
-    name: 'Sentry',
+    name: 'Wächter',
+    nameEn: 'Sentry',
     icon: 'fa-eye',
     emoji: '👁️',
-    description: 'The Sentry keeps watch, alerting the party to dangers and opportunities.',
+    description: 'Der Wächter hält Wache und warnt die Gruppe vor Gefahren.',
     primarySkill: 'perception',
     alternativeSkill: 'stealth',
-    groupCheckDescription: 'Watch for dangers and opportunities.',
+    groupCheckDescription: 'Auf Gefahren und Gelegenheiten achten.',
     ability: {
-      name: 'Ever Vigilant',
-      description: 'At the start of Stage 3, gain Focus Dice equal to your Proficiency Bonus (d6s). As a Reaction when an ally makes a saving throw, spend a Focus Die to add it to their result. You can also spend a Focus Die to grant +1d6 to an ally\'s Initiative.',
-      focusDice: {
-        count: 3,
-        die: 'd6'
+      name: 'Taktischer Rückzug',
+      nameEn: 'Tactical Retreat',
+      description: 'Einmal pro Reise, vor einem Kampf (Danger Afoot, Deadly Fight, Monster Hunt): Die Gruppe kann VOR dem Kampf fliehen. Du machst einen Constitution Save. Bei Erfolg: Keine negativen Folgen. Bei Fehlschlag: Gruppe erhält 1 Stufe Exhaustion.',
+      trigger: 'beforeCombatEncounter',
+      usesPerJourney: 1,
+      combatEncounterTypes: ['dangerAfoot', 'deadlyFight', 'monsterHunt'],
+      effect: {
+        type: 'fleeWithCheck',
+        checkType: 'constitution',
+        successEffect: null,
+        failureEffect: {
+          type: 'exhaustion',
+          target: 'all',
+          value: 1
+        }
       },
-      shortDescription: 'Focus Dice (d6): Reaction to add die to ally\'s save or Initiative'
+      shortDescription: '1x/Reise: Vor Kampf fliehen (Con Save, Fehlschlag = Exhaustion)'
     }
   }
 };
+
+/**
+ * Combat encounter types that trigger Sentry's Tactical Retreat ability
+ */
+export const COMBAT_ENCOUNTER_TYPES = ['dangerAfoot', 'deadlyFight', 'monsterHunt'];
 
 /**
  * Get the skill slug for a role's group travel check
@@ -104,4 +148,81 @@ export function getRoleById(roleId) {
  */
 export function getRolesArray() {
   return Object.values(ROLES);
+}
+
+/**
+ * Check if an encounter type triggers the Sentry's Tactical Retreat ability
+ * @param {string} encounterType - The encounter type ID
+ * @returns {boolean} True if the encounter type is a combat type
+ */
+export function isCombatEncounterType(encounterType) {
+  return COMBAT_ENCOUNTER_TYPES.includes(encounterType);
+}
+
+/**
+ * Get role tracking state for a new journey
+ * @returns {Object} Initial tracking state for all role abilities
+ */
+export function getInitialRoleTracking() {
+  return {
+    leader: {
+      usedOnAllies: [] // Array of actor IDs that have received the reroll
+    },
+    outrider: {
+      scoutUsesRemaining: 2 // Vorauskundschaft: 2x pro Reise
+    },
+    quartermaster: {
+      usedOnPlayers: [] // Array of actor IDs that have received supplies
+    },
+    sentry: {
+      tacticalRetreatUsed: false
+    }
+  };
+}
+
+/**
+ * Check if the Leader can use Inspiring Words on a specific ally
+ * @param {Object} tracking - Role tracking state
+ * @param {string} allyId - The ally's actor ID
+ * @returns {boolean} True if the ability can be used on this ally
+ */
+export function canLeaderInspire(tracking, allyId) {
+  return !tracking.leader.usedOnAllies.includes(allyId);
+}
+
+/**
+ * Check if the Outrider can use Vorauskundschaft (Scout Ahead)
+ * @param {Object} tracking - Role tracking state
+ * @returns {boolean} True if the ability can be used
+ */
+export function canOutriderScout(tracking) {
+  return (tracking.outrider.scoutUsesRemaining ?? 0) > 0;
+}
+
+/**
+ * Get remaining scout uses for the Outrider
+ * @param {Object} tracking - Role tracking state
+ * @returns {number} Number of remaining uses
+ */
+export function getOutriderScoutUsesRemaining(tracking) {
+  return tracking.outrider.scoutUsesRemaining ?? 0;
+}
+
+/**
+ * Check if the Quartermaster can share supplies with a specific player
+ * @param {Object} tracking - Role tracking state
+ * @param {string} playerId - The player's actor ID
+ * @returns {boolean} True if the ability can be used on this player
+ */
+export function canQuartermasterShare(tracking, playerId) {
+  return !tracking.quartermaster.usedOnPlayers.includes(playerId);
+}
+
+/**
+ * Check if the Sentry can use Tactical Retreat
+ * @param {Object} tracking - Role tracking state
+ * @returns {boolean} True if the ability can be used
+ */
+export function canSentryRetreat(tracking) {
+  return !tracking.sentry.tacticalRetreatUsed;
 }
