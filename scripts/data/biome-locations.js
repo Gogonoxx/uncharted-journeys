@@ -628,10 +628,10 @@ export const LOCATION_ENCOUNTER_POOLS = {
   green: [
     'A Chance Meeting',
     'Needing Assistance',
-    'Old Memories',
+    'Fateful Encounter',   // Mysteriöse Begegnung an sicheren Orten
     'A Place to Rest',
     'A Bump in the Road',
-    'Natural Wonders',
+    'Danger Afoot',        // Warnung (in ALLEN Pools!)
   ],
 
   // 🟡 Gelbe Orte - Alle Standard-Encounters möglich
@@ -641,7 +641,7 @@ export const LOCATION_ENCOUNTER_POOLS = {
     'Old Memories',
     'A Place to Rest',
     'A Bump in the Road',
-    'Natural Wonders',
+    'Natural Wonders',     // NUR in mixed/yellow!
     'Danger Afoot',
     'Monster Hunt',
     'Deadly Fight',
@@ -655,9 +655,9 @@ export const LOCATION_ENCOUNTER_POOLS = {
     'Deadly Fight',
     'Monster Hunt',
     'A Dark Place',
-    'Danger Afoot',
-    'Hidden Reserves',    // Glückstreffer!
-    'Fateful Encounter',   // Kann gut oder schlecht sein
+    'Danger Afoot',        // Warnung (in ALLEN Pools!)
+    'Hidden Reserves',     // Glückstreffer!
+    'Old Memories',        // Gefährliche Ruinen, vergessene Bibliotheken
   ],
 
   // 💎 Schatz-Orte - Spezielle Belohnungs-Encounters

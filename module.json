@@ -2,7 +2,7 @@
   "id": "uncharted-journeys",
   "title": "Uncharted Journeys - Journey Manager",
   "description": "Automates the Uncharted Journeys travel system for Pathfinder 2E. Manage all 4 stages of journey travel: Set Route, Prepare, Journey, and Journey's End.",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "authors": [
     {
       "name": "Gogonoxx"
@@ -55,5 +55,5 @@
   ],
   "url": "https://github.com/Gogonoxx/uncharted-journeys",
   "manifest": "https://github.com/Gogonoxx/uncharted-journeys/releases/latest/download/module.json",
-  "download": "https://github.com/Gogonoxx/uncharted-journeys/releases/download/v2.3.0/uncharted-journeys.zip"
+  "download": "https://github.com/Gogonoxx/uncharted-journeys/releases/download/v2.3.1/uncharted-journeys.zip"
 }

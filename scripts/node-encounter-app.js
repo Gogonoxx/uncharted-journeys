@@ -496,11 +496,13 @@ export class NodeEncounterApp extends HandlebarsApplicationMixin(ApplicationV2) 
 
   /**
    * Start the resolution mechanic for this encounter
-   * Sends a chat message with resolution instructions
+   * Sets the node encounter as the current encounter in session, then triggers resolution
+   * Uses the JourneyManagerApp's resolution methods for interactive chat templates
    */
   static async #onStartResolution(event, target) {
     const app = this;
     const node = app.#getNode();
+
     if (!node?.cachedEncounter) {
       ui.notifications.warn('Kein Encounter vorhanden!');
       return;
@@ -514,79 +516,117 @@ export class NodeEncounterApp extends HandlebarsApplicationMixin(ApplicationV2) 
       return;
     }
 
-    // Get the resolution config
-    const config = getResolutionConfig(encounterType);
+    // Normalize encounter type for config lookup
+    const normalizedType = encounterType.includes(' ') ? encounterType :
+      encounterType.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+
+    const config = getResolutionConfig(normalizedType);
     if (!config) {
-      ui.notifications.warn(`Keine Resolution-Konfiguration für "${encounterType}".`);
+      ui.notifications.warn(`Keine Resolution-Konfiguration für "${normalizedType}".`);
       return;
     }
 
-    // Get session for DC
+    // Get session
     const session = JourneySessionManager.getCurrent();
-    const dc = session?.difficulty || 12;
+    if (!session) {
+      ui.notifications.error('Keine aktive Journey-Session!');
+      return;
+    }
 
-    // Build resolution info
-    let resolutionHtml = '';
-    const patternDescriptions = {
-      'choice': 'Die Gruppe muss eine Entscheidung treffen.',
-      'keyRole-then-group': `Zuerst würfelt die Schlüsselrolle (${config.keyRole}), dann der Rest der Gruppe.`,
-      'keyRole-then-saves': `Zuerst würfelt die Schlüsselrolle (${config.keyRole}), dann macht jeder einen Rettungswurf.`,
-      'keyRole-then-group-conditional': `Zuerst würfelt die Schlüsselrolle (${config.keyRole}), bei Erfolg würfelt der Rest.`,
-      'group-only': 'Alle Gruppenmitglieder würfeln gemeinsam.'
+    // Get the JourneyManagerApp instance from the global UnchartedJourneys object
+    const journeyApp = globalThis.UnchartedJourneys?.app;
+    if (!journeyApp) {
+      ui.notifications.error('JourneyManagerApp nicht gefunden! Bitte öffne zuerst die Journey Manager App.');
+      return;
+    }
+
+    // Create a temporary encounter object compatible with the resolution system
+    const tempEncounter = {
+      encounterType: normalizedType,
+      text: encounter.fullText || encounter.description || '',
+      nodeId: node.id,
+      nodeName: node.name,
+      resolution: {
+        step: 'pending',
+        memberResults: []
+      }
     };
 
-    resolutionHtml += `<p><strong>Muster:</strong> ${patternDescriptions[config.pattern] || config.pattern}</p>`;
+    // Set this as the current encounter in the session
+    // DataModel arrays are immutable, so we need to create new arrays
+    const existingEncounters = [...session.encounters];
+    let encounterIndex = existingEncounters.findIndex(e => e.nodeId === node.id);
 
-    if (config.keyRole) {
-      const roleSkills = {
-        'leader': 'Diplomacy, Intimidation, Deception',
-        'outrider': 'Nature, Survival, Stealth',
-        'sentry': 'Perception, Stealth',
-        'quartermaster': 'Crafting, Medicine, Survival'
+    if (encounterIndex === -1) {
+      // Add new encounter
+      existingEncounters.push(tempEncounter);
+      encounterIndex = existingEncounters.length - 1;
+    } else {
+      // Update existing
+      existingEncounters[encounterIndex] = {
+        ...existingEncounters[encounterIndex],
+        ...tempEncounter
       };
-      resolutionHtml += `<p><strong>Schlüsselrolle:</strong> ${config.keyRole} (${roleSkills[config.keyRole] || 'Any'})</p>`;
     }
 
-    if (config.skills) {
-      resolutionHtml += `<p><strong>Skills:</strong> ${config.skills.join(', ')}</p>`;
-    }
-
-    if (config.saves) {
-      resolutionHtml += `<p><strong>Rettungswürfe:</strong> ${config.saves.join(', ')}</p>`;
-    }
-
-    resolutionHtml += `<p><strong>DC:</strong> ${dc}</p>`;
-
-    // Build outcome descriptions
-    if (config.outcomes) {
-      resolutionHtml += '<hr><h4>Mögliche Ausgänge:</h4>';
-      for (const [outcome, data] of Object.entries(config.outcomes)) {
-        if (data.label) {
-          const effectIcon = data.effect === 'positive' ? '✅' : data.effect === 'negative' ? '❌' : '⚖️';
-          resolutionHtml += `<p>${effectIcon} <strong>${data.label}:</strong> ${data.description || ''}</p>`;
-        }
-      }
-    }
-
-    // Send to chat
-    const content = `
-      <div class="uncharted-journeys chat-card resolution-info">
-        <header>
-          <h3><i class="fas fa-dice-d20"></i> Resolution: ${encounterType}</h3>
-          <p class="location-name">${node.name || 'Unbekannter Ort'}</p>
-        </header>
-        <div class="resolution-content">
-          ${resolutionHtml}
-        </div>
-      </div>
-    `;
-
-    await ChatMessage.create({
-      content,
-      speaker: { alias: 'Uncharted Journeys' }
+    // Update session with new encounters array and current index
+    session.updateSource({
+      encounters: existingEncounters,
+      currentEncounterIndex: encounterIndex
     });
+    await JourneySessionManager.save(session);
 
-    ui.notifications.info('Resolution-Informationen an Chat gesendet!');
+    // Now trigger the resolution flow via the JourneyManagerApp
+    // This will use the existing resolution logic with interactive chat templates
+    const dc = session.difficulty;
+
+    // Determine the first step based on pattern
+    let firstStep;
+    switch (config.pattern) {
+      case 'choice':
+        firstStep = 'choice';
+        break;
+      case 'keyRole-then-group':
+      case 'keyRole-then-saves':
+      case 'keyRole-then-group-conditional':
+        firstStep = 'keyRole';
+        break;
+      case 'group-only':
+        firstStep = 'group';
+        break;
+      default:
+        firstStep = 'pending';
+    }
+
+    // Update resolution step
+    await JourneySessionManager.updateEncounterResolution({ step: firstStep });
+
+    // Re-fetch session after updates
+    const updatedSession = JourneySessionManager.getCurrent();
+
+    // Send the appropriate chat message using JourneyManagerApp's methods
+    // These methods send interactive chat cards with buttons
+    try {
+      if (firstStep === 'choice') {
+        await journeyApp._sendChoiceChat(config, updatedSession);
+      } else if (firstStep === 'keyRole') {
+        await journeyApp._sendKeyRoleCheckChat(config, updatedSession, dc);
+      } else if (firstStep === 'group') {
+        await journeyApp._sendGroupCheckChat(config, updatedSession, dc);
+      }
+
+      ui.notifications.info(`Resolution gestartet für "${normalizedType}"`);
+    } catch (error) {
+      console.error('Resolution chat error:', error);
+      ui.notifications.error(`Fehler beim Starten der Resolution: ${error.message}`);
+    }
+
+    // Refresh the JourneyManagerApp if it's open
+    if (journeyApp.rendered) {
+      journeyApp.render();
+    }
+
+    app.render();
   }
 
   /**

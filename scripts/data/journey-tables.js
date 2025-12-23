@@ -221,14 +221,14 @@ export const ENCOUNTER_POOLS = {
     'A Dark Place',      // Dark/dangerous location
     'Danger Afoot',      // Warning (in ALL pools!)
     'Hidden Reserves',   // 🎲 LUCKY: Treasure in dangerous area!
-    'Fateful Encounter'  // 🎲 LUCKY: Fate can be good too
+    'Old Memories'       // Ruins, forgotten libraries, dangerous remnants of the past
   ],
 
   // 🟢 Green - Safe/Social (6 types)
   social: [
     'A Chance Meeting',    // Meet travelers
     'Needing Assistance',  // Help someone
-    'Old Memories',        // Connection to the past
+    'Fateful Encounter',   // Mysterious stranger, destined meeting in safe places
     'A Place to Rest',     // Rest spot
     'A Bump in the Road',  // Minor obstacle
     'Danger Afoot'         // Warning (in ALL pools!)

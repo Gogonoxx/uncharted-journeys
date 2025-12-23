@@ -939,10 +939,30 @@ export const ENCOUNTER_RESOLUTION_CONFIG = {
 };
 
 /**
+ * Normalize encounter type from snake_case to Title Case
+ * e.g., "deadly_fight" -> "Deadly Fight"
+ * @param {string} type - The encounter type (may be snake_case or Title Case)
+ * @returns {string} Normalized Title Case encounter type
+ */
+function normalizeEncounterType(type) {
+  if (!type) return type;
+
+  // If already has spaces, assume it's Title Case
+  if (type.includes(' ')) return type;
+
+  // Convert snake_case to Title Case
+  return type
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
+/**
  * Get the resolution configuration for an encounter type
- * @param {string} encounterType - The encounter type name
+ * @param {string} encounterType - The encounter type name (snake_case or Title Case)
  * @returns {Object|null} Resolution config or null if not found
  */
 export function getResolutionConfig(encounterType) {
-  return ENCOUNTER_RESOLUTION_CONFIG[encounterType] ?? null;
+  const normalized = normalizeEncounterType(encounterType);
+  return ENCOUNTER_RESOLUTION_CONFIG[normalized] ?? null;
 }
