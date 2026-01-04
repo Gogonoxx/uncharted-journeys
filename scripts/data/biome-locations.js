@@ -628,7 +628,7 @@ export const LOCATION_ENCOUNTER_POOLS = {
   green: [
     'A Chance Meeting',
     'Needing Assistance',
-    'Old Memories',
+    'Fateful Encounter',   // Mysteriöser Fremder mit Quest (sicher!)
     'A Place to Rest',
     'A Bump in the Road',
     'Natural Wonders',
@@ -638,26 +638,27 @@ export const LOCATION_ENCOUNTER_POOLS = {
   yellow: [
     'A Chance Meeting',
     'Needing Assistance',
-    'Old Memories',
+    'Fateful Encounter',
     'A Place to Rest',
     'A Bump in the Road',
     'Natural Wonders',
     'Danger Afoot',
     'Monster Hunt',
     'Deadly Fight',
-    'A Dark Place',
+    // NOTE: 'A Dark Place' REMOVED - too passive, redundant with Deadly Fight
     'Hidden Reserves',
-    'Fateful Encounter',
+    'Old Memories',
   ],
 
   // 🔴 Rote Orte - Gefährliche Encounters
   red: [
     'Deadly Fight',
     'Monster Hunt',
-    'A Dark Place',
+    // NOTE: 'A Dark Place' REMOVED - too passive
     'Danger Afoot',
+    'A Bump in the Road',  // ⚠️ Echtes Hazard auch bei roten Orten!
     'Hidden Reserves',    // Glückstreffer!
-    'Fateful Encounter',   // Kann gut oder schlecht sein
+    'Old Memories',       // Gefährliche Ruinen mit Research-System
   ],
 
   // 💎 Schatz-Orte - Spezielle Belohnungs-Encounters

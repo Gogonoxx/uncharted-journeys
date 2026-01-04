@@ -2,7 +2,7 @@
   "id": "uncharted-journeys",
   "title": "Uncharted Journeys - Journey Manager",
   "description": "Automates the Uncharted Journeys travel system for Pathfinder 2E. Manage all 4 stages of journey travel: Set Route, Prepare, Journey, and Journey's End.",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "authors": [
     {
       "name": "Gogonoxx"

@@ -241,37 +241,8 @@ export const ENCOUNTER_TYPE_RULES = {
 </ul>`
   },
 
-  "A Dark Place": {
-    name: "A Dark Place",
-    summary: "Ungodly locations and corrupted sites where evil deeds have gone unchecked.",
-    keyRole: "Outrider",
-    content: `<h2>A Dark Place</h2>
-<p>The world is filled with ungodly locations and corrupted sites where evil deeds have gone unchecked and malicious forces hold sway. The site of an infernal ritual where dark things were summoned into the world, the remnants of a bloody slaughter, or the inconspicuous house where dozens of innocents were murdered — these are just a few such twisted locations. It is easy to be overwhelmed when confronted by such A Dark Place, and the party must steel themselves to overcome these unnatural places.</p>
-
-<p>These Encounters are designed to be an emotional low point in the Journey. They show the malice and ill will of the nearby villains, and can overwhelm the party with dread, or instil them with a grim resolve. If you are running a game with a prominent villain or nemesis, these encounters are an ideal opportunity to showcase their twisted machinations.</p>
-
-<p>A Dark Place Encounter includes a description of the site, the events that led to it being tainted, and the potential glimmer of hope that can push the party to move on. The <strong>Outrider</strong> is the first to discover these encounters, and how this location affects them will strongly influence the morale of the team, though some aid from the <strong>Leader</strong> can offset this.</p>
-
-<h3>Resolution</h3>
-<p>A Dark Place has two steps: the Outrider Check and the Wisdom Save.</p>
-
-<h4>Outrider Check</h4>
-<p>The Outrider makes a <strong>Survival</strong> check to scout the Dark Place. The result of this check affects the Wisdom Save.</p>
-<ul>
-<li><strong>On a success by 5 or more:</strong> The Outrider has identified any potential hazards the location holds. Though the place is unsettling, there is little else to fear. Each party member makes the Will save for this Encounter with Advantage.</li>
-<li><strong>On a success:</strong> The Outrider surveys the location and has a bad feeling about it. They advise the party to be wary as they approach. Each party member makes the Will save as normal.</li>
-<li><strong>On a failure:</strong> The Outrider attempts to scout the location but is completely unnerved and must return to the party. Each party member makes the Will save for this Encounter with Disadvantage.</li>
-</ul>
-
-<h4>Wisdom Save</h4>
-<p>After determining the result of the Outrider's check, each party member must make a <strong>Will save</strong>. This determines if the party can overcome the oppressive dread of the encounter and find an inner tenacity. The Leader may replace another player's result with their own result.</p>
-<ul>
-<li><strong>If the whole party succeeds:</strong> The party musters an inner strength and finds the resolve to persevere, insisting such crimes will never happen again. Each party member regains a Hit Die.</li>
-<li><strong>If more than half of the party succeed:</strong> The party resists the grim aura that this place exudes, keeping their heads down and marching through unperturbed. They suffer no adverse effects.</li>
-<li><strong>If half or fewer of the party succeed:</strong> The party's morale is undermined by the horrors they have witnessed and the unsettling nature of the place. Each party member loses a Hit Die.</li>
-<li><strong>If no party member succeeds:</strong> An overwhelming sense of dread overcomes the party, which they can't shake for days to come. Each party member loses a Hit Die and gains a level of Exhaustion.</li>
-</ul>`
-  },
+  // NOTE: "A Dark Place" was REMOVED - too passive, redundant with Deadly Fight
+  // All dark/corrupted location themes can be incorporated into Deadly Fight or Old Memories
 
   "Deadly Fight": {
     name: "Deadly Fight",
@@ -738,44 +709,7 @@ export const ENCOUNTER_RESOLUTION_CONFIG = {
     }
   },
 
-  "A Dark Place": {
-    pattern: "keyRole-then-saves",
-    keyRole: "outrider",
-    keyRoleCheck: {
-      skill: "survival",
-      description: "Scout the Dark Place and identify potential hazards.",
-      successBy5Effect: { saveAdvantage: true },
-      successEffect: {},
-      failureEffect: { saveDisadvantage: true }
-    },
-    individualSaves: {
-      save: "will",  // PF2E Will save (Wisdom)
-      description: "Overcome the oppressive dread and find inner tenacity.",
-      canReplace: "leader",  // Leader can replace another's save result
-      outcomes: {
-        all: {
-          label: "Inner Strength",
-          description: "The party finds resolve to persevere. Each party member regains a Hit Die.",
-          effect: "regainHitDie"
-        },
-        majority: {
-          label: "Unperturbed",
-          description: "The party resists the grim aura and marches through unperturbed.",
-          effect: "noEffect"
-        },
-        minority: {
-          label: "Morale Undermined",
-          description: "The party's morale is undermined by the horrors. Each party member loses a Hit Die.",
-          effect: "loseHitDie"
-        },
-        none: {
-          label: "Overwhelming Dread",
-          description: "An overwhelming sense of dread overcomes the party. Each party member loses a Hit Die and gains Exhaustion.",
-          effect: "loseHitDieAndExhaustion"
-        }
-      }
-    }
-  },
+  // NOTE: "A Dark Place" was REMOVED from FRONTIERS_RULES - too passive, redundant with Deadly Fight
 
   "Deadly Fight": {
     pattern: "keyRole-then-group-conditional",

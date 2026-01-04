@@ -207,44 +207,46 @@ export function getArrivalResult(roll) {
 
 /**
  * Encounter Pools by danger level
- * 🔴 combat: Dangerous areas (but Hidden Reserves & Fateful Encounter = lucky breaks!)
- * 🟢 social: Safe/social areas
+ * 🔴 combat: Dangerous areas (Old Memories = gefährliche Ruinen)
+ * 🟢 social: HÖHERE Chance auf sichere Encounters, aber NICHT komplett sicher!
  * 🟡 mixed: All encounter types possible (includes Natural Wonders - ONLY here!)
  *
  * Note: "Danger Afoot" appears in ALL THREE pools (warnings can happen anywhere)
+ * Note: "A Bump in the Road" ist IMMER ein echtes Hazard mit Schaden - auch bei grünen Orten!
+ * Note: "A Dark Place" wurde ENTFERNT - zu passiv, redundant mit Deadly Fight
  */
 export const ENCOUNTER_POOLS = {
   // 🔴 Red - Dangerous (6 types)
+  // A Dark Place ENTFERNT - zu passiv, redundant mit Deadly Fight
   combat: [
-    'Deadly Fight',      // Obviously dangerous
+    'Deadly Fight',      // Front-driven combat situations
     'Monster Hunt',      // Active hunting
-    'A Dark Place',      // Dark/dangerous location
+    'A Bump in the Road', // ⚠️ Echtes Hazard mit Schaden!
     'Danger Afoot',      // Warning (in ALL pools!)
     'Hidden Reserves',   // 🎲 LUCKY: Treasure in dangerous area!
-    'Fateful Encounter'  // 🎲 LUCKY: Fate can be good too
+    'Old Memories'       // 🏛️ SELTEN: Vergessene Ruinen → Research Encounter
   ],
 
-  // 🟢 Green - Safe/Social (6 types)
+  // 🟢 Green - Social (6 types) - HÖHERE Chance auf sichere Encounters, aber NICHT komplett sicher!
   social: [
     'A Chance Meeting',    // Meet travelers
     'Needing Assistance',  // Help someone
-    'Old Memories',        // Connection to the past
+    'Fateful Encounter',   // Mysteriöser Fremder mit Quest
     'A Place to Rest',     // Rest spot
-    'A Bump in the Road',  // Minor obstacle
+    'A Bump in the Road',  // ⚠️ Echtes Hazard mit Schaden! (auch hier!)
     'Danger Afoot'         // Warning (in ALL pools!)
   ],
 
-  // 🟡 Yellow - Mixed (all 12 types, including Natural Wonders - ONLY HERE!)
+  // 🟡 Yellow - Mixed (10 types, includes Natural Wonders - ONLY HERE!)
+  // A Dark Place ENTFERNT - zu passiv
   mixed: [
     'Deadly Fight',
     'Monster Hunt',
-    'A Dark Place',
     'Danger Afoot',
     'Hidden Reserves',
-    'Fateful Encounter',
     'A Chance Meeting',
     'Needing Assistance',
-    'Old Memories',
+    'Fateful Encounter',
     'A Place to Rest',
     'A Bump in the Road',
     'Natural Wonders'      // ONLY in mixed/yellow!
